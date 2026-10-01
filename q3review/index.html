@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WePlus⁺ – Q3 Review & Direction | 09.10.2026</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Cormorant Garamond & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F5F2EE',      // Warm Gray / Paper background
+            pure: '#FFFFFF',       // Pure White for clean cards/slides
+            charcoal: '#1A1A1A',   // Deep dark for occasional dramatic slides
+            copper: {
+              DEFAULT: '#C99A7B',  // Light Rose Copper
+              dark: '#A67C5B',     // Deep Rose Copper
+              light: '#E6D3C5',    // Very light copper for borders
+              bg: '#FDFBF9'        // Tinted white for contrast blocks
+            },
+            ink: {
+              DEFAULT: '#111111',  // Almost black for main text
+              muted: '#666666',    // Gray for secondary text
+              light: '#999999'     // Light gray for meta
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Inter"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F5F2EE; /* Paper Background */
+      color: #111111;
+      overflow-x: hidden;
+    }
+    
+    .font-cormorant {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    .brand-we { font-weight: 300; }
+    .brand-plus { font-weight: 600; color: #A67C5B; }
+    
+    .copper-gradient-text {
+      background: linear-gradient(135deg, #A67C5B 0%, #C99A7B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #F5F2EE; }
+    ::-webkit-scrollbar-thumb { background: #E6D3C5; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #C99A7B; }
+
+    /* Slide Layouts */
+    .slide-page {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .light-slide { background-color: #FFFFFF; color: #111111; }
+    .dark-slide { background-color: #1A1A1A; color: #F5F2EE; }
+
+    /* Print / PDF Styles */
+    @media print {
+      body { background-color: #FFFFFF !important; }
+      .no-print { display: none !important; }
+      .slide-page {
+        page-break-after: always;
+        box-shadow: none !important;
+        border: none !important;
+        min-height: 100vh;
+        margin: 0 !important;
+      }
+    }
+  </style>
+</head>
+<body class="selection:bg-copper selection:text-white antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- Application Header -->
+  <header class="no-print sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-copper-light px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-cormorant text-2xl tracking-wide"><span class="brand-we">We</span><span class="brand-plus">Plus⁺</span></span>
+      </div>
+      <div class="hidden md:block h-4 w-[1px] bg-copper-light"></div>
+      <span class="hidden md:inline text-[11px] uppercase tracking-widest text-ink-muted font-medium">Strategic Architecture 2027</span>
+    </div>
+    
+    <div class="flex items-center gap-3">
+      <button onclick="toggleDrawer()" class="px-4 py-2 rounded-lg bg-pure border border-copper-light text-ink-muted hover:border-copper hover:text-copper-dark transition-all text-xs font-medium uppercase tracking-wider flex items-center gap-2 shadow-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
+        <span id="slideCounterLabel">01/16</span>
+      </button>
+      <button onclick="window.print()" class="p-2 rounded-lg bg-pure border border-copper-light text-ink-muted hover:text-copper-dark transition-all shadow-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Slide Canvas -->
+  <main class="flex-grow flex flex-col justify-center items-center p-4 sm:p-8">
+    <div class="w-full max-w-[1024px] mx-auto perspective-1000">
+      <div id="slideContent" class="slide-page border border-copper-light/50 rounded-xl p-8 sm:p-12 shadow-xl relative min-h-[600px] flex flex-col justify-between overflow-hidden">
+        <!-- Slide content injected here via JS -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Drawer (TOC) -->
+  <div id="slideDrawer" class="no-print fixed inset-y-0 right-0 w-80 bg-pure border-l border-copper-light p-6 shadow-2xl transform translate-x-full transition-transform duration-300 z-50 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between pb-4 border-b border-copper-light">
+        <h3 class="font-cormorant text-2xl text-copper-dark font-medium italic">Agenda</h3>
+        <button onclick="toggleDrawer()" class="text-ink-muted hover:text-ink p-1">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div id="drawerList" class="mt-4 space-y-1 max-h-[75vh] overflow-y-auto pr-2">
+        <!-- Drawer items -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Controls -->
+  <footer class="no-print bg-pure border-t border-copper-light px-3 py-4 flex items-center justify-between">
+    <div class="text-[10px] uppercase tracking-widest text-ink-muted">
+      © 2026 Le Ha — Crafted for WePlus⁺ v1<br>CONFIDENTIA | Internal Use Only <span class="mx-2 text-copper-light">|</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <button onclick="prevSlide()" class="text-ink-muted hover:text-copper-dark transition-colors p-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+      </button>
+      <span id="slideIndicator" class="font-cormorant text-xl text-ink font-medium italic">01 / 16</span>
+      <button onclick="nextSlide()" class="text-ink-muted hover:text-copper-dark transition-colors p-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    const SLIDES = [
+      {
+        id: 0,
+        type: 'cover',
+        content: `
+          <div class="flex flex-col justify-between h-full">
+            <div class="flex justify-between items-start text-[10px] tracking-widest font-mono uppercase text-copper">
+              <span>09.10.2026</span>
+              <span></span>
+            </div>
+            <div class="my-auto max-w-2xl">
+              <h4 class="text-[11px] font-semibold uppercase tracking-widest text-copper mb-4">Họp Tổng Kết Quý 3/2026</h4><br>
+              <br>
+              <h1 class="font-cormorant text-5xl sm:text-7xl font-light leading-none mb-6 text-pure">
+                Thống Nhất <br> <span class="italic text-copper">Mô Hình WePlus⁺</span>
+              </h1>
+              <p class="text-sm font-light leading-relaxed text-gray-400 border-l-2 border-copper pl-4">
+                Định hướng tổ chức & vận hành Tgroup giai đoạn 2027–2030.<br
+              </p>
+            </div>
+            <div class="pt-8 border-t border-gray-800 text-[11px] text-gray-400 mt-12 grid grid-cols-2 gap-4">
+              <div>
+                <strong class="block text-copper mb-1 uppercase tracking-wider">Chủ Trì</strong>
+                <span>Cố vấn PTKD & Ban Lãnh Đạo</span>
+              </div>
+              <div>
+                <strong class="block text-copper mb-1 uppercase tracking-wider">Mục Tiêu</strong>
+                <span>Thống Nhất mô hình vận hành & Chính sách</span>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 1,
+        title: "TỔNG KẾT → THỐNG NHẤT → TRIỂN KHAI",
+        subtitle: "Mục Tiêu Cuộc Họp",
+        content: `
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-0">
+            <div class="border-t border-copper pt-4">
+              <span class="font-cormorant text-3xl text-copper italic block mb-2">01. Nhìn Lại</span>
+              <p class="text-sm font-light text-ink-muted leading-relaxed">Tổng kết hoạt động Quý 3/2026.<br>Xác định những điểm nghẽn cần điều chỉnh trước 2027.</p>
+            </div>
+            <div class="border-t border-copper pt-4">
+              <span class="font-cormorant text-3xl text-copper italic block mb-2">02. Thống Nhất</span>
+              <p class="text-sm font-light text-ink-muted leading-relaxed">Thống nhất mô hình TGroup 2027–2030 và vị trí của WePlus+ trong hệ sinh thái tổng.</p>
+            </div>
+            <div class="border-t border-copper pt-4">
+              <span class="font-cormorant text-3xl text-copper italic block mb-2">03. Phân Định</span>
+              <p class="text-sm font-light text-ink-muted leading-relaxed">Làm rõ vai trò Business Cluster, Business Unit, điều hành, hỗ trợ và Key Contact.</p>
+            </div>
+            <div class="border-t border-copper pt-4">
+              <span class="font-cormorant text-3xl text-copper italic block mb-2">04. Vận Hành</span>
+              <p class="text-sm font-light text-ink-muted leading-relaxed">Luồng phối hợp, truyền thông, văn thư, chính sách và nhịp họp định kỳ.</p>
+            </div>
+            <div class="border-t border-copper pt-4">
+              <span class="font-cormorant text-3xl text-copper italic block mb-2">05. Next Step</span>
+              <p class="text-sm font-light text-ink-muted leading-relaxed">Chốt hạng mục Q4/2026 để sẵn sàng bấm nút vận hành chuẩn từ 01/01/2027.</p>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 2,
+        title: "TỪ “NHIỀU ĐƠN VỊ” → “MỘT HỆ SINH THÁI”",
+        subtitle: "TGroup 2027–2030",
+        content: `
+          <p class="text-sm font-light text-ink mb-8">Thay đổi không nhằm "gom các công ty lại" mà để kết nối năng lực, tạo ra nhiều giá trị và Business hơn qua Cross-sell / Up-sell.</p>
+          
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b-2 border-copper-dark text-xs uppercase tracking-wider text-ink">
+                <th class="py-3 font-medium w-1/2">Hiện Trạng (Đơn lẻ)</th>
+                <th class="py-3 font-medium w-1/2 text-copper-dark">Hướng Tổ Chức Mới (Hệ sinh thái)</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm font-light text-ink-muted divide-y divide-copper-light">
+              <tr><td class="py-3">Nhiều đơn vị tương đối độc lập</td><td class="py-3 text-ink font-medium">Một hệ sinh thái liên kết</td></tr>
+              <tr><td class="py-3">Năng lực phân tán, cục bộ</td><td class="py-3 text-ink font-medium">Chia sẻ năng lực toàn Group</td></tr>
+              <tr><td class="py-3">Bán dịch vụ đơn lẻ</td><td class="py-3 text-ink font-medium">Khả năng Cross-sell / Up-sell mạnh mẽ</td></tr>
+              <tr><td class="py-3">Một dự án – Một đơn vị</td><td class="py-3 text-ink font-medium">Một dự án – Nhiều BU cùng tham gia</td></tr>
+              <tr><td class="py-3">Giá trị giao dịch đơn lẻ</td><td class="py-3 text-ink font-medium">Tăng LTV (Giá trị trọn đời) trên mỗi Khách hàng</td></tr>
+            </tbody>
+          </table>
+        `
+      },
+      {
+        id: 3,
+        title: "02 BUSINESS CLUSTERS",
+        subtitle: "Kiến trúc Hệ sinh thái TGroup",
+        content: `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
+            <div>
+              <p class="text-sm font-light text-ink-muted mb-6">TGroup được tổ chức thành 2 cụm chuyên môn sâu, đóng vai trò tương hỗ tạo Business cho nhau.</p>
+              
+              <div class="mb-6 p-5 border border-copper bg-white shadow-sm">
+                <h3 class="font-cormorant text-2xl text-copper-dark font-semibold mb-1">Business Cluster 01: WePlus⁺</h3>
+                <p class="text-[11px] uppercase tracking-widest text-ink-muted mb-4 border-b border-copper-light pb-2">Service • Experience • Growth</p>
+                <ul class="text-xs space-y-2 text-ink font-light">
+                  <li><strong class="font-medium text-copper-dark">ePlus+</strong>: Event, Marketing, PR, IMC, BTL</li>
+                  <li><strong class="font-medium text-copper-dark">Engage+</strong>: Activation, Team Building, Engagement</li>
+                  <li><strong class="font-medium text-copper-dark">Enabler+</strong>: Commerce, Trading, Retail</li>
+                  <li><strong class="font-medium text-copper-dark">GolfCare+</strong>: Golf, Operations, VIP Connection</li>
+                </ul>
+              </div>
+              
+              <div class="p-5 border border-gray-200 bg-gray-50 shadow-sm">
+                <h3 class="font-cormorant text-2xl text-ink font-semibold mb-1">Business Cluster 02: Kiến Tạo & Sản Xuất</h3>
+                <p class="text-[11px] uppercase tracking-widest text-ink-muted mb-4 border-b border-gray-200 pb-2">Design • Build • Manufacturing</p>
+                <ul class="text-xs space-y-2 text-ink font-light">
+                  <li><strong>TheWall</strong>: Design, Construction, M&E</li>
+                  <li><strong>Imperial</strong>: High-end Design</li>
+                  <li><strong>Nguyễn Mộc</strong>: Design & Wooden Manufacturing</li>
+                  <li><strong>GreenWall</strong>: Construction / Manufacturing</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="flex items-center justify-center bg-white border border-copper-light p-4 shadow-sm">
+              <img src="https://leha-os.github.io/assets/WePlus4BU.jpg" alt="WePlus Brand Architecture" class="w-full h-auto object-contain">
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 4,
+        title: "04 TẦNG VẬN HÀNH",
+        subtitle: "Cấu Trúc Tổ Chức TGroup 2027–2030",
+        content: `
+          <p class="text-sm font-light text-ink-muted mb-8 max-w-2xl">Phân định rõ ranh giới: Người tạo business, người vận hành business và bộ phận tạo nền tảng quản trị.</p>
+          
+          <div class="relative max-w-3xl mx-auto space-y-4">
+            <!-- Tầng 1 -->
+            <div class="bg-charcoal text-white p-4 text-center">
+              <span class="text-[10px] uppercase tracking-widest text-copper mb-1 block">Governance</span>
+              <h3 class="font-cormorant text-2xl">Ban Lãnh Đạo (BOD)</h3>
+            </div>
+            <div class="flex justify-center"><div class="h-4 w-px bg-copper"></div></div>
+            
+            <!-- Tầng 2 -->
+            <div class="bg-copper text-white p-4 text-center">
+              <span class="text-[10px] uppercase tracking-widest text-charcoal mb-1 block">Connection & Pipeline</span>
+              <h3 class="font-cormorant text-2xl">Business Development Team</h3>
+              <p class="text-xs mt-1">Cố vấn PTKD (Mr Tâm) — GĐ PTKD (Ms Hạnh)</p>
+            </div>
+            <div class="flex justify-center"><div class="h-4 w-px bg-copper"></div></div>
+            
+            <!-- Tầng 3 -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-white border-2 border-copper p-4 text-center shadow-sm">
+                <h3 class="font-cormorant text-xl font-bold text-copper-dark">Business Cluster 01: WePlus⁺</h3>
+              </div>
+              <div class="bg-gray-100 border border-gray-300 p-4 text-center">
+                <h3 class="font-cormorant text-xl font-bold text-ink">Business Cluster 02</h3>
+              </div>
+            </div>
+            
+            <!-- Tầng 4 -->
+            <div class="grid grid-cols-2 gap-4 mt-2">
+              <div class="text-center text-[11px] text-ink-muted bg-copper-bg py-2">
+                ePlus+ | Engage+ | Enabler+ | GolfCare+
+              </div>
+              <div class="text-center text-[11px] text-ink-muted bg-white border border-gray-200 py-2">
+                TheWall | Imperial | Nguyễn Mộc | GreenWall
+              </div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="absolute bottom-12 right-12 p-4 bg-white border border-copper shadow-sm w-64">
+            <h4 class="text-[10px] font-bold uppercase tracking-wider text-copper-dark border-b border-copper pb-1 mb-2">Corporate Functions</h4>
+            <ul class="text-xs text-ink font-light space-y-1">
+              <li>Finance & Accounting</li>
+              <li>Human Resources</li>
+              <li>Legal & Admin</li>
+            </ul>
+          </div>
+        `
+      },
+      {
+        id: 5,
+        title: "ONE CLUSTER — FOUR BUSINESS UNITS",
+        subtitle: "Định vị WePlus⁺",
+        content: `
+          <p class="text-sm font-light text-ink-muted mb-8 max-w-2xl">Bốn BU không phải phiên bản giống nhau. Mỗi BU đóng vai trò chuyên biệt, tạo thành Cluster Dịch vụ, Trải nghiệm & Tăng trưởng.</p>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+            <div class="p-6 bg-white border border-copper-light shadow-sm">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="font-cormorant text-4xl text-copper">01</span>
+                <div>
+                  <h3 class="font-bold text-ink text-sm">ePlus⁺</h3>
+                  <p class="text-[10px] uppercase tracking-widest text-copper-dark">Event • Marketing</p>
+                </div>
+              </div>
+              <p class="text-xs text-ink-muted font-light leading-relaxed">Lead các bài toán sự kiện, truyền thông tổng thể, PR, Digital, Exhibition và Marketing Services.</p>
+            </div>
+            
+            <div class="p-6 bg-white border border-copper-light shadow-sm">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="font-cormorant text-4xl text-copper">02</span>
+                <div>
+                  <h3 class="font-bold text-ink text-sm">Engage⁺</h3>
+                  <p class="text-[10px] uppercase tracking-widest text-copper-dark">Activation • Engagement</p>
+                </div>
+              </div>
+              <p class="text-xs text-ink-muted font-light leading-relaxed">Chuyên trách hoạt động kích hoạt thương hiệu, Team Building, Production và kết nối nội bộ.</p>
+            </div>
+            
+            <div class="p-6 bg-white border border-copper-light shadow-sm">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="font-cormorant text-4xl text-copper">03</span>
+                <div>
+                  <h3 class="font-bold text-ink text-sm">Enabler⁺</h3>
+                  <p class="text-[10px] uppercase tracking-widest text-copper-dark">Commerce • Retail</p>
+                </div>
+              </div>
+              <p class="text-xs text-ink-muted font-light leading-relaxed">Cung cấp giải pháp Trading, dịch vụ thương mại, Market Access và phân phối E-Distribution.</p>
+            </div>
+            
+            <div class="p-6 bg-white border border-copper-light shadow-sm">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="font-cormorant text-4xl text-copper">04</span>
+                <div>
+                  <h3 class="font-bold text-ink text-sm">GolfCare⁺</h3>
+                  <p class="text-[10px] uppercase tracking-widest text-copper-dark">Golf • VIP Operations</p>
+                </div>
+              </div>
+              <p class="text-xs text-ink-muted font-light leading-relaxed">Quản lý Golf Event, VIP Tours, quan hệ ngoại giao cấp cao và cộng đồng doanh nhân.</p>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 6,
+        title: "VAI TRÒ CỦA TỪNG BU",
+        subtitle: "Mỗi BU một 'Ownership' — Cùng một hệ sinh thái",
+        content: `
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-8">
+            <div>
+              <h4 class="font-cormorant text-2xl text-copper-dark mb-4 border-b border-copper pb-2">Nguyên Tắc Bán Chéo (Cross-Sell)</h4>
+              <ul class="text-sm font-light text-ink space-y-4">
+                <li class="flex gap-2"><span class="text-copper">✦</span> BU giới thiệu khách hàng vẫn giữ quyền quan hệ chính và vai trò Account.</li>
+                <li class="flex gap-2"><span class="text-copper">✦</span> Các BU chủ động hỗ trợ, bổ sung năng lực cho nhau.</li>
+                <li class="flex gap-2"><span class="text-copper">✦</span> Chính sách hoa hồng cross-sell minh bạch rõ ràng.</li>
+              </ul>
+            </div>
+            
+            <div class="bg-white p-8 border border-copper shadow-sm">
+              <h4 class="text-[10px] font-bold uppercase tracking-widest text-copper-dark text-center mb-6">Mô Hình Cộng Hưởng Chuỗi Giá Trị</h4>
+              
+              <div class="text-center">
+                <div class="inline-block bg-charcoal text-white font-bold py-2 px-6 rounded-sm text-sm">1 CLIENT</div>
+                <div class="h-6 w-px bg-copper mx-auto my-1"></div>
+                <div class="border border-copper-light p-4 flex flex-col gap-2 text-xs font-medium text-ink bg-copper-bg">
+                  <span>→ Sự kiện (ePlus+)</span>
+                  <span>→ Triển khai Activation (Engage+)</span>
+                  <span>→ Phát triển kênh thương mại (Enabler+)</span>
+                  <span>→ Golf/Tour (GolfCare+)</span>
+                  <span>→ Thi công gian hàng (Cụm 02)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 7,
+        title: "CƠ CẤU ĐIỀU HÀNH WEPLUS⁺",
+        subtitle: "03 Lớp phối hợp & Ranh giới quyền hạn",
+        content: `
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            
+            <div class="bg-charcoal text-white p-6 relative">
+              <h3 class="font-cormorant text-xl text-copper mb-4 border-b border-gray-700 pb-2">01. Business Development</h3>
+              <ul class="text-xs font-light space-y-2 mb-6">
+                <li><strong class="font-medium">Mr Tâm</strong> — Cố vấn PTKD</li>
+                <li><strong class="font-medium">Ms Hạnh</strong> — Giám đốc PTKD</li>
+              </ul>
+              <div class="text-[11px] text-gray-400 mt-auto">
+                <p>Vai trò: Phát triển cơ hội, điều phối Cross-BU, quản lý Pipeline tổng.</p>
+              </div>
+            </div>
+            
+            <div class="bg-white border border-copper p-6 shadow-sm">
+              <h3 class="font-cormorant text-xl text-copper-dark mb-4 border-b border-copper-light pb-2">02. Business Units (P&L)</h3>
+              <ul class="text-xs font-light text-ink space-y-3 mb-6">
+                <li><strong class="font-medium text-copper-dark">ePlus+</strong> — Ms Ngọc Hà</li>
+                <li><strong class="font-medium text-copper-dark">Engage+</strong> — Mr Kiệt</li>
+                <li><strong class="font-medium text-copper-dark">Enabler+</strong> — Mr Kiệt / Ms Phúc</li>
+                <li><strong class="font-medium text-copper-dark">GolfCare+</strong> — Mr Tâm / Ms Hà</li>
+              </ul>
+            </div>
+            
+            <div class="bg-white border border-gray-200 p-6 shadow-sm">
+              <h3 class="font-cormorant text-xl text-ink mb-4 border-b border-gray-200 pb-2">03. Corporate Functions</h3>
+              <div class="text-xs font-light text-ink space-y-4">
+                <div>
+                  <strong class="font-medium block text-sm mb-1">Tài Chính Kế Toán</strong>
+                  <p class="text-ink-muted">Mr Khánh, Ms Tuyết, Mr Minh</p>
+                </div>
+                <div>
+                  <strong class="font-medium block text-sm mb-1">Nhân Sự & Pháp Chế</strong>
+                  <p class="text-ink-muted">Ms Mỹ, Ms Xuân, Ms Hòa</p>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        `
+      },
+      {
+        id: 8,
+        title: "WEPLUS⁺ OPERATING MODEL",
+        subtitle: "Từ 'Cùng làm' → 'Cùng chịu trách nhiệm'",
+        content: `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-8">
+            <div>
+              <h4 class="font-cormorant text-2xl text-copper-dark mb-6">Quy trình 5 Giai Đoạn</h4>
+              <div class="space-y-4 text-sm font-light text-ink">
+                <div class="flex items-center gap-4"><span class="font-mono text-copper font-bold text-xs bg-copper-bg p-2">01. LEAD</span> Phát triển cơ hội (BD)</div>
+                <div class="flex items-center gap-4"><span class="font-mono text-copper font-bold text-xs bg-copper-bg p-2">02. SOLUTION</span> Lên giải pháp (BU Lead)</div>
+                <div class="flex items-center gap-4"><span class="font-mono text-copper font-bold text-xs bg-copper-bg p-2">03. DELIVERY</span> Thực thi dự án (Project Team)</div>
+                <div class="flex items-center gap-4"><span class="font-mono text-charcoal font-bold text-xs bg-gray-100 p-2">04. CORPORATE</span> Quản trị & Thanh toán (Finance)</div>
+                <div class="flex items-center gap-4"><span class="font-mono text-charcoal font-bold text-xs bg-gray-100 p-2">05. DECISION</span> Chốt nghiệm thu (Management)</div>
+              </div>
+            </div>
+            
+            <div class="bg-white p-8 border border-copper shadow-sm">
+              <h4 class="font-cormorant text-2xl text-copper-dark mb-4">04 Nguyên Tắc Bắt Buộc</h4>
+              <ul class="text-xs space-y-4 font-light text-ink-muted">
+                <li><strong class="text-ink text-sm block mb-1">1. One Owner</strong>Mỗi việc có duy nhất 1 người chịu trách nhiệm cuối cùng.</li>
+                <li><strong class="text-ink text-sm block mb-1">2. Clear Contact</strong>Mỗi bộ phận chỉ định 1 Key Contact phát ngôn chính thức.</li>
+                <li><strong class="text-ink text-sm block mb-1">3. Shared Resources</strong>Nguồn lực được phép điều động chéo khi dự án cần.</li>
+                <li><strong class="text-ink text-sm block mb-1">4. Clear Escalation</strong>Vấn đề vượt thẩm quyền phải báo cáo cấp trên trong 24h.</li>
+              </ul>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 9,
+        title: "MỘT ĐẦU MỐI — MỘT LUỒNG THÔNG TIN",
+        subtitle: "Key Contact & Communication Flow",
+        content: `
+          <table class="w-full text-left mt-8 border-collapse bg-white shadow-sm border border-copper-light">
+            <thead>
+              <tr class="bg-copper text-white text-xs uppercase tracking-wider">
+                <th class="py-3 px-4 font-medium">Hạng Mục Tương Tác</th>
+                <th class="py-3 px-4 font-medium">Quy Tắc Đề Xuất (WePlus⁺)</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm font-light text-ink divide-y divide-gray-100">
+              <tr>
+                <td class="py-4 px-4 font-medium text-copper-dark">Chỉ Đạo Từ BOD</td>
+                <td class="py-4 px-4">Đi qua đúng cấp phụ trách (Cluster/BU Leader), không gửi nhỏ giọt cá nhân.</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-medium text-copper-dark">Phối Hợp Liên BU</td>
+                <td class="py-4 px-4">Bắt buộc chỉ định <strong>01 Project Owner</strong> làm Account chính.</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-medium text-copper-dark">Kế Toán & Chi Phí</td>
+                <td class="py-4 px-4">Khối Finance là đầu mối kiểm soát duy nhất, yêu cầu mã Dự Án.</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-medium text-copper-dark">Chính Sách Nhân Sự</td>
+                <td class="py-4 px-4">Khối HR phát hành văn bản, chấm dứt việc tự lưu quy định nội bộ bằng Excel.</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-medium text-copper-dark">Văn Thư Lưu Trữ</td>
+                <td class="py-4 px-4">Dùng chung 1 hệ thống Drive/NAS có version control.</td>
+              </tr>
+            </tbody>
+          </table>
+        `
+      },
+      {
+        id: 10,
+        title: "WEPLUS⁺ HANDBOOK & POLICY",
+        subtitle: "Một hệ thống quản lý — Một nguồn thông tin chính thức",
+        content: `
+          <p class="text-sm font-light text-ink-muted mb-8 text-center max-w-2xl mx-auto">Áp dụng nguyên tắc "One Source of Truth" — Toàn bộ WePlus tra cứu chung 1 cẩm nang, không để tình trạng mỗi BU một bộ quy định riêng.</p>
+          
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="bg-white border border-copper-light p-4 shadow-sm text-center">
+              <span class="font-cormorant text-3xl text-copper block mb-1">01</span>
+              <p class="text-[11px] font-medium text-ink uppercase tracking-wide">Profile & Org Chart</p>
+            </div>
+            <div class="bg-white border border-copper-light p-4 shadow-sm text-center">
+              <span class="font-cormorant text-3xl text-copper block mb-1">02</span>
+              <p class="text-[11px] font-medium text-ink uppercase tracking-wide">Quy Định Công Ty</p>
+            </div>
+            <div class="bg-white border border-copper-light p-4 shadow-sm text-center">
+              <span class="font-cormorant text-3xl text-copper block mb-1">03</span>
+              <p class="text-[11px] font-medium text-ink uppercase tracking-wide">Quyền Lợi & C&B</p>
+            </div>
+            <div class="bg-white border border-copper-light p-4 shadow-sm text-center">
+              <span class="font-cormorant text-3xl text-copper block mb-1">04</span>
+              <p class="text-[11px] font-medium text-ink uppercase tracking-wide">Công Tác Phí</p>
+            </div>
+            <div class="bg-white border border-copper-light p-4 shadow-sm text-center">
+              <span class="font-cormorant text-3xl text-copper block mb-1">05</span>
+              <p class="text-[11px] font-medium text-ink uppercase tracking-wide">Thưởng & Ghi Nhận</p>
+            </div>
+            <div class="bg-white border border-copper-light p-4 shadow-sm text-center bg-copper-bg">
+              <span class="font-cormorant text-3xl text-copper block mb-1">06</span>
+              <p class="text-[11px] font-medium text-copper-dark uppercase tracking-wide">Biểu Mẫu Chuẩn</p>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 11,
+        title: "NHỮNG GÌ CẦN THỐNG NHẤT CHUNG",
+        subtitle: "Hợp nhất các xung đột chính sách hiện tại",
+        content: `
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+            <div class="bg-white border-t-2 border-copper p-5 shadow-sm">
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-copper-dark mb-4">Corporate Policy</h4>
+              <ul class="text-xs text-ink-muted font-light space-y-2 list-disc list-inside">
+                <li>Giờ giấc (9:00 vs 9:30)</li>
+                <li>Nghỉ phép & Chấm công</li>
+                <li>Định mức Công tác phí</li>
+                <li>Luồng thanh quyết toán</li>
+                <li>Bảo mật & Văn thư chung</li>
+              </ul>
+            </div>
+            
+            <div class="bg-white border-t-2 border-copper p-5 shadow-sm">
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-copper-dark mb-4">People & Benefits</h4>
+              <ul class="text-xs text-ink-muted font-light space-y-2 list-disc list-inside">
+                <li>Gói khám sức khỏe</li>
+                <li>Quà 8/3 & Sinh nhật</li>
+                <li>Thưởng dự án liên BU</li>
+                <li>Hoạt động thể thao / Happy Friday</li>
+              </ul>
+            </div>
+            
+            <div class="bg-white border-t-2 border-charcoal p-5 shadow-sm">
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-ink mb-4">Governance</h4>
+              <ul class="text-xs text-ink-muted font-light space-y-2 list-disc list-inside">
+                <li>Cấp thẩm quyền phê duyệt</li>
+                <li>Luồng báo cáo P&L</li>
+                <li>Quy trình Escalation (24h)</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="text-center mt-8">
+            <p class="text-sm font-medium text-copper-dark">Cách làm: Thư ký show bảng Policy Matrix → BOD review → Chốt chủ trương → Ban hành Handbook.</p>
+          </div>
+        `
+      },
+      {
+        id: 12,
+        title: "NHỊP VẬN HÀNH WEPLUS⁺",
+        subtitle: "Đúng Nhịp — Đúng Người — Đúng Cấp Quyết Định",
+        content: `
+          <div class="bg-white shadow-sm border border-copper-light mt-8">
+            <table class="w-full text-left text-sm font-light text-ink">
+              <thead>
+                <tr class="bg-copper text-white text-xs uppercase tracking-wider font-medium">
+                  <th class="py-3 px-6 w-1/4">Tần Suất</th>
+                  <th class="py-3 px-6 w-1/2">Nội Dung Trọng Tâm</th>
+                  <th class="py-3 px-6 w-1/4">Thành Phần</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr>
+                  <td class="py-4 px-6 font-medium text-copper-dark">Weekly (Hàng tuần)</td>
+                  <td class="py-4 px-6">Rà soát Pipeline dự án, tháo gỡ điểm nghẽn tức thời.</td>
+                  <td class="py-4 px-6 font-mono text-xs text-ink-muted">BU + Project Manager</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-6 font-medium text-copper-dark">Monthly (Hàng tháng)</td>
+                  <td class="py-4 px-6">Đánh giá Business, P&L, dòng tiền và nhân sự từng BU.</td>
+                  <td class="py-4 px-6 font-mono text-xs text-ink-muted">BU Leaders + Functions</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-6 font-medium text-copper-dark">Quarterly (Hàng quý)</td>
+                  <td class="py-4 px-6">Đánh giá hiệu suất tổng, phân bổ nguồn lực và thưởng.</td>
+                  <td class="py-4 px-6 font-mono text-xs text-ink-muted">Management Team</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-6 font-medium text-charcoal">Annual (Hàng năm)</td>
+                  <td class="py-4 px-6">Chiến lược tổng TGroup, ngân sách năm và KPIs.</td>
+                  <td class="py-4 px-6 font-mono text-xs text-ink-muted">TGroup BOD</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        `
+      },
+      {
+        id: 13,
+        title: "Q4/2026 — BUILD THE FOUNDATION",
+        subtitle: "Lộ trình triển khai 06 bước",
+        content: `
+          <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+            <div class="border-t border-copper-dark pt-3">
+              <span class="font-cormorant text-2xl font-bold text-copper block mb-1">01. Mô Hình</span>
+              <p class="text-xs text-ink-muted">Chốt dứt điểm cơ cấu TGroup → Business Cluster → BU → Team.</p>
+            </div>
+            <div class="border-t border-copper-dark pt-3">
+              <span class="font-cormorant text-2xl font-bold text-copper block mb-1">02. WePlus⁺ Brand</span>
+              <p class="text-xs text-ink-muted">Chuẩn hóa Brand Architecture, Logo, Naming và Guideline.</p>
+            </div>
+            <div class="border-t border-copper-dark pt-3">
+              <span class="font-cormorant text-2xl font-bold text-copper block mb-1">03. Naming Cụm 02</span>
+              <p class="text-xs text-ink-muted">Thống nhất tên gọi thương hiệu cho Cụm Kiến tạo & Sản xuất.</p>
+            </div>
+            <div class="border-t border-copper-dark pt-3">
+              <span class="font-cormorant text-2xl font-bold text-copper block mb-1">04. Key Contacts</span>
+              <p class="text-xs text-ink-muted">Phân công đầu mối liên lạc và báo cáo chính thức của từng BU.</p>
+            </div>
+            <div class="border-t border-copper-dark pt-3">
+              <span class="font-cormorant text-2xl font-bold text-copper block mb-1">05. Handbook</span>
+              <p class="text-xs text-ink-muted">Chuẩn hóa đồng bộ Policy, Benefits, C&B và bộ Forms.</p>
+            </div>
+            <div class="border-t border-copper-dark pt-3">
+              <span class="font-cormorant text-2xl font-bold text-copper block mb-1">06. Comms Hub</span>
+              <p class="text-xs text-ink-muted">Quy tụ 1 đầu mối: Văn thư, lưu trữ NAS, Thông báo nội bộ.</p>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 14,
+        title: "TODAY — 06 DECISIONS",
+        subtitle: "Những Nội Dung Cần Chốt Tại Cuộc Họp",
+        content: `
+          <p class="text-sm font-light text-ink-muted mb-6 text-center"></p>
+          
+          <div class="max-w-3xl mx-auto space-y-3">
+            <div class="bg-white border-l-4 border-copper p-4 shadow-sm flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-copper-dark">Quyết định 01</span>
+                <h4 class="text-sm font-medium text-ink mt-0.5">TGROUP 2027–2030</h4>
+              </div>
+              <p class="text-xs text-ink-muted text-right">Phê duyệt mô hình 02 Business Clusters.</p>
+            </div>
+            
+            <div class="bg-white border-l-4 border-copper p-4 shadow-sm flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-copper-dark">Quyết định 02</span>
+                <h4 class="text-sm font-medium text-ink mt-0.5">WEPLUS⁺</h4>
+              </div>
+              <p class="text-xs text-ink-muted text-right">Thống nhất tên gọi, phạm vi và 04 BU lõi.</p>
+            </div>
+            
+            <div class="bg-white border-l-4 border-copper p-4 shadow-sm flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-copper-dark">Quyết định 03</span>
+                <h4 class="text-sm font-medium text-ink mt-0.5">ORGANIZATION</h4>
+              </div>
+              <p class="text-xs text-ink-muted text-right">Chốt nguyên tắc ownership & reporting.</p>
+            </div>
+            
+            <div class="bg-white border-l-4 border-copper p-4 shadow-sm flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-copper-dark">Quyết định 04</span>
+                <h4 class="text-sm font-medium text-ink mt-0.5">KEY CONTACTS</h4>
+              </div>
+              <p class="text-xs text-ink-muted text-right">Ấn định người phát ngôn & P&L từng BU.</p>
+            </div>
+            
+            <div class="bg-white border-l-4 border-copper p-4 shadow-sm flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-copper-dark">Quyết định 05</span>
+                <h4 class="text-sm font-medium text-ink mt-0.5">POLICY & COMMS</h4>
+              </div>
+              <p class="text-xs text-ink-muted text-right">Ban hành Handbook và hệ thống văn thư chung.</p>
+            </div>
+            
+            <div class="bg-charcoal border-l-4 border-copper p-4 shadow-sm flex items-center justify-between text-white">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-copper">Quyết định 06</span>
+                <h4 class="text-sm font-medium mt-0.5">NEXT STEP</h4>
+              </div>
+              <p class="text-xs text-gray-400 text-right">Ấn định Owner + Deadline hoàn thiện Q4.</p>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 15,
+        type: 'closing',
+        content: `
+          <div class="flex flex-col justify-center items-center h-full text-center">
+            <h4 class="text-[11px] font-bold uppercase tracking-widest text-copper mb-4">Strategic Horizon</h4>
+            
+            <h1 class="font-cormorant text-5xl md:text-7xl font-light text-pure leading-tight mb-8">
+              One System. <br>
+              Multiple Capabilities. <br>
+              <span class="italic text-copper">One Direction.</span>
+            </h1>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-3xl border-t border-gray-700 pt-8 text-white">
+              <div>
+                <h4 class="font-cormorant text-2xl font-bold mb-1">CONNECT</h4>
+                <p class="text-[10px] uppercase tracking-wider text-gray-400">Kết nối năng lực</p>
+              </div>
+              <div>
+                <h4 class="font-cormorant text-2xl font-bold mb-1">COLLAB</h4>
+                <p class="text-[10px] uppercase tracking-wider text-gray-400">Phối hợp nguồn lực</p>
+              </div>
+              <div>
+                <h4 class="font-cormorant text-2xl font-bold mb-1">CREATE</h4>
+                <p class="text-[10px] uppercase tracking-wider text-gray-400">Tạo thêm giá trị</p>
+              </div>
+              <div>
+                <h4 class="font-cormorant text-2xl font-bold text-copper mb-1">GROW</h4>
+                <p class="text-[10px] uppercase tracking-wider text-gray-400">Bứt phá cùng hệ sinh thái</p>
+              </div>
+            </div>
+            
+            <p class="text-sm font-light text-gray-400 mt-12 max-w-xl">
+              "WePlus⁺ không phải một lớp vận hành để làm phức tạp thêm, mà là nền tảng để kết nối năng lực, cộng hưởng nguồn lực và chuyển hóa năng lực của Tgroup thành những giá trị lớn hơn."
+            </p>
+          </div>
+        `
+      }
+    ];
+
+    let currentSlide = 0;
+
+    function renderSlide(index) {
+      const slide = SLIDES[index];
+      const container = document.getElementById('slideContent');
+      document.getElementById('slideCounterLabel').innerText = `${String(index + 1).padStart(2, '0')}/${String(SLIDES.length).padStart(2, '0')}`;
+      document.getElementById('slideIndicator').innerText = `${String(index + 1).padStart(2, '0')} / ${String(SLIDES.length).padStart(2, '0')}`;
+      
+      // Handle themeing
+      if (slide.type === 'cover' || slide.type === 'closing') {
+        container.className = 'slide-page rounded-xl p-8 sm:p-12 shadow-2xl relative min-h-[600px] flex flex-col justify-between overflow-hidden bg-charcoal text-pure border-0';
+      } else {
+        container.className = 'slide-page rounded-xl p-8 sm:p-12 shadow-xl relative min-h-[600px] flex flex-col justify-between overflow-hidden bg-pure text-ink border border-copper-light';
+      }
+
+      let html = '';
+
+      if (slide.type === 'cover' || slide.type === 'closing') {
+        html = slide.content;
+      } else {
+        // Standard Content Slide Header
+        html = `
+          <div class="flex items-center justify-between pb-4 border-b border-copper-light mb-8">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-widest text-copper block mb-1">${slide.subtitle}</span>
+              <h2 class="font-cormorant text-3xl font-semibold text-ink">${slide.title}</h2>
+            </div>
+            <span class="text-cormorant text-4xl font-light text-copper-light italic">
+              ${String(index).padStart(2, '0')}
+            </span>
+          </div>
+          <div class="flex-grow flex flex-col justify-center">
+            ${slide.content}
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+    }
+
+    function initDeck() {
+      renderSlide(currentSlide);
+      const list = document.getElementById('drawerList');
+      list.innerHTML = SLIDES.map((s, i) => `
+        <button onclick="goToSlide(${i})" class="w-full text-left px-3 py-2 text-xs border-b border-gray-100 hover:bg-paper hover:text-copper-dark transition-colors flex items-center justify-between">
+          <span class="truncate pr-2 ${i === 0 || i === SLIDES.length-1 ? 'font-bold' : ''}">
+            ${i}. ${s.title || 'Overview / Cover'}
+          </span>
+        </button>
+      `).join('');
+    }
+
+    function toggleDrawer() {
+      document.getElementById('slideDrawer').classList.toggle('translate-x-full');
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      renderSlide(currentSlide);
+      toggleDrawer();
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) { currentSlide--; renderSlide(currentSlide); }
+    }
+
+    function nextSlide() {
+      if (currentSlide < SLIDES.length - 1) { currentSlide++; renderSlide(currentSlide); }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    window.onload = initDeck;
+  </script>
+</body>
+</html>
