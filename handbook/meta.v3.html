@@ -1,138 +1,67 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Le Ha — WePlus⁺ Handbook v1 [DRAFT] 2026 - Light Collapsed</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif&display=swap" rel="stylesheet">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
-:root{--bg:#FFFEFB;--paper:#fff;--ink:#1A1A1A;--muted:#8A8A8A;--border:#F0EBE3;--accent:#C38D5F;--accent2:#8B5A2B;--gold:#D4A574;--surface:#FBF8F3;--r:12px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,sans-serif;line-height:1.65;font-size:11.5px}
-h1,h2{font-family:'Instrument Serif',serif;font-weight:400}
-#progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--accent));width:0;z-index:9999}
-.header{position:sticky;top:0;z-index:50;background:rgba(255,254,251,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:10px 16px}
-.badge{background:#FFF4E6;border:1px solid #E8D5C0;color:var(--accent2);padding:4px 10px;border-radius:999px;font-size:10px;font-weight:600}
-.btn{border:1px solid var(--border);background:#fff;padding:7px 12px;border-radius:999px;font-size:11px;font-weight:600;cursor:pointer}
-.btn-dark{background:var(--ink);color:#fff;border-color:var(--ink)}
-.hero{max-width:740px;margin:20px auto 6px;padding:0 16px}
-.hero h1{font-size:26px;line-height:1.1;margin:0 0 6px}
-.sub{color:var(--muted);font-size:11px}
-.meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}.meta span{background:var(--surface);border:1px solid var(--border);padding:3px 8px;border-radius:999px;font-size:9px;color:var(--muted)}
-.nav{position:sticky;top:42px;z-index:40;background:var(--bg);border-bottom:1px solid var(--border);overflow-x:auto;display:flex;gap:5px;padding:8px 12px}
-.nav a{text-decoration:none;color:var(--muted);font-size:10px;font-weight:600;padding:5px 9px;border-radius:999px;white-space:nowrap}
-.nav a.active{background:var(--ink);color:#fff}
-.wrap{max-width:740px;margin:0 auto;padding:12px 16px 80px}
-.card{background:var(--paper);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:10px}
-.section{margin:12px 0;border:1px solid var(--border);border-radius:var(--r);background:var(--paper);overflow:hidden}
-.sec-head{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:12px 14px;background:var(--surface);user-select:none}
-.sec-head h2{font-size:14px;margin:0;display:flex;align-items:center;gap:6px}
-.num{font-family:'Instrument Serif';color:var(--accent2);font-size:16px}
-.toggle{font-size:12px;transition:transform .2s;display:inline-block}
-.section.collapsed .toggle{transform:rotate(-90deg)}
-.section-body{display:block;padding:0 14px 14px}
-.section.collapsed .section-body{display:none}
-.tier{display:grid;gap:8px;margin:10px 0}.tier1,.tier2,.tier3{grid-template-columns:1fr 1fr}
-.block{border:1px solid var(--border);border-radius:8px;padding:10px;position:relative;background:#fff}
-.block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold)}
-.block h4{margin:0 0 3px;font-size:11px}.block p,.block ul{margin:0;font-size:10.5px;color:var(--muted);line-height:1.5}
-.block ul{padding-left:10px;margin-top:3px}
-.twrap{overflow-x:auto;border:1px solid var(--border);border-radius:6px;margin:6px 0} table{width:100%;border-collapse:collapse;font-size:10.5px} th{background:var(--surface);padding:6px 8px;text-align:left;border-bottom:1px solid var(--border)} td{padding:6px 8px;border-bottom:1px solid var(--border)}
-.align{border:1px solid var(--accent);border-radius:8px;padding:8px;background:#FFFCF7;margin-bottom:6px;font-size:10.5px}
-.missing{border:1px dashed #CCC;background:#FAFAF8;padding:6px 8px;border-radius:6px;color:var(--muted);font-size:10px;font-style:italic;margin:5px 0}
-.tab-common{border:1.5px solid #F0D6B8;background:#FFFEF7;border-radius:10px;padding:12px;margin-bottom:12px}
-.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}.info-item{background:#fff;border:1px solid var(--border);border-radius:6px;padding:6px;font-size:10px}.info-item b{font-size:9px;display:block;color:var(--accent2)}
-@media print{@page{size:A4;margin:18mm}.header,.nav,.no-print{display:none!important}.section-body{display:block!important}.card{break-inside:avoid}}
+@font-face{font-family:"Optimistic";font-style:normal;font-weight:400 600;font-display:swap;src:url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2")}
+@font-face{font-family:"Optimistic Mono";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2")}
+:where(html){font-family:"Optimistic",system-ui,sans-serif}:where(code,pre){font-family:"Optimistic Mono",ui-monospace,monospace}
+*{overflow-wrap:break-word;word-break:break-word}.line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.line-clamp-3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+</style>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+const PAGE_META={title:"Le Ha — WePlus⁺ Handbook v1 [DRAFT] 2026",version:"V9.7",shareTitle:"Le Ha — WePlus⁺ Handbook v1",shareDesc:"Employee Handbook · WePlus⁺",shareImage:"https://leha-os.github.io/assets/logoweplus_black_transparent.png",favicon:"https://leha-os.github.io/assets/logoweplus_black_transparent.png",jsonLd:{"@type":"Organization","name":"WePlus⁺"}};
+const THEME_GLOBAL={brand:"#0c2e24",brand2:"#14503b",accent:"#b8975a",accentSoft:"#f1eadb",ink:"#1a1f1c",muted:"#6b726d",line:"#e6e1d6",bg:"#f7f5f0",card:"#fff",hero:"#071a14",onDark:"#fff",font:"Optimistic,system-ui,sans-serif",serif:"Optimistic,system-ui,sans-serif"};
+const DEBUG_CONFIG={enabled:false,log:(...a)=>{if(DEBUG_CONFIG.enabled)console.log(...a)}};
+const CONFIG={title:"WePlus⁺ Handbook v1 [DRAFT] 2026 — Smart Collapsed",desc:"Employee Handbook · Tgroup / WePlus⁺ Ecosystem — 00 Chung lên đầu, sơ đồ 3 tầng GolfCare⁺ + A Kiệt + Tài chính Kế toán, tất cả gập sẵn, PDF A4 chuẩn",image:"https://leha-os.github.io/assets/logoweplus_white_transparent.png",imageAlt:"WePlus⁺ Handbook v1 DRAFT 2026 SEO alt Tgroup Ecosystem GolfCare",imageFallback:"https://leha-os.github.io/assets/logoweplus_black_transparent.png",link:"#app",cta:"Vào Handbook",style:"brand",responsive:"clamp(24px,5vw,40px)",a11y:true,lazy:true};
+</script>
+<title>WePlus⁺ Handbook v1 V9.7</title>
+<style>
+:root{--brand:#0c2e24;--brand2:#14503b;--accent:#b8975a;--soft:#f1eadb;--line:#e6e1d6;--bg:#f7f5f0;--card:#fff}
+body{margin:0;background:var(--bg);color:#1a1f1c;font-size:12.5px;line-height:1.6}
+#prog{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;z-index:60}
+#hero{position:fixed;inset:0;z-index:50;background:#071a14;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;transition:.6s}
+#hero.out{opacity:0;visibility:hidden}.hero-line{width:0;height:1px;background:var(--accent);margin:16px auto;animation:line 1.2s.3s forwards} @keyframes line{to{width:100px}}
+header.top{background:var(--brand);color:#fff;padding:10px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.pill{border:1px solid var(--accent);color:var(--accent);font-size:10px;padding:3px 8px;border-radius:99px}
+nav.nav{position:sticky;top:0;z-index:20;background:var(--brand2);display:flex;overflow-x:auto;white-space:nowrap}
+nav.nav a{padding:10px 14px;color:rgba(255,255,255,.7);font-size:11px;font-weight:700;border-bottom:3px solid transparent;cursor:pointer;text-decoration:none}
+nav.nav a.on{color:#fff;border-color:var(--accent);background:rgba(255,255,255,.08)}
+.wrap{max-width:960px;margin:0 auto;padding:16px 14px 80px}
+details.blk{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:4px;margin:8px 0}
+details.blk>summary{list-style:none;padding:10px 12px;font-weight:600;font-size:12px;display:flex;gap:8px;cursor:pointer}
+details.blk>summary::before{content:"+";color:var(--accent);width:12px} details[open]>summary::before{content:"–"}
+.body{padding:0 12px 10px;font-size:11.5px}.src{font-size:10px;color:#6b726d;border-bottom:1px dashed var(--line);padding-bottom:4px;margin-bottom:6px}
+.tw{overflow-x:auto} table{width:100%;border-collapse:collapse;font-size:11px;min-width:0} th{background:var(--brand);color:#fff;padding:6px 8px;font-size:10px;text-align:left} td{padding:6px 8px;border-bottom:1px solid var(--line)}
+.st{font-size:9px;font-weight:700;padding:2px 6px;border-radius:99px}.st.DRAFT{background:#f4ecd8;color:#7a5c1a}.st.NEEDS_ALIGNMENT{background:#f7e4e1;color:#9b2c2c}
+#common-top{border:1.5px solid #F0D6B8;background:linear-gradient(135deg,#FFFEF7,#FFFCF7);border-radius:8px;padding:10px;margin-bottom:12px}
+@page{size:A4;margin:16mm 14mm;@top-left{content:"Le Ha — WePlus⁺ Handbook v1 [DRAFT] 2026";font-size:9pt;color:#555}@bottom-left{content:"© 2026 Le Ha x WePlus⁺ — Internal Use Only";font-size:9pt;color:#555}@bottom-right{content:"Trang " counter(page) " / " counter(pages);font-size:9pt;color:#555}}
+@media print{#hero,nav.nav,#toTop,.tools{display:none!important} section.sec{display:block!important} details.blk{break-inside:avoid}}
 </style>
 </head>
 <body>
-<div id="progress"></div>
-<div class="header">
-  <div style="display:flex;align-items:center;gap:8px">
-    <img src="https://leha-os.github.io/assets/logo-tgroup.png" style="height:18px">
-    <img src="https://leha-os.github.io/assets/logoweplus_black_transparent.png" style="height:20px">
-    <span style="font-weight:700;font-size:11px">WEPLUS⁺</span>
-  </div>
-  <div style="display:flex;gap:6px;align-items:center">
-    <span class="badge">BẢN NHÁP v10.2 LIGHT</span>
-    <button class="btn btn-dark" onclick="window.print()">⬇ PDF A4</button>
-  </div>
-</div>
-
-<div class="hero">
-  <h1>Le Ha — WePlus⁺ Handbook v1 <span style="color:var(--accent2)">[DRAFT]</span> 2026</h1>
-  <div class="sub">Light clean — tất cả gập sẵn, bấm mới mở, đọc không mệt. Sơ đồ 3 tầng + GolfCare⁺ + A Kiệt + Tài chính Kế toán.</div>
-  <div class="meta"><span>v10.2 Light Collapsed</span><span>Font 10.5-11px</span><span>00 Chung lên đầu</span><span>PDF A4 header/footer</span></div>
-  <div class="no-print" style="margin-top:8px"><input id="q" placeholder="Tìm: phép năm, WFH, GolfCare+..." style="width:100%;max-width:320px;padding:6px 10px 6px 28px;border:1px solid var(--border);border-radius:999px;font-size:10.5px"></div>
-</div>
-
-<div class="nav" id="nav">
-  <a href="#common">00 Chung</a>
-  <a href="#sec01">01 Tổ chức</a>
-  <a href="#sec02">02 Quy định</a>
-  <a href="#sec03">03 Nhân sự</a>
-  <a href="#sec04">04 Phúc lợi</a>
-  <a href="#secBOD">📌 BOD quyết</a>
-</div>
-
-<div class="wrap">
-
-<div class="card tab-common" id="common">
-  <h3 style="margin:0 0 6px;color:var(--accent2);font-size:12px">📌 Thông tin chung — Quan trọng đọc trước</h3>
-  <div class="info-grid">
-    <div class="info-item"><b>Phiên bản</b>v1 [DRAFT] 2026 — v10.2 Light Collapsed</div>
-    <div class="info-item"><b>Phạm vi</b>Tgroup / WePlus⁺ — Internal Only</div>
-    <div class="info-item"><b>Sơ đồ 2027-2030 mới</b>ePlus gồm GolfCare⁺ (Mr Tâm/Ms Hà), Engage do A Kiệt (Mr Kiệt) điều hành, liên kết Tài chính & Kế toán (Mr Khánh, Ms Tuyết, Mr Minh)</div>
-    <div class="info-item"><b>CẦN THỐNG NHẤT</b>6 mục mâu thuẫn — xem trang BOD</div>
-    <div class="info-item"><b>Giờ làm</b>Engage 09:00-18:00 / ePlus 09:30→18:30 — Trễ ≤4 lần/tháng ≤30p — CẦN THỐNG NHẤT</div>
-    <div class="info-item"><b>Công tác</b>Staff 180k (có nơi 150k), Manager 250k, Director 300k, KS 350k/500k/700k — CẦN THỐNG NHẤT</div>
-  </div>
-</div>
-
-<div class="card" style="border-color:var(--accent);background:#FFFCF7">
-  <h3 style="color:var(--accent2);margin:0 0 4px;font-size:11px">⚠️ CẦN THỐNG NHẤT</h3>
-  <div id="align"></div>
-</div>
-
-<div class="section collapsed" id="sec01">
-  <div class="sec-head"><h2><span class="num">01</span> Tổ chức 3 tầng</h2><span class="toggle">⌄</span></div>
-  <div class="section-body">
-    <div style="font-size:9px;font-weight:700;color:var(--accent2);letter-spacing:.1em;margin:8px 0 4px">TẦNG 1 — BAN LÃNH ĐẠO</div>
-    <div class="tier tier1"><div class="block"><h4>Chủ tịch HĐQT</h4><p>Mr Tâm</p></div><div class="block"><h4>Ban Điều hành</h4><p>Mr Tâm, Mr Kiệt (A Kiệt), Ms Mỹ, Ms Ngọc Hà</p></div></div>
-    <div style="font-size:9px;font-weight:700;color:var(--accent2);letter-spacing:.1em;margin:8px 0 4px">TẦNG 2 — KHỐI HỖ TRỢ & PHÁT TRIỂN</div>
-    <div class="tier tier2"><div class="block"><h4>Business Development</h4><p>Mr Tâm (Cố vấn), Ms Hạnh (GĐ)</p></div><div class="block" style="border-color:var(--accent)"><h4>Tài Chính & Kế Toán — Liên kết toàn cụm</h4><p>Mr Khánh (GĐ/KTT)<br>Nhóm 01 Ms Tuyết 05 KT<br>Nhóm 02 Mr Minh 05 KT</p></div></div>
-    <div style="font-size:9px;font-weight:700;color:var(--accent2);letter-spacing:.1em;margin:8px 0 4px">TẦNG 3 — KHỐI VẬN HÀNH</div>
-    <div class="tier tier3"><div class="block"><h4>Cluster 01 — WePlus</h4><p><b>ePlus — Ms Ngọc Hà</b><br>Creative Ms Hải Yến 2D+3D<br>Planner Ms Mỹ Liên 3 Senior+6 Staff<br>Project Ms Phương Thảo 6+2<br><b>GolfCare⁺ Mr Tâm/Ms Hà 1 Designer+3 Staff</b><br><br><b>Engage — Mr Kiệt (A Kiệt)</b><br>Creative/Project/Enabler Ms Phúc + Kho</p></div><div class="block"><h4>Cluster 02 — Xây dựng & Sản xuất</h4><p>TheWall — Thiết kế/Thi công/M&E/Công nhật<br>Imperial — Thiết kế<br>Nguyễn Mộc — Thiết kế/Sản xuất/Kinh doanh<br>GreenWall — Leader + Nhân sự</p></div></div>
-  </div>
-</div>
-
-<div class="section collapsed" id="sec02">
-  <div class="sec-head"><h2><span class="num">02</span> Quy định chung & Văn hóa</h2><span class="toggle">⌄</span></div>
-  <div class="section-body">
-    <div class="card"><h3 style="font-size:11px">Thời gian — CẦN THỐNG NHẤT</h3><div class="twrap"><table><tr><th></th><th>Engage</th><th>ePlus</th></tr><tr><td>Giờ</td><td>09:00-18:00</td><td>09:30-10:00 → 18:30-19:00</td></tr><tr><td>Trễ</td><td>Sau 10h = nửa ngày</td><td>≤4 lần/tháng, ≤30p, sau 10:30=½ phép</td></tr></table></div><div class="missing">CẦN THỐNG NHẤT</div></div>
-    <div class="card"><p>Chấm công vân tay, tự kiểm tra, Leader xác nhận, HR chốt Payroll HDBank 01-10. Trang phục lịch sự, T2 đồng phục, cấm short/ba lỗ/dép lê. Nội quy: điện thoại nhỏ tiếng, trưa giữ trật tự, vệ sinh chung, tắt điện, không dùng đồ cá nhân, đồ chung để gọn, hạn chế nói tục & đồ nặng mùi, phòng họp xếp bàn ghế tắt đèn, WC giữ sạch. VPP giao 1 lần, liên hệ HCNS.</p></div>
-  </div>
-</div>
-
-<div class="section collapsed" id="sec03">
-  <div class="sec-head"><h2><span class="num">03</span> Chính sách Nhân sự</h2><span class="toggle">⌄</span></div>
-  <div class="section-body">
-    <div class="card"><p><b>HĐLĐ:</b> Sau 2-3 tháng thử việc. Báo trước 30 ngày / 07 ngày. Lương CK HDBank. BHXH 32% (21.5%+10.5%).<br><b>Phép bổ sung — CẦN THỐNG NHẤT:</b> Sau 5 năm +1 (mâu thuẫn matrix sau 1 năm +1 từ năm 5). Báo trước ngắn 1-2 ngày trước 3 ngày LV, dài 3-5 ngày trước 10 ngày LV.<br><b>Việc riêng:</b> Kết hôn 3 ngày+1tr, mất 3 ngày+vòng hoa+1tr, sinh 6 tháng+1tr. Nghỉ bù event cuối tuần ½ ngày tuần tiếp, không quy đổi. <b>WFH:</b> Tối đa 1 ngày/tháng — CẦN THỐNG NHẤT.</p></div>
-  </div>
-</div>
-
-<div class="section collapsed" id="sec04">
-  <div class="sec-head"><h2><span class="num">04</span> Thưởng & Phúc lợi</h2><span class="toggle">⌄</span></div>
-  <div class="section-body">
-    <div class="card"><h3 style="font-size:11px">Matrix 2026 — CẦN THỐNG NHẤT</h3><div class="twrap"><table><tr><th>Chế độ</th><th>Chi tiết</th></tr><tr><td>Khám SK / Sinh nhật / 8/3 / Happy Friday</td><td>1tr2/ng / QL 500k NV 300k / 500k / 50k/tuần</td></tr><tr><td>Kết hôn / Tang / Tai nạn / Quỹ team / Teambuilding</td><td>1tr / vòng hoa+1tr / 3-5 ngày công / 200k/quý / 3tr group 2tr nội bộ</td></tr><tr><td>Công tác — CẦN THỐNG NHẤT</td><td>180k (150k) / 250k / 300k + KS 350k/500k/700k</td></tr></table></div><p><b>Thưởng dự án:</b> 500tr-1tỷ 5tr, 1-2tỷ 10tr, 2-3tỷ 15tr, 3tỷ+ 20tr. Quỹ 2% GP. Target 29T/27%=½ lương, 30T/29%=1 tháng, 32T/30%=1 tháng+du lịch.</p><div class="missing">PROPOSED: PVI Care, BHSK VIP, xe riêng, vé Thương gia KS 5 sao, BHNT tích lũy 5 năm, +2-4 phép, Gym Yoga, Golf — chưa chính thức</div></div>
-  </div>
-</div>
-
-<div class="section collapsed" id="secBOD">
-  <div class="sec-head"><h2><span class="num">📌</span> Việc cần BOD quyết</h2><span class="toggle">⌄</span></div>
-  <div class="section-body">
-    <div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><h3 style="margin:0;font-size:11px">Danh sách CẦN THỐNG NHẤT</h3><button class="btn" onclick="window.print()">Xuất PDF</button></div><div id="bod-list"></div></div>
-  </div>
-</div>
-
-<div style="margin-top:20px;border-top:1px solid var(--border);padding-top:10px;font-size:9px;color:var(--muted);text-align:center">© 2026 Le Ha x WePlus⁺ — 
+<div id="prog"></div><div id="hero"></div><header class="top" id="header"></header><nav class="nav" id="nav"></nav><main class="wrap" id="app"></main><footer style="text-align:center;color:#6b726d;font-size:10px;padding:16px;border-top:1px solid #e6e1d6" id="foot"></footer>
+<script>
+const HANDBOOK_META={title:PAGE_META.title,subtitle:PAGE_META.shareDesc,header:"2026 Handbook",version:"V9.7",status:"DRAFT",footer:"© 2026 Le Ha x WePlus⁺ — Handbook v1 [DRAFT] | Internal Use Only",logoWhite:CONFIG.image,logoBlack:CONFIG.imageFallback,tgroupLogo:"https://leha-os.github.io/assets/logo-tgroup.png"};
+const STATUS_LABEL={DRAFT:"BẢN NHÁP",NEEDS_ALIGNMENT:"CẦN THỐNG NHẤT",PENDING:"CHỜ DUYỆT"};
+const NA="[CHƯA CÓ THÔNG TIN]";
+const ALIGNMENT_DATA=[["Giờ làm việc","9h00-18h00","9:30-10:00→18:30-19:00","Cần thống nhất","NEEDS_ALIGNMENT"],["Phép bổ sung","Sau 5 năm +1","Matrix sau 1 năm +1 từ năm 5","Mâu thuẫn","NEEDS_ALIGNMENT"],["WFH","Có","1 ngày/tháng","Cần thống nhất","NEEDS_ALIGNMENT"],["Công tác phí","180k","180k/150k","Cần thống nhất","PENDING"],["Khách sạn","350k/500k/700k","350k/500k","Cần thống nhất","PENDING"]];
+const ORG_DATA={top:{title:"TGROUP 2027–2030",chair:"Mr Tâm",board:"Mr Tâm, Mr Kiệt (A Kiệt), Ms Mỹ, Ms Ngọc Hà"},support:[{title:"Business Development",teams:[["Cố vấn","Mr Tâm"],["GĐ PTKD","Ms Hạnh"]]},{title:"Tài chính & Kế toán (Corporate)",lead:"Mr Khánh — Nhóm 01 Ms Tuyết 05 KT, Nhóm 02 Mr Minh 05 KT",teams:[]}],clusters:[{title:"Cluster 01 — WePlus⁺",note:"ePlus gồm GolfCare⁺ (Mr Tâm/Ms Hà), Engage do A Kiệt (Mr Kiệt) điều hành",companies:[{name:"ePlus",lead:"Điều hành: Ms Ngọc Hà",teams:[["Creative","Ms Hải Yến 2D+3D"],["Planner","Ms Mỹ Liên 3 Senior+6 Staff"],["Project","Ms Phương Thảo 6+2"],["GolfCare⁺","Mr Tâm/Ms Hà 1 Designer+3 Staff"]]},{name:"Engage",lead:"Điều hành: Mr Kiệt",teams:[["Enabler","Ms Phúc + Kho"]]}]},{title:"Cluster 02 — Xây dựng",note:"TheWall/Imperial/Nguyễn Mộc/GreenWall",companies:[]}]};
+const esc=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const badge=st=>`<span class="st ${st}">${STATUS_LABEL[st]||st}</span>`;
+function renderOrgMap(){const d=ORG_DATA;const team=t=>`<div style="border-top:1px solid #e6e1d6;padding:4px 0;font-size:11px"><b>${esc(t[0])}</b> ${t[1]?`<span style="color:#6b726d">${esc(t[1])}</span>`:""}</div>`;const card=c=>`<div style="background:#fff;border:1px solid #e6e1d6;border-top:3px solid #b8975a;border-radius:4px;padding:8px"><h5 style="margin:0 0 4px;font-size:12px;color:#0c2e24">${esc(c.title||c.name)}</h5>${c.lead?`<p style="font-size:10px;color:#7a5c1a">${esc(c.lead)}</p>`:""}${(c.teams||[]).map(team).join("")}</div>`;return `<div><div style="background:#0c2e24;color:#fff;text-align:center;padding:10px;border-radius:4px"><b>${esc(d.top.title)}</b><br><span style="font-size:10px;color:#b8975a">Chủ tịch ${esc(d.top.chair)} — Ban ĐH ${esc(d.top.board)}</span></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">${d.support.map(card).join("")}</div><div style="margin-top:8px;border:1px dashed #b8975a;border-radius:4px;padding:8px">${d.clusters.map(k=>`<div><b style="font-size:11px">${esc(k.title)}</b> <span style="font-size:10px;color:#6b726d">${esc(k.note)}</span><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px">${(k.companies||[]).map(card).join("")}</div></div>`).join("")}</div></div>`}
+function renderBlock(b){if(b.type==="list")return `<ul class="line-clamp-3" style="margin:4px 0 6px 16px">${b.items.map(i=>`<li class="break-words">${esc(i)}</li>`).join("")}</ul>`;if(b.type==="text")return `<p class="break-words line-clamp-3">${esc(b.text)}</p>`;if(b.type==="orgmap")return renderOrgMap();if(b.type==="align"){const r=b.ids.map(i=>{const a=ALIGNMENT_DATA[i];return `<tr><td><b class="line-clamp-2 break-words">${esc(a[0])}</b></td><td class="break-words">${esc(a[1])}</td><td class="break-words">${esc(a[2])}</td><td>${esc(a[3])}</td><td>${badge(a[4])}</td></tr>`}).join("");return `<div class="tw"><table><thead><tr><th>Nội dung</th><th>Engage</th><th>ePlus</th><th>Khác biệt</th><th>TT</th></tr></thead><tbody>${r}</tbody></table></div>`}if(b.type==="decisions"){const r=ALIGNMENT_DATA.map((a,i)=>`<tr><td>${i+1}</td><td><b class="line-clamp-2">${esc(a[0])}</b></td><td class="line-clamp-2">${esc(a[1])}/${esc(a[2])}</td><td>${esc(a[3])}</td><td>${badge(a[4])}</td></tr>`).join("");return `<div class="tw"><table><thead><tr><th>#</th><th>Nội dung</th><th>Engage/ePlus</th><th>Khác biệt</th><th>TT</th></tr></thead><tbody>${r}</tbody></table></div>`}return ""}
+const HANDBOOK_SECTIONS=[{id:"common",number:"00",nav:"Thông tin chung",title:"Thông tin chung — Đọc trước",status:"DRAFT",subsections:[{title:"Sơ đồ mới 2027–2030 — Tóm tắt quan trọng",status:"DRAFT",src:"Sơ đồ Tgroup do Le Ha gửi — GolfCare⁺, A Kiệt, Tài chính Kế toán",blocks:[{type:"orgmap"}]},{title:"CẦN THỐNG NHẤT — Tổng hợp",status:"NEEDS_ALIGNMENT",src:"Đối chiếu Engage/ePlus/Excel",blocks:[{type:"align",ids:[0,1,2,3,4]}]}]},{id:"s01",number:"01",nav:"Tổ chức 3 tầng",title:"Tổ chức 3 tầng",status:"DRAFT",subsections:[{title:"Sơ đồ tổ chức Tgroup 2027–2030",status:"DRAFT",src:"Sơ đồ do Le Ha gửi",blocks:[{type:"orgmap"}]}]},{id:"s02",number:"02",nav:"Quy định",title:"Quy định chung & Văn hóa",status:"DRAFT",subsections:[{title:"Thời gian làm việc — CẦN THỐNG NHẤT",status:"NEEDS_ALIGNMENT",src:"Engage vs ePlus",blocks:[{type:"align",ids:[0]}]},{title:"Nội quy văn phòng",status:"DRAFT",src:"Engage⁺ PDF",blocks:[{type:"list",items:["Điện thoại vừa phải, họp vào phòng họp","Giữ trật tự, vệ sinh chung","Không dùng đồ cá nhân"]}]}]},{id:"s03",number:"03",nav:"Nhân sự",title:"Chính sách Nhân sự",status:"NEEDS_ALIGNMENT",subsections:[{title:"HĐLĐ, Lương, BHXH",status:"DRAFT",src:"Engage⁺",blocks:[{type:"text",text:"Ký HĐLĐ sau 2-3 tháng thử việc, báo trước 30 ngày / 07 ngày. Lương CK HDBank 01-10. BHXH 32%."}]},{title:"Nghỉ phép, WFH — CẦN THỐNG NHẤT",status:"NEEDS_ALIGNMENT",src:"Engage/ePlus",blocks:[{type:"align",ids:[1,2]},{type:"text",text:"Việc riêng: kết hôn 3 ngày+1tr, mất 3 ngày+vòng hoa+1tr, sinh 6 tháng+1tr. WFH tối đa 1 ngày/tháng — CẦN THỐNG NHẤT."}]}]},{id:"s04",number:"04",nav:"Phúc lợi",title:"Thưởng & Phúc lợi",status:"NEEDS_ALIGNMENT",subsections:[{title:"Matrix 2026 + Công tác phí — CẦN THỐNG NHẤT",status:"PENDING",src:"Excel",blocks:[{type:"align",ids:[3,4]},{type:"text",text:"Khám SK 1tr2, sinh nhật QL 500k NV 300k, 8/3 500k, Happy Friday 50k, kết hôn 1tr, tang vòng hoa+1tr, quỹ team 200k/quý, teambuilding 3tr group 2tr nội bộ. Công tác 180k/150k, 250k, 300k + KS 350k/500k/700k."}]},{title:"Thưởng dự án (ePlus)",status:"DRAFT",src:"ePlus PDF",blocks:[{type:"text",text:"500tr→1 tỷ 5tr, 1→2 tỷ 10tr, 2→3 tỷ 15tr, 3 tỷ+ 20tr. Quỹ 2% GP, Target 29T/27%=½ lương, 30T/29%=1 tháng, 32T/30%=1 tháng+du lịch."}]}]},{id:"s07",number:"07",nav:"BOD quyết",title:"Việc cần BOD quyết",status:"NEEDS_ALIGNMENT",subsections:[{title:"Danh sách cần thống nhất / duyệt — Gập sẵn",status:"NEEDS_ALIGNMENT",src:"Tự động gom",blocks:[{type:"decisions"}]}]}];
+function renderHeader(){const M=HANDBOOK_META,fb=`this.onerror=null;this.src='${CONFIG.imageFallback}'`;document.getElementById("header").innerHTML=`<span style="display:inline-flex;background:#fff;border-radius:6px;padding:4px 8px"><img src="${M.tgroupLogo}" alt="${CONFIG.imageAlt}" loading="lazy" onerror="${fb}" style="height:22px"></span><img src="${M.logoWhite}" alt="${CONFIG.imageAlt}" loading="lazy" onerror="${fb}" style="height:22px;margin-left:6px"><span style="flex:1;font-size:11px;opacity:.7;margin-left:8px">${esc(M.header)}</span><span class="pill">${esc(M.status)}</span><button style="border:1px solid rgba(255,255,255,.5);background:transparent;color:#fff;padding:5px 12px;border-radius:4px;font-size:11px;cursor:pointer" id="btnPdf">PDF A4</button>`;document.getElementById("foot").textContent=M.footer;document.title=M.title;}
+function renderHero(){const h=document.getElementById("hero"),C=CONFIG,fb=`this.onerror=null;this.src='${C.imageFallback}'`;h.innerHTML=`<div style="padding:20px"><div style="background:#fff;display:inline-flex;border-radius:6px;padding:6px 14px"><img src="${HANDBOOK_META.tgroupLogo}" alt="${C.imageAlt}" loading="lazy" onerror="${fb}" style="height:22px"></div><div class="hero-line"></div><img src="${C.image}" alt="${C.imageAlt}" loading="lazy" onerror="${fb}" style="height:46px;margin:0 auto;display:block"><h2 style="font-size:${C.responsive};font-family:Georgia,serif;margin:12px 0 6px" class="break-words line-clamp-2">${esc(C.title)}</h2><div style="opacity:.7;font-size:12px" class="break-words">${esc(C.desc)}</div><button style="margin-top:16px;border:1px solid #b8975a;background:transparent;color:#fff;padding:8px 22px;font-size:11px;letter-spacing:.1em;cursor:pointer" id="enter">${esc(C.cta)}</button></div>`;let seen=false;try{seen=sessionStorage.getItem("hb_seen")==="1"}catch(e){}const close=()=>{h.classList.add("out");document.body.classList.remove("lock");try{sessionStorage.setItem("hb_seen","1")}catch(e){}setTimeout(()=>h.remove(),500)};if(seen){h.remove();return;}document.body.classList.add("lock");document.getElementById("enter").addEventListener("click",close);}
+function renderNav(){document.getElementById("nav").innerHTML=HANDBOOK_SECTIONS.map(s=>`<a data-id="${s.id}">${s.number} ${esc(s.nav)}</a>`).join("")}
+function render(){const cnt={};HANDBOOK_SECTIONS.forEach(x=>x.subsections.forEach(y=>cnt[y.status]=(cnt[y.status]||0)+1));const legend=`<div style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0">${Object.keys(STATUS_LABEL).filter(k=>cnt[k]).map(k=>`<button class="st ${k}" data-st="${k}">${STATUS_LABEL[k]}·${cnt[k]}</button>`).join("")}</div>`;const commonTop=`<div id="common-top"><h3 style="margin:0 0 6px;color:#0c2e24;font-size:13px">📌 Thông tin chung — Đọc trước (Quan trọng nhất)</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:11px"><div style="background:#fff;border:1px solid #e6e1d6;border-radius:6px;padding:6px"><b style="color:#b8975a;font-size:9px;display:block">Sơ đồ 2027–2030 mới</b>ePlus gồm GolfCare⁺ (Mr Tâm/Ms Hà), Engage do A Kiệt (Mr Kiệt) điều hành, liên kết Tài chính & Kế toán (Mr Khánh, Ms Tuyết, Mr Minh)</div><div style="background:#fff;border:1px solid #e6e1d6;border-radius:6px;padding:6px"><b style="color:#b8975a;font-size:9px;display:block">CẦN THỐNG NHẤT</b>Giờ làm, phép bổ sung, WFH, công tác phí, khách sạn, thưởng dự án</div></div></div>`;const secs=HANDBOOK_SECTIONS.map(s=>`<section class="sec" id="${s.id}"><h2 style="font-family:Georgia,serif;font-size:18px;color:#0c2e24;margin:0 0 8px;padding-bottom:6px;border-bottom:1px solid #b8975a"><span style="color:#b8975a">${s.number}</span> <span class="break-words line-clamp-2">${esc(s.title)}</span> ${badge(s.status)}</h2>${s.subsections.map(sub=>`<details class="blk" data-st="${sub.status}"><summary><span class="break-words line-clamp-2">${esc(sub.title)}</span> ${badge(sub.status)}</summary><div class="body"><p class="src break-words">Nguồn: ${esc(sub.src)}</p>${sub.blocks.map(renderBlock).join("")}</div></details>`).join("")}</section>`).join("");document.getElementById("app").innerHTML=`${commonTop}<h1 style="font-family:Georgia,serif;font-size:22px;color:#0c2e24" class="break-words line-clamp-2">${esc(HANDBOOK_META.title)}</h1><p style="color:#6b726d;font-size:11px" class="break-words">${esc(HANDBOOK_META.subtitle)} — Smart collapsed, font nhỏ, 00 Chung lên đầu, PDF A4 chuẩn.</p><div style="display:flex;gap:6px;margin:8px 0"><input id="q" placeholder="Tìm: phép năm, WFH, GolfCare+..." style="flex:1;padding:7px 10px;border:1px solid #e6e1d6;border-radius:4px;font-size:11px"><button id="toggleAll" style="border:1px solid #0c2e24;background:#fff;color:#0c2e24;padding:0 12px;border-radius:4px;font-size:11px;font-weight:600;cursor:pointer">Mở/đóng</button></div>${legend}${secs}`;}
+function initTabs(){const links=[...document.querySelectorAll("#nav a")],secs=[...document.querySelectorAll("section.sec")];const show=id=>{links.forEach(a=>a.classList.toggle("on",a.dataset.id===id));secs.forEach(x=>x.classList.toggle("on",x.id===id))};links.forEach(a=>a.addEventListener("click",()=>{show(a.dataset.id);window.scrollTo(0,document.getElementById("app").offsetTop-8)}));if(links[0])show(links[0].dataset.id)}
+function initSearch(){let q="",st="";const apply=()=>{const active=!!(q||st);document.body.classList.toggle("searching",active);document.querySelectorAll("details.blk").forEach(d=>{const hit=(!q||d.textContent.toLowerCase().includes(q))&&(!st||d.dataset.st===st);d.style.display=hit?"":"none";if(active&&hit)d.open=true})};document.getElementById("q").addEventListener("input",e=>{q=e.target.value.trim().toLowerCase();apply()});document.querySelectorAll(".st").forEach(b=>b.addEventListener("click",()=>{st=(st===b.dataset.st)?"":b.dataset.st;apply()}));document.getElementById("toggleAll").addEventListener("click",()=>{const cur=document.querySelectorAll("section.sec.on details.blk");const anyClosed=[...cur].some(d=>!d.open);cur.forEach(d=>d.open=anyClosed)})}
+function forceCollapseAll(){document.querySelectorAll("details.blk").forEach(d=>d.open=false)}
+const ASSEMBLY={order:["Header","Hero","Footer"],renderApp(){renderHeader();renderHero();renderNav();render();initTabs();initSearch();forceCollapseAll();document.getElementById("btnPdf").addEventListener("click",()=>{document.querySelectorAll("details.blk").forEach(d=>d.open=true);window.print()});const bar=document.getElementById("prog");window.addEventListener("scroll",()=>{const h=document.documentElement.scrollHeight-innerHeight;bar.style.transform=`scaleX(${h>0?scrollY/h:0})`},{passive:true})}};
+function renderApp(){ASSEMBLY.renderApp();DEBUG_CONFIG.log("V9.7 collapsed ready");}
+document.addEventListener("DOMContentLoaded",renderApp);
+</script>
+</body>
+</html>
