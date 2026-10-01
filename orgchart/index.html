@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<!--
+KEYWORD MAP
+THEME_GLOBAL -> mau chung
+REGION: BLACK_SMALL -> khung den nho
+REGION: LOGO_WHITE -> logo me nen trang
+REGION: COE_GRID -> 4 cty con
+ASSEMBLY -> rap
+-->
+<html lang="vi">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport"
+ content="width=device-width, initial-scale=1">
+<title>WePlus V5</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+pre,code,textarea{
+ white-space:pre-wrap;
+ word-break:break-word;
+ overflow-wrap:anywhere;
+}
+.copper-shine{
+ background:linear-gradient(135deg,
+ #F5D5C0 0%,#C99A7B 50%,#A67C5B 100%);
+ -webkit-background-clip:text;
+ -webkit-text-fill-color:transparent;
+ background-clip:text;
+}
+.copper-plus{
+ background:linear-gradient(135deg,
+ #F5D5C0 0%,#C99A7B 50%,#A67C5B 100%);
+ -webkit-background-clip:text;
+ -webkit-text-fill-color:transparent;
+ background-clip:text;
+ font-weight:900;
+}
+</style>
+<script>
+// ZONE 0
+// ====== ZONE 0 - THEME & LOCK START [🔓] ==
+const THEME_GLOBAL={
+ copper:"#C99A7B",
+ black:"#0E0E0E",
+ white:"#FFFFFF",
+ borderLight:"#cbb6a8",
+ bgPaper:"#FFFEFD",
+ cardBg1:"#eee8dfd8",
+ cardBg2:"#eee8dfd8",
+ textMuted:"#9A8B7C",
+ textSub:"#6B5D52",
+ radiusPill:"9999px",
+ radiusCard:"20px",
+ radiusSmall:"12px",
+ fontSerif:"'Cormorant Garamond', serif",
+ fontSans:"'Inter', sans-serif"
+};
+const LOCKED_STATUS="";
+const EDITABLE_STATUS="BLACK_SMALL:🔓, LOGO_WHITE:🔓, COE_GRID:🔓";
+const DEBUG_CONFIG={enabled:false};
+// ====== ZONE 0 - THEME & LOCK END ======
+</script>
+</head>
+<body>
+<div id="app"></div>
+<script>
+// ====== REGION: BLACK_SMALL START [🔒] ======
+const BLACK_SMALL_CONFIG={
+ text:"BRAND ARCHITECTURE",
+ padding:"10px 24px",
+};
+function renderBlackSmall(){
+ const t=THEME_GLOBAL;
+ const c=BLACK_SMALL_CONFIG;
+ const w=document.createElement('div');
+ w.style.display='flex';
+ w.style.justifyContent='center';
+ w.style.width='100%';
+ w.style.position='relative';
+ if(DEBUG_CONFIG.enabled){
+  const b=document.createElement('div');
+  b.textContent='BLACK_SMALL 🔒';
+  b.style.position='absolute';
+  b.style.top='4px'; b.style.left='4px';
+  b.style.background='#fde047';
+  b.style.color='#000';
+  b.style.fontSize='9px';
+  b.style.padding='2px 6px';
+  b.style.borderRadius='4px';
+  w.appendChild(b);
+ }
+ const black=document.createElement('div');
+ black.style.background=t.black;
+ black.style.borderRadius=t.radiusSmall;
+ black.style.padding=c.padding;
+ black.style.display='inline-flex';
+ const txt=document.createElement('span');
+ txt.textContent=c.text;
+ txt.className='copper-shine';
+ txt.style.fontSize='18px';
+ txt.style.letterSpacing='0.12em';
+ txt.style.fontWeight='900';
+ black.appendChild(txt);
+ w.appendChild(black);
+ return w;
+}
+// ====== REGION: BLACK_SMALL END ======
+// ====== REGION: LOGO_WHITE START [🔒] ======
+const LOGO_WHITE_CONFIG={
+ // 📏 Chỉnh size logo
+ maxW:"600px", // ✏️ Đổi "400px" nhỏ, "700px" to
+ // 🖼️ VIỀN KHUNG TRẮNG CHỨA LOGO - CHỈNH Ở ĐÂY
+ borderWidth:"1px", // ✏️ "0px" xóa viền, "2px" dày hơn
+ borderColor:"#e9e2d9ac", // 🎨 "#C99A7B" đổi sang copper
+ borderRadius:"20px", // ✏️ Bo góc khung
+ // Viền ảnh logo bên trong
+ imgBorderWidth:"0px", // ✏️ "0px" không viền, "1px" có viền
+ imgBorderColor:"#C99A7B", // 🎨 Màu viền ảnh
+ imgBorderRadius:"12px", // ✏️ Bo góc ảnh
+ image:"https://leha-os.github.io/assets/logoweplus_black_transparent.png",
+};
+function renderLogoWhite(){
+ const t=THEME_GLOBAL;
+ const c=LOGO_WHITE_CONFIG;
+ const wrap=document.createElement('div');
+ wrap.style.width='100%';
+ wrap.style.maxWidth='820px';
+ wrap.style.margin='0 auto';
+ wrap.style.background=t.white;
+ wrap.style.borderRadius=c.borderRadius; // ✏️ Bo góc
+ wrap.style.border=c.borderWidth+'0%';+c.lborderColor; // 🎨 Viền
+ wrap.style.padding=c.padding || "56px 32px";
+ wrap.style.display='flex';
+ wrap.style.justifyContent='center';
+ wrap.style.position='relative';
+ if(DEBUG_CONFIG.enabled){
+  const b=document.createElement('div');
+  b.textContent='LOGO_WHITE 🔒 maxW:'+c.maxW;
+  b.style.position='absolute';b.style.top='4px';b.style.left='4px';
+  b.style.background='#fde047';b.style.color='#000';
+  b.style.fontSize='9px';b.style.padding='2px 6px';
+  b.style.borderRadius='4px';wrap.appendChild(b);
+ }
+ const img=document.createElement('img');
+ img.src=c.image;img.alt='WePlus Mother';
+ img.style.maxWidth=c.maxW;img.style.width='100%';
+ img.style.height='auto';img.style.objectFit='contain';
+ img.style.display='block';
+ img.style.border=c.imgBorderWidth+' solid '+c.imgBorderColor;
+ img.style.borderRadius=c.imgBorderRadius;
+ wrap.appendChild(img);return wrap;
+}
+// ====== REGION: LOGO_WHITE END ======
+// ====== REGION: COE_GRID START [🔒] ======
+const COE_GRID_CONFIG={
+ member:"A MEMBER OF WEPLUS",
+ bottom:"Tgroup Ecosystem — Business Unit",
+ items:[
+  {name:"ePlus", desc:"EVENT • MARKETING", bg:"cardBg1"},
+  {name:"Engage", desc:"ACTIVATION • ENGAGEMENT", bg:"cardBg2"},
+  {name:"Enabler", desc:"COMMERCE • RETAIL", bg:"cardBg2"},
+  {name:"GolfCare", desc:"GOLF • OPERATIONS • CONNECTION", bg:"cardBg1"}
+ ]
+};
+function renderCoeGrid(){
+ const t=THEME_GLOBAL;
+ const c=COE_GRID_CONFIG;
+ const grid=document.createElement('div');
+ grid.style.display='grid';
+ grid.style.gridTemplateColumns='repeat(auto-fit,minmax(280px,1fr))';
+ grid.style.gap='16px';
+ grid.style.maxWidth='820px';
+ grid.style.width='100%';
+ grid.style.margin='0 auto';
+ grid.style.position='relative';
+ if(DEBUG_CONFIG.enabled){
+  const b=document.createElement('div');
+  b.textContent='COE_GRID 🔒';
+  b.style.position='absolute';
+  b.style.top='4px'; b.style.left='4px';
+  b.style.background='#fde047';
+  b.style.color='#000';
+  b.style.fontSize='9px';
+  b.style.padding='2px 6px';
+  b.style.borderRadius='4px';
+  grid.appendChild(b);
+ }
+ c.items.forEach(it=>{
+  const card=document.createElement('div');
+  card.style.background=t[it.bg];
+  card.style.border='1px solid '+t.borderLight;
+  card.style.borderRadius=t.radiusCard;
+  card.style.padding='22px 24px';
+  const top=document.createElement('div');
+  top.style.display='flex';
+  top.style.justifyContent='space-between';
+  top.style.alignItems='center';
+  const h4=document.createElement('h4');
+  h4.style.fontFamily=t.fontSerif;
+  h4.style.fontSize='35px';
+  h4.style.fontWeight='300';
+  const s1=document.createElement('span');
+  s1.textContent=it.name;
+  s1.style.fontWeight='800';
+  h4.appendChild(s1);
+  const plus=document.createElement('span');
+  plus.textContent='+';
+  plus.className='copper-plus';
+  plus.style.marginLeft='px';
+  plus.style.fontSize='50px';
+  plus.style.fontWeight='900';
+  h4.appendChild(plus);
+  top.appendChild(h4);
+  const badge=document.createElement('span');
+  badge.textContent=c.member;
+  badge.style.background=t.black;
+  badge.style.color=t.white;
+  badge.style.display='inline-block';
+  badge.style.fontSize='9px';
+  badge.style.letterSpacing='0.14em';
+  badge.style.borderRadius=t.radiusPill;
+  badge.style.padding='5px 12px';
+  badge.style.fontWeight='600';
+  top.appendChild(badge);
+  card.appendChild(top);
+  const desc=document.createElement('p');
+  desc.textContent=it.desc;
+  desc.style.marginTop='14px';
+  desc.style.fontSize='11px';
+  desc.style.letterSpacing='0.12em';
+  desc.style.color=t.textMuted;
+  desc.style.fontWeight='600';
+  card.appendChild(desc);
+  const line=document.createElement('div');
+  line.style.height='1px';
+  line.style.background=t.borderLight;
+  line.style.marginTop='18px';
+  card.appendChild(line);
+  const bot=document.createElement('div');
+  bot.style.display='flex';
+  bot.style.gap='8px';
+  bot.style.marginTop='14px';
+  bot.style.alignItems='center';
+  const dot=document.createElement('div');
+  dot.style.width='5px';
+  dot.style.height='5px';
+  dot.style.borderRadius='9999px';
+  dot.style.background=t.copper;
+  bot.appendChild(dot);
+  const bt=document.createElement('span');
+  bt.textContent=c.bottom;
+  bt.style.fontSize='11px';
+  bt.style.color=t.textSub;
+  bot.appendChild(bt);
+  card.appendChild(bot);
+  grid.appendChild(card);
+ });
+ return grid;
+}
+// ====== REGION: COE_GRID END ======
+// ====== ZONE ASSEMBLY START ======
+function renderApp(){
+ const app=document.getElementById('app');
+ app.style.maxWidth='1160px';
+ app.style.margin='0 auto';
+ app.style.padding='40px 24px 80px';
+ app.style.display='flex';
+ app.style.flexDirection='column';
+ app.style.gap='36px';
+ app.style.background=THEME_GLOBAL.bgPaper;
+ app.style.fontFamily=THEME_GLOBAL.fontSans;
+ app.style.alignItems='center';
+ app.appendChild(renderBlackSmall());
+ app.appendChild(renderLogoWhite());
+ app.appendChild(renderCoeGrid());
+}
+renderApp();
+// ====== ZONE ASSEMBLY END ======
+</script>
+</body>
+</html>
