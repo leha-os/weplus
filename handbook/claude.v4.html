@@ -1,55 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head><style>
-@font-face {
-  font-family: "Optimistic";
-  font-style: normal;
-  font-weight: 400 600;
-  font-display: swap;
-  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Optimistic Mono";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
-}
-:where(html) {
-  font-family: "Optimistic", system-ui, sans-serif;
-}
-:where(code, pre, kbd, samp) {
-  font-family: "Optimistic Mono", ui-monospace, monospace;
-}
-</style>
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 🏠 MÓNG: PAGE_META + THEME_GLOBAL + DEBUG_CONFIG -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-// ZONE 0 — PAGE_META — KEEP FROM OLD FILE
-const PAGE_META = {
-  title: "Le Ha — WePlus⁺ Handbook v1 [DRAFT] 2026",
-  version: "v1",
-  shareTitle: "Le Ha — WePlus⁺ Handbook v1 [DRAFT] 2026",
-  shareDesc: "Employee Handbook · Tgroup / WePlus⁺ Ecosystem",
-  shareImage: "https://leha-os.github.io/assets/logoweplus_black_transparent.png",
-  favicon: "https://leha-os.github.io/assets/logoweplus_black_transparent.png",
-  jsonLd: { "@context":"https://schema.org", "@type":"Organization", "name":"WePlus⁺", "parentOrganization":"Tgroup" }
-};
-// ZONE 0 — THEME_GLOBAL — KEEP FROM OLD FILE — MUST COPY EXACT
-const THEME_GLOBAL = {
-  brand:"#0c2e24", brand2:"#14503b", accent:"#b8975a", accentSoft:"#f1eadb",
-  ink:"#1a1f1c", muted:"#6b726d", line:"#e6e1d6", bg:"#f7f5f0", card:"#ffffff", hero:"#071a14", onDark:"#ffffff",
-  stOfficial:"#1f6b4a", stDraft:"#7a5c1a", stAlign:"#9b2c2c", stMissing:"#5f6661", stProposed:"#4b3b86",
-  font:"Inter,Segoe UI,Roboto,Arial,sans-serif", serif:"Georgia,Times New Roman,serif"
-};
-// ZONE 0 — DEBUG_CONFIG — KEEP FROM OLD FILE
-const DEBUG_CONFIG = { enabled:false, log:(...a)=>{ if(DEBUG_CONFIG.enabled) console.log("[DEBUG]",...a); } };
-</script>
 <title>Le Ha — WePlus⁺ Handbook v1 [DRAFT] 2026</title>
 <style>
-/* THEME_GLOBAL CSS — MUST COPY FROM OLD FILE — KEEP UI 100% SAME */
+/* ZONE 0 — THEME_GLOBAL
+   BRIEF: Màu, font, khoảng cách toàn trang (xanh đen + vàng champagne) | Global colors, fonts, spacing
+   EDITABLE: Biến trong :root | Variables in :root
+   FIX AT: THEME_GLOBAL */
 :root{
   --brand:#0c2e24; --brand-2:#14503b; --accent:#b8975a; --accent-soft:#f1eadb;
   --ink:#1a1f1c; --muted:#6b726d; --line:#e6e1d6; --bg:#f7f5f0; --card:#ffffff; --hero:#071a14; --on-dark:#ffffff;
@@ -60,6 +19,8 @@ const DEBUG_CONFIG = { enabled:false, log:(...a)=>{ if(DEBUG_CONFIG.enabled) con
 *{box-sizing:border-box}
 body{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.7;font-size:15.5px}
 body.lock{overflow:hidden}
+
+/* Hero mở đầu | Intro hero */
 #hero{position:fixed;inset:0;z-index:100;background:var(--hero);color:var(--on-dark);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;transition:opacity .7s,visibility .7s}
 #hero.out{opacity:0;visibility:hidden}
 #hero::before{content:"";pointer-events:none;position:absolute;width:160vmax;height:160vmax;left:50%;top:50%;margin:-80vmax 0 0 -80vmax;background:conic-gradient(from 0deg,transparent 0,rgba(184,151,90,.16) 12%,transparent 30%,rgba(20,80,59,.55) 55%,transparent 75%);animation:spin 50s linear infinite}
@@ -73,6 +34,9 @@ body.lock{overflow:hidden}
 .hero-btn{border:1px solid var(--accent);background:transparent;color:var(--on-dark);padding:12px 34px;font:inherit;letter-spacing:.15em;cursor:pointer;text-transform:uppercase;font-size:13px}
 .hero-btn:hover{background:var(--accent);color:var(--hero)}
 @keyframes spin{to{transform:rotate(360deg)}} @keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}} @keyframes line{to{width:120px}}
+
+
+/* Header + Tabs | Đầu trang + tab điều hướng */
 header.top{background:var(--brand);color:var(--on-dark);padding:12px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .logo{font-family:var(--serif);font-weight:700;font-size:20px} .logo small{color:var(--accent);letter-spacing:.3em;font-size:11px;margin-right:12px;font-family:var(--font)}
 .top .sub{opacity:.7;font-size:13px;flex:1}
@@ -83,6 +47,8 @@ nav.nav{position:sticky;top:0;z-index:20;background:var(--brand-2);display:flex;
 nav.nav a{padding:15px 20px;color:rgba(255,255,255,.7);text-decoration:none;font-size:14px;font-weight:700;border-bottom:4px solid transparent;cursor:pointer}
 nav.nav a:hover{color:var(--on-dark)}
 nav.nav a.on{color:var(--on-dark);border-bottom-color:var(--accent);background:rgba(255,255,255,.08)}
+
+/* Nội dung | Content */
 .wrap{max-width:var(--maxw);margin:0 auto;padding:30px 18px 90px}
 h1{font-family:var(--serif);font-size:30px;color:var(--brand);margin:0 0 4px;line-height:1.25}
 .lead{color:var(--muted);margin:0 0 20px}
@@ -116,6 +82,8 @@ ul.tree{list-style:none;margin:4px 0 4px 6px!important;padding-left:16px!importa
 ul.tree li{margin:5px 0} ul.tree>li>b{color:var(--brand)}
 footer{text-align:center;color:var(--muted);font-size:12.5px;padding:26px 12px;border-top:1px solid var(--line)}
 #toTop{position:fixed;right:18px;bottom:18px;background:var(--brand);color:var(--on-dark);border:0;border-radius:50%;width:42px;height:42px;cursor:pointer;display:none;font-size:18px}
+
+/* PDF logic (in) | Print stylesheet */
 @page{size:A4;margin:16mm 14mm 18mm;@top-left{content:"Le Ha — WePlus⁺ Handbook v1 [DRAFT] 2026";font-size:9pt;color:#555}
   @bottom-left{content:"© 2026 Le Ha x WePlus⁺ — Internal Use Only";font-size:9pt;color:#555}
   @bottom-right{content:"Trang " counter(page) " / " counter(pages);font-size:9pt;color:#555}}
@@ -124,6 +92,11 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:26px 12px;b
   header.top{background:#fff;color:var(--brand);padding:0} section.sec{display:block!important}
   details.blk>summary::before{content:""} tr,.note{break-inside:avoid} section.sec>h2{break-after:avoid} .tw{overflow:visible} table{min-width:0}
 }
+
+/* ZONE 0b — MOTION & ORGMAP
+   BRIEF: Hiệu ứng chuyển động toàn web + sơ đồ khối Tgroup | Site-wide motion + Tgroup org map
+   EDITABLE: thời lượng transition, keyframes | durations, keyframes
+   FIX AT: MOTION */
 #prog{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;z-index:60}
 header.top{position:relative;overflow:hidden}
 header.top::after{content:"";position:absolute;right:-50px;top:-90px;width:210px;height:210px;border-radius:50%;border:1px solid rgba(184,151,90,.55);border-top-color:transparent;animation:spin 14s linear infinite;pointer-events:none}
@@ -157,11 +130,17 @@ tbody tr{transition:background .2s} tbody tr:hover{background:var(--accent-soft)
 .lead2{margin:0 0 6px;font-size:13px;color:var(--st-draft);font-weight:600}
 .team{border-top:1px solid var(--line);padding:6px 0;font-size:13px} .team b{display:block;color:var(--brand)}
 .team span,.team em{display:block;font-style:normal;color:var(--muted);font-size:12.5px}
+
 @media print{
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact;animation:none!important;transition:none!important}
   .rv{opacity:1!important;transform:none!important} #prog,header.top::after{display:none}
   .orgcard:hover,details.blk:hover{transform:none;box-shadow:none} .grid2{grid-template-columns:1fr 1fr}
 }
+
+/* ZONE 0c — TOOLS & AMBIENT MOTION
+   BRIEF: Logo, nền động, lịch tháng, máy tính, bảng BOD | Logos, ambient motion, calendar, calculator, BOD table
+   EDITABLE: biến màu ở THEME_GLOBAL | colors from THEME_GLOBAL
+   FIX AT: TOOLS */
 body::before,body::after{content:"";position:fixed;width:440px;height:440px;border-radius:50%;pointer-events:none;z-index:0}
 body::before{left:-130px;top:20vh;background:radial-gradient(circle,rgba(184,151,90,.24),transparent 70%);animation:float 16s ease-in-out infinite alternate}
 body::after{right:-150px;bottom:-70px;background:radial-gradient(circle,rgba(20,80,59,.22),transparent 70%);animation:float 20s ease-in-out infinite alternate-reverse}
@@ -188,59 +167,46 @@ section.sec.on>h2{border-bottom:0;background:linear-gradient(var(--accent),var(-
   body::before,body::after{display:none} .lw{display:none} .lb{display:inline;height:28px} .plate{padding:0}
   body.print-dec section.sec:not(#s07){display:none!important} .dec input{border:0!important;padding:0!important} .mchip::before,.mchip::after{display:none}
 }
-/* 🛡️ CHỐNG VỠ — MUST COPY */
-*{overflow-wrap:break-word;word-break:break-word}
-.line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.line-clamp-3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 </style>
 </head>
 <body>
+
 <div id="prog"></div>
 <div id="hero"></div>
-<header class="top" id="header"></header>
+<header class="top">
+  <span class="logo" id="logo"></span>
+  <span class="sub" id="hdrSub"></span>
+  <span class="pill" id="hdrStatus"></span>
+  <button class="btn" id="btnPdf">Download PDF</button>
+</header>
 <nav class="nav" id="nav"></nav>
 <main class="wrap" id="app"></main>
 <footer id="foot"></footer>
 <button id="toTop" aria-label="Lên đầu trang">↑</button>
 
 <script>
-// 📐 BẢN VẼ: CONFIG — BLUEPRINT
-const CONFIG = {
-  hero: {
-    title: "Handbook 2026",
-    desc: "Employee Handbook · Tgroup / WePlus⁺ Ecosystem",
-    image: "https://leha-os.github.io/assets/logoweplus_white_transparent.png",
-    imageAlt: "WePlus Logo white transparent — SEO alt for handbook hero",
-    imageFallback: "https://leha-os.github.io/assets/logoweplus_black_transparent.png",
-    link: "#app",
-    cta: "Vào Handbook",
-    style: "hero-dark",
-    responsive: "clamp(30px,6vw,56px)",
-    a11y: "Main handbook entry",
-    lazy: true
-  },
-  header: {
-    logoTgroup: "https://leha-os.github.io/assets/logo-tgroup.png",
-    logoWeplusWhite: "https://leha-os.github.io/assets/logoweplus_white_transparent.png",
-    logoWeplusBlack: "https://leha-os.github.io/assets/logoweplus_black_transparent.png",
-    imageAlt: "Tgroup and WePlus logos",
-    imageFallback: "https://leha-os.github.io/assets/logoweplus_black_transparent.png"
-  },
-  navOrder: ["s01","s02","s03","s04","s05","s06","s07"]
-};
-
+/* ZONE 1 — CONFIG_META
+   BRIEF: Tiêu đề, phiên bản, logo, trạng thái | Title, version, logo, status
+   EDITABLE: HANDBOOK_META, STATUS_LABEL | HANDBOOK_META, STATUS_LABEL
+   FIX AT: HANDBOOK_META */
 const HANDBOOK_META = {
-  title: PAGE_META.title,
-  subtitle: PAGE_META.shareDesc,
+  title: "Le Ha — WePlus⁺ Handbook v1 [DRAFT] 2026",
+  subtitle: "Employee Handbook · Tgroup / WePlus⁺ Ecosystem",
   header: "2026 Handbook", version: "v1", status: "DRAFT",
   footer: "© 2026 Le Ha x WePlus⁺ — Handbook v1 [DRAFT] | Internal Use Only",
-  logoWhite: CONFIG.header.logoWeplusWhite,
-  logoBlack: CONFIG.header.logoWeplusBlack,
-  tgroupLogo: CONFIG.header.logoTgroup,
-  logoText: "WePlus⁺", tgroupText: "TGROUP"
+  logoWhite: "https://leha-os.github.io/assets/logoweplus_white_transparent.png",
+  logoBlack: "https://leha-os.github.io/assets/logoweplus_black_transparent.png",
+  tgroupLogo: "https://leha-os.github.io/assets/logo-tgroup.png",
+  logoText: "WePlus⁺",
+  tgroupText: "TGROUP"
 };
 const STATUS_LABEL = {OFFICIAL:"CHÍNH THỨC",DRAFT:"BẢN NHÁP",NEEDS_ALIGNMENT:"CẦN THỐNG NHẤT",MISSING:"CHƯA CÓ THÔNG TIN",PROPOSED:"ĐỀ XUẤT",PENDING:"CHỜ XÁC NHẬN"};
 const NA = "[CHƯA CÓ THÔNG TIN]";
+
+/* ZONE 1 — CONFIG_ALIGNMENT
+   BRIEF: Bảng khác biệt Engage / ePlus / Tgroup, giữ nguyên để quản lý duyệt | Conflict tables kept for manager review
+   EDITABLE: ALIGNMENT rows (item, engage, eplus, hr, summary, status) | ALIGNMENT rows
+   FIX AT: ALIGNMENT_DATA */
 const ALIGNMENT_DATA = [
   ["Giờ làm việc", "9h00–18h00, nghỉ trưa 12h–13h, Thứ 2–Thứ 6", "9:30–10:00 sáng đến 18:30–19:00 chiều; bắt đầu không trễ hơn 10:00", NA, "Hai khung giờ khác nhau, chưa thống nhất", "NEEDS_ALIGNMENT"],
   ["Đi trễ / về sớm", "Vào công ty sau 10h → nghỉ nửa ngày; về trước 15h → nghỉ nửa ngày", "Tối đa 4 lần/tháng, mỗi lần ≤30 phút (leader quyết định lý do); sau 10:30 mặc nhiên tính ½ ngày phép", NA, "Ngưỡng tính nửa ngày phép khác nhau (10h vs 10:30)", "NEEDS_ALIGNMENT"],
@@ -259,7 +225,33 @@ const ALIGNMENT_DATA = [
   ["Sơ đồ Engage", "Slide cũ: Giám đốc; Project (Team WOWWW, Đẹp, V); Creative (Design, Planing); Operation (Feild, Production); Back Office (HR, Finance)", "—", "Sơ đồ 2027: điều hành Mr Kiệt; Team Creative, Team Project, Team Enabler (Leader Ms Phúc, Bộ phận Kho)", "Cấu trúc Engage giữa slide cũ và sơ đồ 2027 khác nhau", "NEEDS_ALIGNMENT"],
   ["Sơ đồ ePlus", "—", "Slide cũ: MD Ngọc Hà; Planning, Creative, Project (gồm Production); không có GolfCare⁺", "Sơ đồ 2027: Ms Ngọc Hà điều hành; Team Creative, Planner, Project và Team GolfCare⁺ (Manager Mr Tâm, Leader Ms Hà)", "Sơ đồ 2027 có thêm Team GolfCare⁺ so với slide cũ", "NEEDS_ALIGNMENT"]
 ];
-const ALIGNMENT_REASON = ["Engage và ePlus dùng hai khung giờ khác nhau → cần BOD thống nhất một khung chung, hoặc xác nhận giữ riêng theo công ty.","Ngưỡng tính nửa ngày phép (10h và 10:30) khác nhau → cần BOD thống nhất.","ePlus không ghi số ngày phép cơ bản → HR xác nhận ePlus áp dụng theo Luật hay như Engage.","Hai cách hiểu: “+1 ngày mỗi năm thâm niên” và “+1 ngày sau 5 năm”; Excel hai sheet cũng khác ở ePlus → cần BOD và HR chốt cách tính.","Hai khung báo trước khác nhau → HR đề xuất phương án, BOD thống nhất.","Giới hạn nghỉ liên tiếp và tỷ lệ team nghỉ chung khác nhau → cần BOD thống nhất.","Hai cơ chế khác bản chất (nghỉ sau chủ nhật chạy chương trình và WFH tối đa 1 ngày/tháng) → BOD chọn cơ chế chung.","Mức Engage và ePlus trùng nhau; Excel còn mức 150k ở công ty khác → Kế toán và BOD xác nhận mức áp dụng.","Mức tiền trùng nhưng người duyệt khác nhau (Leader và DA, hay Project leader) → thống nhất người duyệt.","ePlus có điều kiện loại trừ khi dùng app xe công ty, Engage không nêu → cần thống nhất.","Engage có trần 150k/ngày, ePlus không nêu mức → cần thống nhất trần chung.","File ePlus không nêu, chỉ có trong Excel → HR xác nhận mức áp dụng cho ePlus.","Có đề xuất tăng lên 2.000.000 nhưng chưa được duyệt → BOD quyết định.","Ba nguồn khác nhau (Grab công ty, app Be, Excel) → Kế toán và BOD thống nhất hình thức và hạn mức.","Sơ đồ Engage cũ khác sơ đồ 2027 → BOD xác nhận sơ đồ chính thức.","Slide ePlus cũ chưa có Team GolfCare⁺ → xác nhận và cập nhật slide."];
+const ALIGNMENT_REASON = [
+  "Engage và ePlus dùng hai khung giờ khác nhau → cần BOD thống nhất một khung chung, hoặc xác nhận giữ riêng theo công ty.",
+  "Ngưỡng tính nửa ngày phép (10h và 10:30) khác nhau → cần BOD thống nhất.",
+  "ePlus không ghi số ngày phép cơ bản → HR xác nhận ePlus áp dụng theo Luật hay như Engage.",
+  "Hai cách hiểu: “+1 ngày mỗi năm thâm niên” và “+1 ngày sau 5 năm”; Excel hai sheet cũng khác ở ePlus → cần BOD và HR chốt cách tính.",
+  "Hai khung báo trước khác nhau → HR đề xuất phương án, BOD thống nhất.",
+  "Giới hạn nghỉ liên tiếp và tỷ lệ team nghỉ chung khác nhau → cần BOD thống nhất.",
+  "Hai cơ chế khác bản chất (nghỉ sau chủ nhật chạy chương trình và WFH tối đa 1 ngày/tháng) → BOD chọn cơ chế chung.",
+  "Mức Engage và ePlus trùng nhau; Excel còn mức 150k ở công ty khác → Kế toán và BOD xác nhận mức áp dụng.",
+  "Mức tiền trùng nhưng người duyệt khác nhau (Leader và DA, hay Project leader) → thống nhất người duyệt.",
+  "ePlus có điều kiện loại trừ khi dùng app xe công ty, Engage không nêu → cần thống nhất.",
+  "Engage có trần 150k/ngày, ePlus không nêu mức → cần thống nhất trần chung.",
+  "File ePlus không nêu, chỉ có trong Excel → HR xác nhận mức áp dụng cho ePlus.",
+  "Có đề xuất tăng lên 2.000.000 nhưng chưa được duyệt → BOD quyết định.",
+  "Ba nguồn khác nhau (Grab công ty, app Be, Excel) → Kế toán và BOD thống nhất hình thức và hạn mức.",
+  "Sơ đồ Engage cũ khác sơ đồ 2027 → BOD xác nhận sơ đồ chính thức.",
+  "Slide ePlus cũ chưa có Team GolfCare⁺ → xác nhận và cập nhật slide."
+];
+
+/* ZONE 1 — CONFIG_SECTIONS
+   BRIEF: Nội dung 6 mục chính. Block: list | table | text | note | align | org
+   EDITABLE: title, status, src, items, rows | title, status, src, items, rows
+   FIX AT: HANDBOOK_SECTIONS */
+/* ZONE 1 — CONFIG_ORG
+   BRIEF: Dữ liệu sơ đồ Tgroup (sửa tên, thêm team tại đây) | Tgroup org data (edit names, add teams here)
+   EDITABLE: ORG_DATA — team = [tên, leader, nhân sự] | team = [name, leader, staff]
+   FIX AT: ORG_DATA */
 const ORG_DATA = {
   top: {title:"TGROUP 2027–2030", chair:"Mr Tâm", board:"Mr Tâm, Mr Kiệt, Ms Mỹ, Ms Ngọc Hà"},
   support: [
@@ -277,32 +269,79 @@ const ORG_DATA = {
       {name:"GreenWall", lead:"", teams:[["Toàn công ty","Leader: "+NA,"Nhân sự: "+NA]]}]}
   ]
 };
-const MONTH_SPECIAL = {3:["Quốc tế Phụ nữ 8/3 — quà 500k/người (Excel)"],7:["Green Desk — cuộc thi góc làm việc","Sự kiện mùa hè rực rỡ (tháng 7–8)"],8:["Mùa hè rực rỡ (tháng 7–8)","Mùa thu ấm áp (tháng 8–9)"],9:["Sport Day — ngày hội thể thao, cầu lông offline định kỳ, 1000 Bước chân (đi bộ online)","Mùa thu ấm áp (tháng 8–9)"],10:["Phụ nữ VN 20/10 — cuộc thi cắm hoa; cuộc thi outlook dành cho nữ"],11:["Tháng tri ân — Thank You Wall (Góc Cảm Ơn)"],12:["Giáng sinh — mùa đông ấm áp; cuộc thi décor Giáng sinh an lành"]};
-const BIRTHDAYS = [];
-const CALC_RATES = {levels:[["Staff / Junior / Senior / Assistant",180000,350000],["Manager",250000,500000],["Director",300000,700000]], airport:100000};
+
+/* ZONE 1 — CONFIG_TOOLS
+   BRIEF: Dữ liệu lịch tháng, sinh nhật, mức công tác phí | Calendar, birthdays, travel rates
+   EDITABLE: MONTH_SPECIAL, BIRTHDAYS, CALC_RATES | same
+   FIX AT: CONFIG_TOOLS */
+const MONTH_SPECIAL = {
+  3:["Quốc tế Phụ nữ 8/3 — quà 500k/người (Excel)"],
+  7:["Green Desk — cuộc thi góc làm việc","Sự kiện mùa hè rực rỡ (tháng 7–8)"],
+  8:["Mùa hè rực rỡ (tháng 7–8)","Mùa thu ấm áp (tháng 8–9)"],
+  9:["Sport Day — ngày hội thể thao, cầu lông offline định kỳ, 1000 Bước chân (đi bộ online)","Mùa thu ấm áp (tháng 8–9)"],
+  10:["Phụ nữ VN 20/10 — cuộc thi cắm hoa; cuộc thi outlook dành cho nữ"],
+  11:["Tháng tri ân — Thank You Wall (Góc Cảm Ơn)"],
+  12:["Giáng sinh — mùa đông ấm áp; cuộc thi décor Giáng sinh an lành"]
+};
+const BIRTHDAYS = [];   // Thêm: {name:"Tên", day:12, month:3} | add entries here
+const CALC_RATES = {
+  levels:[["Staff / Junior / Senior / Assistant",180000,350000],["Manager",250000,500000],["Director",300000,700000]], airport:100000
+};
 const P = "Leader, nhân sự: "+NA;
 const T = (head, rows) => ({type:"table", head, rows});
 const L = items => ({type:"list", items});
 const HANDBOOK_SECTIONS = [
 {id:"s01", number:"01", nav:"Profile & Tổ chức", title:"Profile & Tổ chức", status:"NEEDS_ALIGNMENT", subsections:[
  {title:"Thông tin Tgroup / WePlus⁺", status:"MISSING", src:"[Chưa có tài liệu nguồn]", blocks:[{type:"text", text:NA+" — Giới thiệu Tgroup, WePlus⁺, hệ sinh thái, sứ mệnh và giá trị cốt lõi chưa có trong tài liệu nguồn."}]},
-  {title:"Sơ đồ tổ chức Tgroup 2027–2030", status:"DRAFT", open:true, src:"Sơ đồ do Le Ha gửi trong chat — sẽ được bổ sung thêm", blocks:[{type:"orgmap"},{type:"note", text:"Tên cụm Cluster 02 ghi nguyên văn “TSpace/Wall Plus/We____” theo sơ đồ nguồn, phần cuối chưa hoàn chỉnh."}]},
- {title:"Liên kết với Phòng Tài chính & Kế toán", status:"MISSING", src:"Sơ đồ Tgroup 2027–2030; Engage⁺ PDF (Back Office: HR, Finance; HR/Admin chuyển Payroll)", blocks:[{type:"text", text:"Phòng Tài chính & Kế toán thuộc Corporate Functions của Tgroup (Giám đốc Tài chính / Kế toán trưởng: Mr Khánh; hai nhóm kế toán do Ms Tuyết và Mr Minh làm Leader)."}, {type:"text", text:"Quy trình phối hợp giữa các Business Cluster và Phòng Tài chính & Kế toán (chứng từ, tạm ứng, thanh toán, quyết toán): "+NA}]},
+  {title:"Sơ đồ tổ chức Tgroup 2027–2030", status:"DRAFT", open:true, src:"Sơ đồ do Le Ha gửi trong chat — sẽ được bổ sung thêm", blocks:[
+  {type:"orgmap"},
+  {type:"note", text:"Tên cụm Cluster 02 ghi nguyên văn “TSpace/Wall Plus/We____” theo sơ đồ nguồn, phần cuối chưa hoàn chỉnh."}]},
+ {title:"Liên kết với Phòng Tài chính & Kế toán", status:"MISSING", src:"Sơ đồ Tgroup 2027–2030; Engage⁺ PDF (Back Office: HR, Finance; HR/Admin chuyển Payroll)", blocks:[
+  {type:"text", text:"Phòng Tài chính & Kế toán thuộc Corporate Functions của Tgroup (Giám đốc Tài chính / Kế toán trưởng: Mr Khánh; hai nhóm kế toán do Ms Tuyết và Mr Minh làm Leader)."},
+  {type:"text", text:"Quy trình phối hợp giữa các Business Cluster và Phòng Tài chính & Kế toán (chứng từ, tạm ứng, thanh toán, quyết toán): "+NA}]},
  {title:"Đối chiếu sơ đồ tổ chức", status:"NEEDS_ALIGNMENT", src:"Slide cũ Engage⁺ / ePlus so với sơ đồ Tgroup 2027–2030", blocks:[{type:"align", ids:[14,15]}]},
- {title:"Slide cũ — Sơ đồ ePlus (tên nhân sự)", status:"DRAFT", src:"EPLUS_QUY_ĐỊNH_CHUNG (cũ).pdf — slide “ePlus Structure”", blocks:[{type:"org", boxes:[["MD","Ngọc Hà"],["Head of Planning","Mỹ Liên"],["Head of Creative","Hải Yến"],["Head of Project","Phương Thảo"],["Senior Planner","Bảo Uyên, Đỗ Hiếu, Vacant"],["Planner","Phát Đạt, Hồng Sương, Trang Đài, Hoàng Thy, Khánh Châu (Intern), (Intern)"],["2D (Creative)","Quý Đoan, Đức Linh"],["3D (Creative)","Quyên Cao"],["Project","Vĩ Đạt, Ngọc Trân, Thanh Lan, Thuỳ Trang, Linh Đan (Intern), (Intern)"],["Production","Thanh Tùng, Thái Hoà"]]}, {type:"note", text:"Planning gồm Senior Planner và Planner; Creative gồm 2D và 3D; Project gồm Project và Production (theo sơ đồ nguồn)."}]},
- {title:"Slide cũ — Sơ đồ Engage⁺", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf — slide sơ đồ", blocks:[{type:"org", boxes:[["Giám đốc","—"],["PROJECT","Team WOWWW, Team Đẹp, Team V"],["CREATIVE","Team Design, Team Planing"],["OPERATION","Team Feild, Team Production"],["BACK OFFICE","HR, Finance"]]}, {type:"note", text:"Giữ nguyên tên team như trong nguồn (WOWWW, Đẹp, V, Planing, Feild)."}]},
+ {title:"Slide cũ — Sơ đồ ePlus (tên nhân sự)", status:"DRAFT", src:"EPLUS_QUY_ĐỊNH_CHUNG (cũ).pdf — slide “ePlus Structure”", blocks:[
+  {type:"org", boxes:[
+   ["MD","Ngọc Hà"],["Head of Planning","Mỹ Liên"],["Head of Creative","Hải Yến"],["Head of Project","Phương Thảo"],
+   ["Senior Planner","Bảo Uyên, Đỗ Hiếu, Vacant"],["Planner","Phát Đạt, Hồng Sương, Trang Đài, Hoàng Thy, Khánh Châu (Intern), (Intern)"],
+   ["2D (Creative)","Quý Đoan, Đức Linh"],["3D (Creative)","Quyên Cao"],
+   ["Project","Vĩ Đạt, Ngọc Trân, Thanh Lan, Thuỳ Trang, Linh Đan (Intern), (Intern)"],["Production","Thanh Tùng, Thái Hoà"]]},
+  {type:"note", text:"Planning gồm Senior Planner và Planner; Creative gồm 2D và 3D; Project gồm Project và Production (theo sơ đồ nguồn)."}]},
+ {title:"Slide cũ — Sơ đồ Engage⁺", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf — slide sơ đồ", blocks:[
+  {type:"org", boxes:[["Giám đốc","—"],["PROJECT","Team WOWWW, Team Đẹp, Team V"],["CREATIVE","Team Design, Team Planing"],["OPERATION","Team Feild, Team Production"],["BACK OFFICE","HR, Finance"]]},
+  {type:"note", text:"Giữ nguyên tên team như trong nguồn (WOWWW, Đẹp, V, Planing, Feild)."}]},
  {title:"Các công ty trong hệ thống chính sách", status:"OFFICIAL", src:"TGROUP_CHÍNH_SÁCH_CHUNG.xlsx — sheet “Chính sách TGroup”", blocks:[L(["Engage","ePlus","Enabler","The Wall","Bức Tường","Green Wall","Nguyễn Mộc"])]}
 ]},
 {id:"s02", number:"02", nav:"Quy định chung & Văn hóa", title:"Quy định chung & Văn hóa", status:"DRAFT", subsections:[
  {title:"Văn hóa làm việc (Engage⁺)", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf", blocks:[L(["Cùng làm, cùng chia sẻ. Kết quả là thành quả của teamwork.","Giao tiếp nhã nhặn, vừa phải, chuẩn mực, lịch sự, văn minh.","Hỗ trợ tương tác trên tinh thần cùng nhau xây dựng văn hóa công ty.","Trong tất cả các hoạt động văn hóa của công ty, yêu cầu phải sắp xếp tham gia đầy đủ."])]},
  {title:"Văn hóa làm việc (ePlus)", status:"MISSING", src:"EPLUS_QUY_ĐỊNH_CHUNG (cũ).pdf", blocks:[{type:"text", text:NA+" — file ePlus không có mục văn hóa riêng."}]},
- {title:"Trang phục văn phòng (Engage⁺)", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf", blocks:[T(["","Nữ","Nam"],[["Tiêu chuẩn","Lịch sự – gọn gàng thanh lịch","Lịch sự – gọn gàng trang nhã"],["Không chấp nhận","Trang phục quá mỏng; quần sooc, váy quá ngắn; áo ba lỗ, 2 dây, cúp ngực…","Quần short; áo ba lỗ, áo sát nách; dép lê"]]), {type:"note", text:"Thứ 2 hàng tuần: tất cả nhân viên mặc áo đồng phục của công ty Engage+."}]},
- {title:"Nội quy văn phòng Engage⁺", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf — 5 slide Nội quy", blocks:[{type:"text", text:"Trong thời gian làm việc:"},L(["Nói chuyện điện thoại trong VP với âm lượng vừa phải; bàn công việc thì vào phòng họp chung.","Giờ nghỉ trưa: tôn trọng, giữ trật tự, tránh cười nói lớn tiếng.","Giữ vệ sinh nơi làm việc cá nhân và chỗ dùng chung.","Tắt điện, điều hoà, đóng cửa nếu là người ra về cuối cùng.","Ăn uống giữ vệ sinh sạch sẽ.","Không tự ý sử dụng đồ dùng cá nhân của người khác.","Đồ dùng chung lấy xong để lại đúng vị trí gọn gàng; không bày bừa trên bàn trống, khu vực chung, chỗ người khác.","Có ý thức sử dụng tiết kiệm và bảo vệ tài sản chung.","Các bạn nam hỗ trợ bưng nước theo lịch dán trên bình nước chung.","Nếu hút thuốc, ra ngoài lối thoát hiểm, không vứt tàn thuốc lung tung."]),{type:"text", text:"Môi trường làm việc, vui lòng:"},L(["Hạn chế nói tục, chửi thề trong VP.","Hạn chế đem thức ăn, đồ uống nặng mùi vào VP (nước mắm, mít, sầu riêng, mắm ruốc, mắm tôm…).","Không để bánh trái, đồ ăn vặt lung tung; cất tủ đóng gói cẩn thận; trước khi ra về sắp xếp nơi làm việc cá nhân.","Không nói chuyện riêng, trao đổi lớn tiếng, bật nhạc to trong VP.","Không để rác rơi vãi; bỏ rác đúng nơi quy định."]),{type:"text", text:"Phòng họp sau khi sử dụng:"},L(["Xếp lại bàn ghế trật tự, gọn gàng.","Tắt đèn, máy lạnh.","Hạn chế ăn uống thức ăn nặng mùi; nếu có thì xịt phòng xử lý tạm.","Tránh trao đổi lớn tiếng ảnh hưởng mọi người trong VP.","Không để bánh trái, đồ ăn vặt trong phòng.","Tài liệu, vật dụng cá nhân đem ra ngoài."]),{type:"text", text:"WC khi sử dụng:"},L(["Để rác đúng nơi quy định.","Không hút thuốc.","Không xịt nước ra sàn, thành bồn cầu.","Đổ cặn xác thức ăn, đồ uống vào thùng rác, không đổ vào bồn rửa tay.","Chén bát, đồ nấu ăn rửa sạch, lau khô, cất lại tủ gọn gàng; không bày bừa trên bàn rửa tay, trong WC."])]},
+ {title:"Trang phục văn phòng (Engage⁺)", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf", blocks:[
+  T(["","Nữ","Nam"],[["Tiêu chuẩn","Lịch sự – gọn gàng thanh lịch","Lịch sự – gọn gàng trang nhã"],["Không chấp nhận","Trang phục quá mỏng; quần sooc, váy quá ngắn; áo ba lỗ, 2 dây, cúp ngực…","Quần short; áo ba lỗ, áo sát nách; dép lê"]]),
+  {type:"note", text:"Thứ 2 hàng tuần: tất cả nhân viên mặc áo đồng phục của công ty Engage+."}]},
+ {title:"Nội quy văn phòng Engage⁺", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf — 5 slide Nội quy", blocks:[
+  {type:"text", text:"Trong thời gian làm việc:"},
+  L(["Nói chuyện điện thoại trong VP với âm lượng vừa phải; bàn công việc thì vào phòng họp chung.","Giờ nghỉ trưa: tôn trọng, giữ trật tự, tránh cười nói lớn tiếng.","Giữ vệ sinh nơi làm việc cá nhân và chỗ dùng chung.","Tắt điện, điều hoà, đóng cửa nếu là người ra về cuối cùng.","Ăn uống giữ vệ sinh sạch sẽ.","Không tự ý sử dụng đồ dùng cá nhân của người khác.","Đồ dùng chung lấy xong để lại đúng vị trí gọn gàng; không bày bừa trên bàn trống, khu vực chung, chỗ người khác.","Có ý thức sử dụng tiết kiệm và bảo vệ tài sản chung.","Các bạn nam hỗ trợ bưng nước theo lịch dán trên bình nước chung.","Nếu hút thuốc, ra ngoài lối thoát hiểm, không vứt tàn thuốc lung tung."]),
+  {type:"text", text:"Môi trường làm việc, vui lòng:"},
+  L(["Hạn chế nói tục, chửi thề trong VP.","Hạn chế đem thức ăn, đồ uống nặng mùi vào VP (nước mắm, mít, sầu riêng, mắm ruốc, mắm tôm…).","Không để bánh trái, đồ ăn vặt lung tung; cất tủ đóng gói cẩn thận; trước khi ra về sắp xếp nơi làm việc cá nhân.","Không nói chuyện riêng, trao đổi lớn tiếng, bật nhạc to trong VP.","Không để rác rơi vãi; bỏ rác đúng nơi quy định."]),
+  {type:"text", text:"Phòng họp sau khi sử dụng:"},
+  L(["Xếp lại bàn ghế trật tự, gọn gàng.","Tắt đèn, máy lạnh.","Hạn chế ăn uống thức ăn nặng mùi; nếu có thì xịt phòng xử lý tạm.","Tránh trao đổi lớn tiếng ảnh hưởng mọi người trong VP.","Không để bánh trái, đồ ăn vặt trong phòng.","Tài liệu, vật dụng cá nhân đem ra ngoài."]),
+  {type:"text", text:"WC khi sử dụng:"},
+  L(["Để rác đúng nơi quy định.","Không hút thuốc.","Không xịt nước ra sàn, thành bồn cầu.","Đổ cặn xác thức ăn, đồ uống vào thùng rác, không đổ vào bồn rửa tay.","Chén bát, đồ nấu ăn rửa sạch, lau khô, cất lại tủ gọn gàng; không bày bừa trên bàn rửa tay, trong WC."])]},
  {title:"VPP & đồ dùng văn phòng (Engage⁺)", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf", blocks:[L(["Đồ dùng VPP cố định (bấm giấy, thước, kéo, dao rọc giấy…): chỉ giao 1 lần/1 cái/1 người.","Lấy VPP & đồ dùng VPP: liên hệ HCNS; cần VPP khác: đăng ký HCNS duyệt mua.","Đồ dùng cá nhân sắp xếp cất giữ ở chỗ ngồi.","Đồ dùng, vật dụng, hàng hóa chương trình của team nào để ở kho; nếu để ở VP thì để chỗ của team mình.","In ấn: giữ vệ sinh nơi bàn in; không để giấy in sai lung tung; dùng giấy in tiết kiệm; hóa đơn, giấy tờ thanh toán, giải chi, tài liệu xem cá nhân/nháp cố gắng dùng giấy 1 mặt."])]},
  {title:"Bảo mật thông tin (Engage⁺)", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf", blocks:[L(["Mọi thông tin về lương thưởng phải được bảo mật, không chia sẻ cho người khác.","Chứng từ hóa đơn, báo giá, hợp đồng, CE-CO không để lung tung; in sai hoặc không dùng tới có thể giữ làm giấy nháp cho riêng mình; nếu làm giấy 1 mặt thì phải gạch bỏ mặt còn lại."])]},
- {title:"Hành chính nội bộ — chăm sóc văn phòng & 5S", status:"DRAFT", src:"TGROUP_CHÍNH_SÁCH_CHUNG.xlsx — sheet “Hành chính nội bộ” (cột HIỆN TRẠNG để trống)", blocks:[{type:"text", text:"1. Không gian làm việc"}, L(["Kiểm tra vệ sinh toàn bộ văn phòng trước giờ làm.","Kiểm tra Pantry, phòng họp, khu tiếp khách.","Kiểm tra nhà vệ sinh sạch sẽ, đủ giấy, xà phòng, nước rửa tay.","Kiểm tra điều hòa, đèn, máy lọc nước.","Sắp xếp bàn ghế ngay ngắn sau mỗi cuộc họp.","Kiểm tra cây xanh, tưới nước.","Loại bỏ đồ vật hư hỏng hoặc không còn sử dụng.","Đảm bảo lối đi thông thoáng, an toàn."]),{type:"text", text:"2. Pantry & đồ dùng"}, L(["Chuẩn bị trà, cà phê, nước uống.","Bổ sung bánh/snack nếu công ty có chính sách.","Kiểm tra hạn sử dụng thực phẩm; tủ lạnh sạch sẽ.","Sắp xếp ly, chén, muỗng đúng vị trí.","Quản lý kho văn phòng phẩm; bổ sung giấy in, bút, sổ tay."]),{type:"text", text:"3. Truyền cảm hứng"}, L(["Cập nhật bảng tin nội bộ.","Trang trí văn phòng theo mùa."]),{type:"text", text:"4. Quản lý tài sản"}, L(["Theo dõi bàn ghế hư hỏng, sửa chữa.","Theo dõi máy in: bảo trì, mực in.","Theo dõi máy lạnh: bảo trì, sửa chữa.","Theo dõi thiết bị các phòng họp.","Báo sửa chữa kịp thời khi phát hiện hỏng hóc."]),{type:"text", text:"5. Chăm sóc tinh thần nhân viên"}, L(["Thiệp sinh nhật từng cá nhân; thiệp chúc mừng kết hôn; thiệp chúc mừng sinh con; thăm hỏi ốm đau."]),{type:"text", text:"Tiêu chuẩn 5S văn phòng"}, L(["Sàng lọc: loại bỏ vật dụng không cần thiết.","Sắp xếp: đồ dùng có vị trí rõ ràng, dễ tìm.","Sạch sẽ: duy trì vệ sinh hằng ngày.","Săn sóc: kiểm tra định kỳ, nhắc nhở và cải tiến.","Sẵn sàng: hình thành thói quen giữ gìn không gian chung.","Tổ chức chấm điểm 5S theo từng khu vực hoặc phòng ban."]),T(["Tần suất","Công việc định kỳ"],[["Hằng ngày","Kiểm tra vệ sinh và Pantry; kiểm tra phòng họp trước/sau khi sử dụng; bổ sung VPP; kiểm tra thiết bị; chăm sóc cây cảnh; tiếp nhận và xử lý phản ánh của nhân viên kịp thời"],["Hằng tuần","Tổng vệ sinh khu vực chung; kiểm kê VPP; trang trí hoa/cây xanh; tổ chức một hoạt động gắn kết ngắn; kiểm tra tài sản và thiết bị"],["Hằng tháng","Đánh giá mức độ hài lòng của nhân viên; đề xuất cải thiện không gian làm việc; thay đổi góc trang trí theo chủ đề; báo cáo chi phí hành chính và kế hoạch tháng tiếp theo"]]),{type:"note", text:"Dự trù ngân sách tổng của bộ phận Hành chính: "+NA}]},
+ {title:"Hành chính nội bộ — chăm sóc văn phòng & 5S", status:"DRAFT", src:"TGROUP_CHÍNH_SÁCH_CHUNG.xlsx — sheet “Hành chính nội bộ” (cột HIỆN TRẠNG để trống)", blocks:[
+  {type:"text", text:"1. Không gian làm việc"}, L(["Kiểm tra vệ sinh toàn bộ văn phòng trước giờ làm.","Kiểm tra Pantry, phòng họp, khu tiếp khách.","Kiểm tra nhà vệ sinh sạch sẽ, đủ giấy, xà phòng, nước rửa tay.","Kiểm tra điều hòa, đèn, máy lọc nước.","Sắp xếp bàn ghế ngay ngắn sau mỗi cuộc họp.","Kiểm tra cây xanh, tưới nước.","Loại bỏ đồ vật hư hỏng hoặc không còn sử dụng.","Đảm bảo lối đi thông thoáng, an toàn."]),
+  {type:"text", text:"2. Pantry & đồ dùng"}, L(["Chuẩn bị trà, cà phê, nước uống.","Bổ sung bánh/snack nếu công ty có chính sách.","Kiểm tra hạn sử dụng thực phẩm; tủ lạnh sạch sẽ.","Sắp xếp ly, chén, muỗng đúng vị trí.","Quản lý kho văn phòng phẩm; bổ sung giấy in, bút, sổ tay."]),
+  {type:"text", text:"3. Truyền cảm hứng"}, L(["Cập nhật bảng tin nội bộ.","Trang trí văn phòng theo mùa."]),
+  {type:"text", text:"4. Quản lý tài sản"}, L(["Theo dõi bàn ghế hư hỏng, sửa chữa.","Theo dõi máy in: bảo trì, mực in.","Theo dõi máy lạnh: bảo trì, sửa chữa.","Theo dõi thiết bị các phòng họp.","Báo sửa chữa kịp thời khi phát hiện hỏng hóc."]),
+  {type:"text", text:"5. Chăm sóc tinh thần nhân viên"}, L(["Thiệp sinh nhật từng cá nhân; thiệp chúc mừng kết hôn; thiệp chúc mừng sinh con; thăm hỏi ốm đau."]),
+  {type:"text", text:"Tiêu chuẩn 5S văn phòng"}, L(["Sàng lọc: loại bỏ vật dụng không cần thiết.","Sắp xếp: đồ dùng có vị trí rõ ràng, dễ tìm.","Sạch sẽ: duy trì vệ sinh hằng ngày.","Săn sóc: kiểm tra định kỳ, nhắc nhở và cải tiến.","Sẵn sàng: hình thành thói quen giữ gìn không gian chung.","Tổ chức chấm điểm 5S theo từng khu vực hoặc phòng ban."]),
+  T(["Tần suất","Công việc định kỳ"],[["Hằng ngày","Kiểm tra vệ sinh và Pantry; kiểm tra phòng họp trước/sau khi sử dụng; bổ sung VPP; kiểm tra thiết bị; chăm sóc cây cảnh; tiếp nhận và xử lý phản ánh của nhân viên kịp thời"],["Hằng tuần","Tổng vệ sinh khu vực chung; kiểm kê VPP; trang trí hoa/cây xanh; tổ chức một hoạt động gắn kết ngắn; kiểm tra tài sản và thiết bị"],["Hằng tháng","Đánh giá mức độ hài lòng của nhân viên; đề xuất cải thiện không gian làm việc; thay đổi góc trang trí theo chủ đề; báo cáo chi phí hành chính và kế hoạch tháng tiếp theo"]]),
+  {type:"note", text:"Dự trù ngân sách tổng của bộ phận Hành chính: "+NA}]},
  {title:"Lịch hoạt động & sinh nhật theo tháng 2026", status:"DRAFT", open:true, src:"TGROUP_CHÍNH_SÁCH_CHUNG.xlsx — sheet “Hoạt động” và “Chính sách TGroup”", blocks:[{type:"calendar"}]},
- {title:"Hoạt động kết nối", status:"DRAFT", src:"TGROUP_CHÍNH_SÁCH_CHUNG.xlsx — sheet “Hoạt động” (mục “Dự trù ngân sách” để trống)", blocks:[T(["Chu kỳ / Tháng","Chủ đề","Hoạt động"],[["Hằng tuần","Happy Friday","Bữa ăn xế 16:00 chiều thứ 6 hàng tuần"],["Hằng tuần","Thank You Wall (Góc Cảm Ơn)","Thành viên gửi lời cảm ơn đồng nghiệp"],["Hằng tháng","Chúc mừng sinh nhật","Tổ chức sinh nhật trong tháng vào ngày 10 hàng tháng"],["Tháng 7","Green Desk","Cuộc thi góc làm việc"],["Tháng 7–8 / 8–9","Sự kiện theo mùa","Mùa hè rực rỡ (7–8); mùa thu ấm áp (8–9)"],["Tháng 9","Sport Day","Ngày hội thể thao; cầu lông offline định kỳ; 1000 Bước chân (đi bộ online)"],["Theo quý","Innovation Day","Ngày sáng tạo, chủ đề theo mùa"],["Tháng 10","Phụ nữ VN 20/10","Cuộc thi cắm hoa; cuộc thi outlook dành cho nữ"],["Tháng 11","Tháng tri ân","Thank You Wall"],["Tháng 12","Giáng sinh","Mùa đông ấm áp; cuộc thi décor Giáng sinh an lành"]]), {type:"note", text:"Dự trù ngân sách các hoạt động: "+NA}]}
+ {title:"Hoạt động kết nối", status:"DRAFT", src:"TGROUP_CHÍNH_SÁCH_CHUNG.xlsx — sheet “Hoạt động” (mục “Dự trù ngân sách” để trống)", blocks:[
+  T(["Chu kỳ / Tháng","Chủ đề","Hoạt động"],[["Hằng tuần","Happy Friday","Bữa ăn xế 16:00 chiều thứ 6 hàng tuần"],["Hằng tuần","Thank You Wall (Góc Cảm Ơn)","Thành viên gửi lời cảm ơn đồng nghiệp"],["Hằng tháng","Chúc mừng sinh nhật","Tổ chức sinh nhật trong tháng vào ngày 10 hàng tháng"],["Tháng 7","Green Desk","Cuộc thi góc làm việc"],["Tháng 7–8 / 8–9","Sự kiện theo mùa","Mùa hè rực rỡ (7–8); mùa thu ấm áp (8–9)"],["Tháng 9","Sport Day","Ngày hội thể thao; cầu lông offline định kỳ; 1000 Bước chân (đi bộ online)"],["Theo quý","Innovation Day","Ngày sáng tạo, chủ đề theo mùa"],["Tháng 10","Phụ nữ VN 20/10","Cuộc thi cắm hoa; cuộc thi outlook dành cho nữ"],["Tháng 11","Tháng tri ân","Thank You Wall"],["Tháng 12","Giáng sinh","Mùa đông ấm áp; cuộc thi décor Giáng sinh an lành"]]),
+  {type:"note", text:"Dự trù ngân sách các hoạt động: "+NA}]}
 ]},
 {id:"s03", number:"03", nav:"Chính sách Nhân sự", title:"Chính sách Nhân sự", status:"NEEDS_ALIGNMENT", subsections:[
  {title:"Tuyển dụng, Onboarding, Đánh giá, Nghỉ việc", status:"MISSING", src:"[Chưa có tài liệu nguồn]", blocks:[{type:"text", text:NA+" — Chỉ có thông tin thử việc/HĐLĐ (bên dưới). Quy trình tuyển dụng, onboarding, đánh giá, offboarding chưa có."}]},
@@ -311,22 +350,85 @@ const HANDBOOK_SECTIONS = [
  {title:"Nghỉ đột xuất, thông báo ra ngoài (Engage⁺)", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf", blocks:[L(["Nghỉ đột xuất: gọi điện, nhắn tin cho Leader và HR; bổ sung đơn nghỉ phép sau.","Lý do cá nhân vào công ty sau 10h → nghỉ nửa ngày; về trước 15h → nghỉ nửa ngày.","Thông báo lý do ra ngoài trong giờ hành chính với cấp trên.","Nghỉ các ngày lễ theo quy định Nhà nước và quyết định của công ty."])]},
  {title:"Hợp đồng lao động & trả lương (Engage⁺)", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf", blocks:[L(["Ký HĐLĐ chính thức sau 2–3 tháng thử việc (nếu đạt yêu cầu).","Công ty có quyền đơn phương chấm dứt HĐLĐ nếu nhân viên tự ý bỏ việc hoặc thường xuyên không hoàn thành nhiệm vụ. Báo trước 30 ngày (HĐLĐ 1–3 năm) hoặc 07 ngày (HĐLĐ 3 tháng–1 năm).","Người lao động có quyền đơn phương chấm dứt HĐLĐ; thông báo bằng văn bản đến HR ít nhất 30 ngày.","Trả lương: chuyển khoản VND qua tài khoản ngân hàng HDBank; từ ngày 01 đến ngày 10 của tháng kế tiếp."]),{type:"note", text:"ePlus: thử việc, HĐLĐ, trả lương — "+NA}]},
  {title:"Chấm công (Engage⁺)", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf", blocks:[{type:"text", text:"Hình thức: dùng dấu vân tay mở cửa để check in/check out."},T(["Nhân viên","Leader","HR/Admin"],[["Chấm công → Kiểm tra → Giải trình nếu sai","Xác nhận giải trình → Xác nhận OT/Công tác","Tổng hợp → Đối chiếu → Điều chỉnh → Chốt công → Chuyển Payroll"]])]},
- {title:"Career Path (Engage⁺)", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf — slide Career Path", blocks:[T(["Nhóm cấp","Level","Thời gian"],[["Executive","I/E1, E2","1–2 năm"],["Senior Executive","E3/S1, S2","1–2 năm"],["Manager","S3/M1, M2","1–3 năm"],["BUD/D","M3/D1, D2",NA],["MD","—",NA]]),T(["Yêu cầu","Mô tả"],[["Assignment","Hoàn thành tốt công việc trong vị trí được yêu cầu"],["Experience","Hoàn thiện kỹ năng, cải tiến khả năng hoàn thành công việc xuất sắc"],["Management","Hoàn thiện kỹ năng quản lý trong yêu cầu công việc và trong team"],["Leadership","Xây dựng được team lớn mạnh, tạo điều kiện để các thành viên phát triển"],["Revenue","Chịu trách nhiệm về doanh số công ty"],["Strategy","Phát triển tầm nhìn chiến lược, định hướng cụ thể cho team, đóng góp hướng phát triển cho công ty"],["Administration","Hoàn thiện kỹ năng quản trị bao quát các cross function"],["Credibility","Có được sự tín nhiệm từ các cross function"],["Sustainability","Xây dựng, giữ gìn, cải tiến tầm nhìn công ty hướng đến sự phát triển bền vững"]]),{type:"note", text:"Bảng nguồn thêm yêu cầu theo level (E1 Assignment; E2 +Experience; S1 +Management; S2 +Leadership; M1 +Revenue; M2 +Strategy; D1 +Administration; D2 +Credibility; MD Sustainability). ePlus: "+NA}]}
+ {title:"Career Path (Engage⁺)", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf — slide Career Path", blocks:[
+  T(["Nhóm cấp","Level","Thời gian"],[["Executive","I/E1, E2","1–2 năm"],["Senior Executive","E3/S1, S2","1–2 năm"],["Manager","S3/M1, M2","1–3 năm"],["BUD/D","M3/D1, D2",NA],["MD","—",NA]]),
+  T(["Yêu cầu","Mô tả"],[["Assignment","Hoàn thành tốt công việc trong vị trí được yêu cầu"],["Experience","Hoàn thiện kỹ năng, cải tiến khả năng hoàn thành công việc xuất sắc"],["Management","Hoàn thiện kỹ năng quản lý trong yêu cầu công việc và trong team"],["Leadership","Xây dựng được team lớn mạnh, tạo điều kiện để các thành viên phát triển"],["Revenue","Chịu trách nhiệm về doanh số công ty"],["Strategy","Phát triển tầm nhìn chiến lược, định hướng cụ thể cho team, đóng góp hướng phát triển cho công ty"],["Administration","Hoàn thiện kỹ năng quản trị bao quát các cross function"],["Credibility","Có được sự tín nhiệm từ các cross function"],["Sustainability","Xây dựng, giữ gìn, cải tiến tầm nhìn công ty hướng đến sự phát triển bền vững"]]),
+  {type:"note", text:"Bảng nguồn thêm yêu cầu theo level (E1 Assignment; E2 +Experience; S1 +Management; S2 +Leadership; M1 +Revenue; M2 +Strategy; D1 +Administration; D2 +Credibility; MD Sustainability). ePlus: "+NA}]}
 ]},
 {id:"s04", number:"04", nav:"Thưởng & Phúc lợi", title:"Thưởng & Phúc lợi", status:"NEEDS_ALIGNMENT", subsections:[
  {title:"Chọn công ty xem chính sách", status:"DRAFT", open:true, src:"Lọc hai bảng “Bảng chính sách Tgroup 2026” bên dưới theo công ty", blocks:[{type:"companypick"}]},
  {title:"Máy tính công tác phí nhanh", status:"PENDING", open:true, src:"Mức Engage⁺ và ePlus (hai nguồn trùng nhau) — chỉ tham khảo, mức tối đa", blocks:[{type:"calc"}]},
  {title:"Lương, thưởng KPI, thưởng Tết", status:"DRAFT", src:"Engage⁺ PDF (Bonus theo KPI cuối năm); Excel (Thưởng Tết: x)", blocks:[{type:"text", text:"Engage⁺: Bonus theo KPI cuối năm. Excel: Thưởng Tết áp dụng cho cả 7 công ty (đánh dấu x, không nêu mức). Bảng lương, mức thưởng KPI, thưởng Tết: "+NA}]},
  {title:"Quyền lợi nhân viên (Engage⁺)", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf", blocks:[L(["Bonus: thưởng theo KPI cuối năm.","Tham gia các hoạt động chung của Tgroup và của công ty.","Du lịch nước ngoài, company trip giữa năm tùy tình hình kinh doanh thực tế.","Hỗ trợ tham gia các khóa học nâng cao kỹ năng phù hợp với cá nhân và công việc.","Sinh nhật nhân viên hàng tháng (1 tháng/1 lần cho nhân viên sinh nhật cùng tháng): Quản lý 500.000đ/người; Nhân viên 300.000đ/người."])]},
- {title:"Nghỉ việc riêng có hưởng lương (Engage⁺)", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf", blocks:[T(["Trường hợp","Số ngày / Chế độ"],[["Bản thân kết hôn","03 ngày (mừng 1.000.000đ)"],["Con, cha/mẹ ruột, cha/mẹ chồng/vợ, anh chị em ruột kết hôn","01 ngày"],["Cha/mẹ ruột, cha/mẹ chồng/vợ, chồng/vợ, con ruột mất","03 ngày (vòng hoa chia buồn + 1.000.000đ); thông báo trong vòng 3 ngày"],["Lao động nữ sinh con","6 tháng trước/sau khi sinh theo Luật (mừng 1.000.000đ)"],["Lao động nam khi vợ sinh con","05 ngày (sinh thường); 07 ngày (sinh mổ hoặc sinh con dưới 32 tuần tuổi…) theo Luật (mừng 1.000.000đ)"]]),{type:"note", text:"Nhân viên thông báo, cung cấp thông tin liên quan đến bộ phận HCNS trong vòng 7 ngày."}]},
- {title:"Bảo hiểm xã hội (Engage⁺)", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf", blocks:[T(["","Hưu trí – Tử tuất","Ốm đau – Thai sản","TNLĐ – BNN","BHTN","BHYT","Tổng"],[["Người sử dụng lao động","14%","3%","0,5%","1%","3%","21,5%"],["Người lao động","8%","–","–","1%","1,5%","10,5%"]]),{type:"note", text:"Tổng cộng 32%. NLĐ có tổng thu nhập từ 17,5 triệu đồng/tháng trở lên liên hệ HR để được hỗ trợ đăng ký Người phụ thuộc (NPT) nhằm giảm trừ thuế TNCN (nếu đủ điều kiện)."}]},
- {title:"Thưởng đem dự án mới về (ePlus)", status:"DRAFT", src:"EPLUS_QUY_ĐỊNH_CHUNG (cũ).pdf — Hoa hồng và thưởng dự án", blocks:[T(["Doanh thu dự án (chưa VAT)","Thưởng"],[["Trên 500 triệu → 1 tỷ","5 triệu"],["Trên 1 tỷ → 2 tỷ","10 triệu"],["Trên 2 tỷ → 3 tỷ","15 triệu"],["Từ 3 tỷ trở lên","20 triệu"]]),{type:"note", text:"Áp dụng cho khách hàng mới; tổng kết 6 tháng/lần; mức này vẫn áp dụng với các dự án cùng khách hàng trong năm."}]},
- {title:"Quỹ trích lại triển khai dự án (ePlus)", status:"DRAFT", src:"EPLUS_QUY_ĐỊNH_CHUNG (cũ).pdf", blocks:[T(["Khách hàng","Loại","GP đạt","Quỹ trích lại","Planning","Creative","Project"],[["Hiện hữu","Digital","≥32%","2% GP Final","50%","25%","25%"],["Hiện hữu","Event","≥27%","2% GP Final","35%","20%","45%"],["Mới","Digital","≥30%","2% GP Final","50%","25%","25%"],["Mới","Event","≥25%","2% GP Final","35%","20%","45%"]]),{type:"note", text:"Tổng kết cuối năm khi đạt target chung; Leader từng team phân bổ cho thành viên tham gia."},T(["Doanh thu","GP","Thưởng"],[["29 tỷ","27%","½ tháng lương"],["30 tỷ","29%","1 tháng lương"],["32 tỷ","30%","1 tháng lương + 1 chuyến du lịch công ty"]]),{type:"note", text:"Bảng thưởng theo doanh thu/GP trên slide nguồn không ghi rõ đối tượng áp dụng (khách hàng mới hay hiện hữu): "+NA}]},
- {title:"Bảng chính sách Tgroup 2026 — cấp nhân viên", status:"DRAFT", src:"TGROUP_CHÍNH_SÁCH_CHUNG.xlsx — sheet “Chính sách TGroup”", blocks:[T(["Chế độ","Engage","ePlus","Enabler","The Wall","Bức Tường","Green Wall","Nguyễn Mộc"],[["Phép năm theo luật","x","x","x","x","x","x","x"],["Phép năm bổ sung","Sau 1 năm +1 ngày, từ năm thứ 5","Sau 5 năm +1 ngày","Sau 1 năm +1 ngày, từ năm thứ 5","Sau 5 năm +1 ngày","Sau 5 năm +1 ngày","Sau 5 năm +1 ngày","Sau 5 năm +1 ngày"],["Thể thao","Cầu lông 1 buổi/tuần","Xem phim","—","Cầu lông 1 buổi/tuần","Cầu lông 1 buổi/tuần","Cầu lông 1 buổi/tuần","—"],["Cơm trưa","—","—","—","—","—","—","x"],["Khám sức khỏe hàng năm","1,2tr/người","1,2tr/người","1,2tr/người","1,2tr/người","1,2tr/người","1,2tr/người","1,2tr/người"],["Sinh nhật","QL 500k; NV 300k; bánh kem 500k/tháng","QL 500k; NV 300k; bánh kem 500k/tháng","QL 500k; NV 300k; bánh kem 500k/tháng","NV 300k; bánh kem 500k/tháng","NV 300k; bánh kem 500k/tháng","NV 300k; bánh kem 500k/tháng","NV 300k; bánh kem 500k/tháng"],["Quốc tế phụ nữ 8/3","500k/người (quà tặng — ghi chú “Đề xuất”)","500k/người","500k/người","500k/người","500k/người","500k/người","500k/người"],["Happy Friday","50k/người/tuần","50k/người/tuần","50k/người/tuần","50k/người/tuần","50k/người/tuần","50k/người/tuần","50k/người/tuần"],["Thưởng Tết","x","x","x","x","x","x","x"],["Kết hôn","1.000.000","1.000.000","1.000.000","1.000.000","1.000.000","1.000.000","1.000.000"],["Đám tang F1","Vòng hoa + 1tr chia buồn","(như Engage)","(như Engage)","(như Engage)","(như Engage)","(như Engage)","(như Engage)"],["Tai nạn (ghi chú: Đề xuất)","Hỗ trợ 3–5 ngày công","(như Engage)","(như Engage)","(như Engage)","(như Engage)","(như Engage)","(như Engage)"],["Quỹ team","—","—","—","200k/người/quý","200k/người/quý","200k/người/quý","—"],["Team building group","3tr/người","3tr/người","3tr/người","3tr/người","3tr/người","3tr/người","3tr/người"],["Team building nội bộ","2tr/người","2tr/người","2tr/người","2tr/người","2tr/người","2tr/người","—"],["Công tác — phí","NV 180k/ngày","NV 180k/ngày","NV 180k/ngày","NV 150k/ngày","NV 150k/ngày","—","NV 150k/ngày"],["Công tác — khách sạn","350k/đêm","350k/đêm","350k/đêm","350k/đêm","350k/đêm","—","—"],["Công tác — ra sân bay","100k/lần","100k/lần","100k/lần","100k/lần","100k/lần","—","—"]]),{type:"note", text:"Sheet “Chính sách” (bản trước) khác sheet 2026 ở: ePlus phép bổ sung (giống Engage), ghi chú “Đề xuất 2.000.000” cho Kết hôn, ghi chú “Quà tặng” cho 8/3. Ô trống trong nguồn hiển thị “—”."}]},
- {title:"Bảng chính sách Tgroup 2026 — cấp Leader", status:"DRAFT", src:"TGROUP_CHÍNH_SÁCH_CHUNG.xlsx — sheet “Chính sách TGroup”", blocks:[T(["Chế độ","Engage","ePlus","Enabler","The Wall","Bức Tường","Green Wall","Nguyễn Mộc"],[["Phí Grab","—","1tr/người","3tr/người","—","—","—","—"],["Bảo hiểm cao cấp / khác","BHNT – Leader 5 năm, 15tr/năm","BH Care – trên 1 năm, 3,5tr/năm","—","BH 24h 275k/năm","BH 24h 275k/năm","—","BH 24h 275k/năm"],["Sinh nhật","500k; bánh kem 500k/tháng","500k; bánh kem 500k/tháng","500k; bánh kem 500k/tháng","500k; bánh kem 500k/tháng","500k; bánh kem 500k/tháng","500k; bánh kem 500k/tháng","500k; bánh kem 500k/tháng"],["Công tác — phí","Director 300k; Leader 250k/ngày","Director 300k; Leader 250k/ngày","Director 300k; Leader 250k/ngày","MD 300k; Leader 250k/ngày","MD 300k; Leader 250k/ngày","—","MD 300k; Leader 250k/ngày"],["Công tác — khách sạn","500k/đêm","500k/đêm","500k/đêm","500k/đêm","500k/đêm","—","—"],["Công tác — ra sân bay","100k/lần","100k/lần","100k/lần","100k/lần","100k/lần","100k/lần","100k/lần"],["Phí đi lại / Chairman","10tr/tháng","10tr/tháng","—","15tr/tháng","—","—","—"],["Phí tiếp khách / Chairman","—","—","—","—","15tr/tháng","—","—"],["Điện thoại","<500k/tháng","<500k/tháng","<500k/tháng","<500k/tháng","<500k/tháng","<500k/tháng","<500k/tháng"]])]},
- {title:"Chế độ đề xuất theo cấp (cột Engage, ghi chú “Đề xuất”)", status:"PROPOSED", src:"TGROUP_CHÍNH_SÁCH_CHUNG.xlsx — mục 9–14 cấp Leader; chỉ nằm ở cột Engage, sheet có một dòng “Để xuất”", blocks:[{type:"note", text:"PROPOSED — đề xuất, KHÔNG phải chính sách chính thức. Nội dung hai sheet khác nhau ở các chỗ ghi bên dưới."},T(["Chế độ","Cấp","Nội dung"],[["Chăm sóc sức khỏe (PVI care)","Leader","Nội dung ô: “PVI care” — "+NA],["","Manager","Gói BHSK VIP cho bản thân; tài trợ 50%–100% chi phí BHSK cho vợ/chồng"],["","MD + CEO","Gói bảo hiểm sức khỏe quốc tế cho cả gia đình; tầm soát sức khỏe VIP toàn diện hàng năm"],["Phụ cấp","Leader + Manager","Chi phí đi lại, ăn uống và tiền điện thoại phục vụ công việc hàng tháng"],["","MD","Ngân sách hoặc phụ cấp xe hơi riêng hàng tháng (gồm chi phí tài xế riêng nếu có); công tác mặc định vé máy bay hạng Thương gia, khách sạn 5 sao"],["","CEO","Công ty cấp xe ô tô đưa đón riêng 24/7"],["Tích lũy tài chính & an sinh dài hạn","Leader + Manager","Chương trình BHNT tích lũy công ty đài thọ 100% (sheet 2026 thêm “Chia sẻ lợi nhuận”); gắn bó đủ 5 năm thì toàn bộ giá trị tích lũy thuộc quyền sở hữu cá nhân"],["","MD + CEO","Công ty chi trả 100% phí HĐ BHNT mệnh giá lớn bảo vệ trọn đời (sheet cũ: “cho bản thân và GĐ”; sheet 2026: “cho bản thân”)"],["Nghỉ phép & nghỉ dưỡng","Leader","Thêm 2 ngày phép năm hưởng nguyên lương"],["","Manager","Thêm 4 ngày phép năm hưởng nguyên lương"],["","CEO","1 tuần nghỉ phép đặc biệt “Ngắt kết nối hoàn toàn” hàng năm (sheet cũ: công ty đài thọ 100% chi phí nghỉ dưỡng cả gia đình tại resort 6 sao; sheet 2026 không có phần này)"],["Đào tạo, phát triển thể chất","Leader + Manager","Tài trợ 10–15 triệu/năm cho khóa học kỹ năng, chuyên môn"],["","MD + CEO","Thẻ hội viên toàn thời gian hàng năm tại hệ thống Gym/Yoga cao cấp"],["Ngoại giao & hỗ trợ cá nhân","MD","Tài trợ thẻ thành viên trọn đời CLB Golf danh tiếng hoặc Hiệp hội doanh nhân lớn"],["","CEO","Công ty chi trả tuyển dụng và vận hành Trợ lý cá nhân (lịch trình công việc và việc gia đình riêng)"]])]},
+ {title:"Nghỉ việc riêng có hưởng lương (Engage⁺)", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf", blocks:[
+  T(["Trường hợp","Số ngày / Chế độ"],[["Bản thân kết hôn","03 ngày (mừng 1.000.000đ)"],["Con, cha/mẹ ruột, cha/mẹ chồng/vợ, anh chị em ruột kết hôn","01 ngày"],["Cha/mẹ ruột, cha/mẹ chồng/vợ, chồng/vợ, con ruột mất","03 ngày (vòng hoa chia buồn + 1.000.000đ); thông báo trong vòng 3 ngày"],["Lao động nữ sinh con","6 tháng trước/sau khi sinh theo Luật (mừng 1.000.000đ)"],["Lao động nam khi vợ sinh con","05 ngày (sinh thường); 07 ngày (sinh mổ hoặc sinh con dưới 32 tuần tuổi…) theo Luật (mừng 1.000.000đ)"]]),
+  {type:"note", text:"Nhân viên thông báo, cung cấp thông tin liên quan đến bộ phận HCNS trong vòng 7 ngày."}]},
+ {title:"Bảo hiểm xã hội (Engage⁺)", status:"DRAFT", src:"CHINH_SACH_ENGAGE_PLUS (cũ).pdf", blocks:[
+  T(["","Hưu trí – Tử tuất","Ốm đau – Thai sản","TNLĐ – BNN","BHTN","BHYT","Tổng"],[["Người sử dụng lao động","14%","3%","0,5%","1%","3%","21,5%"],["Người lao động","8%","–","–","1%","1,5%","10,5%"]]),
+  {type:"note", text:"Tổng cộng 32%. NLĐ có tổng thu nhập từ 17,5 triệu đồng/tháng trở lên liên hệ HR để được hỗ trợ đăng ký Người phụ thuộc (NPT) nhằm giảm trừ thuế TNCN (nếu đủ điều kiện)."}]},
+ {title:"Thưởng đem dự án mới về (ePlus)", status:"DRAFT", src:"EPLUS_QUY_ĐỊNH_CHUNG (cũ).pdf — Hoa hồng và thưởng dự án", blocks:[
+  T(["Doanh thu dự án (chưa VAT)","Thưởng"],[["Trên 500 triệu → 1 tỷ","5 triệu"],["Trên 1 tỷ → 2 tỷ","10 triệu"],["Trên 2 tỷ → 3 tỷ","15 triệu"],["Từ 3 tỷ trở lên","20 triệu"]]),
+  {type:"note", text:"Áp dụng cho khách hàng mới; tổng kết 6 tháng/lần; mức này vẫn áp dụng với các dự án cùng khách hàng trong năm."}]},
+ {title:"Quỹ trích lại triển khai dự án (ePlus)", status:"DRAFT", src:"EPLUS_QUY_ĐỊNH_CHUNG (cũ).pdf", blocks:[
+  T(["Khách hàng","Loại","GP đạt","Quỹ trích lại","Planning","Creative","Project"],[["Hiện hữu","Digital","≥32%","2% GP Final","50%","25%","25%"],["Hiện hữu","Event","≥27%","2% GP Final","35%","20%","45%"],["Mới","Digital","≥30%","2% GP Final","50%","25%","25%"],["Mới","Event","≥25%","2% GP Final","35%","20%","45%"]]),
+  {type:"note", text:"Tổng kết cuối năm khi đạt target chung; Leader từng team phân bổ cho thành viên tham gia."},
+  T(["Doanh thu","GP","Thưởng"],[["29 tỷ","27%","½ tháng lương"],["30 tỷ","29%","1 tháng lương"],["32 tỷ","30%","1 tháng lương + 1 chuyến du lịch công ty"]]),
+  {type:"note", text:"Bảng thưởng theo doanh thu/GP trên slide nguồn không ghi rõ đối tượng áp dụng (khách hàng mới hay hiện hữu): "+NA}]},
+ {title:"Bảng chính sách Tgroup 2026 — cấp nhân viên", status:"DRAFT", src:"TGROUP_CHÍNH_SÁCH_CHUNG.xlsx — sheet “Chính sách TGroup”", blocks:[
+  T(["Chế độ","Engage","ePlus","Enabler","The Wall","Bức Tường","Green Wall","Nguyễn Mộc"],[
+   ["Phép năm theo luật","x","x","x","x","x","x","x"],
+   ["Phép năm bổ sung","Sau 1 năm +1 ngày, từ năm thứ 5","Sau 5 năm +1 ngày","Sau 1 năm +1 ngày, từ năm thứ 5","Sau 5 năm +1 ngày","Sau 5 năm +1 ngày","Sau 5 năm +1 ngày","Sau 5 năm +1 ngày"],
+   ["Thể thao","Cầu lông 1 buổi/tuần","Xem phim","—","Cầu lông 1 buổi/tuần","Cầu lông 1 buổi/tuần","Cầu lông 1 buổi/tuần","—"],
+   ["Cơm trưa","—","—","—","—","—","—","x"],
+   ["Khám sức khỏe hàng năm","1,2tr/người","1,2tr/người","1,2tr/người","1,2tr/người","1,2tr/người","1,2tr/người","1,2tr/người"],
+   ["Sinh nhật","QL 500k; NV 300k; bánh kem 500k/tháng","QL 500k; NV 300k; bánh kem 500k/tháng","QL 500k; NV 300k; bánh kem 500k/tháng","NV 300k; bánh kem 500k/tháng","NV 300k; bánh kem 500k/tháng","NV 300k; bánh kem 500k/tháng","NV 300k; bánh kem 500k/tháng"],
+   ["Quốc tế phụ nữ 8/3","500k/người (quà tặng — ghi chú “Đề xuất”)","500k/người","500k/người","500k/người","500k/người","500k/người","500k/người"],
+   ["Happy Friday","50k/người/tuần","50k/người/tuần","50k/người/tuần","50k/người/tuần","50k/người/tuần","50k/người/tuần","50k/người/tuần"],
+   ["Thưởng Tết","x","x","x","x","x","x","x"],
+   ["Kết hôn","1.000.000","1.000.000","1.000.000","1.000.000","1.000.000","1.000.000","1.000.000"],
+   ["Đám tang F1","Vòng hoa + 1tr chia buồn","(như Engage)","(như Engage)","(như Engage)","(như Engage)","(như Engage)","(như Engage)"],
+   ["Tai nạn (ghi chú: Đề xuất)","Hỗ trợ 3–5 ngày công","(như Engage)","(như Engage)","(như Engage)","(như Engage)","(như Engage)","(như Engage)"],
+   ["Quỹ team","—","—","—","200k/người/quý","200k/người/quý","200k/người/quý","—"],
+   ["Team building group","3tr/người","3tr/người","3tr/người","3tr/người","3tr/người","3tr/người","3tr/người"],
+   ["Team building nội bộ","2tr/người","2tr/người","2tr/người","2tr/người","2tr/người","2tr/người","—"],
+   ["Công tác — phí","NV 180k/ngày","NV 180k/ngày","NV 180k/ngày","NV 150k/ngày","NV 150k/ngày","—","NV 150k/ngày"],
+   ["Công tác — khách sạn","350k/đêm","350k/đêm","350k/đêm","350k/đêm","350k/đêm","—","—"],
+   ["Công tác — ra sân bay","100k/lần","100k/lần","100k/lần","100k/lần","100k/lần","—","—"]]),
+  {type:"note", text:"Sheet “Chính sách” (bản trước) khác sheet 2026 ở: ePlus phép bổ sung (giống Engage), ghi chú “Đề xuất 2.000.000” cho Kết hôn, ghi chú “Quà tặng” cho 8/3. Ô trống trong nguồn hiển thị “—”."}]},
+ {title:"Bảng chính sách Tgroup 2026 — cấp Leader", status:"DRAFT", src:"TGROUP_CHÍNH_SÁCH_CHUNG.xlsx — sheet “Chính sách TGroup”", blocks:[
+  T(["Chế độ","Engage","ePlus","Enabler","The Wall","Bức Tường","Green Wall","Nguyễn Mộc"],[
+   ["Phí Grab","—","1tr/người","3tr/người","—","—","—","—"],
+   ["Bảo hiểm cao cấp / khác","BHNT – Leader 5 năm, 15tr/năm","BH Care – trên 1 năm, 3,5tr/năm","—","BH 24h 275k/năm","BH 24h 275k/năm","—","BH 24h 275k/năm"],
+   ["Sinh nhật","500k; bánh kem 500k/tháng","500k; bánh kem 500k/tháng","500k; bánh kem 500k/tháng","500k; bánh kem 500k/tháng","500k; bánh kem 500k/tháng","500k; bánh kem 500k/tháng","500k; bánh kem 500k/tháng"],
+   ["Công tác — phí","Director 300k; Leader 250k/ngày","Director 300k; Leader 250k/ngày","Director 300k; Leader 250k/ngày","MD 300k; Leader 250k/ngày","MD 300k; Leader 250k/ngày","—","MD 300k; Leader 250k/ngày"],
+   ["Công tác — khách sạn","500k/đêm","500k/đêm","500k/đêm","500k/đêm","500k/đêm","—","—"],
+   ["Công tác — ra sân bay","100k/lần","100k/lần","100k/lần","100k/lần","100k/lần","100k/lần","100k/lần"],
+   ["Phí đi lại / Chairman","10tr/tháng","10tr/tháng","—","15tr/tháng","—","—","—"],
+   ["Phí tiếp khách / Chairman","—","—","—","—","15tr/tháng","—","—"],
+   ["Điện thoại","<500k/tháng","<500k/tháng","<500k/tháng","<500k/tháng","<500k/tháng","<500k/tháng","<500k/tháng"]])]},
+ {title:"Chế độ đề xuất theo cấp (cột Engage, ghi chú “Đề xuất”)", status:"PROPOSED", src:"TGROUP_CHÍNH_SÁCH_CHUNG.xlsx — mục 9–14 cấp Leader; chỉ nằm ở cột Engage, sheet có một dòng “Để xuất”", blocks:[
+  {type:"note", text:"PROPOSED — đề xuất, KHÔNG phải chính sách chính thức. Nội dung hai sheet khác nhau ở các chỗ ghi bên dưới."},
+  T(["Chế độ","Cấp","Nội dung"],[
+   ["Chăm sóc sức khỏe (PVI care)","Leader","Nội dung ô: “PVI care” — "+NA],
+   ["","Manager","Gói BHSK VIP cho bản thân; tài trợ 50%–100% chi phí BHSK cho vợ/chồng"],
+   ["","MD + CEO","Gói bảo hiểm sức khỏe quốc tế cho cả gia đình; tầm soát sức khỏe VIP toàn diện hàng năm"],
+   ["Phụ cấp","Leader + Manager","Chi phí đi lại, ăn uống và tiền điện thoại phục vụ công việc hàng tháng"],
+   ["","MD","Ngân sách hoặc phụ cấp xe hơi riêng hàng tháng (gồm chi phí tài xế riêng nếu có); công tác mặc định vé máy bay hạng Thương gia, khách sạn 5 sao"],
+   ["","CEO","Công ty cấp xe ô tô đưa đón riêng 24/7"],
+   ["Tích lũy tài chính & an sinh dài hạn","Leader + Manager","Chương trình BHNT tích lũy công ty đài thọ 100% (sheet 2026 thêm “Chia sẻ lợi nhuận”); gắn bó đủ 5 năm thì toàn bộ giá trị tích lũy thuộc quyền sở hữu cá nhân"],
+   ["","MD + CEO","Công ty chi trả 100% phí HĐ BHNT mệnh giá lớn bảo vệ trọn đời (sheet cũ: “cho bản thân và GĐ”; sheet 2026: “cho bản thân”)"],
+   ["Nghỉ phép & nghỉ dưỡng","Leader","Thêm 2 ngày phép năm hưởng nguyên lương"],
+   ["","Manager","Thêm 4 ngày phép năm hưởng nguyên lương"],
+   ["","CEO","1 tuần nghỉ phép đặc biệt “Ngắt kết nối hoàn toàn” hàng năm (sheet cũ: công ty đài thọ 100% chi phí nghỉ dưỡng cả gia đình tại resort 6 sao; sheet 2026 không có phần này)"],
+   ["Đào tạo, phát triển thể chất","Leader + Manager","Tài trợ 10–15 triệu/năm cho khóa học kỹ năng, chuyên môn"],
+   ["","MD + CEO","Thẻ hội viên toàn thời gian hàng năm tại hệ thống Gym/Yoga cao cấp"],
+   ["Ngoại giao & hỗ trợ cá nhân","MD","Tài trợ thẻ thành viên trọn đời CLB Golf danh tiếng hoặc Hiệp hội doanh nhân lớn"],
+   ["","CEO","Công ty chi trả tuyển dụng và vận hành Trợ lý cá nhân (lịch trình công việc và việc gia đình riêng)"]])]},
  {title:"Công tác phí & chi phí đi lại", status:"NEEDS_ALIGNMENT", src:"Engage⁺ PDF + ePlus PDF — xem bảng đối chiếu", blocks:[{type:"align", ids:[7,8,9,10,13]},{type:"note", text:"Chứng từ: Engage⁺ yêu cầu hóa đơn VAT (khách sạn, vé máy bay/xe) và chứng từ (di chuyển)."}]},
- {title:"Công tác phí — vé máy bay, di chuyển, chi phí onsite (ePlus)", status:"DRAFT", src:"EPLUS_QUY_ĐỊNH_CHUNG (cũ).pdf", blocks:[L(["Vé máy bay: theo thực tế; Project leader quyết định/duyệt thời gian, lịch trình, hãng bay.","Di chuyển tại khu vực chương trình: thuê xe máy (di chuyển nhiều & xa); app xe công nghệ (tỉnh thành có app, di chuyển ít, gần); thuê xe chung (đi đông, khu vực xa trung tâm).","Hạn mức app Be/tháng: Director 1.500.000; Head of Planning 1.000.000; Head of Project 500.000; Head of Creative 500.000; Bảo Uyên – Thanh Sương 500.000/tài khoản; Thanh Lan – Thảo Linh 1.000.000/tài khoản. Chi phí quy hoạch vào overhead (không vượt 3.000.000đ/tháng) hoặc vào dự án và ghi chú chi tiết trong bảng tổng kết cuối tháng."]),{type:"text", text:"Bảng chi phí onsite (nhân sự chạy event): Level 1 = nhân sự trực thuộc công ty; Level 2 = freelance công ty tuyển theo dự án; Level 3 = nhân sự hỗ trợ event / kỹ thuật chính của vendor. Setup = ngày thi công, tháo dỡ; Dday = rehearsal, event; Training/PPM = họp triển khai, training."},T(["Nhóm","Level","Ăn","Uống","Ăn uống OT","Tổng/ngày"],[["B1 (triển khai, training/rehearsal, event)","Level 1","120.000","70.000","70.000","190.000 (OT: 260.000)"],["B1","Level 2","100.000","70.000","60.000","170.000 (OT: 230.000)"],["B2 (thi công, tháo dỡ)","Level 1","Ăn uống 130.000/ngày","","70.000","OT: 200.000"],["B2","Level 2","Ăn uống 120.000/ngày","","70.000","OT: 190.000"],["B2","Level 3","Ăn uống 100.000/ngày","","50.000","OT: 150.000"]]),{type:"note", text:"Khung OT: tối khuya 20:00–06:00 (setup ngoài site; Level 3: 22:00–06:00); sau 18:00 áp dụng cho team triển khai. Booking KOC quay tại quán đặc thù (như GGG): hỗ trợ ăn uống di chuyển tính như ăn uống OT = 70.000đ/người/điểm quay 4→5 tiếng. Project leader xác nhận phân loại bảng phí, thời gian áp dụng, level; Leader từng team lập bảng kê gửi team logistic trước khi làm tạm ứng. Bảng gốc dạng ảnh: cần đối chiếu lại từng ô với file nguồn."}]}
+ {title:"Công tác phí — vé máy bay, di chuyển, chi phí onsite (ePlus)", status:"DRAFT", src:"EPLUS_QUY_ĐỊNH_CHUNG (cũ).pdf", blocks:[L(["Vé máy bay: theo thực tế; Project leader quyết định/duyệt thời gian, lịch trình, hãng bay.","Di chuyển tại khu vực chương trình: thuê xe máy (di chuyển nhiều & xa); app xe công nghệ (tỉnh thành có app, di chuyển ít, gần); thuê xe chung (đi đông, khu vực xa trung tâm).","Hạn mức app Be/tháng: Director 1.500.000; Head of Planning 1.000.000; Head of Project 500.000; Head of Creative 500.000; Bảo Uyên – Thanh Sương 500.000/tài khoản; Thanh Lan – Thảo Linh 1.000.000/tài khoản. Chi phí quy hoạch vào overhead (không vượt 3.000.000đ/tháng) hoặc vào dự án và ghi chú chi tiết trong bảng tổng kết cuối tháng."]),
+  {type:"text", text:"Bảng chi phí onsite (nhân sự chạy event): Level 1 = nhân sự trực thuộc công ty; Level 2 = freelance công ty tuyển theo dự án; Level 3 = nhân sự hỗ trợ event / kỹ thuật chính của vendor. Setup = ngày thi công, tháo dỡ; Dday = rehearsal, event; Training/PPM = họp triển khai, training."},
+  T(["Nhóm","Level","Ăn","Uống","Ăn uống OT","Tổng/ngày"],[["B1 (triển khai, training/rehearsal, event)","Level 1","120.000","70.000","70.000","190.000 (OT: 260.000)"],["B1","Level 2","100.000","70.000","60.000","170.000 (OT: 230.000)"],["B2 (thi công, tháo dỡ)","Level 1","Ăn uống 130.000/ngày","","70.000","OT: 200.000"],["B2","Level 2","Ăn uống 120.000/ngày","","70.000","OT: 190.000"],["B2","Level 3","Ăn uống 100.000/ngày","","50.000","OT: 150.000"]]),
+  {type:"note", text:"Khung OT: tối khuya 20:00–06:00 (setup ngoài site; Level 3: 22:00–06:00); sau 18:00 áp dụng cho team triển khai. Booking KOC quay tại quán đặc thù (như GGG): hỗ trợ ăn uống di chuyển tính như ăn uống OT = 70.000đ/người/điểm quay 4→5 tiếng. Project leader xác nhận phân loại bảng phí, thời gian áp dụng, level; Leader từng team lập bảng kê gửi team logistic trước khi làm tạm ứng. Bảng gốc dạng ảnh: cần đối chiếu lại từng ô với file nguồn."}]}
 ]},
 {id:"s05", number:"05", nav:"Lưu trữ & Hệ thống", title:"Lưu trữ & Hệ thống", status:"DRAFT", subsections:[
  {title:"Lưu trữ dữ liệu (ePlus)", status:"DRAFT", src:"EPLUS_QUY_ĐỊNH_CHUNG (cũ).pdf", blocks:[T(["Mục đích","Kênh"],[["Kênh trao đổi với KH / lưu trữ nội bộ hằng ngày","Google Drive"],["Lưu dữ liệu trên NAS","Tổng hợp các DA trong năm, 6 tháng/1 lần"]]),{type:"note", text:"Quy tắc đặt tên, phân quyền, bảo mật tài khoản, Workspace: "+NA}]}
@@ -338,16 +440,27 @@ const HANDBOOK_SECTIONS = [
 ]},
 {id:"s07", number:"07", nav:"Việc cần BOD quyết", title:"Việc cần BOD quyết", status:"NEEDS_ALIGNMENT", subsections:[
  {title:"Danh sách cần thống nhất / duyệt", status:"NEEDS_ALIGNMENT", open:true, src:"Tự động gom từ bảng đối chiếu (mục CẦN THỐNG NHẤT và ĐỀ XUẤT)", blocks:[{type:"decisions"}]}]}
+/* FAQ (07): không tạo — nguồn chưa đủ dữ liệu | FAQ not created — insufficient source */
 ];
 
-// 👷 THỢ XÂY: render keep UI + fallback
+/* ZONE 2 — SECTION FUNCTIONS
+   BRIEF: Mỗi hàm dựng một phần giao diện | One function renders one UI part
+   EDITABLE: Hàm render và tên class | Render functions and class names
+   FIX AT: FUNC_ */
 const esc = s => String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
-const badge = st => `<span class="st ${st}">${STATUS_LABEL[st]||st}</span>`;
+const badge = st => `<span class="st ${st}">${STATUS_LABEL[st]}</span>`;
+
+/* FUNC_RENDER_TREE — Dựng sơ đồ dạng cây | Render nested org tree */
+function renderTree(nodes){
+  return `<ul class="tree">${nodes.map(n => Array.isArray(n) ? `<li><b>${esc(n[0])}</b>${renderTree(n[1])}</li>` : `<li>${esc(n)}</li>`).join("")}</ul>`;
+}
+
+/* FUNC_RENDER_ORGMAP — Sơ đồ khối: Lãnh đạo → Khối hỗ trợ → Khối kinh doanh | Org map: leadership → support → business */
 function renderOrgMap(){
   const d = ORG_DATA;
-  const team = t => `<div class="team"><b class="line-clamp-2 break-words">${esc(t[0])}</b>${t[1]?`<span>${esc(t[1])}</span>`:""}${t[2]?`<em>${esc(t[2])}</em>`:""}</div>`;
-  const card = c => `<div class="orgcard"><h5 class="break-words">${esc(c.title||c.name)}</h5>${c.lead?`<p class="lead2 break-words">${esc(c.lead)}</p>`:""}${c.teams.map(team).join("")}</div>`;
-  const cluster = k => `<div class="cl"><h4 class="break-words">${esc(k.title)}</h4><p class="break-words">${esc(k.note)}</p><div class="grid2">${k.companies.map(card).join("")}</div></div>`;
+  const team = t => `<div class="team"><b>${esc(t[0])}</b>${t[1]?`<span>${esc(t[1])}</span>`:""}${t[2]?`<em>${esc(t[2])}</em>`:""}</div>`;
+  const card = c => `<div class="orgcard"><h5>${esc(c.title||c.name)}</h5>${c.lead?`<p class="lead2">${esc(c.lead)}</p>`:""}${c.teams.map(team).join("")}</div>`;
+  const cluster = k => `<div class="cl"><h4>${esc(k.title)}</h4><p>${esc(k.note)}</p><div class="grid2">${k.companies.map(card).join("")}</div></div>`;
   return `<div class="orgmap">
     <div class="orgcard top"><h4>${esc(d.top.title)}</h4><div class="two"><div><span>Chủ tịch HĐQT</span>${esc(d.top.chair)}</div><div><span>Ban Điều hành</span>${esc(d.top.board)}</div></div></div>
     <div class="conn"></div>
@@ -356,11 +469,17 @@ function renderOrgMap(){
     <div class="band"><span class="bl">KHỐI VẬN HÀNH KINH DOANH</span>${d.clusters.map(cluster).join("")}</div>
   </div>`;
 }
+
+/* FUNC_TOOLS — Lịch tháng, bộ lọc công ty, máy tính, bảng BOD | Calendar, company filter, calculator, BOD table */
 const vnd = n => n.toLocaleString("vi-VN")+"đ";
 function monthHTML(m){
-  const sp = (MONTH_SPECIAL[m]||[]).map(x=>`<li class="break-words">${esc(x)}</li>`).join("");
-  const bd = BIRTHDAYS.filter(b=>b.month===m).map(b=>`${esc(b.name)} (${b.day}/${m})`).join(", ");
-  return `<div class="mpanel"><h4>Tháng ${m}</h4><ul><li><b>Hằng tuần:</b> Happy Friday — bữa ăn xế 16:00 chiều thứ 6 (50k/người/tuần theo Excel); Thank You Wall</li><li><b>Hằng tháng:</b> chúc mừng sinh nhật ngày 10 (QL 500k, NV 300k, bánh kem 500k/tháng)</li><li><b>Theo quý:</b> Innovation Day</li>${sp}</ul><div class="note"><b>Sinh nhật:</b> ${bd || "danh sách ngày sinh "+NA}</div></div>`;
+  const sp = (MONTH_SPECIAL[m]||[]).map(x=>`<li>${esc(x)}</li>`).join("");
+  const bd = BIRTHDAYS.filter(b=>b.month===m).sort((a,b)=>a.day-b.day).map(b=>`${esc(b.name)} (${b.day}/${m})`).join(", ");
+  return `<div class="mpanel"><h4>Tháng ${m}</h4><ul>
+    <li><b>Hằng tuần:</b> Happy Friday — bữa ăn xế 16:00 chiều thứ 6 (50k/người/tuần theo Excel); Thank You Wall (Góc Cảm Ơn)</li>
+    <li><b>Hằng tháng:</b> chúc mừng sinh nhật nhân viên, tổ chức ngày 10 (QL 500k, NV 300k, bánh kem 500k/tháng theo Excel)</li>
+    <li><b>Theo quý:</b> Innovation Day (tháng cụ thể: ${NA})</li>${sp}</ul>
+    <div class="note"><b>Sinh nhật thành viên:</b> ${bd || "danh sách ngày sinh "+NA}</div></div>`;
 }
 function renderCalendar(){
   const cur = new Date().getMonth()+1;
@@ -380,143 +499,31 @@ function applyCompany(idx){
 }
 function renderCalc(){
   const o = CALC_RATES.levels.map((l,i)=>`<option value="${i}">${esc(l[0])}</option>`).join("");
-  return `<div class="calc"><div><label>Cấp bậc</label><select id="cLv">${o}</select></div><div><label>Số ngày công tác</label><input id="cDay" type="number" min="0" value="2"></div><div><label>Số đêm khách sạn</label><input id="cNight" type="number" min="0" value="1"></div><div><label>Hỗ trợ ra ga/sân bay</label><select id="cAir"><option value="0">Không</option><option value="1">1 chiều</option><option value="2">Khứ hồi</option></select></div></div><div class="res" id="cRes"></div><div class="note">Mức tối đa theo thực tế. Nhân viên dùng app xe công nghệ của công ty không được hỗ trợ khoản ra ga/sân bay (ePlus).</div>`;
+  return `<div class="calc"><div><label>Cấp bậc</label><select id="cLv">${o}</select></div>
+    <div><label>Số ngày công tác</label><input id="cDay" type="number" min="0" value="2"></div>
+    <div><label>Số đêm khách sạn (phòng 2 người)</label><input id="cNight" type="number" min="0" value="1"></div>
+    <div><label>Hỗ trợ ra ga/sân bay</label><select id="cAir"><option value="0">Không</option><option value="1">1 chiều</option><option value="2">Khứ hồi</option></select></div></div><div class="res" id="cRes"></div>
+    <div class="note">Mức tối đa theo thực tế. ePlus: phí công tác không áp dụng ngày rehearsal/event day; Project leader duyệt phương tiện và ngân sách khách sạn. Nhân viên dùng app xe công nghệ của công ty không được hỗ trợ khoản ra ga/sân bay (ePlus).</div>`;
 }
 function calcUpdate(){
   const l = CALC_RATES.levels[+document.getElementById("cLv").value];
   const d = Math.max(0,+document.getElementById("cDay").value||0), n = Math.max(0,+document.getElementById("cNight").value||0), a = +document.getElementById("cAir").value;
   const f=l[1]*d, h=l[2]*n, ap=CALC_RATES.airport*a;
-  const el=document.getElementById("cRes"); if(el) el.innerHTML = `Ăn uống: <b>${vnd(f)}</b> · Khách sạn: <b>${vnd(h)}</b> · Sân bay: <b>${vnd(ap)}</b><br>Tổng tối đa: <span class="big">${vnd(f+h+ap)}</span>`;
+  document.getElementById("cRes").innerHTML = `Ăn uống, đi lại nội thành: <b>${vnd(f)}</b> · Khách sạn: <b>${vnd(h)}</b> · Ra ga/sân bay: <b>${vnd(ap)}</b><br>Tổng tối đa: <span class="big">${vnd(f+h+ap)}</span>`;
 }
 const decKey = "hb_decisions"; let decState = {}; try{ decState = JSON.parse(localStorage.getItem(decKey)||"{}"); }catch(e){}
 function renderDecisions(){
   const rows = ALIGNMENT_DATA.map((a,i)=>[a,i]).filter(([a])=>a[5]==="NEEDS_ALIGNMENT"||a[5]==="PROPOSED");
   const r = rows.map(([a,i],k)=>{ const st = decState[i]||{};
-    return `<tr class="${st.done?"done":""}"><td>${k+1}</td><td><b class="break-words">${esc(a[0])}</b><br><span class="line-clamp-2">${esc(a[4])}</span></td><td class="line-clamp-3 break-words">${esc(ALIGNMENT_REASON[i])}</td><td><input type="text" data-k="${i}" data-f="who" value="${esc(st.who||"BOD")}"></td><td><input type="date" data-k="${i}" data-f="date" value="${st.date||""}"></td><td style="text-align:center"><input type="checkbox" data-k="${i}" data-f="done"${st.done?" checked":""}></td></tr>`; }).join("");
-  return `<p><b id="decCount"></b> <button class="btn" id="decPdf" style="color:var(--brand);border-color:var(--brand)">Xuất PDF gửi họp</button></p><div class="tw dec"><table><thead><tr><th>#</th><th>Nội dung cần quyết</th><th>Lý do</th><th>Người quyết</th><th>Hạn chót</th><th>Đã chốt</th></tr></thead><tbody>${r}</tbody></table></div>`;
+    return `<tr class="${st.done?"done":""}"><td>${k+1}</td><td><b>${esc(a[0])}</b><br>${esc(a[4])}</td><td>${esc(ALIGNMENT_REASON[i])}</td>
+    <td><input type="text" data-k="${i}" data-f="who" value="${esc(st.who||"BOD")}"></td><td><input type="date" data-k="${i}" data-f="date" value="${st.date||""}"></td>
+    <td style="text-align:center"><input type="checkbox" data-k="${i}" data-f="done"${st.done?" checked":""}></td></tr>`; }).join("");
+  return `<p><b id="decCount"></b> <button class="btn" id="decPdf" style="color:var(--brand);border-color:var(--brand)">Xuất PDF gửi họp</button></p>
+    <div class="tw dec"><table><thead><tr><th>#</th><th>Nội dung cần quyết</th><th>Lý do</th><th>Người quyết</th><th>Hạn chót</th><th>Đã chốt</th></tr></thead><tbody>${r}</tbody></table></div>`;
 }
-function decCount(){ const t = document.querySelectorAll("#s07 input[type=checkbox]"); const el = document.getElementById("decCount"); if(el) el.textContent = `${[...t].filter(c=>c.checked).length}/${t.length} mục đã chốt`; }
-function renderBlock(b){
-  if(b.type==="list") return `<ul>${b.items.map(i=>`<li class="break-words">${esc(i)}</li>`).join("")}</ul>`;
-  if(b.type==="text") return `<p class="break-words">${esc(b.text)}</p>`;
-  if(b.type==="note") return `<div class="note break-words">${esc(b.text)}</div>`;
-  if(b.type==="orgmap") return renderOrgMap();
-  if(b.type==="calendar") return renderCalendar();
-  if(b.type==="companypick") return renderCompanyPick();
-  if(b.type==="calc") return renderCalc();
-  if(b.type==="decisions") return renderDecisions();
-  if(b.type==="org") return `<div class="org">${b.boxes.map(x=>`<div class="box"><b class="break-words">${esc(x[0])}</b><br><span class="break-words">${esc(x[1])}</span></div>`).join("")}</div>`;
-  if(b.type==="table"){
-    const h = b.head.map(x=>`<th>${esc(x)}</th>`).join("");
-    const r = b.rows.map(row=>`<tr>${row.map(c=>`<td class="break-words">${esc(c)}</td>`).join("")}</tr>`).join("");
-    return `<div class="tw"><table><thead><tr>${h}</tr></thead><tbody>${r}</tbody></table></div>`;
-  }
-  if(b.type==="align"){
-    const r = b.ids.map(i=>{const a=ALIGNMENT_DATA[i];
-      return `<tr><td><b class="break-words">${esc(a[0])}</b></td><td class="break-words">${esc(a[1])}</td><td class="break-words">${esc(a[2])}</td><td class="break-words">${esc(a[3])}</td><td class="break-words line-clamp-3">${esc(a[4])}</td><td class="break-words line-clamp-3">${esc(ALIGNMENT_REASON[i])}</td><td>${badge(a[5])}</td></tr>`}).join("");
-    return `<div class="tw"><table><thead><tr><th>Nội dung</th><th>Engage</th><th>ePlus</th><th>HR / Excel</th><th>Khác biệt</th><th>Lý do</th><th>Trạng thái</th></tr></thead><tbody>${r}</tbody></table></div>`;
-  }
-  return "";
-}
-
-// 🧱 RÁP: ASSEMBLY {order [Header, Hero, Footer]} + renderApp()
-function renderHeader(){
-  const M = HANDBOOK_META;
-  const imgFallback = `this.onerror=null;this.src='${CONFIG.hero.imageFallback}'`;
-  // MUST use THEME[CONFIG.style], MUST alt + onerror fallback + lazy
-  document.getElementById("header").innerHTML = `
-    <span class="logo" id="logo">
-      <span class="plate"><img src="${M.tgroupLogo}" alt="${CONFIG.header.imageAlt}" loading="lazy" onerror="${imgFallback}"></span>
-      <img class="lw" src="${M.logoWhite}" alt="${CONFIG.header.imageAlt}" loading="lazy" onerror="${imgFallback}">
-      <img class="lb" src="${M.logoBlack}" alt="${CONFIG.header.imageAlt}" loading="lazy" onerror="${imgFallback}">
-    </span>
-    <span class="sub">${esc(M.header)}</span>
-    <span class="pill">${esc(M.status)}</span>
-    <button class="btn" id="btnPdf">Download PDF</button>`;
-  document.getElementById("foot").textContent = M.footer;
-  document.title = M.title;
-}
-function renderHero(){
-  const h = document.getElementById("hero"), C = CONFIG.hero, M = HANDBOOK_META;
-  const fb = `this.onerror=null;this.src='${C.imageFallback}'`;
-  h.innerHTML = `<div class="hero-in">
-    <div class="plate"><img src="${M.tgroupLogo}" alt="${C.imageAlt}" loading="lazy" onerror="${fb}"></div>
-    <div class="hero-line"></div>
-    <img class="hero-w" src="${C.image}" alt="${C.imageAlt}" loading="lazy" onerror="${fb}">
-    <h2 class="hero-title break-words">${esc(C.title)}</h2>
-    <div class="hero-sub break-words">${esc(C.desc)}</div>
-    <button class="hero-btn" id="enter">${esc(C.cta)}</button>
-  </div>`;
-  let seen = false; try{ seen = sessionStorage.getItem("hb_seen")==="1"; }catch(e){}
-  const close = () => { h.classList.add("out"); document.body.classList.remove("lock"); try{ sessionStorage.setItem("hb_seen","1"); }catch(e){} setTimeout(()=>h.remove(),800); };
-  if(seen){ h.remove(); return; }
-  document.body.classList.add("lock");
-  document.getElementById("enter").addEventListener("click", close);
-}
-function renderNav(){
-  document.getElementById("nav").innerHTML = HANDBOOK_SECTIONS.map(s=>`<a data-id="${s.id}">${s.number} ${esc(s.nav)}</a>`).join("");
-}
-function render(){
-  // MUST break-words + line-clamp applied in blocks above
-  const cnt = {}; HANDBOOK_SECTIONS.forEach(x=>x.subsections.forEach(y=>cnt[y.status]=(cnt[y.status]||0)+1));
-  const legend = `<div class="legend">${Object.keys(STATUS_LABEL).filter(k=>cnt[k]).map(k=>`<button class="st lg ${k}" data-st="${k}">${STATUS_LABEL[k]} · ${cnt[k]}</button>`).join("")}</div>`;
-  const secs = HANDBOOK_SECTIONS.map(s=>`
-    <section class="sec" id="${s.id}">
-      <h2><span class="num">${s.number}</span><span class="break-words">${esc(s.title)}</span> ${badge(s.status)}</h2>
-      ${s.subsections.map((sub,k)=>`
-        <details class="blk" data-st="${sub.status}"${(k===0||sub.open)?" open":""}>
-          <summary><span class="break-words">${esc(sub.title)}</span> ${badge(sub.status)}</summary>
-          <div class="body"><p class="src break-words">Nguồn: ${esc(sub.src)}</p>${sub.blocks.map(renderBlock).join("")}</div>
-        </details>`).join("")}
-    </section>`).join("");
-  document.getElementById("app").innerHTML = `
-    <h1 class="break-words">${esc(HANDBOOK_META.title)}</h1><p class="lead break-words">${esc(HANDBOOK_META.subtitle)}</p>
-    <div class="tools"><input class="search" id="q" placeholder="Tìm kiếm trong Handbook…"><button id="toggleAll">Mở / đóng tất cả</button></div>${legend}${secs}`;
-}
-const ASSEMBLY = { order:["Header","Hero","Nav","Content","Footer"], renderApp: null };
-function initTabs(){
-  const links = [...document.querySelectorAll("#nav a")], secs = [...document.querySelectorAll("section.sec")];
-  const show = id => { links.forEach(a=>a.classList.toggle("on", a.dataset.id===id)); secs.forEach(x=>x.classList.toggle("on", x.id===id)); };
-  links.forEach(a=>a.addEventListener("click", ()=>{ show(a.dataset.id); window.scrollTo(0, document.getElementById("app").offsetTop - 8); }));
-  if(links[0]) show(HANDBOOK_SECTIONS[0].id);
-}
-function initSearch(){
-  let q = "", st = "";
-  const apply = () => {
-    const active = !!(q || st);
-    document.body.classList.toggle("searching", active);
-    document.querySelectorAll("details.blk").forEach(d=>{
-      const hit = (!q || d.textContent.toLowerCase().includes(q)) && (!st || d.dataset.st===st);
-      d.style.display = hit ? "" : "none"; if(active && hit) d.open = true;
-    });
-  };
-  const input=document.getElementById("q"); if(input) input.addEventListener("input", e=>{ q = e.target.value.trim().toLowerCase(); apply(); });
-  document.querySelectorAll(".lg").forEach(b=>b.addEventListener("click", ()=>{
-    st = (st===b.dataset.st) ? "" : b.dataset.st;
-    document.querySelectorAll(".lg").forEach(x=>x.classList.toggle("on", x.dataset.st===st)); apply();
-  }));
-  const tg=document.getElementById("toggleAll"); if(tg) tg.addEventListener("click", ()=>{
-    const cur = document.querySelectorAll("section.sec.on details.blk");
-    const anyClosed = [...cur].some(d=>!d.open); cur.forEach(d=>d.open = anyClosed);
-  });
-}
-function initMotion(){
-  const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.08});
-  document.querySelectorAll("details.blk, .orgcard, .cl, .band").forEach((el,i)=>{ el.classList.add("rv"); el.style.transitionDelay = (i%4)*70+"ms"; io.observe(el); });
-  const bar = document.getElementById("prog"); let tick = false;
-  window.addEventListener("scroll", ()=>{ if(tick) return; tick = true; requestAnimationFrame(()=>{
-    const h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${h>0 ? scrollY/h : 0})`; tick = false; }); }, {passive:true});
-}
-function initPdf(){
-  const btn=document.getElementById("btnPdf"); if(btn) btn.addEventListener("click", ()=>{
-    document.querySelectorAll("details.blk").forEach(d=>d.open = true);
-    window.print();
-  });
-}
-function initBackToTop(){
-  const b = document.getElementById("toTop"); let on = false;
-  window.addEventListener("scroll", ()=>{ const v = window.scrollY>500; if(v!==on){ on=v; b.style.display = v ? "block" : "none"; } }, {passive:true});
-  b.addEventListener("click", ()=>window.scrollTo(0,0));
+function decCount(){
+  const t = document.querySelectorAll("#s07 input[type=checkbox]"); const el = document.getElementById("decCount");
+  if(el) el.textContent = `${[...t].filter(c=>c.checked).length}/${t.length} mục đã chốt`;
 }
 function initTools(){
   document.addEventListener("click", e=>{
@@ -536,26 +543,129 @@ function initTools(){
   });
   if(document.getElementById("cLv")) calcUpdate(); decCount();
 }
-function renderApp(){
-  // 🏠 MÓNG: [PAGE_META + THEME_GLOBAL + DEBUG_CONFIG]
-  // 📐 BẢN VẼ: [CONFIG]
-  // 👷 THỢ XÂY: [render keep UI + fallback]
-  // 🧱 RÁP: [ASSEMBLY order Header, Hero, Footer]
-  // 🛡️ CHỐNG VỠ: [wrap + clamp]
-  renderHeader();
-  renderHero();
-  renderNav();
-  render();
-  initTabs();
-  initSearch();
-  initPdf();
-  initBackToTop();
-  initMotion();
-  initTools();
-  DEBUG_CONFIG.log("renderApp done", PAGE_META.version);
+
+/* FUNC_RENDER_BLOCK — Dựng một khối nội dung | Render one content block */
+function renderBlock(b){
+  if(b.type==="list") return `<ul>${b.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul>`;
+  if(b.type==="text") return `<p>${esc(b.text)}</p>`;
+  if(b.type==="note") return `<div class="note">${esc(b.text)}</div>`;
+  if(b.type==="tree") return renderTree(b.nodes);
+  if(b.type==="orgmap") return renderOrgMap();
+  if(b.type==="calendar") return renderCalendar();
+  if(b.type==="companypick") return renderCompanyPick();
+  if(b.type==="calc") return renderCalc();
+  if(b.type==="decisions") return renderDecisions();
+  if(b.type==="org")  return `<div class="org">${b.boxes.map(x=>`<div class="box"><b>${esc(x[0])}</b><br>${esc(x[1])}</div>`).join("")}</div>`;
+  if(b.type==="table"){
+    const h = b.head.map(x=>`<th>${esc(x)}</th>`).join("");
+    const r = b.rows.map(row=>`<tr>${row.map(c=>`<td>${esc(c)}</td>`).join("")}</tr>`).join("");
+    return `<div class="tw"><table><thead><tr>${h}</tr></thead><tbody>${r}</tbody></table></div>`;
+  }
+  if(b.type==="align"){
+    const r = b.ids.map(i=>{const a=ALIGNMENT_DATA[i];
+      return `<tr><td><b>${esc(a[0])}</b></td><td>${esc(a[1])}</td><td>${esc(a[2])}</td><td>${esc(a[3])}</td><td>${esc(a[4])}</td><td>${esc(ALIGNMENT_REASON[i])}</td><td>${badge(a[5])}</td></tr>`}).join("");
+    return `<div class="tw"><table><thead><tr><th>Nội dung</th><th>Engage</th><th>ePlus</th><th>HR / Excel / Sơ đồ 2027</th><th>Tóm tắt khác biệt</th><th>Lý do & ai cần quyết</th><th>Trạng thái</th></tr></thead><tbody>${r}</tbody></table></div>`;
+  }
+  return "";
 }
-ASSEMBLY.renderApp = renderApp;
-document.addEventListener("DOMContentLoaded", renderApp);
+
+/* FUNC_RENDER_SECTIONS — Dựng tab + mục; chỉ mục đầu của mỗi tab mở sẵn | Render tabs + sections; only first subsection open */
+function renderSections(){
+  document.getElementById("nav").innerHTML = HANDBOOK_SECTIONS.map(s=>`<a data-id="${s.id}">${s.number} ${esc(s.nav)}</a>`).join("");
+  const cnt = {}; HANDBOOK_SECTIONS.forEach(x=>x.subsections.forEach(y=>cnt[y.status]=(cnt[y.status]||0)+1));
+  const legend = `<div class="legend">${Object.keys(STATUS_LABEL).filter(k=>cnt[k]).map(k=>`<button class="st lg ${k}" data-st="${k}">${STATUS_LABEL[k]} · ${cnt[k]}</button>`).join("")}</div>`;
+  const secs = HANDBOOK_SECTIONS.map(s=>`
+    <section class="sec" id="${s.id}">
+      <h2><span class="num">${s.number}</span>${esc(s.title)} ${badge(s.status)}</h2>
+      ${s.subsections.map((sub,k)=>`
+        <details class="blk" data-st="${sub.status}"${(k===0||sub.open)?" open":""}>
+          <summary>${esc(sub.title)} ${badge(sub.status)}</summary>
+          <div class="body"><p class="src">Nguồn: ${esc(sub.src)}</p>${sub.blocks.map(renderBlock).join("")}</div>
+        </details>`).join("")}
+    </section>`).join("");
+  document.getElementById("app").innerHTML = `
+    <h1>${esc(HANDBOOK_META.title)}</h1><p class="lead">${esc(HANDBOOK_META.subtitle)}</p>
+    <div class="tools"><input class="search" id="q" placeholder="Tìm kiếm trong Handbook…"><button id="toggleAll">Mở / đóng tất cả</button></div>${legend}${secs}`;
+}
+
+/* FUNC_HEADER_FOOTER — Đầu/chân trang với logo thật (trắng trên nền tối, đen khi in) | Header/footer with real logos (white on dark, black in print) */
+function renderChrome(){
+  const M = HANDBOOK_META;
+  document.getElementById("logo").innerHTML = `<span class="plate"><img src="${M.tgroupLogo}" alt="Tgroup"></span><img class="lw" src="${M.logoWhite}" alt="WePlus⁺"><img class="lb" src="${M.logoBlack}" alt="WePlus⁺">`;
+  document.getElementById("hdrSub").textContent = M.header;
+  document.getElementById("hdrStatus").textContent = M.status;
+  document.getElementById("foot").textContent = M.footer;
+  document.title = M.title;
+}
+
+/* FUNC_HERO — Mở đầu: logo Tgroup trước, WePlus⁺ sau | Intro: Tgroup first, then WePlus⁺ */
+function initHero(){
+  const h = document.getElementById("hero"), M = HANDBOOK_META;
+  h.innerHTML = `<div class="hero-in"><div class="plate"><img src="${M.tgroupLogo}" alt="Tgroup"></div><div class="hero-line"></div>
+    <img class="hero-w" src="${M.logoWhite}" alt="WePlus⁺"><h2 class="hero-title">Handbook 2026</h2>
+    <div class="hero-sub">${esc(M.subtitle)}</div><button class="hero-btn" id="enter">Vào Handbook</button></div>`;
+  let seen = false; try{ seen = sessionStorage.getItem("hb_seen")==="1"; }catch(e){}
+  const close = () => { h.classList.add("out"); document.body.classList.remove("lock"); try{ sessionStorage.setItem("hb_seen","1"); }catch(e){} setTimeout(()=>h.remove(),800); };
+  if(seen){ h.remove(); return; }
+  document.body.classList.add("lock");
+  document.getElementById("enter").addEventListener("click", close);
+}
+
+/* FUNC_TABS — Chuyển tab (chỉ cuộn khi người dùng bấm) | Tab switching (scroll only on user click) */
+function initTabs(){
+  const links = [...document.querySelectorAll("#nav a")], secs = [...document.querySelectorAll("section.sec")];
+  const show = id => { links.forEach(a=>a.classList.toggle("on", a.dataset.id===id)); secs.forEach(x=>x.classList.toggle("on", x.id===id)); };
+  links.forEach(a=>a.addEventListener("click", ()=>{ show(a.dataset.id); window.scrollTo(0, document.getElementById("app").offsetTop - 8); }));
+  show(HANDBOOK_SECTIONS[0].id);
+}
+
+/* FUNC_SEARCH — Tìm kiếm + lọc theo trạng thái + mở/đóng tất cả | Search + status filter + toggle all */
+function initSearch(){
+  let q = "", st = "";
+  const apply = () => {
+    const active = !!(q || st);
+    document.body.classList.toggle("searching", active);
+    document.querySelectorAll("details.blk").forEach(d=>{
+      const hit = (!q || d.textContent.toLowerCase().includes(q)) && (!st || d.dataset.st===st);
+      d.style.display = hit ? "" : "none"; if(active && hit) d.open = true;
+    });
+  };
+  document.getElementById("q").addEventListener("input", e=>{ q = e.target.value.trim().toLowerCase(); apply(); });
+  document.querySelectorAll(".lg").forEach(b=>b.addEventListener("click", ()=>{
+    st = (st===b.dataset.st) ? "" : b.dataset.st;
+    document.querySelectorAll(".lg").forEach(x=>x.classList.toggle("on", x.dataset.st===st)); apply();
+  }));
+  document.getElementById("toggleAll").addEventListener("click", ()=>{
+    const cur = document.querySelectorAll("section.sec.on details.blk");
+    const anyClosed = [...cur].some(d=>!d.open); cur.forEach(d=>d.open = anyClosed);
+  });
+}
+
+/* FUNC_MOTION — Hiện dần khi cuộn (chạy 1 lần) + thanh tiến độ đọc | Reveal on scroll (once) + reading progress */
+function initMotion(){
+  const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.08});
+  document.querySelectorAll("details.blk, .orgcard, .cl, .band").forEach((el,i)=>{ el.classList.add("rv"); el.style.transitionDelay = (i%4)*70+"ms"; io.observe(el); });
+  const bar = document.getElementById("prog"); let tick = false;
+  window.addEventListener("scroll", ()=>{ if(tick) return; tick = true; requestAnimationFrame(()=>{
+    const h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${h>0 ? scrollY/h : 0})`; tick = false; }); }, {passive:true});
+}
+
+/* FUNC_PDF — Mở hộp thoại in, chọn Lưu thành PDF | Opens print dialog, choose Save as PDF */
+function initPdf(){
+  document.getElementById("btnPdf").addEventListener("click", ()=>{
+    document.querySelectorAll("details.blk").forEach(d=>d.open = true);
+    window.print();
+  });
+}
+
+/* FUNC_BACK_TO_TOP — Nút lên đầu trang | Back-to-top button */
+function initBackToTop(){
+  const b = document.getElementById("toTop"); let on = false;
+  window.addEventListener("scroll", ()=>{ const v = window.scrollY>500; if(v!==on){ on=v; b.style.display = v ? "block" : "none"; } }, {passive:true});
+  b.addEventListener("click", ()=>window.scrollTo(0,0));
+}
+
+renderChrome(); renderSections(); initTabs(); initSearch(); initPdf(); initBackToTop(); initMotion(); initTools(); initHero();
 </script>
-<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
+</body>
 </html>
