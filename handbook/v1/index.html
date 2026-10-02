@@ -390,7 +390,7 @@ const L = items => ({ type: "list", items });
 
 const HANDBOOK_SECTIONS = [
   { id: "s01", nav: "THÔNG TIN CHUNG", title: "THÔNG TIN CHUNG", status: "DRAFT", subsections: [
-    { title: "Sơ đồ tổ chức Tgroup", status: "DRAFT", src: "", blocks: [
+    { title: "SƠ ĐỒ TỔ CHỨC HỆ SINH THÁI TGROUP", status: "DRAFT", src: "", blocks: [
       { type: "orgtree" }
     ]},
     { title: "A. Khối Dịch vụ (WePlus⁺)", blocks: [
@@ -621,7 +621,6 @@ function renderDecisions() {
   }).join("");
 
   return `
-    <p><b id="decCount"></b> <button class="btn" id="decPdf" style="color:var(--brand);border-color:var(--brand);padding:4px 10px;font-size:10px">Xuất bảng này gửi họp</button></p>
     <div class="tw dec">
         <table>
             <thead><tr><th>#</th><th>Nội dung khác biệt</th><th>Engage⁺</th><th>ePlus⁺</th><th>Cần BOD Quyết</th><th>Chốt</th></tr></thead>
