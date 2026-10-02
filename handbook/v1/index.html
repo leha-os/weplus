@@ -65,12 +65,12 @@ body.lock { overflow: hidden; }
 #hero.out { opacity: 0; visibility: hidden; }
 #hero::before { content: ""; pointer-events: none; position: absolute; width: 160vmax; height: 160vmax; left: 50%; top: 50%; margin: -80vmax 0 0 -80vmax; background: conic-gradient(from 0deg, transparent 0, rgba(184,151,90,.16) 12%, transparent 30%, rgba(20,80,59,.55) 55%, transparent 75%); animation: spin 50s linear infinite; }
 .hero-in { position: relative; z-index: 2; padding: 20px; }
-.hero-line { height: 1px; width: 0; margin: 20px auto; background: var(--accent); animation: line 1.4s .8s ease forwards; } /* Delayed line animation */
-.hero-title { font-family: var(--font); font-size: clamp(22px, 4.5vw, 34px); line-height: 1.15; margin: 0; font-weight: 700; opacity: 0; animation: fadeIn 0.8s 1s forwards; } /* Delayed fade in */
-.hero-sub { opacity: 0; margin: 12px 0 28px; font-size: 13px; letter-spacing: .06em; animation: fadeIn 0.8s 1.2s forwards; } /* Delayed fade in */
-.hero-btn { opacity: 0; border: 1px solid var(--accent); background: transparent; color: var(--on-dark); padding: 12px 28px; font: inherit; letter-spacing: .14em; cursor: pointer; text-transform: uppercase; font-size: 11px; border-radius: 99px; transition: .2s; animation: fadeIn 0.8s 1.4s forwards; } /* Delayed fade in */
+.hero-line { height: 1px; width: 0; margin: 20px auto; background: var(--accent); animation: line 1.4s .8s ease forwards; } 
+.hero-title { font-family: var(--font); font-size: clamp(22px, 4.5vw, 34px); line-height: 1.15; margin: 0; font-weight: 700; opacity: 0; animation: fadeIn 0.8s 1s forwards; } 
+.hero-sub { opacity: 0; margin: 12px 0 28px; font-size: 13px; letter-spacing: .06em; animation: fadeIn 0.8s 1.2s forwards; } 
+.hero-btn { opacity: 0; border: 1px solid var(--accent); background: transparent; color: var(--on-dark); padding: 12px 28px; font: inherit; letter-spacing: .14em; cursor: pointer; text-transform: uppercase; font-size: 11px; border-radius: 99px; transition: .2s; animation: fadeIn 0.8s 1.4s forwards; } 
 .hero-btn:hover { background: var(--accent); color: var(--hero); }
-.hero-w { height: 0px; display: block; margin: 0 auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); opacity: 0; animation: logoGrow 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s forwards; } /* Logo pop and grow */
+.hero-w { height: 0px; display: block; margin: 0 auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); opacity: 0; animation: logoGrow 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s forwards; } 
 
 @keyframes spin { to { transform: rotate(360deg); } } 
 @keyframes line { to { width: 120px; } }
@@ -78,7 +78,11 @@ body.lock { overflow: hidden; }
 @keyframes logoGrow { 
   0% { height: 0px; opacity: 0; transform: scale(0.5); }
   50% { opacity: 1; }
-  100% { height: 140px; opacity: 1; transform: scale(1); } /* Increased size */
+  100% { height: 140px; opacity: 1; transform: scale(1); } 
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Header & Nav */
@@ -93,7 +97,7 @@ nav.nav a { padding: 13px 16px; color: rgba(255,255,255,.65); text-decoration: n
 nav.nav a:hover { color: var(--on-dark); } nav.nav a.on { color: var(--on-dark); border-bottom-color: var(--accent); background: rgba(255,255,255,.06); }
 
 /* Main wrap */
-main.wrap { max-width: var(--maxw); margin: 0 auto; padding: 24px 14px 70px; position: relative; z-index: 1; flex: 1 0 auto; width: 100%; } /* Flex grow */
+main.wrap { max-width: var(--maxw); margin: 0 auto; padding: 24px 14px 70px; position: relative; z-index: 1; flex: 1 0 auto; width: 100%; }
 h1 { font-family: var(--font); font-size: 22px; color: var(--brand); margin: 0 0 4px; line-height: 1.25; font-weight: 700; }
 .lead { color: var(--muted); margin: 0 0 16px; font-size: 12px; }
 .tools { display: flex; gap: 8px; margin-bottom: 8px; }
@@ -103,16 +107,20 @@ h1 { font-family: var(--font); font-size: 22px; color: var(--brand); margin: 0 0
 .tools button:hover { background: var(--brand); color: var(--on-dark); }
 .legend { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0 6px; }
 
-/* Sections & Accordions */
-section.sec { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.03); display: none; }
-section.sec.on, body.searching section.sec { display: block; }
-section.sec > h2 { font-family: var(--font); font-size: 15px; color: var(--brand); margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--line); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; cursor: pointer; user-select: none; background: #fff; transition: .2s; }
-section.sec > h2:hover { background: #faf8f3; }
+/* Sections & Accordions (With Hover Animations) */
+section.sec { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.03); display: none; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+section.sec:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.06); border-left-color: var(--accent); }
+section.sec.on, body.searching section.sec { display: block; animation: fadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+section.sec > h2 { font-family: var(--font); font-size: 15px; color: var(--brand); margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--line); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; cursor: pointer; user-select: none; background: #fff; transition: background 0.3s, color 0.3s, padding-left 0.3s; }
+section.sec > h2:hover { background: #faf8f3; padding-left: 20px; color: var(--brand-2); }
 section.sec.collapsed > h2 { border-bottom: 0; } section.sec.collapsed details.blk { display: none; }
 section.sec > h2::after { content: "▼"; margin-left: auto; font-size: 10px; transition: .2s; color: var(--accent); }
 section.sec.collapsed > h2::after { transform: rotate(-90deg); }
 
-details.blk { background: var(--card); border-top: 1px solid var(--line); margin: 0; transition: .2s; }
+details.blk { background: var(--card); border-top: 1px solid var(--line); margin: 0; transition: background 0.3s; position: relative; }
+details.blk::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); transform: scaleY(0); transition: transform 0.3s ease; transform-origin: center; z-index: 2; }
+details.blk:hover { background: #faf8f3; }
+details.blk:hover::after { transform: scaleY(1); }
 details.blk > summary { cursor: pointer; padding: 12px 16px; font-weight: 600; font-size: 12.5px; list-style: none; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 details.blk > summary::-webkit-details-marker { display: none; }
 details.blk > summary::before { content: "+"; color: var(--accent); font-weight: 800; width: 14px; display: inline-block; }
@@ -178,14 +186,14 @@ tbody tr:nth-child(even) { background: #faf8f3; }
 .lg { border: 0; cursor: pointer; font-family: inherit; transition: .2s; } .lg:hover { transform: translateY(-1px); box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
 .lg.on { outline: 2px solid var(--brand); }
 
-footer { text-align: center; color: var(--muted); font-size: 11.5px; padding: 24px 14px; border-top: 1px solid var(--line); flex-shrink: 0; } /* Fixed footer */
-#toTop { position: fixed; right: 16px; bottom: 16px; background: var(--brand); color: var(--on-dark); border: 0; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: none; font-size: 16px; transition: opacity 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+footer { text-align: center; color: var(--muted); font-size: 11.5px; padding: 24px 14px; border-top: 1px solid var(--line); flex-shrink: 0; } 
+#toTop { position: fixed; right: 16px; bottom: 16px; background: var(--brand); color: var(--on-dark); border: 0; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: none; font-size: 16px; transition: opacity 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 50; }
 #toTop:hover { opacity: 0.8; }
 #prog { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; z-index: 60; }
 
 /* Print styles - Tối ưu in ấn PDF */
 @media print {
-  body { background: #fff; font-size: 11pt; color: #000; }
+  body { background: #fff; font-size: 11pt; color: #000; display: block; }
   #hero, nav.nav, #toTop, .tools, button.btn, .cpick, .calc, .hero-w, header::after, .legend { display: none !important; }
   header.top { background: #fff; color: var(--brand); padding: 0; border-bottom: 2px solid var(--brand); margin-bottom: 15px; }
   .logo img { filter: invert(1); }
@@ -245,7 +253,7 @@ const HANDBOOK_META = {
 
 const STATUS_LABEL = {
   OFFICIAL: "CHÍNH THỨC",
-  DRAFT: "BẢN NHÁP",
+  DRAFT: "CẦN PHÊ DUYỆT",
   NEEDS_ALIGNMENT: "CẦN THỐNG NHẤT",
   MISSING: "CHƯA CÓ THÔNG TIN",
   PROPOSED: "ĐỀ XUẤT",
@@ -288,7 +296,7 @@ const ORG_DATA = {
   top: { title: "TGROUP" },
   bod: { title: "Hội đồng Quản trị & Ban Điều hành (BOD)", chair: "Chủ tịch HĐQT: Mr Tâm", board: "Ban Điều hành: Ms Ngọc Hà, Mr Kiệt, Ms Mỹ" },
   support: [
-    { title: "Business Development Team", lead: "", teams: [["Cố vấn PTTK", "Mr Tâm"], ["Giám đốc PTTK", "Ms Hạnh"]] },
+    { title: "Business Development Team", lead: "", teams: [["Cố vấn Phát triển Kinh doanh", "Mr Tâm"], ["Giám đốc Phát triển Kinh doanh", "Ms Hạnh"]] },
     { title: "Tài chính & Kế toán", lead: "Giám đốc Tài chính / Kế toán trưởng: Mr Khánh", teams: [["Khối Quản lý — Nhóm 01", "Leader: Ms Tuyết", "05 Kế toán viên"], ["Khối Quản lý — Nhóm 02", "Leader: Mr Minh", "05 Kế toán viên"]] },
     { title: "Nhân sự & Pháp chế", lead: "Trưởng phòng: Ms Mỹ", teams: [["Chuyên viên C&B", "Ms Xuân"], ["Chuyên viên Pháp chế", "Ms Hòa"]] }
   ],
@@ -322,14 +330,26 @@ const L = items => ({ type: "list", items });
 
 const HANDBOOK_SECTIONS = [
   { id: "s01", number: "01", nav: "Profile & Tổ chức", title: "Profile & Sơ đồ tổ chức", status: "DRAFT", subsections: [
-    { title: "1.1. Profile Công ty", status: "MISSING", src: "Chưa có tài liệu", blocks: [
+    { title: "1.1.1. KHỐI DỊCH VỤ (WEPLUS⁺)", status: "MISSING", src: "Chưa có tài liệu", blocks: [
       { type: "text", text: "Giới thiệu chung về TGroup, WePlus⁺, sứ mệnh, tầm nhìn và giá trị cốt lõi." },
-      { type: "text", text: "WePlus⁺ (Khối Dịch vụ)" },
-      { type: "text", text: "ePlus⁺" },
-      { type: "text", text: "Engage⁺" },
-      { type: "text", text: "Enabler⁺" },
-      { type: "text", text: "GolfCare⁺" },
-      { type: "text", text: "Cluster 02 (Khối Kiến tạo & Sản xuất)" }
+      { type: "html", text: `<div class="n-card cluster" style="width:100%; margin-top:12px; margin-bottom:4px; box-sizing:border-box"><b>ePlus⁺</b></div>` },
+      { type: "text", text: "[Cập nhật profile, định vị, dịch vụ...]" },
+      { type: "html", text: `<div class="n-card cluster" style="width:100%; margin-top:12px; margin-bottom:4px; box-sizing:border-box"><b>Engage⁺</b></div>` },
+      { type: "text", text: "[Cập nhật profile, định vị, dịch vụ...]" },
+      { type: "html", text: `<div class="n-card cluster" style="width:100%; margin-top:12px; margin-bottom:4px; box-sizing:border-box"><b>Enabler⁺</b></div>` },
+      { type: "text", text: "[Cập nhật profile, định vị, dịch vụ...]" },
+      { type: "html", text: `<div class="n-card cluster" style="width:100%; margin-top:12px; margin-bottom:4px; box-sizing:border-box"><b>GolfCare⁺</b></div>` },
+      { type: "text", text: "[Cập nhật profile, định vị, dịch vụ...]" }
+    ]},
+    { title: "1.1.2. KHỐI XÂY DỰNG & SẢN XUẤT", status: "MISSING", src: "Chưa có tài liệu", blocks: [
+      { type: "html", text: `<div class="n-card cluster" style="width:100%; margin-top:12px; margin-bottom:4px; box-sizing:border-box; background:#e4efe8; border-color:var(--st-official); color:var(--st-official)"><b>The Wall</b></div>` },
+      { type: "text", text: "[Cập nhật profile, định vị, dịch vụ...]" },
+      { type: "html", text: `<div class="n-card cluster" style="width:100%; margin-top:12px; margin-bottom:4px; box-sizing:border-box; background:#e4efe8; border-color:var(--st-official); color:var(--st-official)"><b>Imperial</b></div>` },
+      { type: "text", text: "[Cập nhật profile, định vị, dịch vụ...]" },
+      { type: "html", text: `<div class="n-card cluster" style="width:100%; margin-top:12px; margin-bottom:4px; box-sizing:border-box; background:#e4efe8; border-color:var(--st-official); color:var(--st-official)"><b>Nguyễn Mộc</b></div>` },
+      { type: "text", text: "[Cập nhật profile, định vị, dịch vụ...]" },
+      { type: "html", text: `<div class="n-card cluster" style="width:100%; margin-top:12px; margin-bottom:4px; box-sizing:border-box; background:#e4efe8; border-color:var(--st-official); color:var(--st-official)"><b>Green Wall</b></div>` },
+      { type: "text", text: "[Cập nhật profile, định vị, dịch vụ...]" }
     ]},
     { title: "1.2. Sơ đồ tổ chức Tgroup", status: "DRAFT", src: "Sơ đồ nội bộ (Cập nhật Khối Hỗ trợ, BOD)", blocks: [
       { type: "orgtree" }
@@ -562,6 +582,7 @@ function decCount() {
 function renderBlock(b) {
   if (b.type === "list") return `<ul>${b.items.map(i => `<li>${esc(i)}</li>`).join("")}</ul>`;
   if (b.type === "text") return `<p>${esc(b.text)}</p>`;
+  if (b.type === "html") return b.text;
   if (b.type === "note") return `<div class="note">${esc(b.text)}</div>`;
   if (b.type === "orgtree") return renderOrgTree();
   if (b.type === "calendar_table") return renderCalendarTable();
