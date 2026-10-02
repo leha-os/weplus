@@ -502,7 +502,8 @@ function renderLeavePortal(){
     <div class="lv-f full"><label for="lvEmail">Email đã đăng ký</label>
       <div class="lv-row"><input id="lvEmail" type="email" autocomplete="email" placeholder="email@..."><button type="button" class="lv-btn" id="lvVerify">Xác thực</button></div></div>
     <div class="lv-f"><label>Họ và tên</label><input id="lvName" readonly></div>
-    <div class="lv-f"><label>Người duyệt</label><input id="lvApprover" readonly></div>
+    <div class="lv-f"><label>Công ty</label><input id="lvDept" readonly></div>
+    <div class="lv-f full"><label>Người duyệt</label><input id="lvApprover" readonly></div>
     <div class="lv-f"><label for="lvFrom">Nghỉ từ ngày</label><input id="lvFrom" type="date" disabled></div>
     <div class="lv-f"><label for="lvTo">Nghỉ đến ngày</label><input id="lvTo" type="date" disabled></div>
     <div class="lv-f"><label>Tổng số ngày nghỉ</label><input id="lvDays" readonly></div>
@@ -532,7 +533,7 @@ function bindLeavePortal(){
   };
   // Sửa email => phải xác thực lại | Email edited => re-verify
   $("lvEmail").addEventListener("input",()=>{
-    verifiedEmail="";setLocked(true);$("lvName").value="";$("lvApprover").value="";msg("");
+    verifiedEmail="";setLocked(true);$("lvName").value="";$("lvDept").value="";$("lvApprover").value="";msg("");
   });
   $("lvFrom").addEventListener("change",refreshDays);
   $("lvTo").addEventListener("change",refreshDays);
@@ -544,7 +545,7 @@ function bindLeavePortal(){
     try{
       const r=await leaveApi({action:"verify",email});
       if(!r.ok){msg(r.message,"err");}
-      else{verifiedEmail=email;$("lvName").value=r.name;$("lvApprover").value=r.approver;setLocked(false);}
+      else{verifiedEmail=email;$("lvName").value=r.name;$("lvDept").value=r.dept;$("lvApprover").value=r.approver;setLocked(false);}
     }catch(err){msg(err.message,"err");}
     busy=false;$("lvVerify").disabled=false;
   });
