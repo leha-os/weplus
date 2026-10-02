@@ -5,12 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Employee Handbook 2026 · WePlus⁺</title>
 
+<!-- SEO Description — Sổ tay nhân viên -->
 <meta name="description" content="Employee Handbook 2026 · WePlus⁺ — Sổ tay nhân viên WePlus⁺: Quy định chung, văn hóa làm việc, chính sách nhân sự, phúc lợi, lưu trữ & hệ thống, quy trình vận hành. Chỉ lưu hành nội bộ — Internal Use Only.">
 <meta name="keywords" content="WePlus Employee Handbook 2026, So tay nhan vien WePlus, Tgroup, ePlus, Engage, GolfCare, Noi quy, Phuc loi">
 <meta name="author" content="WePlus⁺ HR">
 <link rel="canonical" href="https://leha-os.github.io/weplus/handbook/v1">
 <meta name="robots" content="noindex,nofollow">
 
+<!-- Open Graph / Facebook / Zalo / LinkedIn -->
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://leha-os.github.io/weplus/handbook/v1">
 <meta property="og:title" content="Employee Handbook 2026 · WePlus⁺">
@@ -23,10 +25,12 @@
 <meta property="og:site_name" content="WePlus⁺">
 <meta property="og:locale" content="vi_VN">
 
+<!-- Zalo -->
 <meta property="zalo:title" content="Employee Handbook 2026 · WePlus⁺">
 <meta property="zalo:description" content="Sổ tay nhân viên — Chỉ lưu hành nội bộ. WePlus⁺ Handbook 2026.">
 <meta property="zalo:image" content="https://leha-os.github.io/assets/WePlus4BU.jpg">
 
+<!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://leha-os.github.io/weplus/handbook/v1">
 <meta name="twitter:title" content="Employee Handbook 2026 · WePlus⁺">
@@ -40,6 +44,7 @@
   --brand: #0c2e24; --brand-2: #14503b; --accent: #b8975a; --accent-soft: #f1eadb;
   --ink: #1a1f1c; --muted: #6b726d; --line: #e6e1d6; --bg: #f7f5f0; --card: #ffffff; --hero: #071a14; --on-dark: #ffffff;
   
+  /* Màu đồng bộ Xám cho tất cả trạng thái Nháp/Chưa thống nhất/Đề xuất... */
   --st-official: #1f6b4a; --st-official-bg: #e4efe8;
   --st-draft: #5f6661; --st-draft-bg: #ecebe6;
   --st-align: #5f6661; --st-align-bg: #ecebe6;
@@ -81,6 +86,7 @@ body::after { background: #e4efe8; bottom: -150px; right: -100px; animation: flo
   100% { height: 160px; opacity: 1; transform: scale(1) translateY(0); } 
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
 
 /* Header & Nav */
 header.top { background: var(--brand); color: var(--on-dark); padding: 12px 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; position: relative; overflow: hidden; z-index: 10; }
@@ -90,24 +96,26 @@ header.top { background: var(--brand); color: var(--on-dark); padding: 12px 16px
 button.btn { border: 1px solid rgba(255,255,255,.4); background: transparent; color: var(--on-dark); padding: 6px 14px; border-radius: 99px; cursor: pointer; font: inherit; font-size: 11.5px; transition: .2s; }
 button.btn:hover { background: rgba(255,255,255,0.15); }
 nav.nav { position: sticky; top: 0; z-index: 20; background: var(--brand-2); display: flex; overflow-x: auto; white-space: nowrap; box-shadow: 0 4px 12px rgba(0,0,0,.15); }
-nav.nav a { padding: 14px 18px; color: rgba(255,255,255,.65); text-decoration: none; font-size: 12.5px; font-weight: 600; border-bottom: 2px solid transparent; cursor: pointer; transition: .2s; }
+nav.nav a { padding: 14px 18px; color: rgba(255,255,255,.65); text-decoration: none; font-size: 12.5px; font-weight: 600; border-bottom: 2px solid transparent; cursor: pointer; transition: .2s; text-transform: uppercase; letter-spacing: 0.03em;}
 nav.nav a:hover { color: var(--on-dark); } nav.nav a.on { color: var(--on-dark); border-bottom-color: var(--accent); background: rgba(255,255,255,.08); }
 
 /* Main wrap */
 main.wrap { max-width: var(--maxw); margin: 0 auto; padding: 28px 16px 80px; position: relative; z-index: 1; flex: 1 0 auto; width: 100%; }
-h1 { font-family: var(--font); font-size: 24px; color: var(--brand); margin: 0 0 6px; line-height: 1.25; font-weight: 700; }
-.lead { color: var(--muted); margin: 0 0 20px; font-size: 12.5px; }
+.header-area { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid var(--line); padding-bottom: 12px;}
+.header-text { flex: 1; min-width: 250px;}
+h1 { font-family: var(--font); font-size: 24px; color: var(--brand); margin: 0 0 6px; line-height: 1.25; font-weight: 700; text-transform: uppercase; }
+.lead { color: var(--muted); margin: 0; font-size: 12.5px; }
 
 /* Filter & Tools */
-.tools { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; align-items: center; }
+.tools { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
 .search { flex: 1; min-width: 200px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 99px; font: inherit; background: var(--card); font-size: 12.5px; transition: .2s; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
 .search:focus { outline: 2px solid var(--brand); border-color: var(--brand); box-shadow: 0 4px 12px rgba(12,46,36,0.08); }
-.filter-select { padding: 10px 16px; border: 1px solid var(--line); border-radius: 99px; font: inherit; background: var(--card) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%236b726d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>') no-repeat right 14px center; background-size: 14px; -webkit-appearance: none; appearance: none; padding-right: 36px; font-size: 12.5px; cursor: pointer; color: var(--brand); font-weight: 600; outline: none; box-shadow: 0 2px 6px rgba(0,0,0,0.02); transition: 0.2s;}
+.filter-select { padding: 8px 14px; border: 1px solid var(--line); border-radius: 99px; font: inherit; background: var(--card) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%236b726d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>') no-repeat right 12px center; background-size: 14px; -webkit-appearance: none; appearance: none; padding-right: 32px; font-size: 12px; cursor: pointer; color: var(--brand); font-weight: 600; outline: none; box-shadow: 0 2px 6px rgba(0,0,0,0.02); transition: 0.2s;}
 .filter-select:focus, .filter-select:hover { border-color: var(--brand); }
 .btn-toggle-all { border: 1px solid var(--brand); background: var(--card); color: var(--brand); padding: 10px 16px; border-radius: 99px; cursor: pointer; font: inherit; font-size: 11.5px; font-weight: 600; transition: .2s; white-space: nowrap; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
 .btn-toggle-all:hover { background: var(--brand); color: var(--on-dark); }
 
-/* Sections & Accordions */
+/* Sections & Accordions (With Hover Animations) */
 section.sec { margin-top: 20px; background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.03); display: none; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
 section.sec:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.06); border-left-color: var(--accent); }
 section.sec.on, body.searching section.sec { display: block; animation: fadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
@@ -121,14 +129,19 @@ details.blk { background: var(--card); border-top: 1px solid var(--line); margin
 details.blk::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); transform: scaleY(0); transition: transform 0.3s ease; transform-origin: center; z-index: 2; }
 details.blk:hover { background: #faf8f3; }
 details.blk:hover::after { transform: scaleY(1); }
-details.blk > summary { cursor: pointer; padding: 14px 18px; font-weight: 600; font-size: 13px; list-style: none; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+details.blk > summary { cursor: pointer; padding: 14px 18px; font-weight: 600; font-size: 13px; list-style: none; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; transition: color 0.2s;}
+details.blk:hover > summary { color: var(--brand-2); }
 details.blk > summary::-webkit-details-marker { display: none; }
-details.blk > summary::before { content: "+"; color: var(--accent); font-weight: 800; width: 14px; display: inline-block; font-size: 16px;}
-details[open].blk > summary::before { content: "–"; }
+details.blk > summary::before { display: none; } 
+details.blk > summary::after { content: "▼"; margin-left: auto; font-size: 11px; color: var(--accent); transition: transform 0.3s ease; }
+details[open].blk > summary::after { transform: rotate(-180deg); }
 .body { padding: 0 18px 16px; animation: fadeUp 0.3s ease-out forwards; }
-.src { font-size: 11px; color: var(--muted); margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px dashed var(--line); }
-.body ul { margin: 8px 0 12px 20px; padding: 0; font-size: 13px; } .body li { margin: 5px 0; }
-.body p { margin: 10px 0; font-size: 13px; }
+.src { font-size: 11px; color: var(--muted); margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px dashed var(--line); animation: slideInRight 0.3s ease forwards; opacity: 0; animation-delay: 0.1s;}
+.body ul { margin: 8px 0 12px 20px; padding: 0; font-size: 13px; } 
+.body li { margin: 5px 0; opacity: 0; animation: fadeUp 0.4s ease forwards; }
+/* Stagger list item animations */
+.body li:nth-child(1) { animation-delay: 0.1s; } .body li:nth-child(2) { animation-delay: 0.15s; } .body li:nth-child(3) { animation-delay: 0.2s; } .body li:nth-child(4) { animation-delay: 0.25s; } .body li:nth-child(5) { animation-delay: 0.3s; }
+.body p { margin: 10px 0; font-size: 13px; opacity: 0; animation: fadeUp 0.4s ease forwards; animation-delay: 0.1s;}
 
 /* Company Nested Accordions */
 .comp-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
@@ -145,16 +158,18 @@ details[open].blk > summary::before { content: "–"; }
 .comp-body b:first-child { margin-top: 0; }
 
 /* Blocks */
-.tw { overflow-x: auto; margin: 12px 0; border-radius: 6px; border: 1px solid var(--line); }
+.tw { overflow-x: auto; margin: 12px 0; border-radius: 6px; border: 1px solid var(--line); opacity: 0; animation: fadeUp 0.4s ease forwards; animation-delay: 0.15s;}
 table { border-collapse: collapse; width: 100%; font-size: 12.5px; min-width: 500px; }
 th, td { border-bottom: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
 th { background: #faf8f3; color: var(--brand); font-weight: 700; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.02em; }
+tbody tr { opacity: 0; animation: fadeUp 0.3s ease forwards; }
+tbody tr:nth-child(1) { animation-delay: 0.2s; } tbody tr:nth-child(2) { animation-delay: 0.25s; } tbody tr:nth-child(3) { animation-delay: 0.3s; } tbody tr:nth-child(4) { animation-delay: 0.35s; }
 tbody tr:last-child td { border-bottom: none; }
 tbody tr:nth-child(even) { background: #faf8f3; }
 tbody tr:hover { background: #f0eee6; }
-.note { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 12px 16px; margin: 12px 0; font-size: 12.5px; border-radius: 0 6px 6px 0; color: var(--brand); }
+.note { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 12px 16px; margin: 12px 0; font-size: 12.5px; border-radius: 0 6px 6px 0; color: var(--brand); opacity: 0; animation: slideInRight 0.4s ease forwards; animation-delay: 0.2s;}
 
-.st { font-size: 9px; font-weight: 700; padding: 4px 8px; border-radius: 99px; white-space: nowrap; letter-spacing: .04em; }
+.st { font-size: 9px; font-weight: 700; padding: 4px 8px; border-radius: 99px; white-space: nowrap; letter-spacing: .04em; text-transform: uppercase;}
 .st.OFFICIAL { background: var(--st-official-bg); color: var(--st-official); }
 .st.DRAFT { background: var(--st-draft-bg); color: var(--st-draft); }
 .st.NEEDS_ALIGNMENT { background: var(--st-align-bg); color: var(--st-align); }
@@ -163,7 +178,7 @@ tbody tr:hover { background: #f0eee6; }
 .st.PENDING { background: var(--st-pending-bg); color: var(--st-pending); }
 
 /* Tree Diagram Org Chart - Interactive */
-.tree { margin: 16px 0; font-size: 13px; line-height: 1.4; user-select: none; }
+.tree { margin: 16px 0; font-size: 13px; line-height: 1.4; user-select: none; opacity: 0; animation: fadeUp 0.4s ease forwards; animation-delay: 0.1s;}
 .tree ul { list-style: none; margin: 0 0 0 18px; padding: 0 0 0 18px; border-left: 1px dashed var(--accent); }
 .tree > ul { margin: 0; padding: 0; border: none; }
 .tree li { margin: 12px 0; position: relative; list-style: none; }
@@ -200,7 +215,7 @@ tbody tr:hover { background: #f0eee6; }
 .res { background: var(--brand); color: var(--on-dark); padding: 16px 20px; border-radius: 8px; margin-top: 16px; font-size: 13px; box-shadow: 0 4px 16px rgba(12,46,36,0.1); }
 .res b { color: var(--accent); } .res.big { font-family: var(--font); font-size: 22px; }
 
-footer { text-align: center; color: var(--muted); font-size: 11.5px; padding: 24px 14px; border-top: 1px solid var(--line); flex-shrink: 0; background: var(--bg); position: relative; z-index: 10; } 
+footer { text-align: center; color: var(--muted); font-size: 11.5px; padding: 24px 14px; border-top: 1px solid var(--line); flex-shrink: 0; background: transparent; position: relative; z-index: 10; margin-top: auto;} 
 #toTop { position: fixed; right: 20px; bottom: 20px; background: var(--brand); color: var(--on-dark); border: 0; border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: none; font-size: 18px; transition: 0.3s; box-shadow: 0 4px 16px rgba(0,0,0,0.2); z-index: 50; }
 #toTop:hover { background: var(--brand-2); transform: translateY(-2px); }
 #prog { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; z-index: 60; }
@@ -209,7 +224,7 @@ footer { text-align: center; color: var(--muted); font-size: 11.5px; padding: 24
 @media print {
   body { background: #fff; font-size: 11pt; color: #000; display: block; min-height: auto;}
   body::before, body::after { display: none; }
-  #hero, nav.nav, #toTop, .tools, button.btn, .cpick, .calc, .hero-w, header::after, .legend { display: none !important; }
+  #hero, nav.nav, #toTop, .tools, button.btn, .cpick, .calc, .hero-w, header::after, .legend, .header-area .filter-select { display: none !important; }
   header.top { background: #fff; color: var(--brand); padding: 0; border-bottom: 2px solid var(--brand); margin-bottom: 20px; }
   .logo img { filter: invert(1); }
   section.sec { display: block !important; border: none; box-shadow: none; margin-top: 0; page-break-inside: auto;}
@@ -219,7 +234,9 @@ footer { text-align: center; color: var(--muted); font-size: 11.5px; padding: 24
   details.blk::after { display: none; }
   details.blk > summary { padding-left: 0; padding-right: 0;}
   details.blk > summary::before { display: none; }
-  .body { padding: 0 0 10px 0; }
+  details.blk > summary::after { display: none; }
+  .body { padding: 0 0 10px 0; animation: none;}
+  .body li, .body p, .src, .tw, tbody tr, .note { animation: none; opacity: 1;}
   .tw { overflow: visible; border: none; margin-bottom: 20px;} 
   table { min-width: 0; border: 1px solid #ccc;}
   th, td { border: 1px solid #ccc; }
@@ -230,7 +247,7 @@ footer { text-align: center; color: var(--muted); font-size: 11.5px; padding: 24
   .dec input { border: 0 !important; padding: 0 !important; background: transparent !important; }
   
   /* Tree Diagram Print - Mở bung và xoá style thừa */
-  .tree { margin-bottom: 30px; }
+  .tree { margin-bottom: 30px; animation: none; opacity: 1;}
   .tree details { display: block !important; }
   .tree summary::before { display: none; }
   .tree ul { border-left: 1px solid #ccc; }
@@ -241,7 +258,7 @@ footer { text-align: center; color: var(--muted); font-size: 11.5px; padding: 24
   .comp-blk { border: none; margin-bottom: 15px; page-break-inside: avoid; }
   .comp-blk > summary { padding-left: 0; background: transparent; border-bottom: 1px solid #ccc;}
   .comp-blk > summary::after { display: none; }
-  .comp-body { padding-left: 0; padding-right: 0;}
+  .comp-body { padding-left: 0; padding-right: 0; animation: none; opacity: 1;}
 }
 </style>
 </head>
@@ -265,9 +282,9 @@ footer { text-align: center; color: var(--muted); font-size: 11.5px; padding: 24
 <script>
 // --- ZONE 1: DATA ---
 const HANDBOOK_META = {
-  title: "WePlus⁺ Handbook",
+  title: "WEPLUS⁺ HANDBOOK",
   subtitle: "Employee Handbook · WePlus⁺",
-  header: "Handbook 2026",
+  header: "HANDBOOK 2026",
   version: "v1.0",
   status: "DRAFT",
   footer: "© 2026 Le Ha — Drafted for WePlus⁺<br>Internal Use Only | v1",
@@ -353,8 +370,11 @@ const T = (head, rows) => ({ type: "table", head, rows });
 const L = items => ({ type: "list", items });
 
 const HANDBOOK_SECTIONS = [
-  { id: "s01", nav: "Thông tin chung", title: "Thông tin chung", status: "DRAFT", subsections: [
-    { title: "1.1. Khối Dịch vụ (WePlus⁺)", status: "MISSING", src: "Chưa có tài liệu", blocks: [
+  { id: "s01", nav: "THÔNG TIN CHUNG", title: "THÔNG TIN CHUNG", status: "DRAFT", subsections: [
+    { title: "A. Sơ đồ tổ chức Tgroup", status: "DRAFT", src: "Sơ đồ nội bộ (Cập nhật Khối Hỗ trợ, BOD)", blocks: [
+      { type: "orgtree" }
+    ]},
+    { title: "B. Khối Dịch vụ (WePlus⁺)", status: "MISSING", src: "Chưa có tài liệu", blocks: [
       { type: "text", text: "Giới thiệu chung về TGroup, WePlus⁺, sứ mệnh, tầm nhìn và giá trị cốt lõi." },
       { type: "company_list", companies: [
         { name: "ePlus⁺", intro: "[Cập nhật profile, định vị...]", org: "[Cập nhật Sơ đồ chức năng...]", services: "[Cập nhật dịch vụ...]" },
@@ -363,22 +383,16 @@ const HANDBOOK_SECTIONS = [
         { name: "GolfCare⁺", intro: "[Cập nhật profile, định vị...]", org: "[Cập nhật Sơ đồ chức năng...]", services: "[Cập nhật dịch vụ...]" }
       ]}
     ]},
-    { title: "1.2. Khối Xây dựng & Sản xuất", status: "MISSING", src: "Chưa có tài liệu", blocks: [
+    { title: "C. Khối Xây dựng & Sản xuất", status: "MISSING", src: "Chưa có tài liệu", blocks: [
       { type: "company_list", companies: [
         { name: "The Wall", intro: "[Cập nhật profile, định vị...]", org: "[Cập nhật Sơ đồ chức năng...]", services: "[Cập nhật dịch vụ...]" },
         { name: "Imperial", intro: "[Cập nhật profile, định vị...]", org: "[Cập nhật Sơ đồ chức năng...]", services: "[Cập nhật dịch vụ...]" },
         { name: "Nguyễn Mộc", intro: "[Cập nhật profile, định vị...]", org: "[Cập nhật Sơ đồ chức năng...]", services: "[Cập nhật dịch vụ...]" },
         { name: "Green Wall", intro: "[Cập nhật profile, định vị...]", org: "[Cập nhật Sơ đồ chức năng...]", services: "[Cập nhật dịch vụ...]" }
       ]}
-    ]},
-    { title: "1.3. Sơ đồ tổ chức Tgroup", status: "DRAFT", src: "Sơ đồ nội bộ (Cập nhật Khối Hỗ trợ, BOD)", blocks: [
-      { type: "orgtree" }
-    ]},
-    { title: "1.4. Các công ty trong hệ thống chính sách", status: "OFFICIAL", src: "TGROUP CHÍNH SÁCH CHUNG.xlsx", blocks: [
-      L(["Engage⁺", "ePlus⁺", "Enabler⁺", "The Wall", "Bức Tường", "Green Wall", "Nguyễn Mộc"])
     ]}
   ]},
-  { id: "s02", nav: "Quy định & Văn hóa", title: "Quy định chung & Văn hóa", status: "DRAFT", subsections: [
+  { id: "s02", nav: "QUY ĐỊNH & VĂN HÓA", title: "QUY ĐỊNH CHUNG & VĂN HÓA", status: "DRAFT", subsections: [
     { title: "2.1. Văn hóa làm việc", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
       L(["Cùng làm, cùng chia sẻ. Kết quả là thành quả của teamwork.", "Giao tiếp nhã nhặn, vừa phải, chuẩn mực, lịch sự, văn minh.", "Hỗ trợ tương tác trên tinh thần cùng nhau xây dựng văn hóa công ty.", "Tham gia đầy đủ các hoạt động chung."])
     ]},
@@ -397,7 +411,7 @@ const HANDBOOK_SECTIONS = [
       { type: "calendar_table" }
     ]}
   ]},
-  { id: "s03", nav: "Nhân sự & Thời gian", title: "Chính sách Nhân sự", status: "NEEDS_ALIGNMENT", subsections: [
+  { id: "s03", nav: "CHÍNH SÁCH NHÂN SỰ", title: "CHÍNH SÁCH NHÂN SỰ", status: "NEEDS_ALIGNMENT", subsections: [
     { title: "3.1. Hợp đồng & Lương", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
       L(["Ký HĐLĐ chính thức sau 2–3 tháng thử việc.", "Nghỉ việc báo trước: 30 ngày (HĐ 1-3 năm), 7 ngày (HĐ dưới 1 năm).", "Trả lương: chuyển khoản HDBank từ ngày 01-10 tháng kế tiếp."])
     ]},
@@ -415,7 +429,7 @@ const HANDBOOK_SECTIONS = [
       L(["Nhân viên: Chấm công tự động.", "Leader: Xác nhận giải trình đi trễ, OT, công tác.", "HR: Tổng hợp & chốt công chuyển Payroll."])
     ]}
   ]},
-  { id: "s04", nav: "Thưởng & Phúc lợi", title: "Thưởng, Phúc lợi & Công tác phí", status: "DRAFT", subsections: [
+  { id: "s04", nav: "THƯỞNG & PHÚC LỢI", title: "THƯỞNG, PHÚC LỢI & CÔNG TÁC PHÍ", status: "DRAFT", subsections: [
     { title: "4.1. Chính sách phúc lợi chung", status: "DRAFT", src: "Excel Chính sách TGroup", blocks: [
       { type: "companypick" },
       T(["Chế độ", "Engage⁺", "ePlus⁺", "Enabler⁺"], [
@@ -435,7 +449,7 @@ const HANDBOOK_SECTIONS = [
       { type: "calc" }
     ]}
   ]},
-  { id: "s05", nav: "Lưu trữ & Biểu mẫu", title: "Biểu mẫu & Lưu trữ", status: "DRAFT", subsections: [
+  { id: "s05", nav: "LƯU TRỮ & BIỂU MẪU", title: "BIỂU MẪU & LƯU TRỮ", status: "DRAFT", subsections: [
     { title: "5.1. Ngăn lưu trữ Biểu mẫu & Văn thư chuẩn", status: "MISSING", src: "Đề xuất quy trình", blocks: [
       { type: "text", text: "Khu vực lưu trữ tập trung các tài liệu, biểu mẫu, hợp đồng chuẩn để đảm bảo toàn bộ nhân sự sử dụng đồng nhất." },
       T(["Loại tài liệu / Biểu mẫu", "Nơi lưu trữ & Link truy cập", "Ghi chú nội dung"], [
@@ -453,7 +467,7 @@ const HANDBOOK_SECTIONS = [
       ])
     ]}
   ]},
-  { id: "s06", nav: "Cần BOD Quyết định", title: "Bảng đối chiếu & Cần quyết định", status: "NEEDS_ALIGNMENT", subsections: [
+  { id: "s06", nav: "CẦN BOD QUYẾT ĐỊNH", title: "BẢNG ĐỐI CHIẾU & CẦN QUYẾT ĐỊNH", status: "NEEDS_ALIGNMENT", subsections: [
     { title: "6.1. Các mục cần thống nhất giữa Engage⁺/ePlus⁺", status: "NEEDS_ALIGNMENT", src: "Tổng hợp", blocks: [
       { type: "decisions" }
     ]}
@@ -610,7 +624,6 @@ function renderBlock(b) {
   if (b.type === "calc") return renderCalc();
   if (b.type === "decisions") return renderDecisions();
   
-  // Custom renderer for nested company info
   if (b.type === "company_list") {
     return `<div class="comp-list">` + b.companies.map((c, i) => `
       <details class="comp-blk">
@@ -670,7 +683,6 @@ function renderSections() {
   const cnt = {};
   HANDBOOK_SECTIONS.forEach(x => x.subsections.forEach(y => cnt[y.status] = (cnt[y.status] || 0) + 1));
   
-  // Custom Filter Dropdown
   const stKeys = Object.keys(STATUS_LABEL).filter(k => cnt[k]);
   const filterHtml = `
     <select id="statusFilter" class="filter-select">
@@ -692,11 +704,15 @@ function renderSections() {
       </section>`).join("");
 
   document.getElementById("app").innerHTML = `
-      <h1>${esc(HANDBOOK_META.title)}</h1>
-      <p class="lead">${esc(HANDBOOK_META.subtitle)}</p>
+      <div class="header-area">
+        <div class="header-text">
+            <h1>${esc(HANDBOOK_META.title)}</h1>
+            <p class="lead">${esc(HANDBOOK_META.subtitle)}</p>
+        </div>
+        ${filterHtml}
+      </div>
       <div class="tools">
           <input class="search" id="q" placeholder="Tìm kiếm...">
-          ${filterHtml}
           <button id="toggleAll" class="btn-toggle-all">Mở / đóng tất cả</button>
       </div>
       ${secs}`;
