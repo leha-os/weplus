@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="vi">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Employee Handbook 2026 · WePlus⁺</title>
 
 <!-- SEO Description — Sổ tay nhân viên -->
-<meta name="description" content="Employee Handbook 2026 · WePlus⁺ — Sổ tay nhân viên WePlus⁺: Quy định chung, văn hóa làm việc, chính sách nhân sự, phúc lợi, lưu trữ & hệ thống, quy trình vận hành. Chỉ lưu hành nội bộ — Internal Use Only. WePlus⁺ không phải một lớp vận hành để làm phức tạp thêm, mà là nền tảng để kết nối năng lực, cộng hưởng nguồn lực và chuyển hóa năng lực của Tgroup thành những giá trị lớn hơn.">
-<meta name="keywords" content="WePlus Employee Handbook 2026, So tay nhan vien WePlus, Tgroup, ePlus, 【entity-Engage¦canonical_name=Engage】, GolfCare, Noi quy, Phuc loi">
+<meta name="description" content="Employee Handbook 2026 · WePlus⁺ — Sổ tay nhân viên WePlus⁺: Quy định chung, văn hóa làm việc, chính sách nhân sự, phúc lợi, lưu trữ & hệ thống, quy trình vận hành. Chỉ lưu hành nội bộ — Internal Use Only.">
+<meta name="keywords" content="WePlus Employee Handbook 2026, So tay nhan vien WePlus, Tgroup, ePlus, Engage, GolfCare, Noi quy, Phuc loi">
 <meta name="author" content="WePlus⁺ HR">
 <link rel="canonical" href="https://leha-os.github.io/weplus/handbook/v1">
 <meta name="robots" content="noindex,nofollow">
@@ -36,19 +37,6 @@
 <meta name="twitter:description" content="Sổ tay nhân viên WePlus⁺ 2026 — Chỉ lưu hành nội bộ.">
 <meta name="twitter:image" content="https://leha-os.github.io/assets/WePlus4BU.jpg">
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-/* ZONE 0 — THEME_GLOBAL */
-:root {
-  --bronzeLight: #C6A27A;
-  --bronzeMid: #B88A5A;
-  --bronzeDark: #8C6A4A;
-  --black: #0A0A0A;
-  --border: #E8DDD0;
-}
-html{scroll-behavior:smooth;}
-body{font-family:'Be Vietnam Pro',sans-serif; background:#FFFFFF; color:#121212;}
 <style>
 /* ZONE 0 — THEME_GLOBAL */
 @font-face { font-family: "Optimistic"; font-style: normal; font-weight: 400 700; font-display: swap; src: local("Segoe UI"), local("Roboto"), local("Arial"); }
@@ -62,10 +50,12 @@ body{font-family:'Be Vietnam Pro',sans-serif; background:#FFFFFF; color:#121212;
   --st-align: #5f6661; --st-align-bg: #ecebe6;
   --st-missing: #5f6661; --st-missing-bg: #ecebe6;
   --st-proposed: #5f6661; --st-proposed-bg: #ecebe6;
+  --st-pending: #5f6661; --st-pending-bg: #ecebe6;
 
   --font: "Optimistic", system-ui, sans-serif; --radius: 8px; --maxw: 960px;
 }
 
+html { scroll-behavior: smooth; }
 * { box-sizing: border-box; overflow-wrap: break-word; word-break: break-word; }
 body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--bg); line-height: 1.6; font-size: 13.5px; }
 body.lock { overflow: hidden; }
@@ -140,7 +130,7 @@ tbody tr:nth-child(even) { background: #faf8f3; }
 .st.NEEDS_ALIGNMENT { background: var(--st-align-bg); color: var(--st-align); }
 .st.MISSING { background: var(--st-missing-bg); color: var(--st-missing); }
 .st.PROPOSED { background: var(--st-proposed-bg); color: var(--st-proposed); }
-.st.PENDING { background: var(--st-missing-bg); color: var(--st-missing); }
+.st.PENDING { background: var(--st-pending-bg); color: var(--st-pending); }
 
 /* Tree Diagram Org Chart - Interactive */
 .tree { margin: 16px 0; font-size: 12.5px; line-height: 1.4; user-select: none; }
@@ -326,6 +316,9 @@ const L = items => ({ type: "list", items });
 
 const HANDBOOK_SECTIONS = [
   { id: "s01", number: "01", nav: "Profile & Tổ chức", title: "Profile & Sơ đồ tổ chức", status: "DRAFT", subsections: [
+    { title: "Profile Công ty", status: "MISSING", src: "Chưa có tài liệu", blocks: [
+      { type: "text", text: "Giới thiệu chung về TGroup, WePlus⁺, sứ mệnh, tầm nhìn và giá trị cốt lõi (Cần HR cung cấp thêm tài liệu để cập nhật)." }
+    ]},
     { title: "Sơ đồ tổ chức Tgroup 2027–2030", status: "DRAFT", src: "Sơ đồ nội bộ (Cập nhật Khối Hỗ trợ, BOD)", blocks: [
       { type: "orgtree" }
     ]},
@@ -609,18 +602,17 @@ function renderSections() {
   document.getElementById("nav").innerHTML = HANDBOOK_SECTIONS.map(s => `<a data-id="${s.id}">${s.number} ${esc(s.nav)}</a>`).join("");
   const cnt = {};
   HANDBOOK_SECTIONS.forEach(x => x.subsections.forEach(y => cnt[y.status] = (cnt[y.status] || 0) + 1));
-  const legend = `<div class="legend">${Object.keys(STATUS_LABEL).filter(k => cnt[k]).map(k => `<button class="st lg ${k}" data-st="${k}">${STATUS_LABEL[k]} · ${cnt[k]}</button>`).join("")}</div>`;
+  const legend = `<div class="legend">${Object.keys(STATUS_LABEL).filter(k => cnt[k]).map(k => `<button class="st lg ${k}" data-st="${k}">${STATUS_LABEL[k]} ·${cnt[k]}</button>`).join("")}</div>`;
 
   // Xóa class "collapsed" khỏi thẻ section.sec để mục lớn luôn mở
   const secs = HANDBOOK_SECTIONS.map(s => `
-      <section class="sec" id="${s.id}">
+      <section class="sec on" id="${s.id}">
           <h2><span style="color:var(--accent);font-weight:800">${s.number}</span><span>${esc(s.title)}</span> ${badge(s.status)}</h2>
           ${s.subsections.map(sub => `
               <details class="blk" data-st="${sub.status}">
-                  <summary><span>${esc(sub.title)}</span> ${badge(sub.status)}</summary>
+                  <summary><span>${esc(sub.title)}</span>${badge(sub.status)}</summary>
                   <div class="body">
-                      <p class="src">Nguồn: ${esc(sub.src)}</p>
-                      ${sub.blocks.map(renderBlock).join("")}
+                      <p class="src">Nguồn: ${esc(sub.src)}</p>${sub.blocks.map(renderBlock).join("")}
                   </div>
               </details>`).join("")}
       </section>`).join("");
@@ -771,4 +763,4 @@ function renderApp() {
 document.addEventListener("DOMContentLoaded", renderApp);
 </script>
 </body>
-</>
+</html>
