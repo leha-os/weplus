@@ -354,7 +354,7 @@ const ALIGNMENT_REASON = [
 
 const ORG_DATA = {
   top: { title: "TGROUP" },
-  bod: { title: "Hội đồng Quản trị & Ban Điều hành (BOD)", chair: "Chủ tịch HĐQT: Mr Tâm", board: "Ban Điều hành: Ms Ngọc Hà, Mr Kiệt, Ms Mỹ" },
+  bod: { title: "HỘI ĐỒNG QUẢN TRỊ", chair: "Chủ tịch HĐQT: Mr Tâm", board: "Thành viên HĐQT: Ms Ngọc Hà, Mr Kiệt, Ms Mỹ" },
   support: [
     { title: "Business Development Team", lead: "", teams: [["Cố vấn Phát triển Kinh doanh", "Mr Tâm"], ["Giám đốc Phát triển Kinh doanh", "Ms Hạnh"]] },
     { title: "Tài chính & Kế toán", lead: "Giám đốc Tài chính / Kế toán trưởng: Mr Khánh", teams: [["Khối Quản lý — Nhóm 01", "Leader: Ms Tuyết", "05 Kế toán viên"], ["Khối Quản lý — Nhóm 02", "Leader: Mr Minh", "05 Kế toán viên"]] },
@@ -390,7 +390,7 @@ const L = items => ({ type: "list", items });
 
 const HANDBOOK_SECTIONS = [
   { id: "s01", nav: "THÔNG TIN CHUNG", title: "THÔNG TIN CHUNG", status: "DRAFT", subsections: [
-    { title: "Sơ đồ tổ chức Tgroup", status: "DRAFT", src: "Sơ đồ nội bộ (Cập nhật Khối Hỗ trợ, BOD)", blocks: [
+    { title: "Sơ đồ tổ chức Tgroup", status: "DRAFT", src: "", blocks: [
       { type: "orgtree" }
     ]},
     { title: "A. Khối Dịch vụ (WePlus⁺)", blocks: [
@@ -402,7 +402,7 @@ const HANDBOOK_SECTIONS = [
         { name: "GolfCare⁺", intro: "GolfCare⁺ là nhóm trực thuộc ePlus⁺, thành viên của Tgroup, tập trung vào nhóm khách hàng cao cấp, kết nối Golf & MICE và mạng lưới khách hàng cấp cao của Ban Lãnh đạo, hướng đến trải nghiệm chuyên nghiệp và gia tăng giá trị cho khách hàng, đối tác và hệ sinh thái Tgroup.", org: "[Cập nhật Sơ đồ chức năng...]", services: "[Cập nhật dịch vụ...]" }
       ]}
     ]},
-    { title: "B. Khối Xây dựng & Sản xuất", status: "MISSING", src: "Chưa có tài liệu", blocks: [
+    { title: "B. Khối Xây dựng & Sản xuất", status: "MISSING", src: "", blocks: [
       { type: "company_list", companies: [
         { name: "The Wall", intro: "[Cập nhật profile, định vị...]", org: "[Cập nhật Sơ đồ chức năng...]", services: "[Cập nhật dịch vụ...]" },
         { name: "Imperial", intro: "[Cập nhật profile, định vị...]", org: "[Cập nhật Sơ đồ chức năng...]", services: "[Cập nhật dịch vụ...]" },
@@ -422,11 +422,11 @@ const HANDBOOK_SECTIONS = [
       ]),
       { type: "note", text: "Thứ 2 hàng tuần: toàn bộ nhân viên mặc áo đồng phục công ty." }
     ]},
-    { title: "Nội quy & 5S Văn phòng", status: "DRAFT", src: "Các nguồn", blocks: [
+    { title: "Nội quy & 5S Văn phòng", status: "DRAFT", src: "", blocks: [
       { type: "text", text: "Quy tắc ứng xử:" },
       L(["Không nói chuyện điện thoại / trao đổi lớn tiếng trong khu vực làm việc chung.", "Giữ vệ sinh Pantry, WC, phòng họp sau khi dùng.", "Tắt điện, điều hoà khi ra về cuối cùng.", "Hạn chế mang đồ ăn nặng mùi vào văn phòng."])
     ]},
-    { title: "Lịch hoạt động nội bộ năm", status: "DRAFT", src: "Excel - Hoạt động", blocks: [
+    { title: "Lịch hoạt động nội bộ năm", status: "DRAFT", src: "", blocks: [
       { type: "calendar_table" }
     ]}
   ]},
@@ -449,7 +449,7 @@ const HANDBOOK_SECTIONS = [
     ]}
   ]},
   { id: "s04", nav: "THƯỞNG & PHÚC LỢI", title: "THƯỞNG, PHÚC LỢI & CÔNG TÁC PHÍ", status: "DRAFT", subsections: [
-    { title: "Chính sách phúc lợi chung", status: "DRAFT", src: "Excel Chính sách TGroup", blocks: [
+    { title: "Chính sách phúc lợi chung", status: "DRAFT", src: "", blocks: [
       { type: "companypick" },
       T(["Chế độ", "Engage⁺", "ePlus⁺", "Enabler⁺"], [
         ["Phép năm", "12 ngày", "12 ngày", "12 ngày"],
@@ -464,12 +464,12 @@ const HANDBOOK_SECTIONS = [
       T(["Doanh thu", "Thưởng"], [["500tr - 1 tỷ", "5 triệu"], [">1 - 2 tỷ", "10 triệu"], [">2 - 3 tỷ", "15 triệu"], [">3 tỷ", "20 triệu"]]),
       { type: "note", text: "Trích lại triển khai (GP Final 2%): Digital (Planner 50%, Creative/Project 25%); Event (Planner 35%, Project 45%, Creative 20%)." }
     ]},
-    { title: "Tính toán công tác phí tối đa", status: "PENDING", src: "Các nguồn", blocks: [
+    { title: "Tính toán công tác phí tối đa", status: "PENDING", src: "", blocks: [
       { type: "calc" }
     ]}
   ]},
   { id: "s05", nav: "BIỂU MẪU & LƯU TRỮ", title: "BIỂU MẪU & LƯU TRỮ", status: "DRAFT", subsections: [
-    { title: "Ngăn lưu trữ Biểu mẫu & Văn thư chuẩn", status: "MISSING", src: "Đề xuất quy trình", blocks: [
+    { title: "Ngăn lưu trữ Biểu mẫu & Văn thư chuẩn", status: "MISSING", src: "", blocks: [
       { type: "text", text: "Khu vực lưu trữ tập trung các tài liệu, biểu mẫu, hợp đồng chuẩn để đảm bảo toàn bộ nhân sự sử dụng đồng nhất." },
       T(["Loại tài liệu / Biểu mẫu", "Nơi lưu trữ & Link truy cập", "Ghi chú nội dung"], [
         ["Hành chính", "🔗 [Đang đợi cập nhật Link Drive]", "Gồm: Đơn xin nghỉ phép, Giấy đề xuất thanh toán, Tạm ứng, Biên bản bàn giao..."],
@@ -494,7 +494,7 @@ const HANDBOOK_SECTIONS = [
 ];
 
 // --- ZONE 2: RENDER HELPERS ---
-const esc = s => String(s).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+const esc = s => (s === undefined || s === null) ? "" : String(s).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
 const badge = st => `<span class="st ${st}">${STATUS_LABEL[st]}</span>`;
 const vnd = n => n.toLocaleString("vi-VN") + "đ";
 
@@ -526,7 +526,8 @@ function renderOrgTree() {
   // Clusters Block
   html += `<li><details open><summary><div class="n-card cluster"><b>KHỐI VẬN HÀNH KINH DOANH</b></div></summary><ul>`;
   d.clusters.forEach(c => {
-    html += `<li><details open><summary><div class="n-card cluster" style="background:#e4efe8; border-color:var(--st-official); color:var(--st-official)"><b>${esc(c.title)}</b><span class="sub">${esc(c.note)}</span></div></summary><ul>`;
+    const noteHtml = c.note ? `<span class="sub">${esc(c.note)}</span>` : "";
+    html += `<li><details open><summary><div class="n-card cluster" style="background:#e4efe8; border-color:var(--st-official); color:var(--st-official)"><b>${esc(c.title)}</b>${noteHtml}</div></summary><ul>`;
     c.companies.forEach(comp => {
       html += `<li><details open><summary><div class="n-card company"><b>${esc(comp.name)}</b>${comp.lead ? `<span class="sub">${esc(comp.lead)}</span>` : ""}</div></summary><ul>`;
       comp.teams.forEach(t => {
@@ -713,7 +714,6 @@ function renderSections() {
     </div>
   `;
 
-  // Removed ${badge(s.status)} from the h2 tags
   const secs = HANDBOOK_SECTIONS.map(s => `
       <section class="sec on" id="${s.id}">
           <h2><span>${esc(s.title)}</span></h2>
@@ -721,7 +721,7 @@ function renderSections() {
               <details class="blk" data-st="${sub.status}">
                   <summary><span>${esc(sub.title)}</span>${badge(sub.status)}</summary>
                   <div class="body">
-                      <p class="src">Nguồn: ${esc(sub.src)}</p>${sub.blocks.map(renderBlock).join("")}
+                      ${sub.src && sub.src.trim() !== "" ? `<p class="src">Nguồn: ${esc(sub.src)}</p>` : ""}${sub.blocks.map(renderBlock).join("")}
                   </div>
               </details>`).join("")}
       </section>`).join("");
