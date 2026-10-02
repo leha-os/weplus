@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WePlus⁺ Handbook</title>
+<style>
+/* ZONE 0 — THEME_GLOBAL */
+@font-face { font-family: "Optimistic"; font-style: normal; font-weight: 400 700; font-display: swap; src: local("Segoe UI"), local("Roboto"), local("Arial"); }
+:root {
+  --brand: #0c2e24; --brand-2: #14503b; --accent: #b8975a; --accent-soft: #f1eadb;
+  --ink: #1a1f1c; --muted: #6b726d; --line: #e6e1d6; --bg: #f7f5f0; --card: #ffffff; --hero: #071a14; --on-dark: #ffffff;
+  
+  /* Màu đồng bộ Xám cho tất cả trạng thái Nháp/Chưa thống nhất/Đề xuất... */
+  --st-official: #1f6b4a; --st-official-bg: #e4efe8;
+  --st-draft: #5f6661; --st-draft-bg: #ecebe6;
+  --st-align: #5f6661; --st-align-bg: #ecebe6;
+  --st-missing: #5f6661; --st-missing-bg: #ecebe6;
+  --st-proposed: #5f6661; --st-proposed-bg: #ecebe6;
+
+  --font: "Optimistic", system-ui, sans-serif; --radius: 8px; --maxw: 960px;
+}
+
+* { box-sizing: border-box; overflow-wrap: break-word; word-break: break-word; }
+body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--bg); line-height: 1.6; font-size: 13.5px; }
+body.lock { overflow: hidden; }
+
+/* Hero - Intro Screen */
+#hero { position: fixed; inset: 0; z-index: 100; background: var(--hero); color: var(--on-dark); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; overflow: hidden; transition: opacity .7s, visibility .7s; }
+#hero.out { opacity: 0; visibility: hidden; }
+#hero::before { content: ""; pointer-events: none; position: absolute; width: 160vmax; height: 160vmax; left: 50%; top: 50%; margin: -80vmax 0 0 -80vmax; background: conic-gradient(from 0deg, transparent 0, rgba(184,151,90,.16) 12%, transparent 30%, rgba(20,80,59,.55) 55%, transparent 75%); animation: spin 50s linear infinite; }
+.hero-in { position: relative; z-index: 2; padding: 20px; }
+.hero-line { height: 1px; width: 0; margin: 20px auto; background: var(--accent); animation: line 1.4s .4s ease forwards; }
+.hero-title { font-family: var(--font); font-size: clamp(22px, 4.5vw, 34px); line-height: 1.15; margin: 0; font-weight: 700; }
+.hero-sub { opacity: .7; margin: 12px 0 28px; font-size: 13px; letter-spacing: .06em; }
+.hero-btn { border: 1px solid var(--accent); background: transparent; color: var(--on-dark); padding: 12px 28px; font: inherit; letter-spacing: .14em; cursor: pointer; text-transform: uppercase; font-size: 11px; border-radius: 99px; transition: .2s; }
+.hero-btn:hover { background: var(--accent); color: var(--hero); }
+.hero-w { height: 90px; display: block; margin: 0 auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
+
+@keyframes spin { to { transform: rotate(360deg); } } 
+@keyframes line { to { width: 120px; } }
+
+/* Header & Nav */
+header.top { background: var(--brand); color: var(--on-dark); padding: 12px 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; position: relative; overflow: hidden; }
+.logo { font-family: var(--font); font-weight: 700; font-size: 17px; } .logo img.lw { height: 26px; vertical-align: middle; }
+.top .sub { opacity: .7; font-size: 12px; flex: 1; }
+.pill { padding: 3px 10px; border: 1px solid var(--accent); color: var(--accent); font-size: 10px; font-weight: 700; letter-spacing: .1em; border-radius: 99px; }
+button.btn { border: 1px solid rgba(255,255,255,.4); background: transparent; color: var(--on-dark); padding: 6px 14px; border-radius: 99px; cursor: pointer; font: inherit; font-size: 11.5px; transition: .2s; }
+button.btn:hover { background: rgba(255,255,255,0.15); }
+nav.nav { position: sticky; top: 0; z-index: 20; background: var(--brand-2); display: flex; overflow-x: auto; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+nav.nav a { padding: 13px 16px; color: rgba(255,255,255,.65); text-decoration: none; font-size: 12px; font-weight: 600; border-bottom: 2px solid transparent; cursor: pointer; transition: .2s; }
+nav.nav a:hover { color: var(--on-dark); } nav.nav a.on { color: var(--on-dark); border-bottom-color: var(--accent); background: rgba(255,255,255,.06); }
+
+/* Main wrap */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 24px 14px 70px; position: relative; z-index: 1; }
+h1 { font-family: var(--font); font-size: 22px; color: var(--brand); margin: 0 0 4px; line-height: 1.25; font-weight: 700; }
+.lead { color: var(--muted); margin: 0 0 16px; font-size: 12px; }
+.tools { display: flex; gap: 8px; margin-bottom: 8px; }
+.search { flex: 1; padding: 9px 14px; border: 1px solid var(--line); border-radius: 99px; font: inherit; background: var(--card); font-size: 12px; transition: .2s; }
+.search:focus { outline: 2px solid var(--brand); border-color: var(--brand); }
+.tools button { border: 1px solid var(--brand); background: var(--card); color: var(--brand); padding: 0 14px; border-radius: 99px; cursor: pointer; font: inherit; font-size: 11px; font-weight: 600; transition: .2s; }
+.tools button:hover { background: var(--brand); color: var(--on-dark); }
+.legend { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0 6px; }
+
+/* Sections & Accordions */
+section.sec { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.03); display: none; }
+section.sec.on, body.searching section.sec { display: block; }
+section.sec > h2 { font-family: var(--font); font-size: 15px; color: var(--brand); margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--line); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; cursor: pointer; user-select: none; background: #fff; transition: .2s; }
+section.sec > h2:hover { background: #faf8f3; }
+section.sec.collapsed > h2 { border-bottom: 0; } section.sec.collapsed details.blk { display: none; }
+section.sec > h2::after { content: "▼"; margin-left: auto; font-size: 10px; transition: .2s; color: var(--accent); }
+section.sec.collapsed > h2::after { transform: rotate(-90deg); }
+
+details.blk { background: var(--card); border-top: 1px solid var(--line); margin: 0; transition: .2s; }
+details.blk > summary { cursor: pointer; padding: 12px 16px; font-weight: 600; font-size: 12.5px; list-style: none; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+details.blk > summary::-webkit-details-marker { display: none; }
+details.blk > summary::before { content: "+"; color: var(--accent); font-weight: 800; width: 14px; display: inline-block; }
+details[open].blk > summary::before { content: "–"; }
+.body { padding: 0 16px 16px; }
+.src { font-size: 11px; color: var(--muted); margin: 0 0 10px; padding-bottom: 8px; border-bottom: 1px dashed var(--line); }
+.body ul { margin: 8px 0 10px 18px; padding: 0; font-size: 12.5px; } .body li { margin: 4px 0; }
+.body p { margin: 8px 0; font-size: 12.5px; }
+
+/* Blocks */
+.tw { overflow-x: auto; margin: 10px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 12px; min-width: 500px; }
+th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
+th { background: var(--brand); color: var(--on-dark); font-weight: 600; font-size: 11.5px; }
+tbody tr:nth-child(even) { background: #faf8f3; }
+.note { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 10px 14px; margin: 10px 0; font-size: 12.5px; border-radius: 0 4px 4px 0; }
+
+.st { font-size: 9px; font-weight: 700; padding: 3px 8px; border-radius: 99px; white-space: nowrap; letter-spacing: .02em; }
+.st.OFFICIAL { background: var(--st-official-bg); color: var(--st-official); }
+.st.DRAFT { background: var(--st-draft-bg); color: var(--st-draft); }
+.st.NEEDS_ALIGNMENT { background: var(--st-align-bg); color: var(--st-align); }
+.st.MISSING { background: var(--st-missing-bg); color: var(--st-missing); }
+.st.PROPOSED { background: var(--st-proposed-bg); color: var(--st-proposed); }
+.st.PENDING { background: var(--st-missing-bg); color: var(--st-missing); }
+
+/* Tree Diagram Org Chart - Interactive */
+.tree { margin: 16px 0; font-size: 12.5px; line-height: 1.4; user-select: none; }
+.tree ul { list-style: none; margin: 0 0 0 16px; padding: 0 0 0 16px; border-left: 1px dashed var(--line); }
+.tree > ul { margin: 0; padding: 0; border: none; }
+.tree li { margin: 10px 0; position: relative; list-style: none; }
+.tree li::before { content: ""; position: absolute; top: 16px; left: -16px; width: 12px; border-bottom: 1px dashed var(--line); }
+.tree > ul > li::before { display: none; }
+.tree summary { cursor: pointer; display: inline-flex; align-items: flex-start; gap: 8px; list-style: none; outline: none; }
+.tree summary::-webkit-details-marker { display: none; }
+.tree summary::before { content: "▶"; font-size: 10px; color: var(--muted); display: inline-block; transform: translateY(10px); transition: 0.2s; }
+.tree details[open] > summary::before { transform: translateY(10px) rotate(90deg); color: var(--accent); }
+.tree .leaf > summary { cursor: default; }
+.tree .leaf > summary::before { content: "▪"; color: var(--line); transform: translateY(8px); }
+
+.n-card { display: inline-block; padding: 8px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); min-width: 220px; transition: .2s; }
+.n-card:hover { border-color: var(--accent); box-shadow: 0 4px 12px rgba(12, 46, 36, .05); }
+.n-card.root { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: white; border: none; min-width: 260px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.n-card.root b { font-size: 15px; } .n-card.root span { color: rgba(255,255,255,0.7); }
+.n-card.bod { background: var(--ink); color: white; border-color: var(--accent); }
+.n-card.bod b { color: var(--accent); font-size: 14px; }
+.n-card.cluster { background: var(--accent-soft); border-color: var(--accent); border-left: 4px solid var(--accent); }
+.n-card.company { border-left: 4px solid var(--brand); box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+.n-card.team { border-style: dashed; background: #faf8f3; min-width: 200px; padding: 6px 12px; box-shadow: none; }
+.n-card.team:hover { border-color: var(--line); box-shadow: none; transform: none; cursor: default; }
+.n-card b { display: block; font-size: 13px; color: var(--brand); margin-bottom: 2px; }
+.n-card.root b { color: white; }
+.n-card span.lead { display: block; font-size: 11px; color: var(--st-draft); font-weight: 600; margin-bottom: 2px; }
+.n-card span.sub { display: block; font-size: 11px; color: var(--muted); }
+
+/* Tools */
+.cpick { margin: 2px 4px 6px 0; border: 1px solid var(--brand); background: var(--card); color: var(--brand); padding: 6px 12px; border-radius: 99px; cursor: pointer; font: inherit; font-size: 11.5px; font-weight: 600; transition: .2s; }
+.cpick.on, .cpick:hover { background: var(--brand); color: var(--on-dark); }
+.calc { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin: 10px 0; }
+.calc label { font-size: 11px; color: var(--muted); display: block; margin-bottom: 4px; font-weight: 600; }
+.calc input, .calc select, .dec input { width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; font: inherit; font-size: 12.5px; background: var(--card); }
+.res { background: var(--brand); color: var(--on-dark); padding: 14px 16px; border-radius: 8px; margin-top: 10px; font-size: 12.5px; }
+.res b { color: var(--accent); } .res.big { font-family: var(--font); font-size: 20px; }
+.lg { border: 0; cursor: pointer; font-family: inherit; transition: .2s; } .lg:hover { transform: translateY(-1px); box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+.lg.on { outline: 2px solid var(--brand); }
+
+footer { text-align: center; color: var(--muted); font-size: 11.5px; padding: 24px 14px; border-top: 1px solid var(--line); }
+#toTop { position: fixed; right: 16px; bottom: 16px; background: var(--brand); color: var(--on-dark); border: 0; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: none; font-size: 16px; transition: opacity 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+#toTop:hover { opacity: 0.8; }
+#prog { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; z-index: 60; }
+
+/* Print styles - Tối ưu in ấn PDF */
+@media print {
+  body { background: #fff; font-size: 11pt; color: #000; }
+  #hero, nav.nav, #toTop, .tools, button.btn, .cpick, .calc, .hero-w, header::after, .legend { display: none !important; }
+  header.top { background: #fff; color: var(--brand); padding: 0; border-bottom: 2px solid var(--brand); margin-bottom: 15px; }
+  .logo img { filter: invert(1); }
+  section.sec { display: block !important; border: none; box-shadow: none; margin-top: 0;}
+  section.sec > h2 { padding: 10px 0; border-bottom: 2px solid var(--brand); }
+  section.sec > h2::after { display: none; }
+  details.blk { display: block !important; border-top: 1px solid var(--line); margin-bottom: 10px; page-break-inside: avoid; }
+  details.blk > summary::before { display: none; }
+  .body { padding: 0 0 10px 0; }
+  .tw { overflow: visible; } table { min-width: 0; }
+  tr, .note, .n-card { break-inside: avoid; page-break-inside: avoid; }
+  
+  /* Bảng xuất cho Cần quyết định */
+  body.print-dec section.sec:not(#s07) { display: none !important; }
+  .dec input { border: 0 !important; padding: 0 !important; background: transparent !important; }
+  
+  /* Tree Diagram Print - Mở bung và xoá style thừa */
+  .tree details { display: block !important; }
+  .tree summary::before { display: none; }
+  .tree ul { border-left: 1px solid #ccc; }
+  .tree li::before { border-bottom: 1px solid #ccc; }
+  .n-card { border: 1px solid #999 !important; box-shadow: none !important; background: transparent !important; color: #000 !important; padding: 6px 10px; }
+  .n-card b { color: #000 !important; }
+  .n-card.root, .n-card.bod { background: #eee !important; border: 2px solid #000 !important; }
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+<div id="hero"></div>
+
+<header class="top">
+  <span class="logo" id="logo"></span>
+  <span class="sub" id="hdrSub"></span>
+  <span class="pill" id="hdrStatus"></span>
+  <button class="btn" id="btnPdf">Download PDF</button>
+</header>
+
+<nav class="nav" id="nav"></nav>
+<main class="wrap" id="app"></main>
+<footer id="foot"></footer>
+<button id="toTop" aria-label="Lên đầu trang">↑</button>
+
+<script>
+// --- ZONE 1: DATA ---
+const HANDBOOK_META = {
+  title: "WePlus⁺ Handbook",
+  subtitle: "Employee Handbook · WePlus⁺",
+  header: "Handbook 2026",
+  version: "v1.0",
+  status: "DRAFT",
+  footer: "© 2026 Le Ha — Drafted for WePlus⁺<br>Internal Use Only | v1",
+  logoWhite: "https://leha-os.github.io/assets/logoweplus_white_transparent.png",
+  logoBlack: "https://leha-os.github.io/assets/logoweplus_black_transparent.png"
+};
+
+const STATUS_LABEL = {
+  OFFICIAL: "CHÍNH THỨC",
+  DRAFT: "BẢN NHÁP",
+  NEEDS_ALIGNMENT: "CẦN THỐNG NHẤT",
+  MISSING: "CHƯA CÓ THÔNG TIN",
+  PROPOSED: "ĐỀ XUẤT",
+  PENDING: "CHỜ XÁC NHẬN"
+};
+
+const ALIGNMENT_DATA = [
+  ["Giờ làm việc", "9h00–18h00, nghỉ trưa 12h–13h", "9:30–10:00 sáng đến 18:30–19:00 chiều", "—", "Hai khung giờ khác nhau", "NEEDS_ALIGNMENT"],
+  ["Đi trễ / về sớm", "Vào sau 10h / về trước 15h → nghỉ nửa ngày", "Sau 10:30 mặc nhiên tính ½ ngày phép", "—", "Ngưỡng tính nửa ngày phép khác nhau", "NEEDS_ALIGNMENT"],
+  ["Phép năm luật", "12 ngày/năm (<1 năm = 1 ngày/tháng)", "Chỉ ghi NV 5 năm được +1 ngày phép", "x (cho cả 7 công ty)", "ePlus không nêu số ngày phép cơ bản", "NEEDS_ALIGNMENT"],
+  ["Phép bổ sung", "Sau 5 năm +1 ngày", "Làm việc 5 năm được +1 ngày", "Engage & Enabler: Sau 1 năm +1, từ năm 5. Các công ty khác: Sau 5 năm +1", "Excel và PDF chênh lệch nhau", "NEEDS_ALIGNMENT"],
+  ["Thời hạn xin nghỉ", ">3 ngày: báo 1 tuần; <3 ngày: báo 3 ngày", "1-2 ngày: báo 3 ngày; 3-5 ngày: báo 10 ngày", "—", "Khung báo trước khác nhau", "NEEDS_ALIGNMENT"],
+  ["Giới hạn nghỉ", "Hạn chế nghỉ liên tiếp >3 ngày trong 1 tuần", "Không >5 ngày liên tiếp; Không >50% team cùng lúc", "—", "Giới hạn khác nhau", "NEEDS_ALIGNMENT"],
+  ["WFH / Làm bù", "Sau CN chạy event → T2 đi muộn / WFH", "WFH tối đa 1 ngày/tháng (báo trước 1 ngày)", "—", "Hai cơ chế khác bản chất", "NEEDS_ALIGNMENT"],
+  ["Công tác ăn uống", "NV 180k; Manager 250k; Director 300k", "Mức tương đương (không áp dụng ngày event)", "Excel: 180k (Engage, ePlus); 150k (The Wall, v.v.)", "Xác nhận có áp dụng ngày event hay không", "NEEDS_ALIGNMENT"],
+  ["Hỗ trợ ra sân bay", "100k/chiều", "100k/chiều (loại trừ nếu dùng app công ty)", "100k/lần", "Chốt điều kiện loại trừ", "NEEDS_ALIGNMENT"],
+  ["Di chuyển trong tỉnh", "Thuê xe máy ≤150k/ngày", "Thuê xe/app công nghệ tuỳ tình huống", "—", "Chốt trần chi phí cho ePlus", "NEEDS_ALIGNMENT"],
+  ["Mừng Kết hôn", "1.000.000đ + nghỉ 3 ngày", "—", "1.000.000đ (có note Đề xuất 2.000.000đ)", "BOD duyệt mức đề xuất mới", "PROPOSED"],
+  ["Phí Grab / Be", "Grab công ty", "Be: Director 1.5tr; Head 1tr - 500k", "Excel: ePlus 1tr, Enabler 3tr", "Chốt hạn mức và hình thức chung", "NEEDS_ALIGNMENT"],
+  ["Sinh nhật", "Quản lý 500k; Nhân viên 300k", "—", "QL 500k; NV 300k; Bánh 500k/tháng", "Xác nhận áp dụng toàn bộ", "PENDING"]
+];
+
+const ALIGNMENT_REASON = [
+  "Cần BOD thống nhất khung giờ chung hoặc giữ riêng.",
+  "Chốt mốc 10h hay 10h30.",
+  "Xác nhận ePlus áp dụng luật chuẩn 12 ngày.",
+  "Cần chốt cách tính thâm niên trên Excel.",
+  "HR đề xuất khung chuẩn.",
+  "BOD thống nhất.",
+  "Chọn cơ chế nghỉ bù sự kiện hay WFH chuẩn.",
+  "Xác nhận ngày event có áp dụng phí không.",
+  "Thống nhất policy đặt xe ra sân bay.",
+  "Thống nhất trần di chuyển tỉnh.",
+  "Duyệt ngân sách kết hôn.",
+  "Kế toán chốt hạn mức app Be/Grab.",
+  "Xác nhận quỹ bánh kem."
+];
+
+const ORG_DATA = {
+  top: { title: "TGROUP 2027–2030" },
+  bod: { title: "Hội đồng Quản trị & Ban Điều hành (BOD)", chair: "Chủ tịch HĐQT: Mr Tâm", board: "Ban Điều hành: Ms Ngọc Hà, Mr Kiệt, Ms Mỹ" },
+  support: [
+    { title: "Business Development Team", lead: "", teams: [["Cố vấn PTTK", "Mr Tâm"], ["Giám đốc PTTK", "Ms Hạnh"]] },
+    { title: "Tài chính & Kế toán", lead: "Giám đốc Tài chính / Kế toán trưởng: Mr Khánh", teams: [["Khối Quản lý — Nhóm 01", "Leader: Ms Tuyết", "05 Kế toán viên"], ["Khối Quản lý — Nhóm 02", "Leader: Mr Minh", "05 Kế toán viên"]] },
+    { title: "Nhân sự & Pháp chế", lead: "Trưởng phòng: Ms Mỹ", teams: [["Chuyên viên C&B", "Ms Xuân"], ["Chuyên viên Pháp chế", "Ms Hòa"]] }
+  ],
+  clusters: [
+    { title: "Cluster 01 — Dịch vụ: WePlus⁺", note: "Lãnh đạo: Mr Kiệt & Ms Ngọc Hà", companies: [
+      { name: "ePlus", lead: "Điều hành: Ms Ngọc Hà", teams: [["Team Creative", "Leader: Ms Hải Yến", "02 2D + 01 3D"], ["Team Planner", "Leader: Ms Mỹ Liên", "03 Senior + 06 Staff"], ["Team Project", "Leader: Ms Phương Thảo", "06 Project + 02 Production"]] },
+      { name: "Engage", lead: "Điều hành: Mr Kiệt", teams: [["Team Creative"], ["Team Project"]] },
+      { name: "Enabler", lead: "Điều hành: Mr Kiệt", teams: [["Team Enabler", "Leader: Mr Phúc", "Bộ phận Kho"]] },
+      { name: "GolfCare⁺", lead: "Manager: Mr Tâm", teams: [["Team GolfCare⁺", "Leader: Ms Hà", "01 Designer + 03 Project"]] }]
+    },
+    { title: "Cluster 02 — Xây dựng & Sản xuất", note: "", companies: [
+      { name: "TheWall", lead: "", teams: [["Team Thiết kế"], ["Team Thi công"], ["Team M&E"], ["Team Công nhật"]] },
+      { name: "Imperial", lead: "", teams: [["Team Thiết kế"]] },
+      { name: "Nguyễn Mộc", lead: "", teams: [["Team Thiết kế"], ["Team Sản xuất"], ["Team Kinh doanh"]] },
+      { name: "GreenWall", lead: "", teams: [["Toàn công ty"]] }]
+    }
+  ]
+};
+
+const CALC_RATES = {
+  levels: [
+    ["Staff / Junior / Senior / Assistant", 180000, 350000],
+    ["Manager", 250000, 500000],
+    ["Director", 300000, 700000]
+  ],
+  airport: 100000
+};
+
+const T = (head, rows) => ({ type: "table", head, rows });
+const L = items => ({ type: "list", items });
+
+const HANDBOOK_SECTIONS = [
+  { id: "s01", number: "01", nav: "Profile & Tổ chức", title: "Profile & Sơ đồ tổ chức", status: "DRAFT", subsections: [
+    { title: "Sơ đồ tổ chức Tgroup 2027–2030", status: "DRAFT", src: "Sơ đồ nội bộ (Cập nhật Khối Hỗ trợ, BOD)", blocks: [
+      { type: "orgtree" }
+    ]},
+    { title: "Các công ty trong hệ thống chính sách", status: "OFFICIAL", src: "TGROUP CHÍNH SÁCH CHUNG.xlsx", blocks: [
+      L(["Engage", "ePlus", "Enabler", "The Wall", "Bức Tường", "Green Wall", "Nguyễn Mộc"])
+    ]}
+  ]},
+  { id: "s02", number: "02", nav: "Quy định & Văn hóa", title: "Quy định chung & Văn hóa", status: "DRAFT", subsections: [
+    { title: "Văn hóa làm việc", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
+      L(["Cùng làm, cùng chia sẻ. Kết quả là thành quả của teamwork.", "Giao tiếp nhã nhặn, vừa phải, chuẩn mực, lịch sự, văn minh.", "Hỗ trợ tương tác trên tinh thần cùng nhau xây dựng văn hóa công ty.", "Tham gia đầy đủ các hoạt động chung."])
+    ]},
+    { title: "Trang phục văn phòng", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
+      T(["Tiêu chuẩn", "Nữ", "Nam"], [
+        ["Cho phép", "Lịch sự – gọn gàng thanh lịch", "Lịch sự – gọn gàng trang nhã"],
+        ["Không chấp nhận", "Trang phục quá mỏng; váy quá ngắn; áo ba lỗ, cúp ngực", "Quần short; áo ba lỗ, sát nách; dép lê"]
+      ]),
+      { type: "note", text: "Thứ 2 hàng tuần: toàn bộ nhân viên mặc áo đồng phục công ty." }
+    ]},
+    { title: "Nội quy & 5S Văn phòng", status: "DRAFT", src: "Các nguồn", blocks: [
+      { type: "text", text: "Quy tắc ứng xử:" },
+      L(["Không nói chuyện điện thoại / trao đổi lớn tiếng trong khu vực làm việc chung.", "Giữ vệ sinh Pantry, WC, phòng họp sau khi dùng.", "Tắt điện, điều hoà khi ra về cuối cùng.", "Hạn chế mang đồ ăn nặng mùi vào văn phòng."])
+    ]},
+    { title: "Lịch hoạt động nội bộ năm", status: "DRAFT", src: "Excel - Hoạt động", blocks: [
+      { type: "calendar_table" }
+    ]}
+  ]},
+  { id: "s03", number: "03", nav: "Nhân sự & Thời gian", title: "Chính sách Nhân sự", status: "NEEDS_ALIGNMENT", subsections: [
+    { title: "Hợp đồng & Lương", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
+      L(["Ký HĐLĐ chính thức sau 2–3 tháng thử việc.", "Nghỉ việc báo trước: 30 ngày (HĐ 1-3 năm), 7 ngày (HĐ dưới 1 năm).", "Trả lương: chuyển khoản HDBank từ ngày 01-10 tháng kế tiếp."])
+    ]},
+    { title: "Các chế độ nghỉ việc riêng có lương", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
+      T(["Trường hợp", "Chế độ"], [
+        ["Bản thân kết hôn", "03 ngày (mừng 1.000.000đ)"],
+        ["Con, cha/mẹ, anh/chị/em kết hôn", "01 ngày"],
+        ["Tang chế (Cha mẹ, Vợ chồng, Con)", "03 ngày (vòng hoa chia buồn + 1.000.000đ)"],
+        ["Nữ sinh con", "6 tháng theo Luật (mừng 1.000.000đ)"],
+        ["Nam vợ sinh con", "05-07 ngày theo Luật (mừng 1.000.000đ)"]
+      ])
+    ]},
+    { title: "Chấm công", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
+      { type: "text", text: "Check-in / Check-out bằng vân tay tại cửa ra vào." },
+      L(["Nhân viên: Chấm công tự động.", "Leader: Xác nhận giải trình đi trễ, OT, công tác.", "HR: Tổng hợp & chốt công chuyển Payroll."])
+    ]}
+  ]},
+  { id: "s04", number: "04", nav: "Thưởng & Phúc lợi", title: "Thưởng, Phúc lợi & Công tác phí", status: "DRAFT", subsections: [
+    { title: "Chính sách phúc lợi chung", status: "DRAFT", src: "Excel Chính sách TGroup", blocks: [
+      { type: "companypick" },
+      T(["Chế độ", "Engage", "ePlus", "Enabler"], [
+        ["Phép năm", "12 ngày", "12 ngày", "12 ngày"],
+        ["Khám sức khỏe", "1.2tr/người", "1.2tr/người", "1.2tr/người"],
+        ["Quốc tế phụ nữ 8/3", "500k/người", "500k/người", "500k/người"],
+        ["Happy Friday", "50k/người/tuần", "50k/người/tuần", "50k/người/tuần"],
+        ["Team building", "3tr/người", "3tr/người", "3tr/người"]
+      ])
+    ]},
+    { title: "Hoa hồng & Thưởng dự án (ePlus)", status: "DRAFT", src: "Sổ tay ePlus", blocks: [
+      { type: "text", text: "Thưởng dự án MỚI (chưa VAT, tổng kết 6 tháng/lần):" },
+      T(["Doanh thu", "Thưởng"], [["500tr - 1 tỷ", "5 triệu"], [">1 - 2 tỷ", "10 triệu"], [">2 - 3 tỷ", "15 triệu"], [">3 tỷ", "20 triệu"]]),
+      { type: "note", text: "Trích lại triển khai (GP Final 2%): Digital (Planner 50%, Creative/Project 25%); Event (Planner 35%, Project 45%, Creative 20%)." }
+    ]},
+    { title: "Tính toán công tác phí tối đa", status: "PENDING", src: "Các nguồn", blocks: [
+      { type: "calc" }
+    ]}
+  ]},
+  { id: "s05", number: "05", nav: "Lưu trữ & Biểu mẫu", title: "Biểu mẫu & Lưu trữ", status: "DRAFT", subsections: [
+    { title: "Ngăn lưu trữ Biểu mẫu & Văn thư chuẩn", status: "MISSING", src: "Đề xuất quy trình", blocks: [
+      { type: "text", text: "Khu vực lưu trữ tập trung các tài liệu, biểu mẫu, hợp đồng chuẩn để đảm bảo toàn bộ nhân sự sử dụng đồng nhất." },
+      T(["Loại tài liệu / Biểu mẫu", "Nơi lưu trữ & Link truy cập", "Ghi chú nội dung"], [
+        ["Hành chính", "🔗 [Đang đợi cập nhật Link Drive]", "Gồm: Đơn xin nghỉ phép, Giấy đề xuất thanh toán, Tạm ứng, Biên bản bàn giao..."],
+        ["Nhân sự", "🔗 [Đang đợi cập nhật Link Drive]", "Gồm: Mẫu đánh giá KPI, Mẫu Hợp đồng lao động, Bảng nội quy..."],
+        ["Dự án & Khách hàng", "🔗 [Đang đợi cập nhật Link Drive]", "Gồm: Template Báo giá, Template Proposal, Hợp đồng mẫu, Biên bản nghiệm thu..."],
+        ["Brand Assets (Thương hiệu)", "🔗 [Đang đợi cập nhật Link Drive]", "Gồm: Logo WePlus/Engage/ePlus, Template slide trình chiếu, Bộ Font chữ chuẩn..."]
+      ]),
+      { type: "note", text: "Admin/HR cần tạo kho thư mục trên Drive/NAS và gửi đường dẫn để gắn trực tiếp vào đây. Nhân viên chỉ cần nhấp vào link để tải form chuẩn nhất." }
+    ]},
+    { title: "Lưu trữ dữ liệu dự án (ePlus)", status: "DRAFT", src: "Sổ tay ePlus", blocks: [
+      T(["Mục đích", "Kênh lưu trữ"], [
+        ["Kênh trao đổi với KH / lưu trữ nội bộ hằng ngày", "Google Drive"],
+        ["Lưu dữ liệu trên NAS", "Tổng hợp các DA trong năm, 6 tháng/1 lần"]
+      ])
+    ]}
+  ]},
+  { id: "s07", number: "07", nav: "Cần BOD Quyết định", title: "Bảng đối chiếu & Cần quyết định", status: "NEEDS_ALIGNMENT", subsections: [
+    { title: "Các mục cần thống nhất giữa Engage/ePlus", status: "NEEDS_ALIGNMENT", src: "Tổng hợp", blocks: [
+      { type: "decisions" }
+    ]}
+  ]}
+];
+
+// --- ZONE 2: RENDER HELPERS ---
+const esc = s => String(s).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+const badge = st => `<span class="st ${st}">${STATUS_LABEL[st]}</span>`;
+const vnd = n => n.toLocaleString("vi-VN") + "đ";
+
+// Tree Diagram Renderer
+function renderOrgTree() {
+  const d = ORG_DATA;
+  let html = `<div class="tree">`;
+  
+  // Root (TGroup)
+  html += `<details open><summary><div class="n-card root"><b>${esc(d.top.title)}</b><span class="sub" style="font-size:10px">Bấm để thu gọn/mở rộng</span></div></summary><ul>`;
+  
+  // BOD Branch
+  html += `<li><details open><summary><div class="n-card bod"><b>${esc(d.bod.title)}</b><span class="sub" style="color:var(--accent-soft); margin-top:4px">${esc(d.bod.chair)}</span><span class="sub" style="color:rgba(255,255,255,0.7)">${esc(d.bod.board)}</span></div></summary><ul>`;
+
+  // Support Block
+  html += `<li><details open><summary><div class="n-card cluster"><b>KHỐI HỖ TRỢ & PHÁT TRIỂN</b></div></summary><ul>`;
+  d.support.forEach(c => {
+    html += `<li><details open><summary><div class="n-card company"><b>${esc(c.title)}</b>${c.lead ? `<span class="sub">${esc(c.lead)}</span>` : ""}</div></summary><ul>`;
+    c.teams.forEach(t => {
+      let thtml = `<b>${esc(t[0])}</b>`;
+      if(t[1]) thtml += `<span class="lead">${esc(t[1])}</span>`;
+      if(t[2]) thtml += `<span class="sub">${esc(t[2])}</span>`;
+      html += `<li class="leaf"><summary><div class="n-card team">${thtml}</div></summary></li>`;
+    });
+    html += `</ul></details></li>`;
+  });
+  html += `</ul></details></li>`;
+
+  // Clusters Block
+  html += `<li><details open><summary><div class="n-card cluster"><b>KHỐI VẬN HÀNH KINH DOANH</b></div></summary><ul>`;
+  d.clusters.forEach(c => {
+    html += `<li><details open><summary><div class="n-card cluster" style="background:#e4efe8; border-color:var(--st-official); color:var(--st-official)"><b>${esc(c.title)}</b><span class="sub">${esc(c.note)}</span></div></summary><ul>`;
+    c.companies.forEach(comp => {
+      html += `<li><details open><summary><div class="n-card company"><b>${esc(comp.name)}</b>${comp.lead ? `<span class="sub">${esc(comp.lead)}</span>` : ""}</div></summary><ul>`;
+      comp.teams.forEach(t => {
+        let thtml = `<b>${esc(t[0])}</b>`;
+        if(t[1]) thtml += `<span class="lead">${esc(t[1])}</span>`;
+        if(t[2]) thtml += `<span class="sub">${esc(t[2])}</span>`;
+        html += `<li class="leaf"><summary><div class="n-card team">${thtml}</div></summary></li>`;
+      });
+      html += `</ul></details></li>`;
+    });
+    html += `</ul></details></li>`;
+  });
+  html += `</ul></details></li>`;
+
+  // Close BOD and Root
+  html += `</ul></details></li></ul></details></div>`;
+  return html;
+}
+
+function renderCalendarTable() {
+  const rows = [
+    ["Hàng tuần", "Thứ 6: Happy Friday (16:00) | Thank You Wall (Góc Cảm Ơn)"],
+    ["Hàng tháng", "Ngày 10: Tổ chức sinh nhật nhân viên chung trong tháng"],
+    ["Tháng 3", "Quốc tế Phụ nữ 8/3"],
+    ["Tháng 7", "Green Desk (Cuộc thi góc làm việc) | Khởi động sự kiện Mùa hè"],
+    ["Tháng 8", "Sự kiện Mùa hè rực rỡ | Chuẩn bị Mùa thu ấm áp"],
+    ["Tháng 9", "Sport Day (Ngày hội thể thao, cầu lông, đi bộ online)"],
+    ["Tháng 10", "Phụ nữ VN 20/10 (Cắm hoa, outlook nữ)"],
+    ["Tháng 11", "Tháng tri ân (Thank You Wall đặc biệt)"],
+    ["Tháng 12", "Giáng sinh (Mùa đông ấm áp, décor văn phòng)"],
+    ["Theo quý", "Innovation Day (Ngày sáng tạo)"]
+  ];
+  const r = rows.map(x => `<tr><td style="font-weight:600; white-space:nowrap; color:var(--brand)">${x[0]}</td><td>${x[1]}</td></tr>`).join("");
+  return `<div class="tw"><table><thead><tr><th style="width:120px">Thời gian / Chu kỳ</th><th>Hoạt động / Sự kiện</th></tr></thead><tbody>${r}</tbody></table></div>`;
+}
+
+function renderCompanyPick() {
+  const n = ["Tất cả", "Engage", "ePlus", "Enabler"]; // Lọc lại các công ty Khối 1
+  return `<div style="margin-bottom:8px">${n.map((x, i) => `<button class="cpick${i === 0 ? " on" : ""}" data-c="${i}">${x}</button>`).join("")}</div>`;
+}
+
+function renderCalc() {
+  const options = CALC_RATES.levels.map((l, i) => `<option value="${i}">${esc(l[0])}</option>`).join("");
+  return `
+    <div class="calc">
+        <div><label>Cấp bậc</label><select id="cLv">${options}</select></div>
+        <div><label>Số ngày công tác</label><input id="cDay" type="number" min="0" value="2"></div>
+        <div><label>Số đêm KS (2 người/phòng)</label><input id="cNight" type="number" min="0" value="1"></div>
+        <div>
+            <label>Hỗ trợ ga/sân bay</label>
+            <select id="cAir">
+                <option value="0">Không</option>
+                <option value="1">1 chiều</option>
+                <option value="2">Khứ hồi</option>
+            </select>
+        </div>
+    </div>
+    <div class="res" id="cRes"></div>`;
+}
+
+function calcUpdate() {
+  const lvEl = document.getElementById("cLv");
+  const resEl = document.getElementById("cRes");
+  if (!lvEl || !resEl) return;
+  const l = CALC_RATES.levels[+lvEl.value];
+  const d = Math.max(0, +document.getElementById("cDay").value || 0);
+  const n = Math.max(0, +document.getElementById("cNight").value || 0);
+  const a = +document.getElementById("cAir").value;
+  const f = l[1] * d, h = l[2] * n, ap = CALC_RATES.airport * a;
+  resEl.innerHTML = `Ăn uống: <b>${vnd(f)}</b> · KS: <b>${vnd(h)}</b> · Sân bay: <b>${vnd(ap)}</b><br>Tổng tối đa: <span class="big">${vnd(f + h + ap)}</span>`;
+}
+
+let decState = {};
+try { decState = JSON.parse(localStorage.getItem("hb_decisions") || "{}"); } catch (e) { }
+
+function renderDecisions() {
+  const r = ALIGNMENT_DATA.map((a, i) => {
+    const st = decState[i] || {};
+    return `
+      <tr class="${st.done ? "done" : ""}" style="${st.done ? 'opacity:0.5' : ''}">
+          <td>${i + 1}</td>
+          <td><b>${esc(a[0])}</b><br><span style="font-size:11px;color:var(--muted)">${esc(a[4])}</span></td>
+          <td>${esc(a[1])}</td>
+          <td>${esc(a[2])}</td>
+          <td>${esc(ALIGNMENT_REASON[i])}</td>
+          <td style="text-align:center"><input type="checkbox" data-k="${i}" data-f="done"${st.done ? " checked" : ""}></td>
+      </tr>`;
+  }).join("");
+
+  return `
+    <p><b id="decCount"></b> <button class="btn" id="decPdf" style="color:var(--brand);border-color:var(--brand);padding:4px 10px;font-size:10px">Xuất bảng này gửi họp</button></p>
+    <div class="tw dec">
+        <table>
+            <thead><tr><th>#</th><th>Nội dung khác biệt</th><th>Engage</th><th>ePlus</th><th>Cần BOD Quyết</th><th>Chốt</th></tr></thead>
+            <tbody>${r}</tbody>
+        </table>
+    </div>`;
+}
+
+function decCount() {
+  const t = document.querySelectorAll("#s07 input[type=checkbox]");
+  const el = document.getElementById("decCount");
+  if (el) el.textContent = `${[...t].filter(c => c.checked).length}/${t.length} mục đã chốt`;
+}
+
+function renderBlock(b) {
+  if (b.type === "list") return `<ul>${b.items.map(i => `<li>${esc(i)}</li>`).join("")}</ul>`;
+  if (b.type === "text") return `<p>${esc(b.text)}</p>`;
+  if (b.type === "note") return `<div class="note">${esc(b.text)}</div>`;
+  if (b.type === "orgtree") return renderOrgTree();
+  if (b.type === "calendar_table") return renderCalendarTable();
+  if (b.type === "companypick") return renderCompanyPick();
+  if (b.type === "calc") return renderCalc();
+  if (b.type === "decisions") return renderDecisions();
+  if (b.type === "table") {
+    const h = b.head.map(x => `<th>${esc(x)}</th>`).join("");
+    const r = b.rows.map(row => `<tr>${row.map(c => `<td>${esc(c)}</td>`).join("")}</tr>`).join("");
+    return `<div class="tw"><table><thead><tr>${h}</tr></thead><tbody>${r}</tbody></table></div>`;
+  }
+  return "";
+}
+
+function renderChrome() {
+  const M = HANDBOOK_META;
+  const fb = `this.onerror=null;this.src='${M.logoBlack}'`;
+  document.getElementById("logo").innerHTML = `<img class="lw" src="${M.logoWhite}" alt="WePlus⁺" loading="lazy" onerror="${fb}">`;
+  document.getElementById("hdrSub").textContent = M.header;
+  document.getElementById("hdrStatus").textContent = M.status;
+  document.getElementById("foot").innerHTML = M.footer;
+  document.title = M.title;
+}
+
+function initHero() {
+  const h = document.getElementById("hero"), M = HANDBOOK_META, fb = `this.onerror=null;this.src='${M.logoBlack}'`;
+  h.innerHTML = `
+      <div class="hero-in">
+          <img class="hero-w" src="${M.logoWhite}" alt="WePlus⁺" loading="lazy" onerror="${fb}">
+          <div class="hero-line"></div>
+          <h2 class="hero-title">${M.header}</h2>
+          <div class="hero-sub">${esc(M.subtitle)}</div>
+          <button class="hero-btn" id="enter">Vào Handbook</button>
+      </div>`;
+
+  let seen = false;
+  try { seen = sessionStorage.getItem("hb_seen") === "1"; } catch (e) { }
+  const close = () => {
+      h.classList.add("out"); document.body.classList.remove("lock");
+      try { sessionStorage.setItem("hb_seen", "1"); } catch (e) { }
+      setTimeout(() => h.remove(), 700);
+  };
+  if (seen) { h.remove(); return; }
+  document.body.classList.add("lock");
+  document.getElementById("enter").addEventListener("click", close);
+}
+
+// Bỏ các thuộc tính open mặc định - Chỉ collapse ở thẻ details
+function renderSections() {
+  document.getElementById("nav").innerHTML = HANDBOOK_SECTIONS.map(s => `<a data-id="${s.id}">${s.number} ${esc(s.nav)}</a>`).join("");
+  const cnt = {};
+  HANDBOOK_SECTIONS.forEach(x => x.subsections.forEach(y => cnt[y.status] = (cnt[y.status] || 0) + 1));
+  const legend = `<div class="legend">${Object.keys(STATUS_LABEL).filter(k => cnt[k]).map(k => `<button class="st lg ${k}" data-st="${k}">${STATUS_LABEL[k]} · ${cnt[k]}</button>`).join("")}</div>`;
+
+  // Xóa class "collapsed" khỏi thẻ section.sec để mục lớn luôn mở
+  const secs = HANDBOOK_SECTIONS.map(s => `
+      <section class="sec" id="${s.id}">
+          <h2><span style="color:var(--accent);font-weight:800">${s.number}</span><span>${esc(s.title)}</span> ${badge(s.status)}</h2>
+          ${s.subsections.map(sub => `
+              <details class="blk" data-st="${sub.status}">
+                  <summary><span>${esc(sub.title)}</span> ${badge(sub.status)}</summary>
+                  <div class="body">
+                      <p class="src">Nguồn: ${esc(sub.src)}</p>
+                      ${sub.blocks.map(renderBlock).join("")}
+                  </div>
+              </details>`).join("")}
+      </section>`).join("");
+
+  document.getElementById("app").innerHTML = `
+      <h1>${esc(HANDBOOK_META.title)}</h1>
+      <p class="lead">${esc(HANDBOOK_META.subtitle)}</p>
+      <div class="tools">
+          <input class="search" id="q" placeholder="Tìm kiếm...">
+          <button id="toggleAll">Mở / đóng tất cả</button>
+      </div>
+      ${legend}${secs}`;
+}
+
+function initTabs() {
+  const links = [...document.querySelectorAll("#nav a")], secs = [...document.querySelectorAll("section.sec")];
+  const show = id => {
+      links.forEach(a => a.classList.toggle("on", a.dataset.id === id));
+      secs.forEach(x => {
+          x.classList.toggle("on", x.id === id);
+          x.style.display = x.id === id ? "block" : "none";
+      });
+  };
+  links.forEach(a => a.addEventListener("click", () => {
+      show(a.dataset.id);
+      window.scrollTo({ top: document.getElementById("app").offsetTop - 8, behavior: 'smooth' });
+  }));
+  show(HANDBOOK_SECTIONS[0].id);
+
+  // Cho phép bấm vào Header của Section để đóng mở
+  document.querySelectorAll("section.sec > h2").forEach(h =>
+      h.addEventListener("click", () => h.parentElement.classList.toggle("collapsed"))
+  );
+}
+
+function initSearch() {
+  let q = "", st = "";
+  const apply = () => {
+      const active = !!(q || st);
+      document.body.classList.toggle("searching", active);
+      document.querySelectorAll("details.blk").forEach(d => {
+          const hit = (!q || d.textContent.toLowerCase().includes(q)) && (!st || d.dataset.st === st);
+          d.style.display = hit ? "" : "none";
+          if (active && hit) {
+              d.open = true;
+              d.closest('section.sec').classList.remove('collapsed');
+          }
+      });
+  };
+
+  const input = document.getElementById("q");
+  if (input) input.addEventListener("input", e => { q = e.target.value.trim().toLowerCase(); apply(); });
+
+  document.querySelectorAll(".lg").forEach(b => b.addEventListener("click", () => {
+      st = (st === b.dataset.st) ? "" : b.dataset.st;
+      document.querySelectorAll(".lg").forEach(x => x.classList.toggle("on", x.dataset.st === st));
+      apply();
+  }));
+
+  document.getElementById("toggleAll")?.addEventListener("click", () => {
+      const cur = document.querySelectorAll("section.sec[style*='block'] details.blk, section.sec.on details.blk");
+      const anyClosed = [...cur].some(d => !d.open);
+      cur.forEach(d => d.open = anyClosed);
+      // Đồng thời mở section header
+      const sec = document.querySelector("section.sec.on");
+      if (sec) sec.classList.toggle('collapsed', !anyClosed);
+  });
+}
+
+function initMotion() {
+  const bar = document.getElementById("prog");
+  let tick = false;
+  window.addEventListener("scroll", () => {
+      if (tick) return;
+      tick = true;
+      requestAnimationFrame(() => {
+          const h = document.documentElement.scrollHeight - window.innerHeight;
+          bar.style.transform = `scaleX(${h > 0 ? window.scrollY / h : 0})`;
+          tick = false;
+      });
+  }, { passive: true });
+}
+
+function applyCompany(idx) {
+  document.querySelectorAll("#s04 table").forEach(t => {
+      const th = t.querySelectorAll("thead th");
+      if (th.length !== 4 || th[1].textContent !== "Engage") return; // Lọc cho 4 cột (Chế độ, Engage, ePlus, Enabler)
+      t.style.minWidth = idx ? "0" : "";
+      t.querySelectorAll("tr").forEach(tr => [...tr.children].forEach((c, j) => {
+          c.style.display = (!idx || j === 0 || j === idx) ? "" : "none";
+      }));
+  });
+}
+
+function renderApp() {
+  renderChrome();
+  renderSections();
+  initTabs();
+  initSearch();
+  initMotion();
+
+  document.getElementById("btnPdf")?.addEventListener("click", () => {
+      // Mở bung toàn bộ mọi thứ để chuẩn bị in
+      document.querySelectorAll("details").forEach(d => d.open = true);
+      document.querySelectorAll(".sec").forEach(s => s.classList.remove("collapsed"));
+      // Đợi layout update rồi in
+      setTimeout(() => window.print(), 200);
+  });
+
+  const b = document.getElementById("toTop");
+  window.addEventListener("scroll", () => { b.style.display = window.scrollY > 400 ? "block" : "none" }, { passive: true });
+  b.addEventListener("click", () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  document.addEventListener("click", e => {
+      const c = e.target.closest(".cpick");
+      if (c) {
+          document.querySelectorAll(".cpick").forEach(x => x.classList.toggle("on", x === c));
+          applyCompany(+c.dataset.c);
+      }
+      if (e.target.id === "decPdf") {
+          document.body.classList.add("print-dec");
+          document.querySelectorAll("details").forEach(d => d.open = true);
+          window.print();
+      }
+  });
+
+  window.addEventListener("afterprint", () => document.body.classList.remove("print-dec"));
+
+  document.addEventListener("input", e => {
+      if (e.target.closest(".calc")) calcUpdate();
+      const k = e.target.dataset.k;
+      if (k === undefined) return;
+      const st = decState[k] = decState[k] || {};
+      const f = e.target.dataset.f;
+      st[f] = f === "done" ? e.target.checked : e.target.value;
+      if (f === "done") {
+          e.target.closest("tr").style.opacity = e.target.checked ? "0.5" : "1";
+          decCount();
+      }
+      try { localStorage.setItem("hb_decisions", JSON.stringify(decState)); } catch (x) { }
+  });
+
+  if (document.getElementById("cLv")) calcUpdate();
+  decCount();
+  initHero();
+}
+
+document.addEventListener("DOMContentLoaded", renderApp);
+</script>
+</body>
+</html>
