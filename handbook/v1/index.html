@@ -55,9 +55,9 @@
   --font: "Optimistic", system-ui, sans-serif; --radius: 8px; --maxw: 960px;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; height: 100%; }
 * { box-sizing: border-box; overflow-wrap: break-word; word-break: break-word; }
-body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--bg); line-height: 1.6; font-size: 13.5px; }
+body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--bg); line-height: 1.6; font-size: 13.5px; min-height: 100%; display: flex; flex-direction: column; }
 body.lock { overflow: hidden; }
 
 /* Hero - Intro Screen */
@@ -65,15 +65,21 @@ body.lock { overflow: hidden; }
 #hero.out { opacity: 0; visibility: hidden; }
 #hero::before { content: ""; pointer-events: none; position: absolute; width: 160vmax; height: 160vmax; left: 50%; top: 50%; margin: -80vmax 0 0 -80vmax; background: conic-gradient(from 0deg, transparent 0, rgba(184,151,90,.16) 12%, transparent 30%, rgba(20,80,59,.55) 55%, transparent 75%); animation: spin 50s linear infinite; }
 .hero-in { position: relative; z-index: 2; padding: 20px; }
-.hero-line { height: 1px; width: 0; margin: 20px auto; background: var(--accent); animation: line 1.4s .4s ease forwards; }
-.hero-title { font-family: var(--font); font-size: clamp(22px, 4.5vw, 34px); line-height: 1.15; margin: 0; font-weight: 700; }
-.hero-sub { opacity: .7; margin: 12px 0 28px; font-size: 13px; letter-spacing: .06em; }
-.hero-btn { border: 1px solid var(--accent); background: transparent; color: var(--on-dark); padding: 12px 28px; font: inherit; letter-spacing: .14em; cursor: pointer; text-transform: uppercase; font-size: 11px; border-radius: 99px; transition: .2s; }
+.hero-line { height: 1px; width: 0; margin: 20px auto; background: var(--accent); animation: line 1.4s .8s ease forwards; } /* Delayed line animation */
+.hero-title { font-family: var(--font); font-size: clamp(22px, 4.5vw, 34px); line-height: 1.15; margin: 0; font-weight: 700; opacity: 0; animation: fadeIn 0.8s 1s forwards; } /* Delayed fade in */
+.hero-sub { opacity: 0; margin: 12px 0 28px; font-size: 13px; letter-spacing: .06em; animation: fadeIn 0.8s 1.2s forwards; } /* Delayed fade in */
+.hero-btn { opacity: 0; border: 1px solid var(--accent); background: transparent; color: var(--on-dark); padding: 12px 28px; font: inherit; letter-spacing: .14em; cursor: pointer; text-transform: uppercase; font-size: 11px; border-radius: 99px; transition: .2s; animation: fadeIn 0.8s 1.4s forwards; } /* Delayed fade in */
 .hero-btn:hover { background: var(--accent); color: var(--hero); }
-.hero-w { height: 90px; display: block; margin: 0 auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
+.hero-w { height: 0px; display: block; margin: 0 auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); opacity: 0; animation: logoGrow 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s forwards; } /* Logo pop and grow */
 
 @keyframes spin { to { transform: rotate(360deg); } } 
 @keyframes line { to { width: 120px; } }
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes logoGrow { 
+  0% { height: 0px; opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; }
+  100% { height: 140px; opacity: 1; transform: scale(1); } /* Increased size */
+}
 
 /* Header & Nav */
 header.top { background: var(--brand); color: var(--on-dark); padding: 12px 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; position: relative; overflow: hidden; }
@@ -87,7 +93,7 @@ nav.nav a { padding: 13px 16px; color: rgba(255,255,255,.65); text-decoration: n
 nav.nav a:hover { color: var(--on-dark); } nav.nav a.on { color: var(--on-dark); border-bottom-color: var(--accent); background: rgba(255,255,255,.06); }
 
 /* Main wrap */
-.wrap { max-width: var(--maxw); margin: 0 auto; padding: 24px 14px 70px; position: relative; z-index: 1; }
+main.wrap { max-width: var(--maxw); margin: 0 auto; padding: 24px 14px 70px; position: relative; z-index: 1; flex: 1 0 auto; width: 100%; } /* Flex grow */
 h1 { font-family: var(--font); font-size: 22px; color: var(--brand); margin: 0 0 4px; line-height: 1.25; font-weight: 700; }
 .lead { color: var(--muted); margin: 0 0 16px; font-size: 12px; }
 .tools { display: flex; gap: 8px; margin-bottom: 8px; }
@@ -172,7 +178,7 @@ tbody tr:nth-child(even) { background: #faf8f3; }
 .lg { border: 0; cursor: pointer; font-family: inherit; transition: .2s; } .lg:hover { transform: translateY(-1px); box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
 .lg.on { outline: 2px solid var(--brand); }
 
-footer { text-align: center; color: var(--muted); font-size: 11.5px; padding: 24px 14px; border-top: 1px solid var(--line); }
+footer { text-align: center; color: var(--muted); font-size: 11.5px; padding: 24px 14px; border-top: 1px solid var(--line); flex-shrink: 0; } /* Fixed footer */
 #toTop { position: fixed; right: 16px; bottom: 16px; background: var(--brand); color: var(--on-dark); border: 0; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: none; font-size: 16px; transition: opacity 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
 #toTop:hover { opacity: 0.8; }
 #prog { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; z-index: 60; }
@@ -249,23 +255,23 @@ const STATUS_LABEL = {
 const ALIGNMENT_DATA = [
   ["Giờ làm việc", "9h00–18h00, nghỉ trưa 12h–13h", "9:30–10:00 sáng đến 18:30–19:00 chiều", "—", "Hai khung giờ khác nhau", "NEEDS_ALIGNMENT"],
   ["Đi trễ / về sớm", "Vào sau 10h / về trước 15h → nghỉ nửa ngày", "Sau 10:30 mặc nhiên tính ½ ngày phép", "—", "Ngưỡng tính nửa ngày phép khác nhau", "NEEDS_ALIGNMENT"],
-  ["Phép năm luật", "12 ngày/năm (<1 năm = 1 ngày/tháng)", "Chỉ ghi NV 5 năm được +1 ngày phép", "x (cho cả 7 công ty)", "ePlus không nêu số ngày phép cơ bản", "NEEDS_ALIGNMENT"],
-  ["Phép bổ sung", "Sau 5 năm +1 ngày", "Làm việc 5 năm được +1 ngày", "Engage & Enabler: Sau 1 năm +1, từ năm 5. Các công ty khác: Sau 5 năm +1", "Excel và PDF chênh lệch nhau", "NEEDS_ALIGNMENT"],
+  ["Phép năm luật", "12 ngày/năm (<1 năm = 1 ngày/tháng)", "Chỉ ghi NV 5 năm được +1 ngày phép", "x (cho cả 7 công ty)", "ePlus⁺ không nêu số ngày phép cơ bản", "NEEDS_ALIGNMENT"],
+  ["Phép bổ sung", "Sau 5 năm +1 ngày", "Làm việc 5 năm được +1 ngày", "Engage⁺ & Enabler⁺: Sau 1 năm +1, từ năm 5. Các công ty khác: Sau 5 năm +1", "Excel và PDF chênh lệch nhau", "NEEDS_ALIGNMENT"],
   ["Thời hạn xin nghỉ", ">3 ngày: báo 1 tuần; <3 ngày: báo 3 ngày", "1-2 ngày: báo 3 ngày; 3-5 ngày: báo 10 ngày", "—", "Khung báo trước khác nhau", "NEEDS_ALIGNMENT"],
   ["Giới hạn nghỉ", "Hạn chế nghỉ liên tiếp >3 ngày trong 1 tuần", "Không >5 ngày liên tiếp; Không >50% team cùng lúc", "—", "Giới hạn khác nhau", "NEEDS_ALIGNMENT"],
   ["WFH / Làm bù", "Sau CN chạy event → T2 đi muộn / WFH", "WFH tối đa 1 ngày/tháng (báo trước 1 ngày)", "—", "Hai cơ chế khác bản chất", "NEEDS_ALIGNMENT"],
-  ["Công tác ăn uống", "NV 180k; Manager 250k; Director 300k", "Mức tương đương (không áp dụng ngày event)", "Excel: 180k (Engage, ePlus); 150k (The Wall, v.v.)", "Xác nhận có áp dụng ngày event hay không", "NEEDS_ALIGNMENT"],
+  ["Công tác ăn uống", "NV 180k; Manager 250k; Director 300k", "Mức tương đương (không áp dụng ngày event)", "Excel: 180k (Engage⁺, ePlus⁺); 150k (The Wall, v.v.)", "Xác nhận có áp dụng ngày event hay không", "NEEDS_ALIGNMENT"],
   ["Hỗ trợ ra sân bay", "100k/chiều", "100k/chiều (loại trừ nếu dùng app công ty)", "100k/lần", "Chốt điều kiện loại trừ", "NEEDS_ALIGNMENT"],
-  ["Di chuyển trong tỉnh", "Thuê xe máy ≤150k/ngày", "Thuê xe/app công nghệ tuỳ tình huống", "—", "Chốt trần chi phí cho ePlus", "NEEDS_ALIGNMENT"],
+  ["Di chuyển trong tỉnh", "Thuê xe máy ≤150k/ngày", "Thuê xe/app công nghệ tuỳ tình huống", "—", "Chốt trần chi phí cho ePlus⁺", "NEEDS_ALIGNMENT"],
   ["Mừng Kết hôn", "1.000.000đ + nghỉ 3 ngày", "—", "1.000.000đ (có note Đề xuất 2.000.000đ)", "BOD duyệt mức đề xuất mới", "PROPOSED"],
-  ["Phí Grab / Be", "Grab công ty", "Be: Director 1.5tr; Head 1tr - 500k", "Excel: ePlus 1tr, Enabler 3tr", "Chốt hạn mức và hình thức chung", "NEEDS_ALIGNMENT"],
+  ["Phí Grab / Be", "Grab công ty", "Be: Director 1.5tr; Head 1tr - 500k", "Excel: ePlus⁺ 1tr, Enabler⁺ 3tr", "Chốt hạn mức và hình thức chung", "NEEDS_ALIGNMENT"],
   ["Sinh nhật", "Quản lý 500k; Nhân viên 300k", "—", "QL 500k; NV 300k; Bánh 500k/tháng", "Xác nhận áp dụng toàn bộ", "PENDING"]
 ];
 
 const ALIGNMENT_REASON = [
   "Cần BOD thống nhất khung giờ chung hoặc giữ riêng.",
   "Chốt mốc 10h hay 10h30.",
-  "Xác nhận ePlus áp dụng luật chuẩn 12 ngày.",
+  "Xác nhận ePlus⁺ áp dụng luật chuẩn 12 ngày.",
   "Cần chốt cách tính thâm niên trên Excel.",
   "HR đề xuất khung chuẩn.",
   "BOD thống nhất.",
@@ -288,9 +294,9 @@ const ORG_DATA = {
   ],
   clusters: [
     { title: "Cluster 01 — Dịch vụ: WePlus⁺", note: "Lãnh đạo: Mr Kiệt & Ms Ngọc Hà", companies: [
-      { name: "ePlus", lead: "CEO: Ms Ngọc Hà", teams: [["Team Creative", "Leader: Ms Hải Yến", "02 2D + 01 3D"], ["Team Planner", "Leader: Ms Mỹ Liên", "03 Senior + 06 Staff"], ["Team Project", "Leader: Ms Phương Thảo", "06 Project + 02 Production"]] },
-      { name: "Engage", lead: "CEO: Mr Kiệt", teams: [["Team Creative"], ["Team Project"]] },
-      { name: "Enabler", lead: "CEO: Mr Kiệt", teams: [["Team Enabler", "Leader: Mr Phúc", "Bộ phận Kho"]] },
+      { name: "ePlus⁺", lead: "CEO: Ms Ngọc Hà", teams: [["Team Creative", "Leader: Ms Hải Yến", "02 2D + 01 3D"], ["Team Planner", "Leader: Ms Mỹ Liên", "03 Senior + 06 Staff"], ["Team Project", "Leader: Ms Phương Thảo", "06 Project + 02 Production"]] },
+      { name: "Engage⁺", lead: "CEO: Mr Kiệt", teams: [["Team Creative"], ["Team Project"]] },
+      { name: "Enabler⁺", lead: "CEO: Mr Kiệt", teams: [["Team Enabler", "Leader: Mr Phúc", "Bộ phận Kho"]] },
       { name: "GolfCare⁺", lead: "CEO: Mr Tâm", teams: [["Team GolfCare⁺", "Leader: Ms Hà", "01 Designer + 03 Project"]] }]
     },
     { title: "Cluster 02 — Xây dựng & Sản xuất", note: "", companies: [
@@ -316,40 +322,46 @@ const L = items => ({ type: "list", items });
 
 const HANDBOOK_SECTIONS = [
   { id: "s01", number: "01", nav: "Profile & Tổ chức", title: "Profile & Sơ đồ tổ chức", status: "DRAFT", subsections: [
-    { title: "Profile Công ty", status: "MISSING", src: "Chưa có tài liệu", blocks: [
-      { type: "text", text: "Giới thiệu chung về TGroup, WePlus⁺, sứ mệnh, tầm nhìn và giá trị cốt lõi (Cần HR cung cấp thêm tài liệu để cập nhật)." }
+    { title: "1.1. Profile Công ty", status: "MISSING", src: "Chưa có tài liệu", blocks: [
+      { type: "text", text: "Giới thiệu chung về TGroup, WePlus⁺, sứ mệnh, tầm nhìn và giá trị cốt lõi." },
+      { type: "text", text: "WePlus⁺ (Khối Dịch vụ)" },
+      { type: "text", text: "ePlus⁺" },
+      { type: "text", text: "Engage⁺" },
+      { type: "text", text: "Enabler⁺" },
+      { type: "text", text: "GolfCare⁺" },
+      { type: "text", text: "Cluster 02 (Khối Kiến tạo & Sản xuất)" }
     ]},
-    { title: "Sơ đồ tổ chức Tgroup", status: "DRAFT", src: "Sơ đồ nội bộ (Cập nhật Khối Hỗ trợ, BOD)", blocks: [
+    { title: "1.2. Sơ đồ tổ chức Tgroup", status: "DRAFT", src: "Sơ đồ nội bộ (Cập nhật Khối Hỗ trợ, BOD)", blocks: [
       { type: "orgtree" }
     ]},
-    { title: "Các công ty/đội nhóm trong hệ thống chính sách", status: "OFFICIAL", src: "TGROUP CHÍNH SÁCH CHUNG.xlsx", blocks: [
-      L(["Engage", "ePlus", "Enabler", "The Wall", "Bức Tường", "Green Wall", "Nguyễn Mộc"])
+    { title: "1.3. Các công ty/đội nhóm trong hệ thống chính sách", status: "OFFICIAL", src: "TGROUP CHÍNH SÁCH CHUNG.xlsx", blocks: [
+      L(["Engage⁺", "ePlus⁺", "Enabler⁺", "The Wall", "Bức Tường", "Green Wall", "Nguyễn Mộc"])
     ]}
   ]},
   { id: "s02", number: "02", nav: "Quy định & Văn hóa", title: "Quy định chung & Văn hóa", status: "DRAFT", subsections: [
-    { title: "Văn hóa làm việc", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
+    { title: "2.1. Văn hóa làm việc", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
       L(["Cùng làm, cùng chia sẻ. Kết quả là thành quả của teamwork.", "Giao tiếp nhã nhặn, vừa phải, chuẩn mực, lịch sự, văn minh.", "Hỗ trợ tương tác trên tinh thần cùng nhau xây dựng văn hóa công ty.", "Tham gia đầy đủ các hoạt động chung."])
     ]},
-    { title: "Trang phục văn phòng", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
+    { title: "2.2. Trang phục văn phòng", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
       T(["Tiêu chuẩn", "Nữ", "Nam"], [
         ["Cho phép", "Lịch sự – gọn gàng thanh lịch", "Lịch sự – gọn gàng trang nhã"],
         ["Không chấp nhận", "Trang phục quá mỏng; váy quá ngắn; áo ba lỗ, cúp ngực", "Quần short; áo ba lỗ, sát nách; dép lê"]
       ]),
       { type: "note", text: "Thứ 2 hàng tuần: toàn bộ nhân viên mặc áo đồng phục công ty." }
     ]},
-    { title: "Nội quy & 5S Văn phòng", status: "DRAFT", src: "Các nguồn", blocks: [
+    { title: "2.3. Nội quy & 5S Văn phòng", status: "DRAFT", src: "Các nguồn", blocks: [
       { type: "text", text: "Quy tắc ứng xử:" },
       L(["Không nói chuyện điện thoại / trao đổi lớn tiếng trong khu vực làm việc chung.", "Giữ vệ sinh Pantry, WC, phòng họp sau khi dùng.", "Tắt điện, điều hoà khi ra về cuối cùng.", "Hạn chế mang đồ ăn nặng mùi vào văn phòng."])
     ]},
-    { title: "Lịch hoạt động nội bộ năm", status: "DRAFT", src: "Excel - Hoạt động", blocks: [
+    { title: "2.4. Lịch hoạt động nội bộ năm", status: "DRAFT", src: "Excel - Hoạt động", blocks: [
       { type: "calendar_table" }
     ]}
   ]},
   { id: "s03", number: "03", nav: "Nhân sự & Thời gian", title: "Chính sách Nhân sự", status: "NEEDS_ALIGNMENT", subsections: [
-    { title: "Hợp đồng & Lương", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
+    { title: "3.1. Hợp đồng & Lương", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
       L(["Ký HĐLĐ chính thức sau 2–3 tháng thử việc.", "Nghỉ việc báo trước: 30 ngày (HĐ 1-3 năm), 7 ngày (HĐ dưới 1 năm).", "Trả lương: chuyển khoản HDBank từ ngày 01-10 tháng kế tiếp."])
     ]},
-    { title: "Các chế độ nghỉ việc riêng có lương", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
+    { title: "3.2. Các chế độ nghỉ việc riêng có lương", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
       T(["Trường hợp", "Chế độ"], [
         ["Bản thân kết hôn", "03 ngày (mừng 1.000.000đ)"],
         ["Con, cha/mẹ, anh/chị/em kết hôn", "01 ngày"],
@@ -358,15 +370,15 @@ const HANDBOOK_SECTIONS = [
         ["Nam vợ sinh con", "05-07 ngày theo Luật (mừng 1.000.000đ)"]
       ])
     ]},
-    { title: "Chấm công", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
+    { title: "3.3. Chấm công", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
       { type: "text", text: "Check-in / Check-out bằng vân tay tại cửa ra vào." },
       L(["Nhân viên: Chấm công tự động.", "Leader: Xác nhận giải trình đi trễ, OT, công tác.", "HR: Tổng hợp & chốt công chuyển Payroll."])
     ]}
   ]},
   { id: "s04", number: "04", nav: "Thưởng & Phúc lợi", title: "Thưởng, Phúc lợi & Công tác phí", status: "DRAFT", subsections: [
-    { title: "Chính sách phúc lợi chung", status: "DRAFT", src: "Excel Chính sách TGroup", blocks: [
+    { title: "4.1. Chính sách phúc lợi chung", status: "DRAFT", src: "Excel Chính sách TGroup", blocks: [
       { type: "companypick" },
-      T(["Chế độ", "Engage", "ePlus", "Enabler"], [
+      T(["Chế độ", "Engage⁺", "ePlus⁺", "Enabler⁺"], [
         ["Phép năm", "12 ngày", "12 ngày", "12 ngày"],
         ["Khám sức khỏe", "1.2tr/người", "1.2tr/người", "1.2tr/người"],
         ["Quốc tế phụ nữ 8/3", "500k/người", "500k/người", "500k/người"],
@@ -374,17 +386,17 @@ const HANDBOOK_SECTIONS = [
         ["Team building", "3tr/người", "3tr/người", "3tr/người"]
       ])
     ]},
-    { title: "Hoa hồng & Thưởng dự án (ePlus)", status: "DRAFT", src: "Sổ tay ePlus", blocks: [
+    { title: "4.2. Hoa hồng & Thưởng dự án (ePlus⁺)", status: "DRAFT", src: "Sổ tay ePlus", blocks: [
       { type: "text", text: "Thưởng dự án MỚI (chưa VAT, tổng kết 6 tháng/lần):" },
       T(["Doanh thu", "Thưởng"], [["500tr - 1 tỷ", "5 triệu"], [">1 - 2 tỷ", "10 triệu"], [">2 - 3 tỷ", "15 triệu"], [">3 tỷ", "20 triệu"]]),
       { type: "note", text: "Trích lại triển khai (GP Final 2%): Digital (Planner 50%, Creative/Project 25%); Event (Planner 35%, Project 45%, Creative 20%)." }
     ]},
-    { title: "Tính toán công tác phí tối đa", status: "PENDING", src: "Các nguồn", blocks: [
+    { title: "4.3. Tính toán công tác phí tối đa", status: "PENDING", src: "Các nguồn", blocks: [
       { type: "calc" }
     ]}
   ]},
   { id: "s05", number: "05", nav: "Lưu trữ & Biểu mẫu", title: "Biểu mẫu & Lưu trữ", status: "DRAFT", subsections: [
-    { title: "Ngăn lưu trữ Biểu mẫu & Văn thư chuẩn", status: "MISSING", src: "Đề xuất quy trình", blocks: [
+    { title: "5.1. Ngăn lưu trữ Biểu mẫu & Văn thư chuẩn", status: "MISSING", src: "Đề xuất quy trình", blocks: [
       { type: "text", text: "Khu vực lưu trữ tập trung các tài liệu, biểu mẫu, hợp đồng chuẩn để đảm bảo toàn bộ nhân sự sử dụng đồng nhất." },
       T(["Loại tài liệu / Biểu mẫu", "Nơi lưu trữ & Link truy cập", "Ghi chú nội dung"], [
         ["Hành chính", "🔗 [Đang đợi cập nhật Link Drive]", "Gồm: Đơn xin nghỉ phép, Giấy đề xuất thanh toán, Tạm ứng, Biên bản bàn giao..."],
@@ -394,7 +406,7 @@ const HANDBOOK_SECTIONS = [
       ]),
       { type: "note", text: "Admin/HR cần tạo kho thư mục trên Drive/NAS và gửi đường dẫn để gắn trực tiếp vào đây. Nhân viên chỉ cần nhấp vào link để tải form chuẩn nhất." }
     ]},
-    { title: "Lưu trữ dữ liệu dự án (ePlus)", status: "DRAFT", src: "Sổ tay ePlus", blocks: [
+    { title: "5.2. Lưu trữ dữ liệu dự án (ePlus⁺)", status: "DRAFT", src: "Sổ tay ePlus", blocks: [
       T(["Mục đích", "Kênh lưu trữ"], [
         ["Kênh trao đổi với KH / lưu trữ nội bộ hằng ngày", "Google Drive"],
         ["Lưu dữ liệu trên NAS", "Tổng hợp các DA trong năm, 6 tháng/1 lần"]
@@ -402,7 +414,7 @@ const HANDBOOK_SECTIONS = [
     ]}
   ]},
   { id: "s07", number: "06", nav: "Cần BOD Quyết định", title: "Bảng đối chiếu & Cần quyết định", status: "NEEDS_ALIGNMENT", subsections: [
-    { title: "Các mục cần thống nhất giữa Engage/ePlus", status: "NEEDS_ALIGNMENT", src: "Tổng hợp", blocks: [
+    { title: "6.1. Các mục cần thống nhất giữa Engage⁺/ePlus⁺", status: "NEEDS_ALIGNMENT", src: "Tổng hợp", blocks: [
       { type: "decisions" }
     ]}
   ]}
@@ -479,7 +491,7 @@ function renderCalendarTable() {
 }
 
 function renderCompanyPick() {
-  const n = ["Tất cả", "Engage", "ePlus", "Enabler"]; // Lọc lại các công ty Khối 1
+  const n = ["Tất cả", "Engage⁺", "ePlus⁺", "Enabler⁺"]; // Lọc lại các công ty Khối 1
   return `<div style="margin-bottom:8px">${n.map((x, i) => `<button class="cpick${i === 0 ? " on" : ""}" data-c="${i}">${x}</button>`).join("")}</div>`;
 }
 
@@ -535,7 +547,7 @@ function renderDecisions() {
     <p><b id="decCount"></b> <button class="btn" id="decPdf" style="color:var(--brand);border-color:var(--brand);padding:4px 10px;font-size:10px">Xuất bảng này gửi họp</button></p>
     <div class="tw dec">
         <table>
-            <thead><tr><th>#</th><th>Nội dung khác biệt</th><th>Engage</th><th>ePlus</th><th>Cần BOD Quyết</th><th>Chốt</th></tr></thead>
+            <thead><tr><th>#</th><th>Nội dung khác biệt</th><th>Engage⁺</th><th>ePlus⁺</th><th>Cần BOD Quyết</th><th>Chốt</th></tr></thead>
             <tbody>${r}</tbody>
         </table>
     </div>`;
@@ -699,7 +711,7 @@ function initMotion() {
 function applyCompany(idx) {
   document.querySelectorAll("#s04 table").forEach(t => {
       const th = t.querySelectorAll("thead th");
-      if (th.length !== 4 || th[1].textContent !== "Engage") return; // Lọc cho 4 cột (Chế độ, Engage, ePlus, Enabler)
+      if (th.length !== 4 || th[1].textContent !== "Engage⁺") return; // Lọc cho 4 cột (Chế độ, Engage, ePlus, Enabler)
       t.style.minWidth = idx ? "0" : "";
       t.querySelectorAll("tr").forEach(tr => [...tr.children].forEach((c, j) => {
           c.style.display = (!idx || j === 0 || j === idx) ? "" : "none";
@@ -764,3 +776,4 @@ document.addEventListener("DOMContentLoaded", renderApp);
 </script>
 </body>
 </html>
+```eof
