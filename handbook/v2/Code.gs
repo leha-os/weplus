@@ -3,7 +3,7 @@
    EDITABLE: GOOGLE_SHEET_ID, WEB_APP_URL, loại phép, màu email | IDs, leave types, mail colors
    FIX AT: search "CONFIG" */
 const GOOGLE_SHEET_ID = '1QJ6a19pNWvgP_-6HlRoHr-8alVZOiQZX6nf93TE8ytw';
-const WEB_APP_URL = 'DAN_WEB_APP_URL_VAO_DAY';
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbznmJo5-Mg7nYbuV3oqj0Krn58vAhm4N4y29agBnLjTvEFIye2kmlttMZreqqt3Hb7Elg/exec';
 
 const CONFIG = {
   EMAIL_SHEET: 'email',
