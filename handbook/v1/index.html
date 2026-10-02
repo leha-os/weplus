@@ -356,8 +356,8 @@ const ORG_DATA = {
   top: { title: "TGROUP" },
   bod: { title: "HỘI ĐỒNG QUẢN TRỊ", chair: "Chủ tịch HĐQT: Mr Tâm", board: "Thành viên HĐQT: Ms Ngọc Hà, Mr Kiệt, Ms Mỹ" },
   support: [
-    { title: "Business Development Team", lead: "", teams: [["Cố vấn Phát triển Kinh doanh", "Mr Tâm"], ["Giám đốc Phát triển Kinh doanh", "Ms Hạnh"]] },
-    { title: "Tài chính & Kế toán", lead: "Giám đốc Tài chính / Kế toán trưởng: Mr Khánh", teams: [["Khối Quản lý — Nhóm 01", "Leader: Ms Tuyết", "05 Kế toán viên"], ["Khối Quản lý — Nhóm 02", "Leader: Mr Minh", "05 Kế toán viên"]] },
+    { title: "Phòng Phát triển Kinh doanh", lead: "", teams: [["Cố vấn Phát triển Kinh doanh", "Mr Tâm"], ["Giám đốc Phát triển Kinh doanh", "Ms Hạnh"]] },
+    { title: "Phòng Tài chính & Kế toán", lead: "Giám đốc Tài chính/Kế toán trưởng: Mr Khánh", teams: [["Phòng Kế toán WeWall Group", "Leader: Ms Tuyết", "05 Kế toán viên"], ["Phòng Kế toán WePlus⁺ Group", "Leader: Mr Minh", "05 Kế toán viên"]] },
     { title: "Nhân sự & Pháp chế", lead: "Trưởng phòng: Ms Mỹ", teams: [["Chuyên viên C&B", "Ms Xuân"], ["Chuyên viên Pháp chế", "Ms Hòa"]] }
   ],
   clusters: [
@@ -523,7 +523,7 @@ function renderOrgTree() {
   html += `</ul></details></li>`;
 
   // 4. KHỐI KINH DOANH-> OPEN
-  html += `<li><details open><summary><div class="n-card cluster"><b>KHỐI KINH DOANH</b></div></summary><ul>`;
+  html += `<li><details open><summary><div class="n-card cluster"><b>KHỐI VẬN HÀNH KINH DOANH</b></div></summary><ul>`;
   d.clusters.forEach(c => {
     const noteHtml = c.note ? `<span class="sub">${esc(c.note)}</span>` : "";
     
