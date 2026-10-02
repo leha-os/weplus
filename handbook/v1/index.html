@@ -4,870 +4,378 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>WePlus⁺ Handbook 2026</title>
-
-<!-- SEO Description — Sổ tay nhân viên -->
-<meta name="description" content="WePlus⁺ Handbook 2026 — Sổ tay nhân viên WePlus⁺: Quy định chung, văn hóa làm việc, chính sách nhân sự, phúc lợi, lưu trữ & hệ thống, quy trình vận hành. Chỉ lưu hành nội bộ — Internal Use Only.">
-<meta name="keywords" content="WePlus Handbook 2026, So tay nhan vien WePlus, Tgroup, ePlus, Engage, GolfCare, Noi quy, Phuc loi">
-<meta name="author" content="WePlus⁺ HR">
-<link rel="canonical" href="https://leha-os.github.io/weplus/handbook/v1">
+<meta name="description" content="WePlus⁺ Handbook 2026 — Sổ tay nhân viên WePlus⁺">
 <meta name="robots" content="noindex,nofollow">
-
-<!-- Open Graph / Facebook / Zalo / LinkedIn -->
-<meta property="og:type" content="book">
-<meta property="og:url" content="https://leha-os.github.io/weplus/handbook/v1">
-<meta property="og:title" content="WePlus⁺ Handbook 2026">
-<meta property="og:description" content="Sổ tay nhân viên WePlus⁺ 2026 — Chỉ lưu hành nội bộ. Quy định chung, văn hóa, nhân sự, phúc lợi, quy trình vận hành hệ sinh thái TGROUP 2027–2030.">
-<meta property="og:image" content="https://leha-os.github.io/assets/WePlus4BU.jpg">
-<meta property="og:image:secure_url" content="https://leha-os.github.io/assets/WePlus4BU.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="WePlus⁺ Handbook 2026">
-<meta property="og:site_name" content="WePlus⁺">
-<meta property="og:locale" content="vi_VN">
-
-<!-- Zalo -->
-<meta property="zalo:title" content="WePlus⁺ Handbook 2026">
-<meta property="zalo:description" content="Sổ tay nhân viên — Chỉ lưu hành nội bộ. WePlus⁺ Handbook 2026.">
-<meta property="zalo:image" content="https://leha-os.github.io/assets/WePlus4BU.jpg">
-
-<!-- Twitter / X -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://leha-os.github.io/weplus/handbook/v1">
-<meta name="twitter:title" content="WePlus⁺ Handbook 2026">
-<meta name="twitter:description" content="Sổ tay nhân viên WePlus⁺ 2026 — Chỉ lưu hành nội bộ.">
-<meta name="twitter:image" content="https://leha-os.github.io/assets/WePlus4BU.jpg">
-
 <style>
-/* ZONE 0 — THEME_GLOBAL */
-@font-face { font-family: "Optimistic"; font-style: normal; font-weight: 400 700; font-display: swap; src: local("Segoe UI"), local("Roboto"), local("Arial"); }
-:root {
-  --brand: #0c2e24; --brand-2: #14503b; --accent: #b8975a; --accent-soft: #f1eadb;
-  --ink: #1a1f1c; --muted: #6b726d; --line: #e6e1d6; --bg: #f7f5f0; --card: #ffffff; --hero: #071a14; --on-dark: #ffffff;
-  
-  /* Màu đồng bộ Xám cho tất cả trạng thái Nháp/Chưa thống nhất/Đề xuất... */
-  --st-official: #1f6b4a; --st-official-bg: #e4efe8;
-  --st-draft: #5f6661; --st-draft-bg: #ecebe6;
-  --st-align: #5f6661; --st-align-bg: #ecebe6;
-  --st-missing: #5f6661; --st-missing-bg: #ecebe6;
-  --st-proposed: #5f6661; --st-proposed-bg: #ecebe6;
-  --st-pending: #5f6661; --st-pending-bg: #ecebe6;
-
-  --font: "Optimistic", system-ui, sans-serif; --radius: 8px; --maxw: 960px;
+@font-face { font-family:"Optimistic"; font-style:normal; font-weight:400 700; font-display:swap; src:local("Segoe UI"),local("Roboto"),local("Arial"); }
+:root{
+  --brand:#0c2e24; --brand-2:#14503b; --accent:#b8975a; --accent-soft:#f6f0e4; --accent-2:#e8dcc0;
+  --ink:#1a1f1c; --muted:#6b726d; --line:#e6e1d6; --bg:#f7f5f0; --card:#ffffff; --hero:#071a14; --on-dark:#ffffff;
+  --st-official:#1f6b4a; --st-official-bg:#e4efe8; --st-draft:#5f6661; --st-draft-bg:#ecebe6;
+  --font:"Optimistic",system-ui,sans-serif;
+  --radius:8px; --radius-sm:6px; --maxw:860px;
+  --shadow:0 1px 4px rgba(12,46,36,.06); --shadow-hover:0 8px 20px rgba(12,46,36,.10);
 }
-
-html { scroll-behavior: smooth; height: 100%; }
-* { box-sizing: border-box; overflow-wrap: break-word; word-break: break-word; }
-body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--bg); line-height: 1.6; font-size: 13.5px; min-height: 100vh; display: flex; flex-direction: column; position: relative; }
-body.lock { overflow: hidden; }
-
-/* Subtle Ambient Background */
-body::before, body::after { content: ""; position: fixed; width: 500px; height: 500px; border-radius: 50%; pointer-events: none; z-index: 0; opacity: 0.4; filter: blur(80px); }
-body::before { background: var(--accent-soft); top: -100px; left: -100px; animation: float 20s ease-in-out infinite alternate; }
-body::after { background: #e4efe8; bottom: -150px; right: -100px; animation: float 25s ease-in-out infinite alternate-reverse; }
-@keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(50px, 50px) scale(1.1); } }
-
-/* Hero - Intro Screen */
-#hero { position: fixed; inset: 0; z-index: 100; background: var(--hero); color: var(--on-dark); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; overflow: hidden; transition: opacity 0.8s ease-out, visibility 0.8s; }
-#hero.out { opacity: 0; visibility: hidden; }
-#hero::before { content: ""; pointer-events: none; position: absolute; width: 160vmax; height: 160vmax; left: 50%; top: 50%; margin: -80vmax 0 0 -80vmax; background: conic-gradient(from 0deg, transparent 0, rgba(184,151,90,.16) 12%, transparent 30%, rgba(20,80,59,.55) 55%, transparent 75%); animation: spin 50s linear infinite; }
-.hero-in { position: relative; z-index: 2; padding: 20px; display: flex; flex-direction: column; align-items: center; }
-.hero-line { height: 1px; width: 0; margin: 24px auto; background: var(--accent); animation: line 1s 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; } 
-.hero-sub { opacity: 0; margin: 12px 0 32px; font-size: 14px; letter-spacing: .08em; transform: translateY(10px); animation: fadeUpHero 0.8s 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; } 
-.hero-btn { opacity: 0; border: 1px solid var(--accent); background: transparent; color: var(--on-dark); padding: 14px 32px; font: inherit; letter-spacing: .15em; cursor: pointer; text-transform: uppercase; font-size: 12px; border-radius: 99px; transition: 0.3s ease; transform: translateY(10px); animation: fadeUpHero 0.8s 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; } 
-.hero-btn:hover { background: var(--accent); color: var(--hero); box-shadow: 0 0 20px rgba(184,151,90,0.3); }
-.hero-w { height: 0px; display: block; margin: 0 auto; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4)); opacity: 0; animation: logoGrow 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards; } 
-
-@keyframes spin { to { transform: rotate(360deg); } } 
-@keyframes line { to { width: 140px; } }
-@keyframes fadeUpHero { to { opacity: 1; transform: translateY(0); } }
-@keyframes logoGrow { 
-  0% { height: 0px; opacity: 0; transform: scale(0.3) translateY(40px); }
-  100% { height: 160px; opacity: 1; transform: scale(1) translateY(0); } 
-}
-@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes slideInRight { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
-
-/* Header & Nav */
-header.top { background: var(--brand); color: var(--on-dark); padding: 8px 8px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; position: relative; overflow: hidden; z-index: 10; }
-.logo { font-family: var(--font); font-weight: 700; font-size: 17px; } .logo img.lw { height: 50px; vertical-align: middle; }
-.top .sub { opacity: .7; font-size: 12px; flex: 1; }
-.pill { padding: 3px 10px; border: 1px solid var(--accent); color: var(--accent); font-size: 10px; font-weight: 700; letter-spacing: .1em; border-radius: 99px; }
-button.btn { border: 1px solid rgba(255,255,255,.4); background: transparent; color: var(--on-dark); padding: 6px 14px; border-radius: 99px; cursor: pointer; font: inherit; font-size: 11.5px; transition: .2s; }
-button.btn:hover { background: rgba(255,255,255,0.15); }
-nav.nav { position: sticky; top: 0; z-index: 20; background: var(--brand-2); display: flex; overflow-x: auto; white-space: nowrap; box-shadow: 0 4px 12px rgba(0,0,0,.15); }
-nav.nav a { padding: 14px 18px; color: rgba(255,255,255,.65); text-decoration: none; font-size: 12.5px; font-weight: 600; border-bottom: 2px solid transparent; cursor: pointer; transition: .2s; text-transform: uppercase; letter-spacing: 0.03em;}
-nav.nav a:hover { color: var(--on-dark); } nav.nav a.on { color: var(--on-dark); border-bottom-color: var(--accent); background: rgba(255,255,255,.08); }
-
-/* Main wrap */
-main.wrap { max-width: var(--maxw); margin: 0 auto; padding: 16px 16px 80px; position: relative; z-index: 1; flex: 1 0 auto; width: 100%; }
-.header-area { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; border-bottom: 2px solid var(--line); padding-bottom: 16px;}
-h1 { font-family: var(--font); font-size: 18px; color: var(--brand); margin: 0; line-height: 1.2; font-weight: 600; letter-spacing: -0.01em; opacity: 0.8;} 
-
-/* Filter & Tools */
-.tools { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; align-items: center; }
-.search { flex: 1; min-width: 200px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 99px; font: inherit; background: var(--card); font-size: 12.5px; transition: .2s; box-shadow: 0 1px 4px rgba(0,0,0,0.02); }
-.search:focus { outline: 2px solid var(--brand); border-color: var(--brand); box-shadow: 0 4px 12px rgba(12,46,36,0.08); }
-
-.filter-wrapper { position: relative; display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); transition: .2s; box-shadow: 0 1px 4px rgba(0,0,0,0.02); flex-shrink: 0; }
-.filter-wrapper:hover { border-color: var(--brand); box-shadow: 0 4px 12px rgba(12,46,36,0.08); background: #faf8f3;}
-.filter-wrapper svg { width: 18px; height: 18px; color: var(--brand); transition: 0.2s; pointer-events: none; }
-.filter-select { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; -webkit-appearance: none; appearance: none; }
-
-.btn-toggle-all { border: 1px solid var(--brand); background: var(--card); color: var(--brand); padding: 8px 14px; border-radius: 8px; cursor: pointer; font: inherit; font-size: 11.5px; font-weight: 600; transition: .2s; white-space: nowrap; box-shadow: 0 1px 4px rgba(0,0,0,0.02); flex-shrink: 0; }
-.btn-toggle-all:hover { background: var(--brand); color: var(--on-dark); }
-
-/* Sections & Accordions (With Hover & Distinction Animations) */
-section.sec { margin-top: 24px; background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.03); display: none; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
-section.sec:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.06); border-left-color: var(--accent); }
-section.sec.on, body.searching section.sec { display: block; animation: fadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
-/* Differentiating the Main Section Headers */
-section.sec > h2 { 
-    font-family: var(--font); 
-    font-size: 16px; 
-    color: var(--brand); 
-    margin: 0; 
-    padding: 10px 16px; 
-    border-bottom: 2px solid var(--accent); 
-    display: flex; gap: 10px; align-items: center; flex-wrap: wrap; 
-    cursor: pointer; user-select: none; 
-    background: var(--accent-soft); 
-    transition: all 0.3s ease; 
-    font-weight: 800;
-    letter-spacing: 0.02em;
-}
-section.sec > h2:hover { background: #eadecc; padding-left: 20px; }
-section.sec.collapsed > h2 { border-bottom: 1px solid transparent; background: #ffffff; color: var(--ink); font-weight: 700; }
-section.sec.collapsed > h2:hover { background: #faf8f3; }
-section.sec.collapsed details.blk { display: none; }
-section.sec > h2::after { content: "▼"; margin-left: auto; font-size: 11px; transition: transform 0.3s ease; color: var(--accent); }
-section.sec.collapsed > h2::after { transform: rotate(-90deg); color: var(--muted); }
-
-/* Details Blocks inside Sections */
-details.blk { background: var(--card); border-top: 1px solid var(--line); margin: 0; transition: background 0.3s; position: relative; }
-details.blk::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); transform: scaleY(0); transition: transform 0.3s ease; transform-origin: center; z-index: 2; }
-details.blk:hover { background: #faf8f3; }
-details.blk:hover::after { transform: scaleY(1); }
-details.blk > summary { cursor: pointer; padding: 10px 16px; font-weight: 600; font-size: 13px; list-style: none; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; transition: color 0.2s;}
-details.blk:hover > summary { color: var(--brand-2); }
-details.blk > summary::-webkit-details-marker { display: none; }
-details.blk > summary::before { display: none; } 
-details.blk > summary::after { content: "▼"; margin-left: auto; font-size: 11px; color: var(--accent); transition: transform 0.3s ease; }
-details[open].blk > summary::after { transform: rotate(-180deg); }
-
-.body { padding: 0 16px 16px; animation: fadeUp 0.3s ease-out forwards; } 
-.src { font-size: 11px; color: var(--muted); margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px dashed var(--line); animation: slideInRight 0.3s ease forwards; opacity: 0; animation-delay: 0.1s;}
-.body ul { margin: 8px 0 12px 20px; padding: 0; font-size: 13px; } 
-.body li { margin: 5px 0; opacity: 0; animation: fadeUp 0.4s ease forwards; }
-/* Stagger list item animations */
-.body li:nth-child(1) { animation-delay: 0.1s; } .body li:nth-child(2) { animation-delay: 0.15s; } .body li:nth-child(3) { animation-delay: 0.2s; } .body li:nth-child(4) { animation-delay: 0.25s; } .body li:nth-child(5) { animation-delay: 0.3s; }
-.body p { margin: 10px 0; font-size: 13px; opacity: 0; animation: fadeUp 0.4s ease forwards; animation-delay: 0.1s;}
-
-/* Company Nested Accordions */
-.comp-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
-.comp-blk { border: 1px solid var(--line); border-radius: 6px; background: #fff; transition: 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
-.comp-blk:hover { border-color: var(--accent); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-.comp-blk > summary { padding: 10px 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--brand); list-style: none; background: #faf8f3; border-radius: 5px; }
-.comp-blk > summary::-webkit-details-marker { display: none; }
-.comp-blk > summary::after { content: "▼"; font-size: 10px; color: var(--accent); transition: transform 0.3s; }
-.comp-blk[open] > summary { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom: 1px solid var(--line); }
-.comp-blk[open] > summary::after { transform: rotate(180deg); }
-.comp-body { padding: 14px; font-size: 13px; animation: fadeUp 0.3s ease-out forwards; }
-.comp-body ul { margin: 8px 0 0 18px; color: var(--muted); }
-.comp-body b { color: var(--brand); display: block; margin-top: 12px; font-size: 12.5px; }
-.comp-body b:first-child { margin-top: 0; }
-
-/* Blocks */
-.tw { overflow-x: auto; margin: 12px 0; border-radius: 6px; border: 1px solid var(--line); opacity: 0; animation: fadeUp 0.4s ease forwards; animation-delay: 0.15s;}
-table { border-collapse: collapse; width: 100%; font-size: 12.5px; min-width: 500px; }
-th, td { border-bottom: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; } 
-th { background: #faf8f3; color: var(--brand); font-weight: 700; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.02em; }
-tbody tr { opacity: 0; animation: fadeUp 0.3s ease forwards; }
-tbody tr:nth-child(1) { animation-delay: 0.2s; } tbody tr:nth-child(2) { animation-delay: 0.25s; } tbody tr:nth-child(3) { animation-delay: 0.3s; } tbody tr:nth-child(4) { animation-delay: 0.35s; }
-tbody tr:last-child td { border-bottom: none; }
-tbody tr:nth-child(even) { background: #faf8f3; }
-tbody tr:hover { background: #f0eee6; }
-.note { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 12px 16px; margin: 12px 0; font-size: 12.5px; border-radius: 0 6px 6px 0; color: var(--brand); opacity: 0; animation: slideInRight 0.4s ease forwards; animation-delay: 0.2s;}
-
-.st { font-size: 9px; font-weight: 700; padding: 4px 8px; border-radius: 99px; white-space: nowrap; letter-spacing: .04em; text-transform: uppercase;}
-.st.OFFICIAL { background: var(--st-official-bg); color: var(--st-official); }
-.st.DRAFT { background: var(--st-draft-bg); color: var(--st-draft); }
-.st.NEEDS_ALIGNMENT { background: var(--st-align-bg); color: var(--st-align); }
-.st.MISSING { background: var(--st-missing-bg); color: var(--st-missing); }
-.st.PROPOSED { background: var(--st-proposed-bg); color: var(--st-proposed); }
-.st.PENDING { background: var(--st-pending-bg); color: var(--st-pending); }
-
-/* Tree Diagram Org Chart - Interactive */
-.tree { margin: 16px 0; font-size: 13px; line-height: 1.4; user-select: none; opacity: 0; animation: fadeUp 0.4s ease forwards; animation-delay: 0.1s;}
-.tree ul { list-style: none; margin: 0 0 0 18px; padding: 0 0 0 18px; border-left: 1px dashed var(--accent); }
-.tree > ul { margin: 0; padding: 0; border: none; }
-.tree li { margin: 12px 0; position: relative; list-style: none; }
-.tree li::before { content: ""; position: absolute; top: 18px; left: -18px; width: 14px; border-bottom: 1px dashed var(--accent); }
-.tree > ul > li::before { display: none; }
-.tree summary { cursor: pointer; display: inline-flex; align-items: flex-start; gap: 8px; list-style: none; outline: none; }
-.tree summary::-webkit-details-marker { display: none; }
-.tree summary::before { content: "▶"; font-size: 10px; color: var(--accent); display: inline-block; transform: translateY(12px); transition: 0.2s; }
-.tree details[open] > summary::before { transform: translateY(12px) rotate(90deg); }
-.tree .leaf > summary { cursor: default; }
-.tree .leaf > summary::before { content: "▪"; color: var(--line); transform: translateY(10px); }
-
-.n-card { display: inline-block; padding: 10px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); min-width: 240px; transition: .2s; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
-.n-card:hover { border-color: var(--accent); box-shadow: 0 6px 16px rgba(12, 46, 36, .08); transform: translateY(-1px); }
-.n-card.root { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: white; border: none; min-width: 280px; box-shadow: 0 6px 16px rgba(12,46,36,0.15); }
-.n-card.root b { font-size: 16px; color: white; } .n-card.root span { color: rgba(255,255,255,0.7); }
-.n-card.bod { background: var(--ink); color: white; border-color: var(--accent); }
-.n-card.bod b { color: var(--accent); font-size: 14px; }
-.n-card.cluster { background: var(--accent-soft); border-color: var(--accent); border-left: 4px solid var(--accent); }
-.n-card.company { border-left: 4px solid var(--brand); }
-.n-card.team { border-style: dashed; background: #faf8f3; min-width: 220px; padding: 8px 14px; box-shadow: none; }
-.n-card.team:hover { border-color: var(--line); box-shadow: none; transform: none; cursor: default; }
-.n-card b { display: block; font-size: 13.5px; color: var(--brand); margin-bottom: 2px; }
-.n-card span.lead { display: block; font-size: 11.5px; color: var(--st-draft); font-weight: 600; margin-bottom: 2px; }
-.n-card span.sub { display: block; font-size: 11px; color: var(--muted); }
-
-/* Tools */
-.cpick { margin: 2px 6px 8px 0; border: 1px solid var(--brand); background: var(--card); color: var(--brand); padding: 8px 16px; border-radius: 99px; cursor: pointer; font: inherit; font-size: 12px; font-weight: 600; transition: .2s; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
-.cpick.on, .cpick:hover { background: var(--brand); color: var(--on-dark); box-shadow: 0 4px 12px rgba(12,46,36,0.1); }
-.calc { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 12px 0; }
-.calc label { font-size: 11.5px; color: var(--muted); display: block; margin-bottom: 6px; font-weight: 600; }
-.calc input, .calc select, .dec input { width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; font: inherit; font-size: 13px; background: var(--card); transition: 0.2s;}
-.calc input:focus, .calc select:focus { outline: 2px solid var(--brand); border-color: var(--brand); }
-.res { background: var(--brand); color: var(--on-dark); padding: 16px 20px; border-radius: 8px; margin-top: 16px; font-size: 13px; box-shadow: 0 4px 16px rgba(12,46,36,0.1); }
-.res b { color: var(--accent); } .res.big { font-family: var(--font); font-size: 22px; }
-
-footer { margin-top: 150px; padding: 15px 14px 20px; text-align: center; color: var(--muted); font-size: 10.5px; border-top: 1px solid var(--line); flex-shrink: 0; background: transparent; position: relative; z-index: 10; } 
-#toTop { position: fixed; right: 20px; bottom: 20px; background: var(--brand); color: var(--on-dark); border: 0; border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: none; font-size: 18px; transition: 0.3s; box-shadow: 0 4px 16px rgba(0,0,0,0.2); z-index: 50; }
-#toTop:hover { background: var(--brand-2); transform: translateY(-2px); }
-#prog { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; z-index: 60; }
-
-/* Print styles - Tối ưu in ấn PDF */
-@media print {
-  body { background: #fff; font-size: 11pt; color: #000; display: block; min-height: auto;}
-  body::before, body::after { display: none; }
-  #hero, nav.nav, #toTop, .tools, button.btn, .cpick, .calc, .hero-w, header::after, .legend, .filter-wrapper { display: none !important; }
-  header.top { background: #fff; color: var(--brand); padding: 0; border-bottom: 2px solid var(--brand); margin-bottom: 20px; }
-  .logo img { filter: invert(1); }
-  section.sec { display: block !important; border: none; box-shadow: none; margin-top: 0; page-break-inside: auto;}
-  section.sec > h2 { padding: 12px 0; border-bottom: 2px solid var(--brand); background: transparent; color: #000; }
-  section.sec > h2::after { display: none; }
-  details.blk { display: block !important; border-top: 1px solid var(--line); margin-bottom: 15px; page-break-inside: avoid; }
-  details.blk::after { display: none; }
-  details.blk > summary { padding-left: 0; padding-right: 0;}
-  details.blk > summary::before { display: none; }
-  details.blk > summary::after { display: none; }
-  .body { padding: 0 0 10px 0; animation: none;}
-  .body li, .body p, .src, .tw, tbody tr, .note { animation: none; opacity: 1;}
-  .tw { overflow: visible; border: none; margin-bottom: 20px;} 
-  table { min-width: 0; border: 1px solid #ccc;}
-  th, td { border: 1px solid #ccc; }
-  tr, .note, .n-card { break-inside: avoid; page-break-inside: avoid; }
-  
-  /* Bảng xuất cho Cần quyết định */
-  body.print-dec section.sec:not(#s06) { display: none !important; }
-  .dec input { border: 0 !important; padding: 0 !important; background: transparent !important; }
-  
-  /* Tree Diagram Print - Mở bung và xoá style thừa */
-  .tree { margin-bottom: 30px; animation: none; opacity: 1;}
-  .tree details { display: block !important; }
-  .tree summary::before { display: none; }
-  .tree ul { border-left: 1px solid #ccc; }
-  .tree li::before { border-bottom: 1px solid #ccc; }
-  .n-card { border: 1px solid #999 !important; box-shadow: none !important; background: transparent !important; color: #000 !important; padding: 8px 12px; }
-  .n-card b { color: #000 !important; }
-  .n-card.root, .n-card.bod { background: #eee !important; border: 2px solid #000 !important; }
-  .comp-blk { border: none; margin-bottom: 15px; page-break-inside: avoid; }
-  .comp-blk > summary { padding-left: 0; background: transparent; border-bottom: 1px solid #ccc;}
-  .comp-blk > summary::after { display: none; }
-  .comp-body { padding-left: 0; padding-right: 0; animation: none; opacity: 1;}
-}
+*{box-sizing:border-box;overflow-wrap:break-word;word-break:break-word}
+html{scroll-behavior:smooth;height:100%}
+body{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.55;font-size:13.5px;min-height:100vh;display:flex;flex-direction:column;position:relative}
+body::before,body::after{content:"";position:fixed;width:600px;height:600px;border-radius:50%;pointer-events:none;z-index:0;opacity:.35;filter:blur(70px)}
+body::before{background:radial-gradient(circle at 30% 30%,rgba(184,151,90,.25),transparent 60%);top:-120px;left:-120px;animation:float 18s ease-in-out infinite alternate}
+body::after{background:radial-gradient(circle at 70% 70%,rgba(12,46,36,.14),transparent 60%);bottom:-120px;right:-120px;animation:float 22s ease-in-out infinite alternate-reverse}
+@keyframes float{0%{transform:translate(0,0)}100%{transform:translate(30px,20px)}}
+body.lock{overflow:hidden}
+#hero{position:fixed;inset:0;z-index:100;background:var(--hero);color:var(--on-dark);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;transition:opacity.8s ease-out,visibility.8s}
+#hero.out{opacity:0;visibility:hidden}
+#hero::before{content:"";pointer-events:none;position:absolute;width:160vmax;height:160vmax;left:50%;top:50%;margin:-80vmax 0 0 -80vmax;background:conic-gradient(from 0deg,transparent 0,rgba(184,151,90,.16) 12%,transparent 30%,rgba(20,80,59,.55) 55%,transparent 75%);animation:spin 50s linear infinite}
+.hero-in{position:relative;z-index:2;padding:20px;display:flex;flex-direction:column;align-items:center}
+.hero-line{height:1px;width:0;margin:24px auto;background:var(--accent);animation:line 1s 1.2s cubic-bezier(0.16,1,0.3,1) forwards}
+.hero-sub{opacity:0;margin:12px 0 32px;font-size:14px;letter-spacing:.08em;transform:translateY(10px);animation:fadeUpHero.8s 1.6s cubic-bezier(0.16,1,0.3,1) forwards}
+.hero-btn{opacity:0;border:1px solid var(--accent);background:transparent;color:var(--on-dark);padding:14px 32px;font:inherit;letter-spacing:.15em;cursor:pointer;text-transform:uppercase;font-size:12px;border-radius:99px;transition:.3s ease;transform:translateY(10px);animation:fadeUpHero.8s 1.8s cubic-bezier(0.16,1,0.3,1) forwards}
+.hero-btn:hover{background:var(--accent);color:var(--hero);box-shadow:0 0 20px rgba(184,151,90,.3)}
+.hero-w{height:0;display:block;margin:0 auto;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.4));opacity:0;animation:logoGrow 1.2s cubic-bezier(0.34,1.56,0.64,1).2s forwards}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes line{to{width:140px}}@keyframes fadeUpHero{to{opacity:1;transform:translateY(0)}}
+@keyframes logoGrow{0%{height:0;opacity:0;transform:scale(.3) translateY(40px)}100%{height:160px;opacity:1;transform:scale(1) translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes wiggle{0%,100%{transform:translateX(0)}15%{transform:translateX(-2px)}30%{transform:translateX(2px)}45%{transform:translateX(-1px)}60%{transform:translateX(1px)}}
+@keyframes blurIn{from{filter:blur(12px);opacity:0}to{filter:blur(0);opacity:1}}
+header.top{background:rgba(12,46,36,.92);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);color:var(--on-dark);padding:8px 12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;position:sticky;top:0;z-index:30;border-bottom:1px solid rgba(255,255,255,.08)}
+.logo img.lw{height:40px;vertical-align:middle}
+.top.sub{opacity:.6;font-size:11px;flex:1}
+.pill{padding:3px 9px;border:1px solid var(--accent);color:var(--accent);font-size:10px;font-weight:700;letter-spacing:.08em;border-radius:4px}
+button.btn{border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:var(--on-dark);padding:6px 12px;border-radius:4px;cursor:pointer;font:inherit;font-size:11.5px;transition:.2s}
+button.btn:hover{background:rgba(255,255,255,.14);transform:translateY(-1px)}
+nav.nav{position:sticky;top:56px;z-index:20;background:rgba(20,80,59,.96);backdrop-filter:blur(10px);display:flex;overflow-x:auto;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+nav.nav::-webkit-scrollbar{display:none}
+nav.nav a{padding:12px 16px;color:rgba(255,255,255,.6);text-decoration:none;font-size:12px;font-weight:600;border-bottom:2px solid transparent;cursor:pointer;transition:.2s;text-transform:uppercase;letter-spacing:.03em}
+nav.nav a:hover{color:var(--on-dark);background:rgba(255,255,255,.06)}
+nav.nav a.on{color:var(--on-dark);border-bottom-color:var(--accent);background:rgba(255,255,255,.08)}
+main.wrap{max-width:var(--maxw);margin:0 auto;padding:14px 12px 80px;width:100%;flex:1 0 auto;position:relative;z-index:1;animation:blurIn.6s cubic-bezier(.16,1,.3,1)}
+.header-area{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:10px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.header-area h1{font-size:18px;font-weight:800;color:var(--brand);margin:0;letter-spacing:-.01em}
+.tools{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
+.search{flex:1;min-width:180px;padding:8px 12px;border:1px solid var(--line);border-radius:6px;font:inherit;background:var(--card);font-size:12.5px;transition:.2s}
+.search:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(12,46,36,.08)}
+.filter-wrapper{position:relative;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--line);border-radius:6px;background:var(--card);transition:.2s;flex-shrink:0}
+.filter-wrapper:hover{border-color:var(--brand)}
+.filter-wrapper svg{width:16px;height:16px;color:var(--brand);pointer-events:none}
+.filter-select{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;appearance:none}
+.btn-toggle-all{border:1px solid var(--brand);background:var(--card);color:var(--brand);padding:7px 12px;border-radius:6px;cursor:pointer;font:inherit;font-size:11.5px;font-weight:700;transition:.2s;white-space:nowrap}
+.btn-toggle-all:hover{background:var(--brand);color:#fff}
+section.sec{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:var(--shadow);display:none;animation:fadeUp.3s cubic-bezier(.16,1,.3,1);transition:transform.2s,box-shadow.2s}
+section.sec.on,body.searching section.sec{display:block}
+section.sec:hover{box-shadow:var(--shadow-hover);transform:translateY(-1px)}
+section.sec>h2{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);margin:0;padding:9px 12px;border-bottom:1.5px solid var(--accent);border-left:3px solid var(--accent);display:flex;gap:8px;align-items:center;flex-wrap:wrap;cursor:pointer;user-select:none;background:linear-gradient(90deg,#fff,#fdf8ee);transition:.2s}
+section.sec>h2:hover{padding-left:14px;background:#fff9ea}
+section.sec.collapsed>h2{border-bottom-color:transparent;background:#fff}
+section.sec>h2::after{content:"⌄";margin-left:auto;font-size:12px;transition:transform.25s;color:var(--accent);font-weight:800}
+section.sec.collapsed>h2::after{transform:rotate(-90deg)}
+details.blk{background:var(--card);border-top:1px solid #f1ece0;margin:0}
+details.blk:first-of-type{border-top:none}
+details.blk:hover{background:#fffefb}
+details.blk>summary{cursor:pointer;padding:9px 12px;font-weight:600;font-size:12.5px;list-style:none;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+details.blk>summary::-webkit-details-marker{display:none}
+details.blk>summary::after{content:"›";margin-left:auto;font-size:14px;color:var(--accent);transition:transform.2s;font-weight:700}
+details[open].blk>summary::after{transform:rotate(90deg)}
+details.blk.wiggle{animation:wiggle.4s ease}
+.body{padding:2px 12px 12px;animation:fadeUp.25s ease}
+.src{font-size:10.5px;color:var(--muted);margin:0 0 8px;padding:6px 10px;background:var(--accent-soft);border-radius:6px;border:1px dashed var(--accent-2)}
+.body ul{margin:6px 0 10px 16px;padding:0;font-size:12.5px}
+.body li{margin:4px 0}
+.comp-list{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.comp-blk{border:1px solid var(--line);border-radius:8px;background:#fff;transition:.2s;overflow:hidden}
+.comp-blk:hover{border-color:var(--accent-2)}
+.comp-blk>summary{padding:9px 12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-size:12.5px;color:var(--brand);list-style:none;background:var(--accent-soft)}
+.comp-blk>summary::-webkit-details-marker{display:none}
+.comp-blk>summary::after{content:"⌄";font-size:12px;color:var(--accent);transition:transform.2s}
+.comp-blk[open]>summary::after{transform:rotate(180deg)}
+.comp-body{padding:10px;font-size:12.5px}
+.tw{overflow-x:auto;margin:10px 0;border-radius:8px;border:1px solid var(--line);background:#fff}
+table{border-collapse:collapse;width:100%;font-size:12.5px;min-width:480px}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#fdfbf6;color:var(--brand);font-weight:800;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:#fcfaf5}
+tbody tr:hover{background:#f7f1e6}
+.note{border-left:3px solid var(--accent);background:linear-gradient(90deg,var(--accent-soft),#fff);padding:8px 10px;margin:10px 0;font-size:12px;border-radius:0 6px 6px 0;color:var(--brand)}
+.st{font-size:9px;font-weight:800;padding:3px 7px;border-radius:4px;white-space:nowrap;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--line)}
+.st.OFFICIAL{background:#e4efe8;color:#1f6b4a;border-color:#cfe3d6}
+.st.DRAFT,.st.NEEDS_ALIGNMENT,.st.MISSING,.st.PROPOSED,.st.PENDING{background:#ecebe6;color:#5f6661}
+.tree{margin:10px 0;font-size:12.5px;line-height:1.35;user-select:none}
+.tree ul{list-style:none;margin:0 0 0 14px;padding:0 0 0 14px;border-left:1.5px dashed #e8dcc0}
+.tree>ul{margin:0;padding:0;border:none}
+.tree li{margin:8px 0;position:relative;list-style:none}
+.tree li::before{content:"";position:absolute;top:16px;left:-14px;width:10px;border-bottom:1.5px dashed #e8dcc0}
+.tree>ul>li::before{display:none}
+.tree summary{cursor:pointer;display:inline-flex;align-items:flex-start;gap:6px;list-style:none}
+.tree summary::-webkit-details-marker{display:none}
+.tree summary::before{content:"▶";font-size:8px;color:var(--accent);display:inline-block;transform:translateY(11px);transition:.2s}
+.tree details[open]>summary::before{transform:translateY(11px) rotate(90deg)}
+.tree.leaf>summary::before{content:"•";color:#e6e1d6;transform:translateY(9px);font-size:12px}
+.n-card{display:inline-block;padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--card);min-width:200px;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.n-card:hover{border-color:var(--accent-2);box-shadow:0 8px 20px rgba(12,46,36,.08);transform:translateY(-1px)}
+.n-card.root{background:linear-gradient(135deg,#0c2e24,#14503b);color:#fff;border:none;min-width:260px}
+.n-card.root b{font-size:14px;color:#fff}
+.n-card.bod{background:#141a18;color:#fff;border-color:var(--accent)}
+.n-card.bod b{color:var(--accent);font-size:12.5px}
+.n-card.cluster{background:var(--accent-soft);border-color:var(--accent-2);border-left:3px solid var(--accent)}
+.n-card.company{border-left:3px solid var(--brand);background:#fff}
+.n-card.team{border-style:dashed;background:#fdfbf6;min-width:180px;padding:6px 9px;box-shadow:none}
+.n-card b{display:block;font-size:12.5px;color:var(--brand);margin-bottom:1px}
+.n-card span.lead{display:block;font-size:11px;color:#5f6661;font-weight:600}
+.n-card span.sub{display:block;font-size:10px;color:var(--muted)}
+.cpick{margin:2px 4px 6px 0;border:1px solid var(--brand);background:var(--card);color:var(--brand);padding:5px 10px;border-radius:4px;cursor:pointer;font:inherit;font-size:11px;font-weight:700;transition:.2s}
+.cpick.on,.cpick:hover{background:var(--brand);color:#fff}
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:10px 0}
+.calc label{font-size:10px;color:var(--muted);display:block;margin-bottom:4px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.calc input,.calc select{width:100%;padding:7px 9px;border:1px solid var(--line);border-radius:6px;font:inherit;font-size:12.5px;background:var(--card);transition:.2s}
+.calc input:focus,.calc select:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 2px rgba(12,46,36,.08)}
+.res{background:var(--brand);color:#fff;padding:10px 12px;border-radius:8px;margin-top:10px;font-size:12.5px}
+.res b{color:var(--accent)}.res.big{font-size:18px;font-weight:800}
+footer{margin-top:32px;padding:14px;text-align:center;color:var(--muted);font-size:10px;border-top:1px solid var(--line)}
+#toTop{position:fixed;right:12px;bottom:12px;background:var(--brand);color:#fff;border:0;border-radius:6px;width:36px;height:36px;cursor:pointer;display:none;font-size:14px;box-shadow:0 6px 16px rgba(0,0,0,.2);z-index:50;transition:.2s}
+#toTop:hover{transform:translateY(-2px)}
+#prog{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;z-index:60}
 </style>
 </head>
 <body>
-
 <div id="prog"></div>
 <div id="hero"></div>
-
 <header class="top">
   <span class="logo" id="logo"></span>
   <span class="sub" id="hdrSub"></span>
   <span class="pill" id="hdrStatus"></span>
   <button class="btn" id="btnPdf">Download PDF</button>
 </header>
-
 <nav class="nav" id="nav"></nav>
 <main class="wrap" id="app"></main>
 <footer id="foot"></footer>
 <button id="toTop" aria-label="Lên đầu trang">↑</button>
-
 <script>
-// --- ZONE 1: DATA ---
-const HANDBOOK_META = {
-  title: "WePlus⁺ Handbook 2026",
-  header: "WePlus⁺ Handbook 2026",
-  version: "v1.0",
-  status: "DRAFT",
-  footer: "© 2026 Le Ha — Drafted for WePlus⁺<br>Internal Use Only | v1.0",
-  logoWhite: "https://leha-os.github.io/assets/logoweplus_white_transparent.png",
-  logoBlack: "https://leha-os.github.io/assets/logoweplus_black_transparent.png"
-};
-
-const STATUS_LABEL = {
-  OFFICIAL: "CHÍNH THỨC",
-  DRAFT: "CẦN PHÊ DUYỆT",
-  NEEDS_ALIGNMENT: "CẦN THỐNG NHẤT",
-  MISSING: "CHƯA CÓ THÔNG TIN",
-  PROPOSED: "ĐỀ XUẤT",
-  PENDING: "CHỜ XÁC NHẬN"
-};
-
-const ALIGNMENT_DATA = [
-  ["Giờ làm việc", "9h00–18h00, nghỉ trưa 12h–13h", "9:30–10:00 sáng đến 18:30–19:00 chiều", "—", "Hai khung giờ khác nhau", "NEEDS_ALIGNMENT"],
-  ["Đi trễ / về sớm", "Vào sau 10h / về trước 15h → nghỉ nửa ngày", "Sau 10:30 mặc nhiên tính ½ ngày phép", "—", "Ngưỡng tính nửa ngày phép khác nhau", "NEEDS_ALIGNMENT"],
-  ["Phép năm luật", "12 ngày/năm (<1 năm = 1 ngày/tháng)", "Chỉ ghi NV 5 năm được +1 ngày phép", "x (cho cả 7 công ty)", "ePlus⁺ không nêu số ngày phép cơ bản", "NEEDS_ALIGNMENT"],
-  ["Phép bổ sung", "Sau 5 năm +1 ngày", "Làm việc 5 năm được +1 ngày", "Engage⁺ & Enabler⁺: Sau 1 năm +1, từ năm 5. Các công ty khác: Sau 5 năm +1", "Excel và PDF chênh lệch nhau", "NEEDS_ALIGNMENT"],
-  ["Thời hạn xin nghỉ", ">3 ngày: báo 1 tuần; <3 ngày: báo 3 ngày", "1-2 ngày: báo 3 ngày; 3-5 ngày: báo 10 ngày", "—", "Khung báo trước khác nhau", "NEEDS_ALIGNMENT"],
-  ["Giới hạn nghỉ", "Hạn chế nghỉ liên tiếp >3 ngày trong 1 tuần", "Không >5 ngày liên tiếp; Không >50% team cùng lúc", "—", "Giới hạn khác nhau", "NEEDS_ALIGNMENT"],
-  ["WFH / Làm bù", "Sau CN chạy event → T2 đi muộn / WFH", "WFH tối đa 1 ngày/tháng (báo trước 1 ngày)", "—", "Hai cơ chế khác bản chất", "NEEDS_ALIGNMENT"],
-  ["Công tác ăn uống", "NV 180k; Manager 250k; Director 300k", "Mức tương đương (không áp dụng ngày event)", "Excel: 180k (Engage⁺, ePlus⁺); 150k (The Wall, v.v.)", "Xác nhận có áp dụng ngày event hay không", "NEEDS_ALIGNMENT"],
-  ["Hỗ trợ ra sân bay", "100k/chiều", "100k/chiều (loại trừ nếu dùng app công ty)", "100k/lần", "Chốt điều kiện loại trừ", "NEEDS_ALIGNMENT"],
-  ["Di chuyển trong tỉnh", "Thuê xe máy ≤150k/ngày", "Thuê xe/app công nghệ tuỳ tình huống", "—", "Chốt trần chi phí cho ePlus⁺", "NEEDS_ALIGNMENT"],
-  ["Mừng Kết hôn", "1.000.000đ + nghỉ 3 ngày", "—", "1.000.000đ (có note Đề xuất 2.000.000đ)", "BOD duyệt mức đề xuất mới", "PROPOSED"],
-  ["Phí Grab / Be", "Grab công ty", "Be: Director 1.5tr; Head 1tr - 500k", "Excel: ePlus⁺ 1tr, Enabler⁺ 3tr", "Chốt hạn mức và hình thức chung", "NEEDS_ALIGNMENT"],
-  ["Sinh nhật", "Quản lý 500k; Nhân viên 300k", "—", "QL 500k; NV 300k; Bánh 500k/tháng", "Xác nhận áp dụng toàn bộ", "PENDING"]
+// --- DATA GIỮ NGUYÊN ---
+const HANDBOOK_META={title:"WePlus⁺ Handbook 2026",header:"WePlus⁺ Handbook 2026",version:"v1.0",status:"DRAFT",footer:"© 2026 Le Ha — Drafted for WePlus⁺<br>Internal Use Only | v1.0",logoWhite:"https://leha-os.github.io/assets/logoweplus_white_transparent.png",logoBlack:"https://leha-os.github.io/assets/logoweplus_black_transparent.png"};
+const STATUS_LABEL={OFFICIAL:"CHÍNH THỨC",DRAFT:"CẦN PHÊ DUYỆT",NEEDS_ALIGNMENT:"CẦN THỐNG NHẤT",MISSING:"CHƯA CÓ THÔNG TIN",PROPOSED:"ĐỀ XUẤT",PENDING:"CHỜ XÁC NHẬN"};
+const ALIGNMENT_DATA=[
+["Giờ làm việc","9h00–18h00, nghỉ trưa 12h–13h","9:30–10:00 sáng đến 18:30–19:00 chiều","—","Hai khung giờ khác nhau","NEEDS_ALIGNMENT"],
+["Đi trễ / về sớm","Vào sau 10h / về trước 15h → nghỉ nửa ngày","Sau 10:30 mặc nhiên tính ½ ngày phép","—","Ngưỡng tính nửa ngày phép khác nhau","NEEDS_ALIGNMENT"],
+["Phép năm luật","12 ngày/năm (<1 năm = 1 ngày/tháng)","Chỉ ghi NV 5 năm được +1 ngày phép","x (cho cả 7 công ty)","ePlus⁺ không nêu số ngày phép cơ bản","NEEDS_ALIGNMENT"],
+["Phép bổ sung","Sau 5 năm +1 ngày","Làm việc 5 năm được +1 ngày","Engage⁺ & Enabler⁺: Sau 1 năm +1, từ năm 5. Các công ty khác: Sau 5 năm +1","Excel và PDF chênh lệch nhau","NEEDS_ALIGNMENT"],
+["Thời hạn xin nghỉ",">3 ngày: báo 1 tuần; <3 ngày: báo 3 ngày","1-2 ngày: báo 3 ngày; 3-5 ngày: báo 10 ngày","—","Khung báo trước khác nhau","NEEDS_ALIGNMENT"],
+["Giới hạn nghỉ","Hạn chế nghỉ liên tiếp >3 ngày trong 1 tuần","Không >5 ngày liên tiếp; Không >50% team cùng lúc","—","Giới hạn khác nhau","NEEDS_ALIGNMENT"],
+["WFH / Làm bù","Sau CN chạy event → T2 đi muộn / WFH","WFH tối đa 1 ngày/tháng (báo trước 1 ngày)","—","Hai cơ chế khác bản chất","NEEDS_ALIGNMENT"],
+["Công tác ăn uống","NV 180k; Manager 250k; Director 300k","Mức tương đương (không áp dụng ngày event)","Excel: 180k (Engage⁺, ePlus⁺); 150k (【entity-The Wall¦canonical_name=The Wall】, v.v.)","Xác nhận có áp dụng ngày event hay không","NEEDS_ALIGNMENT"],
+["Hỗ trợ ra sân bay","100k/chiều","100k/chiều (loại trừ nếu dùng app công ty)","100k/lần","Chốt điều kiện loại trừ","NEEDS_ALIGNMENT"],
+["Di chuyển trong tỉnh","Thuê xe máy ≤150k/ngày","Thuê xe/app công nghệ tuỳ tình huống","—","Chốt trần chi phí cho ePlus⁺","NEEDS_ALIGNMENT"],
+["Mừng Kết hôn","1.000.000đ + nghỉ 3 ngày","—","1.000.000đ (có note Đề xuất 2.000.000đ)","BOD duyệt mức đề xuất mới","PROPOSED"],
+["Phí Grab / Be","Grab công ty","Be: Director 1.5tr; Head 1tr - 500k","Excel: ePlus⁺ 1tr, Enabler⁺ 3tr","Chốt hạn mức và hình thức chung","NEEDS_ALIGNMENT"],
+["Sinh nhật","Quản lý 500k; Nhân viên 300k","—","QL 500k; NV 300k; Bánh 500k/tháng","Xác nhận áp dụng toàn bộ","PENDING"]
 ];
-
-const ALIGNMENT_REASON = [
-  "Cần BOD thống nhất khung giờ chung hoặc giữ riêng.",
-  "Chốt mốc 10h hay 10h30.",
-  "Xác nhận ePlus⁺ áp dụng luật chuẩn 12 ngày.",
-  "Cần chốt cách tính thâm niên trên Excel.",
-  "HR đề xuất khung chuẩn.",
-  "BOD thống nhất.",
-  "Chọn cơ chế nghỉ bù sự kiện hay WFH chuẩn.",
-  "Xác nhận ngày event có áp dụng phí không.",
-  "Thống nhất policy đặt xe ra sân bay.",
-  "Thống nhất trần di chuyển tỉnh.",
-  "Duyệt ngân sách kết hôn.",
-  "Kế toán chốt hạn mức app Be/Grab.",
-  "Xác nhận quỹ bánh kem."
-];
-
-const ORG_DATA = {
-  top: { title: "TGROUP" },
-  bod: { title: "HỘI ĐỒNG QUẢN TRỊ", chair: "Chủ tịch HĐQT: Mr Tâm", board: "Thành viên HĐQT: Ms Ngọc Hà, Mr Kiệt, Ms Mỹ" },
-  support: [
-    { title: "Phòng Phát triển Kinh doanh", lead: "", teams: [["Cố vấn Phát triển Kinh doanh", "Mr Tâm"], ["Giám đốc Phát triển Kinh doanh", "Ms Hạnh"]] },
-    { title: "Phòng Tài chính & Kế toán", lead: "Giám đốc Tài chính/Kế toán trưởng: Mr Khánh", teams: [["Phòng Kế toán WeWall Group", "Leader: Ms Tuyết", "05 Kế toán viên"], ["Phòng Kế toán WePlus⁺ Group", "Leader: Mr Minh", "05 Kế toán viên"]] },
-    { title: "Nhân sự & Pháp chế", lead: "Trưởng phòng: Ms Mỹ", teams: [["Chuyên viên C&B", "Ms Xuân"], ["Chuyên viên Pháp chế", "Ms Hòa"]] }
-  ],
-  clusters: [
-    { title: "WEPLUS⁺ GROUP", note: "", companies: [
-      { name: "ePlus⁺", lead: "CEO: Ms Ngọc Hà", teams: [["Team Creative", "Leader: Ms Hải Yến", "02 2D + 01 3D"], ["Team Planner", "Leader: Ms Mỹ Liên", "03 Senior + 06 Staff"], ["Team Project", "Leader: Ms Phương Thảo", "06 Project + 02 Production"]] },
-      { name: "Engage⁺", lead: "CEO: Mr Kiệt", teams: [["Team Creative"], ["Team Project"]] },
-      { name: "Enabler⁺", lead: "CEO: Mr Kiệt", teams: [["Team Enabler", "Leader: Mr Phúc", "Bộ phận Kho"]] },
-      { name: "GolfCare⁺", lead: "CEO: Mr Tâm", teams: [["Team GolfCare⁺", "Leader: Ms Hà", "01 Designer + 03 Project"]] }]
-    },
-    { title: "WEWALL GROUP", note: "", companies: [
-      { name: "TheWall", lead: "", teams: [["Team Thiết kế"], ["Team Thi công"], ["Team M&E"], ["Team Công nhật"]] },
-      { name: "Imperial", lead: "", teams: [["Team Thiết kế"]] },
-      { name: "Nguyễn Mộc", lead: "", teams: [["Team Thiết kế"], ["Team Sản xuất"], ["Team Kinh doanh"]] },
-      { name: "GreenWall", lead: "", teams: [["Toàn công ty"]] }]
-    }
-  ]
-};
-
-const CALC_RATES = {
-  levels: [
-    ["Staff / Junior / Senior / Assistant", 180000, 350000],
-    ["Manager", 250000, 500000],
-    ["Director", 300000, 700000]
-  ],
-  airport: 100000
-};
-
-const T = (head, rows) => ({ type: "table", head, rows });
-const L = items => ({ type: "list", items });
-
-const HANDBOOK_SECTIONS = [
-  { id: "s01", nav: "THÔNG TIN CHUNG", title: "THÔNG TIN CHUNG", status: "DRAFT", subsections: [
-    { title: "SƠ ĐỒ TỔ CHỨC HỆ SINH THÁI TGROUP", status: "DRAFT", src: "", blocks: [
-      { type: "orgtree" }
-    ]},
-    { title: "A. WEPLUS⁺ GROUP", blocks: [
-      { type: "text", text: "WePlus⁺ là nền tảng kết nối năng lực trong hệ sinh thái Tgroup — nơi các đơn vị thành viên cùng chia sẻ nguồn lực, bổ trợ chuyên môn và kết hợp thế mạnh để tạo ra những giải pháp có giá trị lớn hơn cho khách hàng. WePlus⁺ không phải một lớp tổ chức mới, mà là cơ chế cộng hưởng năng lực — giúp Tgroup kết nối tốt hơn, vận hành hiệu quả hơn và mở rộng giá trị từ những năng lực sẵn có." },
-      { type: "company_list", companies: [
-        { name: "ePlus⁺", intro: "[Cập nhật profile, định vị...]", org: "[Cập nhật Sơ đồ chức năng...]", services: "[Cập nhật dịch vụ...]" },
-        { name: "Engage⁺", intro: "Engage⁺ được thành lập từ năm 2016 và là thành viên của Tgroup, tập trung vào lĩnh vực tổ chức sự kiện, activation và trải nghiệm thương hiệu. Với định hướng “Plus”, Engage⁺ không ngừng kết nối nguồn lực, phát huy năng lực của đội ngũ và tạo thêm giá trị trong từng hoạt động — cho khách hàng, đối tác và các thành viên trong hệ sinh thái Tgroup.", org: "[Cập nhật Sơ đồ chức năng...]", services: "[Cập nhật dịch vụ...]" },
-        { name: "Enabler⁺", intro: "[Cập nhật profile, định vị...]", org: "[Cập nhật Sơ đồ chức năng...]", services: "[Cập nhật dịch vụ...]" },
-        { name: "GolfCare⁺", intro: "GolfCare⁺ là nhóm trực thuộc ePlus⁺, thành viên của Tgroup, tập trung vào nhóm khách hàng cao cấp, kết nối Golf & MICE và mạng lưới khách hàng cấp cao của Ban Lãnh đạo, hướng đến trải nghiệm chuyên nghiệp và gia tăng giá trị cho khách hàng, đối tác và hệ sinh thái Tgroup.", org: "[Cập nhật Sơ đồ chức năng...]", services: "[Cập nhật dịch vụ...]" }
+const ALIGNMENT_REASON=["Cần BOD thống nhất khung giờ chung hoặc giữ riêng.","Chốt mốc 10h hay 10h30.","Xác nhận ePlus⁺ áp dụng luật chuẩn 12 ngày.","Cần chốt cách tính thâm niên trên Excel.","HR đề xuất khung chuẩn.","BOD thống nhất.","Chọn cơ chế nghỉ bù sự kiện hay WFH chuẩn.","Xác nhận ngày event có áp dụng phí không.","Thống nhất policy đặt xe ra sân bay.","Thống nhất trần di chuyển tỉnh.","Duyệt ngân sách kết hôn.","Kế toán chốt hạn mức app Be/Grab.","Xác nhận quỹ bánh kem."];
+const ORG_DATA={top:{title:"TGROUP"},bod:{title:"HỘI ĐỒNG QUẢN TRỊ",chair:"Chủ tịch HĐQT: Mr Tâm",board:"Thành viên HĐQT: Ms Ngọc Hà, Mr Kiệt, Ms Mỹ"},support:[{title:"Phòng Phát triển Kinh doanh",lead:"",teams:[["Cố vấn Phát triển Kinh doanh","Mr Tâm"],["Giám đốc Phát triển Kinh doanh","Ms Hạnh"]]},{title:"Phòng Tài chính & Kế toán",lead:"Giám đốc Tài chính/Kế toán trưởng: Mr Khánh",teams:[["Phòng Kế toán WeWall Group","Leader: Ms Tuyết","05 Kế toán viên"],["Phòng Kế toán WePlus⁺ Group","Leader: Mr Minh","05 Kế toán viên"]]},{title:"Nhân sự & Pháp chế",lead:"Trưởng phòng: Ms Mỹ",teams:[["Chuyên viên C&B","Ms Xuân"],["Chuyên viên Pháp chế","Ms Hòa"]]}],clusters:[{title:"WEPLUS⁺ GROUP",note:"",companies:[{name:"ePlus⁺",lead:"CEO: Ms Ngọc Hà",teams:[["Team Creative","Leader: Ms Hải Yến","02 2D + 01 3D"],["Team Planner","Leader: Ms Mỹ Liên","03 Senior + 06 Staff"],["Team Project","Leader: Ms Phương Thảo","06 Project + 02 Production"]]},{name:"Engage⁺",lead:"CEO: Mr Kiệt",teams:[["Team Creative"],["Team Project"]]},{name:"Enabler⁺",lead:"CEO: Mr Kiệt",teams:[["Team Enabler","Leader: Mr Phúc","Bộ phận Kho"]]},{name:"GolfCare⁺",lead:"CEO: Mr Tâm",teams:[["Team GolfCare⁺","Leader: Ms Hà","01 Designer + 03 Project"]]}]},{title:"WEWALL GROUP",note:"",companies:[{name:"TheWall",lead:"",teams:[["Team Thiết kế"],["Team Thi công"],["Team M&E"],["Team Công nghệ"]]},{name:"Imperial",lead:"",teams:[["Team Thiết kế"]]},{name:"Nguyễn Mộc",lead:"",teams:[["Team Thiết kế"],["Team Sản xuất"],["Team Kinh doanh"]]},{name:"GreenWall",lead:"",teams:[["Toàn công ty"]]}]}]};
+const CALC_RATES={levels:[["Staff / Junior / Senior / Assistant",180000,350000],["Manager",250000,500000],["Director",300000,700000]],airport:100000};
+const T=(head,rows)=>({type:"table",head,rows});
+const L=items=>({type:"list",items});
+const HANDBOOK_SECTIONS=[
+  {id:"s01",nav:"THÔNG TIN CHUNG",title:"THÔNG TIN CHUNG",status:"DRAFT",subsections:[
+    {title:"SƠ ĐỒ TỔ CHỨC HỆ SINH THÁI TGROUP",status:"DRAFT",src:"",blocks:[{type:"orgtree"}]},
+    {title:"A. WEPLUS⁺ GROUP",blocks:[
+      {type:"text",text:"WePlus⁺ là nền tảng kết nối năng lực trong hệ sinh thái Tgroup — nơi các đơn vị thành viên cùng chia sẻ nguồn lực, bổ trợ chuyên môn và kết hợp thế mạnh để tạo ra những giải pháp có giá trị lớn hơn cho khách hàng."},
+      {type:"company_list",companies:[
+        {name:"ePlus⁺",intro:"[Cập nhật profile, định vị...]",org:"[Cập nhật Sơ đồ chức năng...]",services:"[Cập nhật dịch vụ...]"},
+        {name:"Engage⁺",intro:"Engage⁺ được thành lập từ năm 2016 và là thành viên của Tgroup, tập trung vào lĩnh vực tổ chức sự kiện, activation và trải nghiệm thương hiệu.",org:"[Cập nhật Sơ đồ chức năng...]",services:"[Cập nhật dịch vụ...]"},
+        {name:"Enabler⁺",intro:"[Cập nhật profile, định vị...]",org:"[Cập nhật Sơ đồ chức năng...]",services:"[Cập nhật dịch vụ...]"},
+        {name:"GolfCare⁺",intro:"GolfCare⁺ là nhóm trực thuộc ePlus⁺, thành viên của Tgroup, tập trung vào nhóm khách hàng cao cấp.",org:"[Cập nhật Sơ đồ chức năng...]",services:"[Cập nhật dịch vụ...]"}
       ]}
     ]},
-    { title: "B. WEWALL GROUP", status: "MISSING", src: "", blocks: [
-      { type: "company_list", companies: [
-        { name: "The Wall", intro: "[Cập nhật profile, định vị...]", org: "[Cập nhật Sơ đồ chức năng...]", services: "[Cập nhật dịch vụ...]" },
-        { name: "Imperial", intro: "[Cập nhật profile, định vị...]", org: "[Cập nhật Sơ đồ chức năng...]", services: "[Cập nhật dịch vụ...]" },
-        { name: "Nguyễn Mộc", intro: "[Cập nhật profile, định vị...]", org: "[Cập nhật Sơ đồ chức năng...]", services: "[Cập nhật dịch vụ...]" },
-        { name: "Green Wall", intro: "[Cập nhật profile, định vị...]", org: "[Cập nhật Sơ đồ chức năng...]", services: "[Cập nhật dịch vụ...]" }
+    {title:"B. WEWALL GROUP",status:"MISSING",src:"",blocks:[
+      {type:"company_list",companies:[
+        {name:"【entity-The Wall¦canonical_name=The Wall】",intro:"[Cập nhật profile, định vị...]",org:"[Cập nhật Sơ đồ chức năng...]",services:"[Cập nhật dịch vụ...]"},
+        {name:"Imperial",intro:"[Cập nhật profile, định vị...]",org:"[Cập nhật Sơ đồ chức năng...]",services:"[Cập nhật dịch vụ...]"},
+        {name:"Nguyễn Mộc",intro:"[Cập nhật profile, định vị...]",org:"[Cập nhật Sơ đồ chức năng...]",services:"[Cập nhật dịch vụ...]"},
+        {name:"Green Wall",intro:"[Cập nhật profile, định vị...]",org:"[Cập nhật Sơ đồ chức năng...]",services:"[Cập nhật dịch vụ...]"}
       ]}
     ]}
   ]},
-  { id: "s02", nav: "QUY ĐỊNH & VĂN HÓA", title: "QUY ĐỊNH CHUNG & VĂN HÓA", status: "DRAFT", subsections: [
-    { title: "Văn hóa làm việc", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
-      L(["Cùng làm, cùng chia sẻ. Kết quả là thành quả của teamwork.", "Giao tiếp nhã nhặn, vừa phải, chuẩn mực, lịch sự, văn minh.", "Hỗ trợ tương tác trên tinh thần cùng nhau xây dựng văn hóa công ty.", "Tham gia đầy đủ các hoạt động chung."])
+  {id:"s02",nav:"QUY ĐỊNH & VĂN HÓA",title:"QUY ĐỊNH CHUNG & VĂN HÓA",status:"DRAFT",subsections:[
+    {title:"Văn hóa làm việc",status:"DRAFT",src:"Sổ tay Engage+",blocks:[L(["Cùng làm, cùng chia sẻ. Kết quả là thành quả của teamwork.","Giao tiếp nhã nhặn, vừa phải, chuẩn mực, lịch sự, văn minh.","Hỗ trợ tương tác trên tinh thần cùng nhau xây dựng văn hóa công ty.","Tham gia đầy đủ các hoạt động chung."])]},
+    {title:"Trang phục văn phòng",status:"DRAFT",src:"Sổ tay Engage+",blocks:[
+      T(["Tiêu chuẩn","Nữ","Nam"],[["Cho phép","Lịch sự – gọn gàng thanh lịch","Lịch sự – gọn gàng trang nhã"],["Không chấp nhận","Trang phục quá mỏng; váy quá ngắn; áo ba lỗ, cúp ngực","Quần short; áo ba lỗ, sát nách; dép lê"]]),
+      {type:"note",text:"Thứ 2 hàng tuần: toàn bộ nhân viên mặc áo đồng phục công ty."}
     ]},
-    { title: "Trang phục văn phòng", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
-      T(["Tiêu chuẩn", "Nữ", "Nam"], [
-        ["Cho phép", "Lịch sự – gọn gàng thanh lịch", "Lịch sự – gọn gàng trang nhã"],
-        ["Không chấp nhận", "Trang phục quá mỏng; váy quá ngắn; áo ba lỗ, cúp ngực", "Quần short; áo ba lỗ, sát nách; dép lê"]
-      ]),
-      { type: "note", text: "Thứ 2 hàng tuần: toàn bộ nhân viên mặc áo đồng phục công ty." }
+    {title:"Nội quy & 5S Văn phòng",status:"DRAFT",src:"",blocks:[
+      {type:"text",text:"Quy tắc ứng xử:"},
+      L(["Không nói chuyện điện thoại / trao đổi lớn tiếng trong khu vực làm việc chung.","Giữ vệ sinh Pantry, WC, phòng họp sau khi dùng.","Tắt điện, điều hoà khi ra về cuối cùng.","Hạn chế mang đồ ăn nặng mùi vào văn phòng."])
     ]},
-    { title: "Nội quy & 5S Văn phòng", status: "DRAFT", src: "", blocks: [
-      { type: "text", text: "Quy tắc ứng xử:" },
-      L(["Không nói chuyện điện thoại / trao đổi lớn tiếng trong khu vực làm việc chung.", "Giữ vệ sinh Pantry, WC, phòng họp sau khi dùng.", "Tắt điện, điều hoà khi ra về cuối cùng.", "Hạn chế mang đồ ăn nặng mùi vào văn phòng."])
+    {title:"Lịch hoạt động nội bộ năm",status:"DRAFT",src:"",blocks:[{type:"calendar_table"}]}
+  ]},
+  {id:"s03",nav:"CHÍNH SÁCH NHÂN SỰ",title:"CHÍNH SÁCH NHÂN SỰ",status:"NEEDS_ALIGNMENT",subsections:[
+    {title:"Hợp đồng & Lương",status:"DRAFT",src:"Sổ tay Engage+",blocks:[L(["Ký HĐLĐ chính thức sau 2–3 tháng thử việc.","Nghỉ việc báo trước: 30 ngày (HĐ 1-3 năm), 7 ngày (HĐ dưới 1 năm).","Trả lương: chuyển khoản HDBank từ ngày 01-10 tháng kế tiếp."])]},
+    {title:"Các chế độ nghỉ việc riêng có lương",status:"DRAFT",src:"Sổ tay Engage+",blocks:[
+      T(["Trường hợp","Chế độ"],[["Bản thân kết hôn","03 ngày (mừng 1.000.000đ)"],["Con, cha/mẹ, anh/chị/em kết hôn","01 ngày"],["Tang chế (Cha mẹ, Vợ chồng, Con)","03 ngày (vòng hoa chia buồn + 1.000.000đ)"],["Nữ sinh con","6 tháng theo Luật (mừng 1.000.000đ)"],["Nam vợ sinh con","05-07 ngày theo Luật (mừng 1.000.000đ)"]])
     ]},
-    { title: "Lịch hoạt động nội bộ năm", status: "DRAFT", src: "", blocks: [
-      { type: "calendar_table" }
+    {title:"Chấm công",status:"DRAFT",src:"Sổ tay Engage+",blocks:[
+      {type:"text",text:"Check-in / Check-out bằng vân tay tại cửa ra vào."},
+      L(["Nhân viên: Chấm công tự động.","Leader: Xác nhận giải trình đi trễ, OT, công tác.","HR: Tổng hợp & chốt công chuyển Payroll."])
     ]}
   ]},
-  { id: "s03", nav: "CHÍNH SÁCH NHÂN SỰ", title: "CHÍNH SÁCH NHÂN SỰ", status: "NEEDS_ALIGNMENT", subsections: [
-    { title: "Hợp đồng & Lương", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
-      L(["Ký HĐLĐ chính thức sau 2–3 tháng thử việc.", "Nghỉ việc báo trước: 30 ngày (HĐ 1-3 năm), 7 ngày (HĐ dưới 1 năm).", "Trả lương: chuyển khoản HDBank từ ngày 01-10 tháng kế tiếp."])
+  {id:"s04",nav:"THƯỞNG & PHÚC LỢI",title:"THƯỞNG, PHÚC LỢI & CÔNG TÁC PHÍ",status:"DRAFT",subsections:[
+    {title:"Chính sách phúc lợi chung",status:"DRAFT",src:"",blocks:[
+      {type:"companypick"},
+      T(["Chế độ","Engage⁺","ePlus⁺","Enabler⁺"],[["Phép năm","12 ngày","12 ngày","12 ngày"],["Khám sức khỏe","1.2tr/người","1.2tr/người","1.2tr/người"],["Quốc tế phụ nữ 8/3","500k/người","500k/người","500k/người"],["Happy Friday","50k/người/tuần","50k/người/tuần"],["Team building","3tr/người","3tr/người","3tr/người"]])
     ]},
-    { title: "Các chế độ nghỉ việc riêng có lương", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
-      T(["Trường hợp", "Chế độ"], [
-        ["Bản thân kết hôn", "03 ngày (mừng 1.000.000đ)"],
-        ["Con, cha/mẹ, anh/chị/em kết hôn", "01 ngày"],
-        ["Tang chế (Cha mẹ, Vợ chồng, Con)", "03 ngày (vòng hoa chia buồn + 1.000.000đ)"],
-        ["Nữ sinh con", "6 tháng theo Luật (mừng 1.000.000đ)"],
-        ["Nam vợ sinh con", "05-07 ngày theo Luật (mừng 1.000.000đ)"]
-      ])
+    {title:"Hoa hồng & Thưởng dự án (ePlus⁺)",status:"DRAFT",src:"Sổ tay ePlus",blocks:[
+      {type:"text",text:"Thưởng dự án MỚI (chưa VAT, tổng kết 6 tháng/lần):"},
+      T(["Doanh thu","Thưởng"],[["500tr - 1 tỷ","5 triệu"],[">1 - 2 tỷ","10 triệu"],[">2 - 3 tỷ","15 triệu"],[">3 tỷ","20 triệu"]]),
+      {type:"note",text:"Trích lại triển khai (GP Final 2%): Digital (Planner 50%, Creative/Project 25%); Event (Planner 35%, Project 45%, Creative 20%)."}
     ]},
-    { title: "Chấm công", status: "DRAFT", src: "Sổ tay Engage+", blocks: [
-      { type: "text", text: "Check-in / Check-out bằng vân tay tại cửa ra vào." },
-      L(["Nhân viên: Chấm công tự động.", "Leader: Xác nhận giải trình đi trễ, OT, công tác.", "HR: Tổng hợp & chốt công chuyển Payroll."])
+    {title:"Tính toán công tác phí tối đa",status:"PENDING",src:"",blocks:[{type:"calc"}]}
+  ]},
+  {id:"s05",nav:"BIỂU MẪU & LƯU TRỮ",title:"BIỂU MẪU & LƯU TRỮ",status:"DRAFT",subsections:[
+    {title:"Ngăn lưu trữ Biểu mẫu & Văn thư chuẩn",status:"MISSING",src:"",blocks:[
+      {type:"text",text:"Khu vực lưu trữ tập trung các tài liệu, biểu mẫu, hợp đồng chuẩn để đảm bảo toàn bộ nhân sự sử dụng đồng nhất."},
+      T(["Loại tài liệu / Biểu mẫu","Nơi lưu trữ & Link truy cập","Ghi chú nội dung"],[["Hành chính","🔗 [Đang đợi cập nhật Link Drive]","Gồm: Đơn xin nghỉ phép, Giấy đề xuất thanh toán, Tạm ứng, Biên bản bàn giao..."],["Nhân sự","🔗 [Đang đợi cập nhật Link Drive]","Gồm: Mẫu đánh giá KPI, Mẫu Hợp đồng lao động, Bảng nội quy..."],["Dự án & Khách hàng","🔗 [Đang đợi cập nhật Link Drive]","Gồm: Template Báo giá, Template Proposal, Hợp đồng mẫu, Biên bản nghiệm thu..."],["Brand Assets (Thương hiệu)","🔗 [Đang đợi cập nhật Link Drive]","Gồm: Logo WePlus/Engage/ePlus, Template slide trình chiếu, Bộ Font chữ chuẩn..."]]),
+      {type:"note",text:"Admin/HR cần tạo kho thư mục trên Drive/NAS và gửi đường dẫn để gắn trực tiếp vào đây."}
+    ]},
+    {title:"Lưu trữ dữ liệu dự án (ePlus⁺)",status:"DRAFT",src:"Sổ tay ePlus",blocks:[
+      T(["Mục đích","Kênh lưu trữ"],[["Kênh trao đổi với KH / lưu trữ nội bộ hằng ngày","Google Drive"],["Lưu dữ liệu trên NAS","Tổng hợp các DA trong năm, 6 tháng/1 lần"]])
     ]}
   ]},
-  { id: "s04", nav: "THƯỞNG & PHÚC LỢI", title: "THƯỞNG, PHÚC LỢI & CÔNG TÁC PHÍ", status: "DRAFT", subsections: [
-    { title: "Chính sách phúc lợi chung", status: "DRAFT", src: "", blocks: [
-      { type: "companypick" },
-      T(["Chế độ", "Engage⁺", "ePlus⁺", "Enabler⁺"], [
-        ["Phép năm", "12 ngày", "12 ngày", "12 ngày"],
-        ["Khám sức khỏe", "1.2tr/người", "1.2tr/người", "1.2tr/người"],
-        ["Quốc tế phụ nữ 8/3", "500k/người", "500k/người", "500k/người"],
-        ["Happy Friday", "50k/người/tuần", "50k/người/tuần", "50k/người/tuần"],
-        ["Team building", "3tr/người", "3tr/người", "3tr/người"]
-      ])
-    ]},
-    { title: "Hoa hồng & Thưởng dự án (ePlus⁺)", status: "DRAFT", src: "Sổ tay ePlus", blocks: [
-      { type: "text", text: "Thưởng dự án MỚI (chưa VAT, tổng kết 6 tháng/lần):" },
-      T(["Doanh thu", "Thưởng"], [["500tr - 1 tỷ", "5 triệu"], [">1 - 2 tỷ", "10 triệu"], [">2 - 3 tỷ", "15 triệu"], [">3 tỷ", "20 triệu"]]),
-      { type: "note", text: "Trích lại triển khai (GP Final 2%): Digital (Planner 50%, Creative/Project 25%); Event (Planner 35%, Project 45%, Creative 20%)." }
-    ]},
-    { title: "Tính toán công tác phí tối đa", status: "PENDING", src: "", blocks: [
-      { type: "calc" }
-    ]}
-  ]},
-  { id: "s05", nav: "BIỂU MẪU & LƯU TRỮ", title: "BIỂU MẪU & LƯU TRỮ", status: "DRAFT", subsections: [
-    { title: "Ngăn lưu trữ Biểu mẫu & Văn thư chuẩn", status: "MISSING", src: "", blocks: [
-      { type: "text", text: "Khu vực lưu trữ tập trung các tài liệu, biểu mẫu, hợp đồng chuẩn để đảm bảo toàn bộ nhân sự sử dụng đồng nhất." },
-      T(["Loại tài liệu / Biểu mẫu", "Nơi lưu trữ & Link truy cập", "Ghi chú nội dung"], [
-        ["Hành chính", "🔗 [Đang đợi cập nhật Link Drive]", "Gồm: Đơn xin nghỉ phép, Giấy đề xuất thanh toán, Tạm ứng, Biên bản bàn giao..."],
-        ["Nhân sự", "🔗 [Đang đợi cập nhật Link Drive]", "Gồm: Mẫu đánh giá KPI, Mẫu Hợp đồng lao động, Bảng nội quy..."],
-        ["Dự án & Khách hàng", "🔗 [Đang đợi cập nhật Link Drive]", "Gồm: Template Báo giá, Template Proposal, Hợp đồng mẫu, Biên bản nghiệm thu..."],
-        ["Brand Assets (Thương hiệu)", "🔗 [Đang đợi cập nhật Link Drive]", "Gồm: Logo WePlus/Engage/ePlus, Template slide trình chiếu, Bộ Font chữ chuẩn..."]
-      ]),
-      { type: "note", text: "Admin/HR cần tạo kho thư mục trên Drive/NAS và gửi đường dẫn để gắn trực tiếp vào đây. Nhân viên chỉ cần nhấp vào link để tải form chuẩn nhất." }
-    ]},
-    { title: "Lưu trữ dữ liệu dự án (ePlus⁺)", status: "DRAFT", src: "Sổ tay ePlus", blocks: [
-      T(["Mục đích", "Kênh lưu trữ"], [
-        ["Kênh trao đổi với KH / lưu trữ nội bộ hằng ngày", "Google Drive"],
-        ["Lưu dữ liệu trên NAS", "Tổng hợp các DA trong năm, 6 tháng/1 lần"]
-      ])
-    ]}
-  ]},
-  { id: "s06", nav: "CẦN BOD QUYẾT ĐỊNH", title: "BẢNG ĐỐI CHIẾU & CẦN QUYẾT ĐỊNH", status: "NEEDS_ALIGNMENT", subsections: [
-    { title: "Các mục cần thống nhất giữa Engage⁺/ePlus⁺", status: "NEEDS_ALIGNMENT", src: "Tổng hợp", blocks: [
-      { type: "decisions" }
-    ]}
+  {id:"s06",nav:"CẦN BOD QUYẾT ĐỊNH",title:"BẢNG ĐỐI CHIẾU & CẦN QUYẾT ĐỊNH",status:"NEEDS_ALIGNMENT",subsections:[
+    {title:"Các mục cần thống nhất giữa Engage⁺/ePlus⁺",status:"NEEDS_ALIGNMENT",src:"Tổng hợp",blocks:[{type:"decisions"}]}
   ]}
 ];
-
-// --- ZONE 2: RENDER HELPERS ---
-const esc = s => (s === undefined || s === null) ? "" : String(s).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
-const badge = st => `<span class="st ${st}">${STATUS_LABEL[st]}</span>`;
-const vnd = n => n.toLocaleString("vi-VN") + "đ";
-// Tree Diagram Renderer - Đã cập nhật đúng trạng thái OPEN / COLLAPSED theo yêu cầu
-function renderOrgTree() {
-  const d = ORG_DATA;
-  let html = `<div class="tree">`;
-  
-  // 1. TGROUP -> OPEN
-  html += `<details open><summary><div class="n-card root"><b>${esc(d.top.title)}</b><span class="sub" style="font-size:10px">Bấm để thu gọn/mở rộng</span></div></summary><ul>`;
-  
-  // 2. HỘI ĐỒNG QUẢN TRỊ -> OPEN
-  html += `<li><details open><summary><div class="n-card bod"><b>${esc(d.bod.title)}</b><span class="sub" style="color:var(--accent-soft); margin-top:4px">${esc(d.bod.chair)}</span><span class="sub" style="color:rgba(255,255,255,0.7)">${esc(d.bod.board)}</span></div></summary><ul>`;
-
-  // 3. KHỐI HỖ TRỢ & PHÁT TRIỂN -> COLLAPSED
-  html += `<li><details><summary><div class="n-card cluster"><b>KHỐI HỖ TRỢ & PHÁT TRIỂN</b></div></summary><ul>`;
-  d.support.forEach(c => {
-    html += `<li><details><summary><div class="n-card company"><b>${esc(c.title)}</b>${c.lead ? `<span class="sub">${esc(c.lead)}</span>` : ""}</div></summary><ul>`;
-    c.teams.forEach(t => {
-      let thtml = `<b>${esc(t[0])}</b>`;
-      if(t[1]) thtml += `<span class="lead">${esc(t[1])}</span>`;
-      if(t[2]) thtml += `<span class="sub">${esc(t[2])}</span>`;
-      html += `<li class="leaf"><summary><div class="n-card team">${thtml}</div></summary></li>`;
-    });
-    html += `</ul></details></li>`;
-  });
-  html += `</ul></details></li>`;
-
-  // 4. KHỐI KINH DOANH-> OPEN
-  html += `<li><details open><summary><div class="n-card cluster"><b>KHỐI VẬN HÀNH KINH DOANH</b></div></summary><ul>`;
-  d.clusters.forEach(c => {
-    const noteHtml = c.note ? `<span class="sub">${esc(c.note)}</span>` : "";
-    
-    // Cluster 01 & Cluster 02 -> COLLAPSED
-    html += `<li><details><summary><div class="n-card cluster" style="background:#e4efe8; border-color:var(--st-official); color:var(--st-official)"><b>${esc(c.title)}</b>${noteHtml}</div></summary><ul>`;
-    
-    // Các công ty con (ePlus, Engage, Enabler, GolfCare...) -> COLLAPSED
-    c.companies.forEach(comp => {
-      html += `<li><details><summary><div class="n-card company"><b>${esc(comp.name)}</b>${comp.lead ? `<span class="sub">${esc(comp.lead)}</span>` : ""}</div></summary><ul>`;
-      comp.teams.forEach(t => {
-        let thtml = `<b>${esc(t[0])}</b>`;
-        if(t[1]) thtml += `<span class="lead">${esc(t[1])}</span>`;
-        if(t[2]) thtml += `<span class="sub">${esc(t[2])}</span>`;
-        html += `<li class="leaf"><summary><div class="n-card team">${thtml}</div></summary></li>`;
-      });
-      html += `</ul></details></li>`;
-    });
-    html += `</ul></details></li>`;
-  });
-  html += `</ul></details></li>`;
-
-  // Đóng thẻ HỘI ĐỒNG QUẢN TRỊ và TGROUP
-  html += `</ul></details></li></ul></details></div>`;
-  return html;
+const esc=s=>(s===undefined||s===null)?"":String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const badge=st=>{ if(!st ||!STATUS_LABEL[st]) return ''; return `<span class="st ${st}">${STATUS_LABEL[st]}</span>`; };
+const vnd=n=>n.toLocaleString("vi-VN")+"đ";
+function renderOrgTree(){
+  const d=ORG_DATA;let html=`<div class="tree"><details open><summary><div class="n-card root"><b>${esc(d.top.title)}</b><span class="sub" style="color:rgba(255,255,255,.7);font-size:9px">Bấm để thu gọn</span></div></summary><ul>`;
+  html+=`<li><details open><summary><div class="n-card bod"><b>${esc(d.bod.title)}</b><span class="sub" style="color:#f1eadb;margin-top:3px">${esc(d.bod.chair)}</span><span class="sub" style="color:rgba(255,255,255,.7)">${esc(d.bod.board)}</span></div></summary><ul>`;
+  html+=`<li><details><summary><div class="n-card cluster"><b>KHỐI HỖ TRỢ & PHÁT TRIỂN</b></div></summary><ul>`;
+  d.support.forEach(c=>{html+=`<li><details><summary><div class="n-card company"><b>${esc(c.title)}</b>${c.lead?`<span class="sub">${esc(c.lead)}</span>`:""}</div></summary><ul>`;c.teams.forEach(t=>{let th=`<b>${esc(t[0])}</b>`;if(t[1])th+=`<span class="lead">${esc(t[1])}</span>`;if(t[2])th+=`<span class="sub">${esc(t[2])}</span>`;html+=`<li class="leaf"><summary><div class="n-card team">${th}</div></summary></li>`});html+=`</ul></details></li>`;});html+=`</ul></details></li>`;
+  html+=`<li><details open><summary><div class="n-card cluster"><b>KHỐI VẬN HÀNH KINH DOANH</b></div></summary><ul>`;
+  d.clusters.forEach(c=>{html+=`<li><details><summary><div class="n-card cluster" style="background:#e4efe8"><b>${esc(c.title)}</b></div></summary><ul>`;c.companies.forEach(comp=>{html+=`<li><details><summary><div class="n-card company"><b>${esc(comp.name)}</b>${comp.lead?`<span class="sub">${esc(comp.lead)}</span>`:""}</div></summary><ul>`;comp.teams.forEach(t=>{let th=`<b>${esc(t[0])}</b>`;if(t[1])th+=`<span class="lead">${esc(t[1])}</span>`;if(t[2])th+=`<span class="sub">${esc(t[2])}</span>`;html+=`<li class="leaf"><summary><div class="n-card team">${th}</div></summary></li>`});html+=`</ul></details></li>`;});html+=`</ul></details></li>`;});html+=`</ul></details></li></ul></details></li></ul></details></div>`;return html;
 }
-
-function renderCalendarTable() {
-  const rows = [
-    ["Hàng tuần", "Thứ 6: Happy Friday (16:00) | Thank You Wall (Góc Cảm Ơn)"],
-    ["Hàng tháng", "Ngày 10: Tổ chức sinh nhật nhân viên chung trong tháng"],
-    ["Tháng 3", "Quốc tế Phụ nữ 8/3"],
-    ["Tháng 7", "Green Desk (Cuộc thi góc làm việc) | Khởi động sự kiện Mùa hè"],
-    ["Tháng 8", "Sự kiện Mùa hè rực rỡ | Chuẩn bị Mùa thu ấm áp"],
-    ["Tháng 9", "Sport Day (Ngày hội thể thao, cầu lông, đi bộ online)"],
-    ["Tháng 10", "Phụ nữ VN 20/10 (Cắm hoa, outlook nữ)"],
-    ["Tháng 11", "Tháng tri ân (Thank You Wall đặc biệt)"],
-    ["Tháng 12", "Giáng sinh (Mùa đông ấm áp, décor văn phòng)"],
-    ["Theo quý", "Innovation Day (Ngày sáng tạo)"]
-  ];
-  const r = rows.map(x => `<tr><td style="font-weight:600; white-space:nowrap; color:var(--brand)">${x[0]}</td><td>${x[1]}</td></tr>`).join("");
-  return `<div class="tw"><table><thead><tr><th style="width:120px">Thời gian / Chu kỳ</th><th>Hoạt động / Sự kiện</th></tr></thead><tbody>${r}</tbody></table></div>`;
+function renderCalendarTable(){
+  const rows=[["Hàng tuần","Thứ 6: Happy Friday (16:00) | Thank You Wall"],["Hàng tháng","Ngày 10: Sinh nhật NV chung"],["Tháng 3","Quốc tế Phụ nữ 8/3"],["Tháng 7","Green Desk | Khởi động sự kiện Mùa hè"],["Tháng 8","Sự kiện Mùa hè rực rỡ"],["Tháng 9","Sport Day"],["Tháng 10","Phụ nữ VN 20/10"],["Tháng 11","Tháng tri ân"],["Tháng 12","Giáng sinh"],["Theo quý","Innovation Day"]];
+  const r=rows.map(x=>`<tr><td style="font-weight:700;white-space:nowrap;color:var(--brand)">${x[0]}</td><td>${x[1]}</td></tr>`).join("");
+  return `<div class="tw"><table><thead><tr><th style="width:120px">Thời gian</th><th>Hoạt động</th></tr></thead><tbody>${r}</tbody></table></div>`;
 }
-
-function renderCompanyPick() {
-  const n = ["Tất cả", "Engage⁺", "ePlus⁺", "Enabler⁺"]; 
-  return `<div style="margin-bottom:8px">${n.map((x, i) => `<button class="cpick${i === 0 ? " on" : ""}" data-c="${i}">${x}</button>`).join("")}</div>`;
+function renderCompanyPick(){const n=["Tất cả","Engage⁺","ePlus⁺","Enabler⁺"];return `<div style="margin-bottom:6px">${n.map((x,i)=>`<button class="cpick${i===0?" on":""}" data-c="${i}">${x}</button>`).join("")}</div>`;}
+function renderCalc(){
+  const options=CALC_RATES.levels.map((l,i)=>`<option value="${i}">${esc(l[0])}</option>`).join("");
+  return `<div class="calc"><div><label>Cấp bậc</label><select id="cLv">${options}</select></div><div><label>Số ngày công tác</label><input id="cDay" type="number" min="0" value="2"></div><div><label>Số đêm KS</label><input id="cNight" type="number" min="0" value="1"></div><div><label>Hỗ trợ ga/sân bay</label><select id="cAir"><option value="0">Không</option><option value="1">1 chiều</option><option value="2">Khứ hồi</option></select></div></div><div class="res" id="cRes"></div>`;
 }
-
-function renderCalc() {
-  const options = CALC_RATES.levels.map((l, i) => `<option value="${i}">${esc(l[0])}</option>`).join("");
-  return `
-    <div class="calc">
-        <div><label>Cấp bậc</label><select id="cLv">${options}</select></div>
-        <div><label>Số ngày công tác</label><input id="cDay" type="number" min="0" value="2"></div>
-        <div><label>Số đêm KS (2 người/phòng)</label><input id="cNight" type="number" min="0" value="1"></div>
-        <div>
-            <label>Hỗ trợ ga/sân bay</label>
-            <select id="cAir">
-                <option value="0">Không</option>
-                <option value="1">1 chiều</option>
-                <option value="2">Khứ hồi</option>
-            </select>
-        </div>
-    </div>
-    <div class="res" id="cRes"></div>`;
+function calcUpdate(){
+  const lvEl=document.getElementById("cLv");const resEl=document.getElementById("cRes");if(!lvEl||!resEl)return;
+  const l=CALC_RATES.levels[+lvEl.value];const d=Math.max(0,+document.getElementById("cDay").value||0);const n=Math.max(0,+document.getElementById("cNight").value||0);const a=+document.getElementById("cAir").value;
+  const f=l[1]*d,h=l[2]*n,ap=CALC_RATES.airport*a;resEl.innerHTML=`Ăn uống: <b>${vnd(f)}</b> · KS: <b>${vnd(h)}</b> · Sân bay: <b>${vnd(ap)}</b><br>Tổng tối đa: <span class="big">${vnd(f+h+ap)}</span>`;
 }
-
-function calcUpdate() {
-  const lvEl = document.getElementById("cLv");
-  const resEl = document.getElementById("cRes");
-  if (!lvEl || !resEl) return;
-  const l = CALC_RATES.levels[+lvEl.value];
-  const d = Math.max(0, +document.getElementById("cDay").value || 0);
-  const n = Math.max(0, +document.getElementById("cNight").value || 0);
-  const a = +document.getElementById("cAir").value;
-  const f = l[1] * d, h = l[2] * n, ap = CALC_RATES.airport * a;
-  resEl.innerHTML = `Ăn uống: <b>${vnd(f)}</b> · KS: <b>${vnd(h)}</b> · Sân bay: <b>${vnd(ap)}</b><br>Tổng tối đa: <span class="big">${vnd(f + h + ap)}</span>`;
+let decState={};try{decState=JSON.parse(localStorage.getItem("hb_decisions")||"{}")}catch(e){}
+function renderDecisions(){
+  const r=ALIGNMENT_DATA.map((a,i)=>{const st=decState[i]||{};return `<tr style="${st.done?'opacity:.5':''}"><td>${i+1}</td><td><b>${esc(a[0])}</b><br><span style="font-size:10px;color:var(--muted)">${esc(a[4])}</span></td><td>${esc(a[1])}</td><td>${esc(a[2])}</td><td>${esc(ALIGNMENT_REASON[i])}</td><td style="text-align:center"><input type="checkbox" data-k="${i}" data-f="done"${st.done?" checked":""}></td></tr>`}).join("");
+  return `<div class="tw dec"><table><thead><tr><th>#</th><th>Nội dung</th><th>Engage⁺</th><th>ePlus⁺</th><th>Cần BOD Quyết</th><th>Chốt</th></tr></thead><tbody>${r}</tbody></table></div>`;
 }
-
-let decState = {};
-try { decState = JSON.parse(localStorage.getItem("hb_decisions") || "{}"); } catch (e) { }
-
-function renderDecisions() {
-  const r = ALIGNMENT_DATA.map((a, i) => {
-    const st = decState[i] || {};
-    return `
-      <tr class="${st.done ? "done" : ""}" style="${st.done ? 'opacity:0.5' : ''}">
-          <td>${i + 1}</td>
-          <td><b>${esc(a[0])}</b><br><span style="font-size:11px;color:var(--muted)">${esc(a[4])}</span></td>
-          <td>${esc(a[1])}</td>
-          <td>${esc(a[2])}</td>
-          <td>${esc(ALIGNMENT_REASON[i])}</td>
-          <td style="text-align:center"><input type="checkbox" data-k="${i}" data-f="done"${st.done ? " checked" : ""}></td>
-      </tr>`;
-  }).join("");
-
-  return `
-    <div class="tw dec">
-        <table>
-            <thead><tr><th>#</th><th>Nội dung khác biệt</th><th>Engage⁺</th><th>ePlus⁺</th><th>Cần BOD Quyết</th><th>Chốt</th></tr></thead>
-            <tbody>${r}</tbody>
-        </table>
-    </div>`;
-}
-
-function decCount() {
-  const t = document.querySelectorAll("#s06 input[type=checkbox]");
-  const el = document.getElementById("decCount");
-  if (el) el.textContent = `${[...t].filter(c => c.checked).length}/${t.length} mục đã chốt`;
-}
-
-function renderBlock(b) {
-  if (b.type === "list") return `<ul>${b.items.map(i => `<li>${esc(i)}</li>`).join("")}</ul>`;
-  if (b.type === "text") return `<p>${esc(b.text)}</p>`;
-  if (b.type === "html") return b.text;
-  if (b.type === "note") return `<div class="note">${esc(b.text)}</div>`;
-  if (b.type === "orgtree") return renderOrgTree();
-  if (b.type === "calendar_table") return renderCalendarTable();
-  if (b.type === "companypick") return renderCompanyPick();
-  if (b.type === "calc") return renderCalc();
-  if (b.type === "decisions") return renderDecisions();
-  
-  // Custom renderer for nested company info
-  if (b.type === "company_list") {
-    return `<div class="comp-list">` + b.companies.map((c, i) => `
-      <details class="comp-blk">
-        <summary>${i+1}. ${esc(c.name)}</summary>
-        <div class="comp-body">
-          <b>1. Giới thiệu:</b> <p>${esc(c.intro)}</p>
-          <b>2. Sơ đồ tổ chức:</b> <p>${esc(c.org)}</p>
-          <b>3. Dịch vụ:</b> <p>${esc(c.services)}</p>
-        </div>
-      </details>
-    `).join("") + `</div>`;
-  }
-
-  if (b.type === "table") {
-    const h = b.head.map(x => `<th>${esc(x)}</th>`).join("");
-    const r = b.rows.map(row => `<tr>${row.map(c => `<td>${esc(c)}</td>`).join("")}</tr>`).join("");
-    return `<div class="tw"><table><thead><tr>${h}</tr></thead><tbody>${r}</tbody></table></div>`;
-  }
+function decCount(){const t=document.querySelectorAll("#s06 input[type=checkbox]");const el=document.getElementById("decCount");if(el)el.textContent=`${[...t].filter(c=>c.checked).length}/${t.length} mục đã chốt`;}
+function renderBlock(b){
+  if(b.type==="list")return `<ul>${b.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul>`;
+  if(b.type==="text")return `<p>${esc(b.text)}</p>`;
+  if(b.type==="html")return b.text;
+  if(b.type==="note")return `<div class="note">${esc(b.text)}</div>`;
+  if(b.type==="orgtree")return renderOrgTree();
+  if(b.type==="calendar_table")return renderCalendarTable();
+  if(b.type==="companypick")return renderCompanyPick();
+  if(b.type==="calc")return renderCalc();
+  if(b.type==="decisions")return renderDecisions();
+  if(b.type==="company_list"){return `<div class="comp-list">`+b.companies.map((c,i)=>`<details class="comp-blk"><summary>${i+1}. ${esc(c.name)}</summary><div class="comp-body"><b>1. Giới thiệu:</b><p>${esc(c.intro)}</p><b>2. Sơ đồ tổ chức:</b><p>${esc(c.org)}</p><b>3. Dịch vụ:</b><p>${esc(c.services)}</p></div></details>`).join("")+`</div>`;}
+  if(b.type==="table"){const h=b.head.map(x=>`<th>${esc(x)}</th>`).join("");const r=b.rows.map(row=>`<tr>${row.map(c=>`<td>${esc(c)}</td>`).join("")}</tr>`).join("");return `<div class="tw"><table><thead><tr>${h}</tr></thead><tbody>${r}</tbody></table></div>`;}
   return "";
 }
-
-function renderChrome() {
-  const M = HANDBOOK_META;
-  const fb = `this.onerror=null;this.src='${M.logoBlack}'`;
-  document.getElementById("logo").innerHTML = `<img class="lw" src="${M.logoWhite}" alt="WePlus⁺" loading="lazy" onerror="${fb}">`;
-  document.getElementById("hdrStatus").textContent = M.status;
-  document.getElementById("foot").innerHTML = M.footer;
-  document.title = M.title;
+function renderChrome(){
+  const M=HANDBOOK_META;const fb=`this.onerror=null;this.src='${M.logoBlack}'`;
+  document.getElementById("logo").innerHTML=`<img class="lw" src="${M.logoWhite}" alt="WePlus⁺" loading="lazy" onerror="${fb}">`;
+  document.getElementById("hdrStatus").textContent=M.status;
+  document.getElementById("foot").innerHTML=M.footer;
+  document.title=M.title;
 }
-
-function initHero() {
-  const h = document.getElementById("hero"), M = HANDBOOK_META, fb = `this.onerror=null;this.src='${M.logoBlack}'`;
-  h.innerHTML = `
-      <div class="hero-in">
-          <img class="hero-w" src="${M.logoWhite}" alt="WePlus⁺" loading="lazy" onerror="${fb}">
-          <div class="hero-line"></div>
-          <div class="hero-sub">Employee Handbook · WePlus⁺ 2026</div>
-          <button class="hero-btn" id="enter">Vào Handbook</button>
-      </div>`;
-
-  let seen = false;
-  try { seen = sessionStorage.getItem("hb_seen") === "1"; } catch (e) { }
-  const close = () => {
-      h.classList.add("out"); document.body.classList.remove("lock");
-      try { sessionStorage.setItem("hb_seen", "1"); } catch (e) { }
-      setTimeout(() => h.remove(), 800);
-  };
-  if (seen) { h.remove(); return; }
-  document.body.classList.add("lock");
-  document.getElementById("enter").addEventListener("click", close);
+function initHero(){
+  const h=document.getElementById("hero"),M=HANDBOOK_META,fb=`this.onerror=null;this.src='${M.logoBlack}'`;
+  h.innerHTML=`<div class="hero-in"><img class="hero-w" src="${M.logoWhite}" alt="WePlus⁺" loading="lazy" onerror="${fb}"><div class="hero-line"></div><div class="hero-sub">Employee Handbook · WePlus⁺ 2026</div><button class="hero-btn" id="enter">Vào Handbook</button></div>`;
+  let seen=false;try{seen=sessionStorage.getItem("hb_seen")==="1"}catch(e){}
+  const close=()=>{h.classList.add("out");document.body.classList.remove("lock");try{sessionStorage.setItem("hb_seen","1")}catch(e){}setTimeout(()=>h.remove(),800);};
+  if(seen){h.remove();return;}document.body.classList.add("lock");document.getElementById("enter").addEventListener("click",close);
 }
-
-function renderSections() {
-  document.getElementById("nav").innerHTML = HANDBOOK_SECTIONS.map(s => `<a data-id="${s.id}">${esc(s.nav)}</a>`).join("");
-  const cnt = {};
-  HANDBOOK_SECTIONS.forEach(x => x.subsections.forEach(y => cnt[y.status] = (cnt[y.status] || 0) + 1));
-  
-  // Custom Filter Dropdown (Moved to top right)
-  const stKeys = Object.keys(STATUS_LABEL).filter(k => cnt[k]);
-  const filterHtml = `
-    <div class="filter-wrapper" title="Lọc trạng thái">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
-      <select id="statusFilter" class="filter-select">
-        <option value="">Tất cả trạng thái</option>
-        ${stKeys.map(k => `<option value="${k}">${STATUS_LABEL[k]} (${cnt[k]})</option>`).join("")}
-      </select>
-    </div>
-  `;
-
-  const secs = HANDBOOK_SECTIONS.map(s => `
-      <section class="sec on" id="${s.id}">
-          <h2><span>${esc(s.title)}</span></h2>
-          ${s.subsections.map(sub => `
-              <details class="blk" data-st="${sub.status}">
-                  <summary><span>${esc(sub.title)}</span>${badge(sub.status)}</summary>
-                  <div class="body">
-                      ${sub.src && sub.src.trim() !== "" ? `<p class="src">Nguồn: ${esc(sub.src)}</p>` : ""}${sub.blocks.map(renderBlock).join("")}
-                  </div>
-              </details>`).join("")}
-      </section>`).join("");
-
-  document.getElementById("app").innerHTML = `
-      <div class="header-area">
-          <h1>WePlus⁺ Handbook 2026</h1>
-          ${filterHtml}
-      </div>
-      <div class="tools">
-          <input class="search" id="q" placeholder="Tìm kiếm...">
-          <button id="toggleAll" class="btn-toggle-all">Mở/đóng tất cả</button>
-      </div>
-      ${secs}`;
+function renderSections(){
+  document.getElementById("nav").innerHTML=HANDBOOK_SECTIONS.map(s=>`<a data-id="${s.id}">${esc(s.nav)}</a>`).join("");
+  const cnt={};HANDBOOK_SECTIONS.forEach(x=>x.subsections.forEach(y=>{ if(y.status) cnt[y.status]=(cnt[y.status]||0)+1 }));
+  const stKeys=Object.keys(STATUS_LABEL).filter(k=>cnt[k]);
+  const filterHtml=`<div class="filter-wrapper" title="Lọc trạng thái"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg><select id="statusFilter" class="filter-select"><option value="">Tất cả trạng thái</option>${stKeys.map(k=>`<option value="${k}">${STATUS_LABEL[k]} (${cnt[k]})</option>`).join("")}</select></div>`;
+  const secs=HANDBOOK_SECTIONS.map(s=>`<section class="sec on" id="${s.id}"><h2><span>${esc(s.title)}</span></h2>${s.subsections.map(sub=>`<details class="blk" data-st="${sub.status||''}"><summary><span>${esc(sub.title)}</span>${badge(sub.status)}</summary><div class="body">${sub.src&&sub.src.trim()!==''?`<p class="src">Nguồn: ${esc(sub.src)}</p>`:''}${sub.blocks.map(renderBlock).join("")}</div></details>`).join("")}</section>`).join("");
+  document.getElementById("app").innerHTML=`<div class="header-area"><h1>WePlus⁺ Handbook 2026</h1>${filterHtml}</div><div class="tools"><input class="search" id="q" placeholder="Tìm kiếm..."><button id="toggleAll" class="btn-toggle-all">Mở / Đóng tất cả</button></div>${secs}`;
 }
-
-function initTabs() {
-  const links = [...document.querySelectorAll("#nav a")], secs = [...document.querySelectorAll("section.sec")];
-  const show = id => {
-      links.forEach(a => a.classList.toggle("on", a.dataset.id === id));
-      secs.forEach(x => {
-          x.classList.toggle("on", x.id === id);
-          x.style.display = x.id === id ? "block" : "none";
-      });
-  };
-  links.forEach(a => a.addEventListener("click", () => {
-      show(a.dataset.id);
-      window.scrollTo({ top: document.getElementById("app").offsetTop - 8, behavior: 'smooth' });
-  }));
+function initTabs(){
+  const links=[...document.querySelectorAll("#nav a")],secs=[...document.querySelectorAll("section.sec")];
+  const show=id=>{links.forEach(a=>a.classList.toggle("on",a.dataset.id===id));secs.forEach(x=>{x.classList.toggle("on",x.id===id);x.style.display=x.id===id?"block":"none";});};
+  links.forEach(a=>a.addEventListener("click",()=>{show(a.dataset.id);window.scrollTo({top:document.getElementById("app").offsetTop-8,behavior:'smooth'});}));
   show(HANDBOOK_SECTIONS[0].id);
-
-  // Cho phép bấm vào Header của Section để đóng mở
-  document.querySelectorAll("section.sec > h2").forEach(h =>
-      h.addEventListener("click", () => h.parentElement.classList.toggle("collapsed"))
-  );
-}
-
-function initSearch() {
-  let q = "", st = "";
-  const apply = () => {
-      const active = !!(q || st);
-      document.body.classList.toggle("searching", active);
-      document.querySelectorAll("details.blk").forEach(d => {
-          const hit = (!q || d.textContent.toLowerCase().includes(q)) && (!st || d.dataset.st === st);
-          d.style.display = hit ? "" : "none";
-          if (active && hit) {
-              d.open = true;
-              d.closest('section.sec').classList.remove('collapsed');
-          }
+  document.querySelectorAll("section.sec>h2").forEach(h=>{
+      h.addEventListener("click",()=>{
+        const sec=h.parentElement;
+        sec.classList.toggle("collapsed");
+        sec.style.animation='none'; sec.offsetHeight; sec.style.animation='wiggle.35s ease';
       });
+    });
+    document.addEventListener('click', e=>{
+      const d=e.target.closest('details.blk');
+      if(d &&!d.open){ d.classList.remove('wiggle'); void d.offsetWidth; d.classList.add('wiggle'); setTimeout(()=>d.classList.remove('wiggle'),400); }
+    });
+}
+function initSearch(){
+  let q="",st="";const apply=()=>{
+    const active=!!(q||st);document.body.classList.toggle("searching",active);
+    document.querySelectorAll("details.blk").forEach(d=>{
+      const hit=(!q||d.textContent.toLowerCase().includes(q))&&(!st||d.dataset.st===st);
+      d.style.display=hit?"":"none";if(active&&hit){d.open=true;d.closest('section.sec').classList.remove('collapsed');}
+    });
   };
-
-  const input = document.getElementById("q");
-  if (input) input.addEventListener("input", e => { q = e.target.value.trim().toLowerCase(); apply(); });
-
-  const filter = document.getElementById("statusFilter");
-  if (filter) filter.addEventListener("change", e => { st = e.target.value; apply(); });
-
-  document.getElementById("toggleAll")?.addEventListener("click", () => {
-      const cur = document.querySelectorAll("section.sec[style*='block'] details.blk, section.sec.on details.blk");
-      const anyClosed = [...cur].some(d => !d.open);
-      cur.forEach(d => d.open = anyClosed);
-      const sec = document.querySelector("section.sec.on");
-      if (sec) sec.classList.toggle('collapsed', !anyClosed);
+  const input=document.getElementById("q");if(input)input.addEventListener("input",e=>{q=e.target.value.trim().toLowerCase();apply();});
+  const filter=document.getElementById("statusFilter");if(filter)filter.addEventListener("change",e=>{st=e.target.value;apply();});
+  document.getElementById("toggleAll")?.addEventListener("click",()=>{
+    const cur=document.querySelectorAll("section.sec[style*='block'] details.blk, section.sec.on details.blk");
+    const anyClosed=[...cur].some(d=>!d.open);cur.forEach(d=>d.open=anyClosed);
+    const sec=document.querySelector("section.sec.on");if(sec)sec.classList.toggle('collapsed',!anyClosed);
   });
 }
-
-function initMotion() {
-  const bar = document.getElementById("prog");
-  let tick = false;
-  window.addEventListener("scroll", () => {
-      if (tick) return;
-      tick = true;
-      requestAnimationFrame(() => {
-          const h = document.documentElement.scrollHeight - window.innerHeight;
-          bar.style.transform = `scaleX(${h > 0 ? window.scrollY / h : 0})`;
-          tick = false;
-      });
-  }, { passive: true });
+function initMotion(){
+  const bar=document.getElementById("prog");let tick=false;
+  window.addEventListener("scroll",()=>{if(tick)return;tick=true;requestAnimationFrame(()=>{const h=document.documentElement.scrollHeight-window.innerHeight;bar.style.transform=`scaleX(${h>0?window.scrollY/h:0})`;tick=false;});},{passive:true});
 }
-
-function applyCompany(idx) {
-  document.querySelectorAll("#s04 table").forEach(t => {
-      const th = t.querySelectorAll("thead th");
-      if (th.length !== 4 || th[1].textContent !== "Engage⁺") return; 
-      t.style.minWidth = idx ? "0" : "";
-      t.querySelectorAll("tr").forEach(tr => [...tr.children].forEach((c, j) => {
-          c.style.display = (!idx || j === 0 || j === idx) ? "" : "none";
-      }));
+function applyCompany(idx){
+  document.querySelectorAll("#s04 table").forEach(t=>{
+    const th=t.querySelectorAll("thead th");if(th.length!==4||th[1].textContent!=="Engage⁺")return;
+    t.querySelectorAll("tr").forEach(tr=>[...tr.children].forEach((c,j)=>{c.style.display=(!idx||j===0||j===idx)?"":"none";}));
   });
 }
-
-function renderApp() {
-  renderChrome();
-  renderSections();
-  initTabs();
-  initSearch();
-  initMotion();
-
-  document.getElementById("btnPdf")?.addEventListener("click", () => {
-      document.querySelectorAll("details").forEach(d => d.open = true);
-      document.querySelectorAll(".sec").forEach(s => s.classList.remove("collapsed"));
-      setTimeout(() => window.print(), 200);
+function renderApp(){
+  renderChrome();renderSections();initTabs();initSearch();initMotion();
+  document.getElementById("btnPdf")?.addEventListener("click",()=>{
+    document.querySelectorAll("details").forEach(d=>d.open=true);document.querySelectorAll(".sec").forEach(s=>s.classList.remove("collapsed"));
+    setTimeout(()=>window.print(),200);
   });
-
-  const b = document.getElementById("toTop");
-  window.addEventListener("scroll", () => { b.style.display = window.scrollY > 400 ? "block" : "none" }, { passive: true });
-  b.addEventListener("click", () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-  document.addEventListener("click", e => {
-      const c = e.target.closest(".cpick");
-      if (c) {
-          document.querySelectorAll(".cpick").forEach(x => x.classList.toggle("on", x === c));
-          applyCompany(+c.dataset.c);
-      }
-      if (e.target.id === "decPdf") {
-          document.body.classList.add("print-dec");
-          document.querySelectorAll("details").forEach(d => d.open = true);
-          window.print();
-      }
+  const b=document.getElementById("toTop");
+  window.addEventListener("scroll",()=>{b.style.display=window.scrollY>400?"block":"none"},{passive:true});
+  b.addEventListener("click",()=>window.scrollTo({top:0,behavior:'smooth'}));
+  document.addEventListener("click",e=>{
+    const c=e.target.closest(".cpick");if(c){document.querySelectorAll(".cpick").forEach(x=>x.classList.toggle("on",x===c));applyCompany(+c.dataset.c);}
   });
-
-  window.addEventListener("afterprint", () => document.body.classList.remove("print-dec"));
-
-  document.addEventListener("input", e => {
-      if (e.target.closest(".calc")) calcUpdate();
-      const k = e.target.dataset.k;
-      if (k === undefined) return;
-      const st = decState[k] = decState[k] || {};
-      const f = e.target.dataset.f;
-      st[f] = f === "done" ? e.target.checked : e.target.value;
-      if (f === "done") {
-          e.target.closest("tr").style.opacity = e.target.checked ? "0.5" : "1";
-          decCount();
-      }
-      try { localStorage.setItem("hb_decisions", JSON.stringify(decState)); } catch (x) { }
+  document.addEventListener("input",e=>{
+    if(e.target.closest(".calc"))calcUpdate();
+    const k=e.target.dataset.k;if(k===undefined)return;
+    const st=decState[k]=decState[k]||{};const f=e.target.dataset.f;st[f]=f==="done"?e.target.checked:e.target.value;
+    if(f==="done"){e.target.closest("tr").style.opacity=e.target.checked?"0.5":"1";decCount();}
+    try{localStorage.setItem("hb_decisions",JSON.stringify(decState));}catch(x){}
   });
-
-  if (document.getElementById("cLv")) calcUpdate();
-  decCount();
-  initHero();
+  if(document.getElementById("cLv"))calcUpdate();decCount();initHero();
 }
-
-document.addEventListener("DOMContentLoaded", renderApp);
+document.addEventListener("DOMContentLoaded",renderApp);
 </script>
 </body>
 </html>
