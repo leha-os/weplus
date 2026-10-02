@@ -497,22 +497,21 @@ const HANDBOOK_SECTIONS = [
 const esc = s => (s === undefined || s === null) ? "" : String(s).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
 const badge = st => `<span class="st ${st}">${STATUS_LABEL[st]}</span>`;
 const vnd = n => n.toLocaleString("vi-VN") + "đ";
-
-// Tree Diagram Renderer
+// Tree Diagram Renderer - Đã cập nhật đúng trạng thái OPEN / COLLAPSED theo yêu cầu
 function renderOrgTree() {
   const d = ORG_DATA;
   let html = `<div class="tree">`;
   
-  // Root (TGroup)
+  // 1. TGROUP -> OPEN
   html += `<details open><summary><div class="n-card root"><b>${esc(d.top.title)}</b><span class="sub" style="font-size:10px">Bấm để thu gọn/mở rộng</span></div></summary><ul>`;
   
-  // BOD Branch
+  // 2. HỘI ĐỒNG QUẢN TRỊ -> OPEN
   html += `<li><details open><summary><div class="n-card bod"><b>${esc(d.bod.title)}</b><span class="sub" style="color:var(--accent-soft); margin-top:4px">${esc(d.bod.chair)}</span><span class="sub" style="color:rgba(255,255,255,0.7)">${esc(d.bod.board)}</span></div></summary><ul>`;
 
-  // Support Block
-  html += `<li><details open><summary><div class="n-card cluster"><b>KHỐI HỖ TRỢ & PHÁT TRIỂN</b></div></summary><ul>`;
+  // 3. KHỐI HỖ TRỢ & PHÁT TRIỂN -> COLLAPSED
+  html += `<li><details><summary><div class="n-card cluster"><b>KHỐI HỖ TRỢ & PHÁT TRIỂN</b></div></summary><ul>`;
   d.support.forEach(c => {
-    html += `<li><details open><summary><div class="n-card company"><b>${esc(c.title)}</b>${c.lead ? `<span class="sub">${esc(c.lead)}</span>` : ""}</div></summary><ul>`;
+    html += `<li><details><summary><div class="n-card company"><b>${esc(c.title)}</b>${c.lead ? `<span class="sub">${esc(c.lead)}</span>` : ""}</div></summary><ul>`;
     c.teams.forEach(t => {
       let thtml = `<b>${esc(t[0])}</b>`;
       if(t[1]) thtml += `<span class="lead">${esc(t[1])}</span>`;
@@ -523,13 +522,17 @@ function renderOrgTree() {
   });
   html += `</ul></details></li>`;
 
-  // Clusters Block
+  // 4. KHỐI VẬN HÀNH KINH DOANH -> OPEN
   html += `<li><details open><summary><div class="n-card cluster"><b>KHỐI VẬN HÀNH KINH DOANH</b></div></summary><ul>`;
   d.clusters.forEach(c => {
     const noteHtml = c.note ? `<span class="sub">${esc(c.note)}</span>` : "";
-    html += `<li><details open><summary><div class="n-card cluster" style="background:#e4efe8; border-color:var(--st-official); color:var(--st-official)"><b>${esc(c.title)}</b>${noteHtml}</div></summary><ul>`;
+    
+    // Cluster 01 & Cluster 02 -> COLLAPSED
+    html += `<li><details><summary><div class="n-card cluster" style="background:#e4efe8; border-color:var(--st-official); color:var(--st-official)"><b>${esc(c.title)}</b>${noteHtml}</div></summary><ul>`;
+    
+    // Các công ty con (ePlus, Engage, Enabler, GolfCare...) -> COLLAPSED
     c.companies.forEach(comp => {
-      html += `<li><details open><summary><div class="n-card company"><b>${esc(comp.name)}</b>${comp.lead ? `<span class="sub">${esc(comp.lead)}</span>` : ""}</div></summary><ul>`;
+      html += `<li><details><summary><div class="n-card company"><b>${esc(comp.name)}</b>${comp.lead ? `<span class="sub">${esc(comp.lead)}</span>` : ""}</div></summary><ul>`;
       comp.teams.forEach(t => {
         let thtml = `<b>${esc(t[0])}</b>`;
         if(t[1]) thtml += `<span class="lead">${esc(t[1])}</span>`;
@@ -542,7 +545,7 @@ function renderOrgTree() {
   });
   html += `</ul></details></li>`;
 
-  // Close BOD and Root
+  // Đóng thẻ HỘI ĐỒNG QUẢN TRỊ và TGROUP
   html += `</ul></details></li></ul></details></div>`;
   return html;
 }
