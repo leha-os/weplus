@@ -20,6 +20,7 @@
 <meta property="og:image:alt" content="Employee Handbook 2026 — WePlus⁺">
 <meta property="og:site_name" content="WePlus⁺">
 <meta property="og:locale" content="vi_VN">
+
 <style>
 @font-face{font-family:"Optimistic";font-style:normal;font-weight:400 700;font-display:swap;src:local("Segoe UI"),local("Roboto"),local("Arial")}
 :root{
@@ -60,24 +61,23 @@ body::after{background:radial-gradient(circle at 70% 70%,rgba(12,46,36,.16),rgba
 header.top{background:rgba(12,46,36,.88);backdrop-filter:blur(20px) saturate(1.3);-webkit-backdrop-filter:blur(20px) saturate(1.3);color:var(--on-dark);padding:2px 2px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:30;border-bottom:1px solid rgba(255,255,255,.08)}
 .logo img.lw{height:50px;vertical-align:middle}
 .top-right{margin-left:auto;display:flex;align-items:center;gap:10px}
-button.btn{border:1px solid rgba(255,255,255,.28);background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.04));color:var(--on-dark);padding:8px 16px;border-radius:8px;cursor:pointer;font:inherit;font-size:11.5px;font-weight:600;transition:.4s var(--ease-out);backdrop-filter:blur(12px)}
-button.btn:hover{background:rgba(255,255,255,.16);transform:translateY(-2px) scale(1.02)}
+.top-title{color:rgba(255,255,255,.82);font-size:11.5px;font-weight:600;white-space:nowrap;letter-spacing:.02em}
+
 nav.nav{position:sticky;top:58px;z-index:20;background:rgba(20,80,59,.94);backdrop-filter:blur(16px);display:flex;overflow-x:auto;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.16)}
 nav.nav::-webkit-scrollbar{display:none}
-nav.nav a{padding:13px 18px;color:rgba(255,255,255,.56);text-decoration:none;font-size:12px;font-weight:600;border-bottom:2px solid transparent;cursor:pointer;transition:.45s var(--ease-out);text-transform:uppercase;letter-spacing:.04em;position:relative}
+nav.nav a{padding:13px 18px;color:rgba(255,255,255,.56);text-decoration:none;font-size:12px;font-weight:600;border-bottom:2px solid transparent;cursor:pointer;transition:.45s var(--ease-out);text-transform:uppercase;letter-spacing:.02em;position:relative}
 nav.nav a::after{content:"";position:absolute;bottom:0;left:50%;width:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:.6s var(--ease-out);transform:translateX(-50%)}
 nav.nav a:hover{color:var(--on-dark);background:rgba(255,255,255,.06)}nav.nav a:hover::after{width:70%}
 nav.nav a.on{color:var(--on-dark);background:rgba(255,255,255,.08)}nav.nav a.on::after{width:100%}
+
 main.wrap{max-width:var(--maxw);margin:0 auto;padding:16px 12px 80px;width:100%;flex:1;position:relative;z-index:1;animation:blurIn .9s var(--ease-out)}
-.header-area{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;border-bottom:1px solid var(--line);padding-bottom:12px}
-.header-area h1{font-size:19px;font-weight:800;color:var(--brand);margin:0;letter-spacing:-.02em}
-.tools{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
-.search{flex:1;min-width:180px;padding:10px 14px;border:1px solid rgba(230,225,214,.8);border-radius:10px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);font:inherit;font-size:12.5px;transition:.45s var(--ease-out);box-shadow:0 2px 8px rgba(12,46,36,.04)}
+.tools{display:flex;gap:10px;margin-bottom:14px;align-items:center;flex-wrap:nowrap}
+.search{flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(230,225,214,.8);border-radius:10px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);font:inherit;font-size:12.5px;transition:.45s var(--ease-out);box-shadow:0 2px 8px rgba(12,46,36,.04)}
 .search:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px rgba(12,46,36,.08),0 12px 32px rgba(12,46,36,.08);transform:translateY(-2px) scale(1.01);background:#fff}
-.filter-wrapper{position:relative;display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);transition:.4s var(--ease-out)}
+.filter-wrapper{position:relative;display:flex;align-items:center;justify-content:center;width:38px;height:38px;flex:0 0 38px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);transition:.4s var(--ease-out)}
 .filter-wrapper svg{width:16px;height:16px;color:var(--brand);pointer-events:none}
 .filter-select{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;appearance:none}
-.btn-toggle-all{border:1px solid var(--brand);background:rgba(255,255,255,.92);backdrop-filter:blur(12px);color:var(--brand);padding:8px 14px;border-radius:10px;cursor:pointer;font:inherit;font-size:11.5px;font-weight:700;transition:.45s var(--ease-out)}
+.btn-toggle-all{border:1px solid var(--brand);background:rgba(255,255,255,.92);backdrop-filter:blur(12px);color:var(--brand);padding:8px 14px;border-radius:10px;cursor:pointer;font:inherit;font-size:11.5px;font-weight:700;transition:.45s var(--ease-out);white-space:nowrap;flex:0 0 auto}
 .btn-toggle-all:hover{background:var(--brand);color:#fff;transform:translateY(-2px) scale(1.02)}
 
 /* ===== FIX QUAN TRỌNG CHO MOBILE TABLE ===== */
@@ -104,7 +104,7 @@ main.wrap{max-width:var(--maxw);margin:0 auto;padding:16px 12px 80px;width:100%;
 .tw::-webkit-scrollbar-thumb{background:linear-gradient(90deg,var(--accent),var(--accent-light));border-radius:99px}
 .tw::-webkit-scrollbar-track{background:transparent}
 .tw table{min-width:620px;width:100%;border-collapse:collapse;font-size:12.5px}
-.tw.dec table{min-width:760px} /* bảng đối chiếu rộng hơn */
+.tw.dec table{min-width:760px}
 .tw table th{position:sticky;top:0;z-index:2;background:#fdfbf6}
 .tw::after{
   content:"← kéo ngang →";
@@ -127,6 +127,11 @@ main.wrap{max-width:var(--maxw);margin:0 auto;padding:16px 12px 80px;width:100%;
   main.wrap{padding:12px 8px 80px}
   .tw table{min-width:580px}
   .tw.dec table{min-width:700px}
+  .tools{gap:6px}
+  .search{padding-left:11px;padding-right:11px}
+  .filter-wrapper{width:36px;height:36px;flex-basis:36px}
+  .btn-toggle-all{padding:8px 10px;font-size:11px}
+  .top-title{font-size:10.5px}
 }
 
 section.sec{margin-top:16px;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border:1px solid rgba(230,225,214,.9);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(12,46,36,.05),0 4px 12px rgba(12,46,36,.03);display:none;animation:fadeUp .8s var(--ease-out) both;transition:.5s var(--ease-out)}
@@ -199,10 +204,7 @@ footer{margin-top:40px;padding:16px;text-align:center;color:var(--muted);font-si
 #toTop:hover{transform:translateY(-4px) scale(1.08)}
 #prog{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light),#e8dcc0,var(--accent));background-size:300% 100%;transform:scaleX(0);transform-origin:left;z-index:60;box-shadow:0 0 12px rgba(184,151,90,.6);animation:goldShift 3s linear infinite}
 
-/* ===== ZONE 0 · LEAVE PORTAL THEME / GIAO DIỆN CỔNG NGHỈ PHÉP =====
-   BRIEF: Style riêng cho tab CỔNG NGHỈ PHÉP | Style for the leave tab only
-   EDITABLE: màu trạng thái, khoảng cách | status colors, spacing
-   FIX AT: search "LEAVE PORTAL THEME" */
+/* ===== ZONE 0 · LEAVE PORTAL THEME / GIAO DIỆN CỔNG NGHỈ PHÉP ===== */
 #leave{--lv-ok:#1f6b4a;--lv-ok-bg:#e4efe8;--lv-err:#a33a2f;--lv-err-bg:#f9e8e5}
 #leave .lv-form{padding:14px;display:grid;grid-template-columns:1fr;gap:8px}
 #leave .lv-f{display:flex;flex-direction:row;align-items:center;gap:10px;min-width:0}
@@ -227,23 +229,28 @@ footer{margin-top:40px;padding:16px;text-align:center;color:var(--muted);font-si
 @media (max-width:768px){#leave .lv-form{padding:12px}#leave label{flex-basis:96px}}
 </style>
 </head>
+
 <body>
 <div id="prog"></div>
 <div id="cursor-glow"></div>
 <div id="hero"></div>
+
 <header class="top" id="topbar">
   <span class="logo" id="logo"></span>
   <div class="top-right">
-    <button class="btn" id="btnPdf">Download PDF</button>
+    <span class="top-title">WePlus⁺ Handbook · 2026</span>
   </div>
 </header>
+
 <nav class="nav" id="nav"></nav>
 <main class="wrap" id="app"></main>
 <footer id="foot"></footer>
 <button id="toTop" aria-label="Lên đầu trang">↑</button>
+
 <script>
 const HANDBOOK_META={title:"WePlus⁺ Handbook 2026",footer:"© 2026 Le Ha — Drafted for WePlus⁺<br>Internal Use Only | v1.3",logoWhite:"https://leha-os.github.io/assets/logoweplus_white_transparent.png"};
 const STATUS_LABEL={OFFICIAL:"CHÍNH THỨC",DRAFT:"CẦN PHÊ DUYỆT",NEEDS_ALIGNMENT:"CẦN THỐNG NHẤT",MISSING:"CHƯA CÓ THÔNG TIN",PROPOSED:"ĐỀ XUẤT",PENDING:"CHỜ XÁC NHẬN"};
+
 const ALIGNMENT_DATA=[
 ["Giờ làm việc","9h00–18h00, nghỉ trưa 12h–13h","9:30–10:00 sáng đến 18:30–19:00 chiều","—","Hai khung giờ khác nhau"],
 ["Đi trễ / về sớm","Vào sau 10h / về trước 15h → nghỉ nửa ngày","Sau 10:30 mặc nhiên tính ½ ngày phép","—","Ngưỡng tính nửa ngày phép khác nhau"],
@@ -257,12 +264,17 @@ const ALIGNMENT_DATA=[
 ["Di chuyển trong tỉnh","Thuê xe máy ≤150k/ngày","Thuê xe/app công nghệ tuỳ tình huống","—","Chốt trần chi phí cho ePlus⁺"],
 ["Mừng Kết hôn","1.000.000đ + nghỉ 3 ngày","—","1.000.000đ (có note Đề xuất 2.000.000đ)","BOD duyệt mức đề xuất mới"],
 ["Phí Grab / Be","Grab công ty","Be: Director 1.5tr; Head 1tr - 500k","Excel: ePlus⁺ 1tr, Enabler⁺ 3tr","Chốt hạn mức và hình thức chung"],
-["Sinh nhật","Quản lý 500k; Nhân viên 300k","—","QL 500k; NV 300k; Bánh 500k/tháng","Xác nhận áp dụng toàn bộ"]
+["Sinh nhật","Quản lý 500k; Nhân viên 300k","—","QL 500k; NV 300k; Bánh 500k/tháng","Xác nhận quỹ bánh kem"]
 ];
+
 const ALIGNMENT_REASON=["Cần BOD thống nhất khung giờ chung hoặc giữ riêng.","Chốt mốc 10h hay 10h30.","Xác nhận ePlus⁺ áp dụng luật chuẩn 12 ngày.","Cần chốt cách tính thâm niên trên Excel.","HR đề xuất khung chuẩn.","BOD thống nhất.","Chọn cơ chế nghỉ bù sự kiện hay WFH chuẩn.","Xác nhận ngày event có áp dụng phí không.","Thống nhất policy đặt xe ra sân bay.","Thống nhất trần di chuyển tỉnh.","Duyệt ngân sách kết hôn.","Kế toán chốt hạn mức app Be/Grab.","Xác nhận quỹ bánh kem."];
-const ORG_DATA={top:{title:"TGROUP"},bod:{title:"HỘI ĐỒNG QUẢN TRỊ",chair:"Chủ tịch HĐQT: Ông Nguyễn Bình An Tâm",board:"Thành viên HĐQT: Bà Nguyễn Huỳnh Ngọc Hà, Ông Đào Thế Kiệt, Bà Trần Thị Nam Mỹ"},support:[{title:"Phòng Phát triển Kinh doanh",lead:"Giám đốc Phát triển Kinh doanh: Bà Võ Thị Ngọc Hạnh", teams:[["Cố vấn Phát triển Kinh doanh","Ông Nguyễn Bình An Tâm"],["Giám đốc Phát triển Kinh doanh","Bà Võ Thị Ngọc Hạnh"]]},{title:"Phòng Tài chính & Kế toán",lead:"Giám đốc Tài chính/Kế toán trưởng: Mr Khánh",teams:[["Phòng Kế toán WeWall Group","Leader: Ms Tuyết","05 Kế toán viên"],["Phòng Kế toán WePlus⁺ Group","Leader: Mr Minh","05 Kế toán viên"]]},{title:"Phòng Nhân sự & Pháp chế",lead:"Trưởng phòng: Bà Trần Thị Nam Mỹ",teams:[["Chuyên viên C&B","Ms Xuân"],["Chuyên viên Pháp chế","Ms Hòa"]]}],clusters:[{title:"WEPLUS⁺ GROUP",companies:[{name:"ePlus⁺",lead:"CEO: Bà Nguyễn Huỳnh Ngọc Hà",teams:[["Team Creative","Leader: Ms Hải Yến","02 2D + 01 3D"],["Team Planner","Leader: Bà Trần Thị Nam Mỹ Liên","03 Senior + 06 Staff"],["Team Project","Leader: Ms Phương Thảo","06 Project + 02 Production"]]},{name:"Engage⁺",lead:"CEO: Ông Đào Thế Kiệt",teams:[["Team Creative"],["Team Project"]]},{name:"Enabler⁺",lead:"CEO: Ông Đào Thế Kiệt",teams:[["Team Enabler","Leader: Mr Phúc","Bộ phận Kho"]]},{name:"GolfCare⁺",lead:"CEO: Ông Nguyễn Bình An Tâm",teams:[["Team GolfCare⁺","Leader: Ms Hà","01 Designer + 03 Project"]]}]},{title:"WEWALL GROUP",companies:[{name:"The Wall Architecture",lead: "CEO: Ông Nguyễn Ngọc Hoàng Thái Bảo",teams:[["Team Thiết kế"],["Team Thi công"],["Team M&E"],["Team Công nghệ"]]},{name:"Imperial",teams:[["Team Thiết kế"]]},{name:"Nguyễn Mộc",lead: "CEO: Bà Trần Thị Nam Mỹ",teams:[["Team Thiết kế"],["Team Sản xuất"],["Team Kinh doanh"]]},{name:"GreenWall",teams:[["Toàn công ty"]]}]}]};
+
+const ORG_DATA={top:{title:"TGROUP"},bod:{title:"HỘI ĐỒNG QUẢN TRỊ",chair:"Chủ tịch HĐQT: Ông Nguyễn Bình An Tâm",board:"Thành viên HĐQT: Ông Nguyễn Ngọc Hoàng Thái Bảo, Ông Đào Thế Kiệt, Bà Nguyễn Huỳnh Ngọc Hà"},support:[{title:"Phòng Phát triển Kinh doanh",lead:"Giám đốc Phát triển Kinh doanh: Bà Võ Thị Ngọc Hạnh", teams:[["Cố vấn Phát triển Kinh doanh","Ông Nguyễn Bình An Tâm"],["Giám đốc Phát triển Kinh doanh","Bà Võ Thị Ngọc Hạnh"]]},{title:"Phòng Tài chính & Kế toán",lead:"Giám đốc Tài chính/Kế toán trưởng: Mr Khánh",teams:[["Phòng Kế toán WeWall Group","Leader: Ms Tuyết","05 Kế toán viên"],["Phòng Kế toán WePlus⁺ Group","Leader: Mr Minh","05 Kế toán viên"]]},{title:"Phòng Nhân sự & Pháp chế",lead:"Trưởng phòng: Bà Trần Thị Nam Mỹ",teams:[["Chuyên viên C&B","Ms Xuân"],["Chuyên viên Pháp chế","Ms Hòa"]]}],clusters:[{title:"WEPLUS⁺ GROUP",companies:[{name:"ePlus⁺",lead:"CEO: Bà Nguyễn Huỳnh Ngọc Hà",teams:[["Team Creative","Leader: Ms Hải Yến","02 2D + 01 3D"],["Team Planner","Leader: Bà Trần Thị Nam Mỹ Liên","03 Senior + 06 Staff"],["Team Project","Leader: Ms Phương Thảo","06 Project + 02 Production"]]},{name:"Engage⁺",lead:"CEO: Ông Đào Thế Kiệt",teams:[["Team Creative"],["Team Project"]]},{name:"Enabler⁺",lead:"CEO: Ông Đào Thế Kiệt",teams:[["Team Enabler","Leader: Mr Phúc","Bộ phận Kho"]]},{name:"GolfCare⁺",lead:"CEO: Ông Nguyễn Bình An Tâm",teams:[["Team GolfCare⁺","Leader: Ms Hà","01 Designer + 03 Project"]]}]},{title:"WEWALL GROUP",companies:[{name:"The Wall Architecture",lead: "CEO: Ông Nguyễn Ngọc Hoàng Thái Bảo",teams:[["Team Thiết kế"],["Team Thi công"],["Team M&E"],["Team Công nghệ"]]},{name:"Imperial", lead: "CEO: Bà Lê Thị Cẩm Phượng", teams:[["Team Thiết kế"]]},{name:"Nguyễn Mộc",lead: "CEO: Bà Trần Thị Nam Mỹ",teams:[["Team Thiết kế"],["Team Sản xuất"],["Team Kinh doanh"]]},{name:"GreenWall",teams:[["Toàn công ty"]]}]}]};
+
 const CALC_RATES={levels:[["Staff / Junior / Senior / Assistant",180000,350000],["Manager",250000,500000],["Director",300000,700000]],airport:100000};
-const T=(head,rows)=>({type:"table",head,rows});const L=items=>({type:"list",items});
+const T=(head,rows)=>({type:"table",head,rows});
+const L=items=>({type:"list",items});
+
 const HANDBOOK_SECTIONS=[
   {id:"s01",nav:"THÔNG TIN CHUNG",title:"THÔNG TIN CHUNG",subsections:[
     {title:"SƠ ĐỒ TỔ CHỨC HỆ SINH THÁI TGROUP",status:"DRAFT",blocks:[{type:"orgtree"}]},
@@ -332,9 +344,11 @@ const HANDBOOK_SECTIONS=[
     {title:"Các mục cần thống nhất giữa Engage⁺/ePlus⁺",status:"NEEDS_ALIGNMENT",src:"Tổng hợp",blocks:[{type:"decisions"}]}
   ]}
 ];
+
 const esc=s=>s==null?"":String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const badge=st=>!st||!STATUS_LABEL[st]?"":`<span class="st ${st}">${STATUS_LABEL[st]}</span>`;
 const vnd=n=>n.toLocaleString("vi-VN")+"đ";
+
 function renderOrgTree(){
   const d=ORG_DATA;let h=`<div class="tree"><details open><summary><div class="n-card root"><b>${esc(d.top.title)}</b></div></summary><ul>`;
   h+=`<li><details open><summary><div class="n-card bod"><b>${esc(d.bod.title)}</b><span class="sub" style="color:#f1eadb;margin-top:3px">${esc(d.bod.chair)}</span><span class="sub" style="color:rgba(255,255,255,.7)">${esc(d.bod.board)}</span></div></summary><ul>`;
@@ -343,23 +357,32 @@ function renderOrgTree(){
   h+=`<li><details open><summary><div class="n-card cluster"><b>KHỐI VẬN HÀNH KINH DOANH</b></div></summary><ul>`;
   d.clusters.forEach(c=>{h+=`<li><details><summary><div class="n-card cluster" style="background:#e4efe8"><b>${esc(c.title)}</b></div></summary><ul>`;c.companies.forEach(cp=>{h+=`<li><details><summary><div class="n-card company"><b>${esc(cp.name)}</b>${cp.lead?`<span class="sub">${esc(cp.lead)}</span>`:""}</div></summary><ul>`;cp.teams.forEach(t=>{let th=`<b>${esc(t[0])}</b>`;if(t[1])th+=`<span class="lead">${esc(t[1])}</span>`;if(t[2])th+=`<span class="sub">${esc(t[2])}</span>`;h+=`<li class="leaf"><summary><div class="n-card team">${th}</div></summary></li>`});h+=`</ul></details></li>`;});h+=`</ul></details></li>`;});h+=`</ul></details></li></ul></details></li></ul></details></div>`;return h;
 }
+
 function renderCalendarTable(){
   const rows=[["Hàng tuần","Thứ 6: Happy Friday (16:00) | Thank You Wall"],["Hàng tháng","Ngày 10: Sinh nhật NV chung"],["Tháng 3","Quốc tế Phụ nữ 8/3"],["Tháng 7","Green Desk | Khởi động sự kiện Mùa hè"],["Tháng 8","Sự kiện Mùa hè rực rỡ"],["Tháng 9","Sport Day"],["Tháng 10","Phụ nữ VN 20/10"],["Tháng 11","Tháng tri ân"],["Tháng 12","Giáng sinh"],["Theo quý","Innovation Day"]];
   return `<div class="tw"><table><thead><tr><th style="width:140px">Thời gian</th><th>Hoạt động</th></tr></thead><tbody>${rows.map(x=>`<tr><td style="font-weight:700;white-space:nowrap;color:var(--brand)">${x[0]}</td><td>${x[1]}</td></tr>`).join("")}</tbody></table></div>`;
 }
-function renderCompanyPick(){return `<div style="margin-bottom:6px;margin-left:22px">${["Tất cả","Engage⁺","ePlus⁺","Enabler⁺"].map((x,i)=>`<button class="cpick${i===0?" on":""}" data-c="${i}">${x}</button>`).join("")}</div>`;}
+
+function renderCompanyPick(){
+  return `<div style="margin-bottom:6px;margin-left:22px">${["Tất cả","Engage⁺","ePlus⁺","Enabler⁺"].map((x,i)=>`<button class="cpick${i===0?" on":""}" data-c="${i}">${x}</button>`).join("")}</div>`;
+}
+
 function renderCalc(){
   return `<div class="calc"><div><label>Cấp bậc</label><select id="cLv">${CALC_RATES.levels.map((l,i)=>`<option value="${i}">${esc(l[0])}</option>`).join("")}</select></div><div><label>Số ngày công tác</label><input id="cDay" type="number" min="0" value="2"></div><div><label>Số đêm KS</label><input id="cNight" type="number" min="0" value="1"></div><div><label>Hỗ trợ ga/sân bay</label><select id="cAir"><option value="0">Không</option><option value="1">1 chiều</option><option value="2">Khứ hồi</option></select></div></div><div class="res" id="cRes"></div>`;
 }
+
 function calcUpdate(){
   const lv=document.getElementById("cLv"),re=document.getElementById("cRes");if(!lv||!re)return;
   const l=CALC_RATES.levels[+lv.value],d=Math.max(0,+document.getElementById("cDay").value||0),n=Math.max(0,+document.getElementById("cNight").value||0),a=+document.getElementById("cAir").value;
   const f=l[1]*d,h=l[2]*n,ap=CALC_RATES.airport*a;re.innerHTML=`Ăn uống: <b>${vnd(f)}</b> · KS: <b>${vnd(h)}</b> · Sân bay: <b>${vnd(ap)}</b><br>Tổng tối đa: <span class="big">${vnd(f+h+ap)}</span>`;
 }
+
 let decState={};try{decState=JSON.parse(localStorage.getItem("hb_decisions")||"{}")}catch(e){}
+
 function renderDecisions(){
   return `<div class="tw dec"><table><thead><tr><th>#</th><th>Nội dung</th><th>Engage⁺</th><th>ePlus⁺</th><th>Cần BOD Quyết</th><th>Chốt</th></tr></thead><tbody>${ALIGNMENT_DATA.map((a,i)=>{const st=decState[i]||{};return `<tr style="${st.done?'opacity:.5':''}"><td>${i+1}</td><td><b>${esc(a[0])}</b><br><span style="font-size:10px;color:var(--muted)">${esc(a[4])}</span></td><td>${esc(a[1])}</td><td>${esc(a[2])}</td><td>${esc(ALIGNMENT_REASON[i])}</td><td style="text-align:center"><input type="checkbox" data-k="${i}" data-f="done"${st.done?" checked":""}></td></tr>`}).join("")}</tbody></table></div>`;
 }
+
 function renderBlock(b){
   if(b.type==="list")return `<ul>${b.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul>`;
   if(b.type==="text")return `<p>${esc(b.text)}</p>`;
@@ -373,11 +396,13 @@ function renderBlock(b){
   if(b.type==="table"){const h=b.head.map(x=>`<th>${esc(x)}</th>`).join("");const r=b.rows.map(row=>`<tr>${row.map(c=>`<td>${esc(c)}</td>`).join("")}</tr>`).join("");return `<div class="tw"><table><thead><tr>${h}</tr></thead><tbody>${r}</tbody></table></div>`;}
   return "";
 }
+
 function renderChrome(){
   const M=HANDBOOK_META;
   document.getElementById("logo").innerHTML=`<img class="lw" src="${M.logoWhite}" alt="WePlus⁺" loading="lazy">`;
   document.getElementById("foot").innerHTML=M.footer;
 }
+
 function initHero(){
   const h=document.getElementById("hero"),M=HANDBOOK_META;
   h.innerHTML=`<div class="hero-in"><img class="hero-w" src="${M.logoWhite}" alt="WePlus⁺" loading="lazy"><div class="hero-line"></div><div class="hero-sub">Employee Handbook · WePlus⁺ 2026</div><button class="hero-btn" id="enter">Vào Handbook</button></div>`;
@@ -385,41 +410,111 @@ function initHero(){
   const close=()=>{h.classList.add("out");document.body.classList.remove("lock");try{sessionStorage.setItem("hb_seen","1")}catch(e){}setTimeout(()=>h.remove(),900);};
   if(seen){h.remove();return;}document.body.classList.add("lock");document.getElementById("enter").addEventListener("click",close);
 }
+
 function renderSections(){
   document.getElementById("nav").innerHTML=HANDBOOK_SECTIONS.map(s=>`<a data-id="${s.id}">${esc(s.nav)}</a>`).join("");
-  const cnt={};HANDBOOK_SECTIONS.forEach(x=>x.subsections.forEach(y=>{if(y.status)cnt[y.status]=(cnt[y.status]||0)+1;}));
+
+  const cnt={};
+  HANDBOOK_SECTIONS.forEach(x=>x.subsections.forEach(y=>{if(y.status)cnt[y.status]=(cnt[y.status]||0)+1;}));
   const keys=Object.keys(STATUS_LABEL).filter(k=>cnt[k]);
+
   const filterHtml=`<div class="filter-wrapper" title="Lọc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg><select id="statusFilter" class="filter-select"><option value="">Tất cả trạng thái</option>${keys.map(k=>`<option value="${k}">${STATUS_LABEL[k]} (${cnt[k]})</option>`).join("")}</select></div>`;
+
   const secs=HANDBOOK_SECTIONS.map(s=>`<section class="sec on reveal" id="${s.id}"><h2><span>${esc(s.title)}</span><span class="arrow">⌄</span></h2>${s.subsections.map(sub=>`<details class="blk reveal" data-st="${sub.status||''}"><summary><span>${esc(sub.title)}</span>${badge(sub.status)}</summary><div class="body">${sub.src?`<p class="src">Nguồn: ${esc(sub.src)}</p>`:""}${sub.blocks.map(renderBlock).join("")}</div></details>`).join("")}</section>`).join("");
-  document.getElementById("app").innerHTML=`<div class="header-area"><h1>WePlus⁺ Handbook 2026</h1>${filterHtml}</div><div class="tools"><input class="search" id="q" placeholder="Tìm kiếm..."><button id="toggleAll" class="btn-toggle-all">Mở / Đóng tất cả</button></div>${secs}`;
+
+  document.getElementById("app").innerHTML=`
+    <div class="tools">
+      <input class="search" id="q" placeholder="Tìm kiếm...">
+      ${filterHtml}
+      <button id="toggleAll" class="btn-toggle-all">Mở/Đóng</button>
+    </div>
+    ${secs}`;
 }
+
 function initTabs(){
-  const links=[...document.querySelectorAll("#nav a")],secs=[...document.querySelectorAll("section.sec")];
-  const show=id=>{links.forEach(a=>a.classList.toggle("on",a.dataset.id===id));secs.forEach(x=>{x.style.display=x.id===id?"block":"none";if(x.id===id){x.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=`${i*40}ms`;setTimeout(()=>el.classList.add('in'),60);});}});};
-  links.forEach(a=>a.addEventListener("click",()=>{show(a.dataset.id);scrollTo({top:document.getElementById("app").offsetTop-8,behavior:'smooth'});}));
-  show(HANDBOOK_SECTIONS[0].id);
-  document.querySelectorAll("section.sec>h2").forEach(h=>h.addEventListener("click",()=>h.parentElement.classList.toggle("collapsed")));
-}
-function initSearch(){
-  let q="",st="";const apply=()=>{
-    const active=!!(q||st);document.body.classList.toggle("searching",active);
-    document.querySelectorAll("details.blk").forEach(d=>{
-      const hit=(!q||d.textContent.toLowerCase().includes(q))&&(!st||d.dataset.st===st);
-      d.style.display=hit?"":"none";if(active&&hit){d.open=true;d.closest('section.sec').classList.remove('collapsed');}
+  const links=[...document.querySelectorAll("#nav a")];
+  const secs=[...document.querySelectorAll("section.sec")];
+
+  const show=id=>{
+    links.forEach(a=>a.classList.toggle("on",a.dataset.id===id));
+
+    secs.forEach(x=>{
+      x.style.display=x.id===id?"block":"none";
+
+      if(x.id===id){
+        x.querySelectorAll('.reveal').forEach((el,i)=>{
+          el.style.transitionDelay=`${i*40}ms`;
+          setTimeout(()=>el.classList.add('in'),60);
+        });
+      }
     });
   };
-  document.getElementById("q")?.addEventListener("input",e=>{q=e.target.value.trim().toLowerCase();apply();});
-  document.getElementById("statusFilter")?.addEventListener("change",e=>{st=e.target.value;apply();});
-  document.getElementById("toggleAll")?.addEventListener("click",()=>{
-    const all=[...document.querySelectorAll("section.sec.on details.blk, section.sec[style*='block'] details.blk")];
-    const anyClosed=all.some(d=>!d.open);all.forEach(d=>d.open=anyClosed);
+
+  links.forEach(a=>a.addEventListener("click",()=>{
+    show(a.dataset.id);
+  }));
+
+  show(HANDBOOK_SECTIONS[0].id);
+
+  document.querySelectorAll("section.sec>h2").forEach(h=>{
+    h.addEventListener("click",()=>{
+      h.parentElement.classList.toggle("collapsed");
+    });
   });
 }
+
+function initSearch(){
+  let q="",st="";
+
+  const apply=()=>{
+    const active=!!(q||st);
+    document.body.classList.toggle("searching",active);
+
+    document.querySelectorAll("details.blk").forEach(d=>{
+      const hit=(!q||d.textContent.toLowerCase().includes(q))&&(!st||d.dataset.st===st);
+      d.style.display=hit?"":"none";
+
+      if(active&&hit){
+        d.open=true;
+        d.closest('section.sec').classList.remove('collapsed');
+      }
+    });
+  };
+
+  document.getElementById("q")?.addEventListener("input",e=>{
+    q=e.target.value.trim().toLowerCase();
+    apply();
+  });
+
+  document.getElementById("statusFilter")?.addEventListener("change",e=>{
+    st=e.target.value;
+    apply();
+  });
+
+  document.getElementById("toggleAll")?.addEventListener("click",()=>{
+    const activeSec=document.querySelector("section.sec[style*='block']");
+    if(!activeSec)return;
+
+    const all=[...activeSec.querySelectorAll("details.blk")];
+
+    if(activeSec.id==="leave"){
+      activeSec.classList.toggle("collapsed");
+      return;
+    }
+
+    const anyClosed=all.some(d=>!d.open);
+    all.forEach(d=>d.open=anyClosed);
+  });
+}
+
 function initMotion(){
   const bar=document.getElementById("prog"),topbar=document.getElementById("topbar"),glow=document.getElementById("cursor-glow");
   let tick=false,glowX=0,glowY=0,mx=0,my=0;
+
   addEventListener("scroll",()=>{
-    if(tick)return;tick=true;
+    if(tick)return;
+    tick=true;
+
     requestAnimationFrame(()=>{
       const h=document.documentElement.scrollHeight-innerHeight;
       bar.style.transform=`scaleX(${h>0?scrollY/h:0})`;
@@ -427,34 +522,50 @@ function initMotion(){
       tick=false;
     });
   },{passive:true});
-  addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;glow.style.opacity='1';},{passive:true});
+
+  addEventListener("mousemove",e=>{
+    mx=e.clientX;
+    my=e.clientY;
+    glow.style.opacity='1';
+  },{passive:true});
+
   (function raf(){
     glowX += (mx - glowX) * 0.08;
     glowY += (my - glowY) * 0.08;
     glow.style.transform=`translate(${glowX}px,${glowY}px) translate(-50%,-50%)`;
     requestAnimationFrame(raf);
   })();
+
   const io=new IntersectionObserver(es=>{
-    es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    es.forEach(en=>{
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
   },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-  setTimeout(()=>{document.querySelectorAll('.reveal').forEach(el=>io.observe(el));},300);
-  // mobile scroll hint
+
+  setTimeout(()=>{
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  },300);
+
   document.addEventListener('scroll',e=>{
     if(e.target.classList && e.target.classList.contains('tw')){
-      if(e.target.scrollLeft>10) e.target.classList.add('scrolled');
+      if(e.target.scrollLeft>10)e.target.classList.add('scrolled');
     }
   },true);
 }
+
 function applyCompany(idx){
   document.querySelectorAll("#s04 table").forEach(t=>{
     if(t.querySelectorAll("thead th").length!==4||t.querySelectorAll("thead th")[1].textContent!=="Engage⁺")return;
-    t.querySelectorAll("tr").forEach(tr=>[...tr.children].forEach((c,j)=>{c.style.display=!idx||j===0||j===idx?"":"none";}));
+    t.querySelectorAll("tr").forEach(tr=>[...tr.children].forEach((c,j)=>{
+      c.style.display=!idx||j===0||j===idx?"":"none";
+    }));
   });
 }
-/* ===== ZONE 1 · LEAVE PORTAL CONFIG / CẤU HÌNH CỔNG NGHỈ PHÉP =====
-   BRIEF: Cấu hình tab nghỉ phép | Config of the leave tab
-   EDITABLE: API_URL (dán Web App URL), TYPES (loại phép), TEXT (nhãn/thông báo)
-   FIX AT: search "LEAVE_CONFIG" */
+
+/* ===== ZONE 1 · LEAVE PORTAL CONFIG / CẤU HÌNH CỔNG NGHỈ PHÉP ===== */
 const LEAVE_CONFIG={
   API_URL:"https://script.google.com/macros/s/AKfycbznmJo5-Mg7nYbuV3oqj0Krn58vAhm4N4y29agBnLjTvEFIye2kmlttMZreqqt3Hb7Elg/exec",
   TIMEOUT_MS:30000,
@@ -469,38 +580,46 @@ const LEAVE_CONFIG={
   }
 };
 
-/* ===== ZONE 2 · LEAVE PORTAL FUNCTIONS / HÀM CỔNG NGHỈ PHÉP =====
-   BRIEF: Dựng tab + xác thực email + gửi đơn | Build tab + verify email + submit
-   EDITABLE: HTML form bên dưới | form HTML below
-   FIX AT: search "renderLeavePortal" */
-// Gọi API Apps Script (text/plain để tránh preflight CORS) | Call Apps Script API
+/* ===== ZONE 2 · LEAVE PORTAL FUNCTIONS / HÀM CỔNG NGHỈ PHÉP ===== */
 async function leaveApi(payload){
   if(!/^https:\/\//.test(LEAVE_CONFIG.API_URL))throw new Error(LEAVE_CONFIG.TEXT.noApi);
   const ctl=new AbortController();
   const timer=setTimeout(()=>ctl.abort(),LEAVE_CONFIG.TIMEOUT_MS);
+
   try{
-    const res=await fetch(LEAVE_CONFIG.API_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload),signal:ctl.signal});
+    const res=await fetch(LEAVE_CONFIG.API_URL,{
+      method:"POST",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify(payload),
+      signal:ctl.signal
+    });
     return await res.json();
   }catch(err){
     if(err.message===LEAVE_CONFIG.TEXT.noApi)throw err;
     throw new Error(LEAVE_CONFIG.TEXT.netErr);
-  }finally{clearTimeout(timer);}
+  }finally{
+    clearTimeout(timer);
+  }
 }
-// Tính số ngày = đến - từ + 1 (UTC, tránh lệch múi giờ) | Day count, UTC-safe
+
 function leaveDays(from,to){
   const a=Date.parse(from+"T00:00:00Z"),b=Date.parse(to+"T00:00:00Z");
   if(isNaN(a)||isNaN(b))return 0;
   return Math.round((b-a)/86400000)+1;
 }
+
 function renderLeavePortal(){
   const T=LEAVE_CONFIG.TEXT;
-  // 1) Thêm link vào thanh tab | Add nav link
+
   const link=document.createElement("a");
-  link.dataset.id="leave";link.textContent=T.nav;
+  link.dataset.id="leave";
+  link.textContent=T.nav;
   document.getElementById("nav").appendChild(link);
-  // 2) Thêm section chứa form (không dùng details.blk để search/lọc/mở-đóng cũ không ảnh hưởng)
+
   const sec=document.createElement("section");
-  sec.className="sec on reveal";sec.id="leave";
+  sec.className="sec on reveal";
+  sec.id="leave";
+
   sec.innerHTML=`<h2><span>${esc(T.title)}</span><span class="arrow">⌄</span></h2>
   <div class="body"><div class="lv-form reveal">
     <div class="lv-f full"><label for="lvEmail">Email đã đăng ký</label>
@@ -517,75 +636,179 @@ function renderLeavePortal(){
     <div class="lv-f full"><p class="lv-msg" id="lvMsg"></p></div>
     <div class="lv-f full"><button type="button" class="lv-btn lv-submit" id="lvSubmit" disabled>GỬI ĐƠN XIN NGHỈ</button></div>
   </div></div>`;
+
   document.getElementById("app").appendChild(sec);
   bindLeavePortal();
 }
+
 function bindLeavePortal(){
   const T=LEAVE_CONFIG.TEXT,$=id=>document.getElementById(id);
   const locked=["lvFrom","lvTo","lvType","lvReason","lvHandover","lvSubmit"];
   let verifiedEmail="",busy=false;
-  // Hiện thông báo | Show message
-  const msg=(text,kind)=>{const m=$("lvMsg");m.textContent=text||"";m.className="lv-msg"+(text?" "+kind:"");};
-  // Khóa/mở các trường sau xác thực | Lock/unlock fields
+
+  const msg=(text,kind)=>{
+    const m=$("lvMsg");
+    m.textContent=text||"";
+    m.className="lv-msg"+(text?" "+kind:"");
+  };
+
   const setLocked=v=>locked.forEach(id=>{$(id).disabled=v;});
-  // Cập nhật số ngày | Update day count
+
   const refreshDays=()=>{
     const d=leaveDays($("lvFrom").value,$("lvTo").value);
     $("lvDays").value=d>0?d+" ngày":"";
-    if($("lvFrom").value&&$("lvTo").value&&d<=0)msg(T.badRange,"err");else if($("lvMsg").textContent===T.badRange)msg("");
+    if($("lvFrom").value&&$("lvTo").value&&d<=0)msg(T.badRange,"err");
+    else if($("lvMsg").textContent===T.badRange)msg("");
     return d;
   };
-  // Sửa email => phải xác thực lại | Email edited => re-verify
+
   $("lvEmail").addEventListener("input",()=>{
-    verifiedEmail="";setLocked(true);$("lvName").value="";$("lvDept").value="";$("lvApprover").value="";msg("");
+    verifiedEmail="";
+    setLocked(true);
+    $("lvName").value="";
+    $("lvDept").value="";
+    $("lvApprover").value="";
+    msg("");
   });
-  // Chọn ngày xong tự đóng bảng chọn | Close picker right after a date is chosen
-  $("lvFrom").addEventListener("change",()=>{refreshDays();if($("lvFrom").value)$("lvFrom").blur();});
-  $("lvTo").addEventListener("change",()=>{refreshDays();if($("lvTo").value)$("lvTo").blur();});
-  // Xác thực email (server-side) | Verify email on server
+
+  $("lvFrom").addEventListener("change",()=>{
+    refreshDays();
+    if($("lvFrom").value)$("lvFrom").blur();
+  });
+
+  $("lvTo").addEventListener("change",()=>{
+    refreshDays();
+    if($("lvTo").value)$("lvTo").blur();
+  });
+
   $("lvVerify").addEventListener("click",async()=>{
     const email=$("lvEmail").value.trim();
-    if(!email||busy){if(!email)msg(T.missing,"err");return;}
-    busy=true;$("lvVerify").disabled=true;msg("");
+
+    if(!email||busy){
+      if(!email)msg(T.missing,"err");
+      return;
+    }
+
+    busy=true;
+    $("lvVerify").disabled=true;
+    msg("");
+
     try{
       const r=await leaveApi({action:"verify",email});
-      if(!r.ok){msg(r.message,"err");}
-      else{verifiedEmail=email;$("lvName").value=r.name;$("lvDept").value=r.dept;$("lvApprover").value=r.approver;setLocked(false);}
-    }catch(err){msg(err.message,"err");}
-    busy=false;$("lvVerify").disabled=false;
+
+      if(!r.ok){
+        msg(r.message,"err");
+      }else{
+        verifiedEmail=email;
+        $("lvName").value=r.name;
+        $("lvDept").value=r.dept;
+        $("lvApprover").value=r.approver;
+        setLocked(false);
+      }
+    }catch(err){
+      msg(err.message,"err");
+    }
+
+    busy=false;
+    $("lvVerify").disabled=false;
   });
-  // Gửi đơn | Submit
+
   $("lvSubmit").addEventListener("click",async()=>{
     if(busy||!verifiedEmail)return;
-    const data={action:"submit",email:verifiedEmail,from:$("lvFrom").value,to:$("lvTo").value,type:$("lvType").value,reason:$("lvReason").value.trim(),handover:$("lvHandover").value.trim()};
-    if(!data.from||!data.to||!data.type||!data.reason||!data.handover){msg(T.missing,"err");return;}
+
+    const data={
+      action:"submit",
+      email:verifiedEmail,
+      from:$("lvFrom").value,
+      to:$("lvTo").value,
+      type:$("lvType").value,
+      reason:$("lvReason").value.trim(),
+      handover:$("lvHandover").value.trim()
+    };
+
+    if(!data.from||!data.to||!data.type||!data.reason||!data.handover){
+      msg(T.missing,"err");
+      return;
+    }
+
     if(refreshDays()<=0)return;
-    busy=true;$("lvSubmit").disabled=true;$("lvVerify").disabled=true;$("lvSubmit").textContent=T.sending;msg("");
+
+    busy=true;
+    $("lvSubmit").disabled=true;
+    $("lvVerify").disabled=true;
+    $("lvSubmit").textContent=T.sending;
+    msg("");
+
     try{
       const r=await leaveApi(data);
       msg(r.message,r.ok?"ok":"err");
-      if(r.ok){["lvFrom","lvTo","lvReason","lvHandover","lvDays"].forEach(id=>{$(id).value="";});}
-    }catch(err){msg(err.message,"err");}
-    busy=false;$("lvSubmit").disabled=false;$("lvVerify").disabled=false;$("lvSubmit").textContent="GỬI ĐƠN XIN NGHỈ";
+
+      if(r.ok){
+        ["lvFrom","lvTo","lvReason","lvHandover","lvDays"].forEach(id=>{
+          $(id).value="";
+        });
+      }
+    }catch(err){
+      msg(err.message,"err");
+    }
+
+    busy=false;
+    $("lvSubmit").disabled=false;
+    $("lvVerify").disabled=false;
+    $("lvSubmit").textContent="GỬI ĐƠN XIN NGHỈ";
   });
 }
+
 function init(){
-  renderChrome();renderSections();renderLeavePortal();initTabs();initSearch();initMotion();
-  document.getElementById("btnPdf")?.addEventListener("click",()=>{document.querySelectorAll("details").forEach(d=>d.open=true);document.querySelectorAll(".sec").forEach(s=>s.classList.remove("collapsed"));setTimeout(()=>print(),250);});
+  renderChrome();
+  renderSections();
+  renderLeavePortal();
+  initTabs();
+  initSearch();
+  initMotion();
+
   const top=document.getElementById("toTop");
-  addEventListener("scroll",()=>{top.style.display=scrollY>400?"block":"none"},{passive:true});
-  top.addEventListener("click",()=>scrollTo({top:0,behavior:'smooth'}));
-  addEventListener("click",e=>{const c=e.target.closest(".cpick");if(c){document.querySelectorAll(".cpick").forEach(x=>x.classList.toggle("on",x===c));applyCompany(+c.dataset.c);}});
+
+  addEventListener("scroll",()=>{
+    top.style.display=scrollY>400?"block":"none";
+  },{passive:true});
+
+  top.addEventListener("click",()=>{
+    scrollTo({top:0,behavior:'smooth'});
+  });
+
+  addEventListener("click",e=>{
+    const c=e.target.closest(".cpick");
+
+    if(c){
+      document.querySelectorAll(".cpick").forEach(x=>x.classList.toggle("on",x===c));
+      applyCompany(+c.dataset.c);
+    }
+  });
+
   addEventListener("input",e=>{
     if(e.target.closest(".calc"))calcUpdate();
-    const k=e.target.dataset.k;if(k===undefined)return;
-    decState[k]=decState[k]||{};decState[k].done=e.target.checked;
-    if(e.target.closest("tr"))e.target.closest("tr").style.opacity=e.target.checked?"0.5":"1";
-    try{localStorage.setItem("hb_decisions",JSON.stringify(decState));}catch{}
+
+    const k=e.target.dataset.k;
+    if(k===undefined)return;
+
+    decState[k]=decState[k]||{};
+    decState[k].done=e.target.checked;
+
+    if(e.target.closest("tr")){
+      e.target.closest("tr").style.opacity=e.target.checked?"0.5":"1";
+    }
+
+    try{
+      localStorage.setItem("hb_decisions",JSON.stringify(decState));
+    }catch{}
   });
+
   if(document.getElementById("cLv"))calcUpdate();
+
   initHero();
 }
+
 document.addEventListener("DOMContentLoaded",init);
 </script>
 </body>
