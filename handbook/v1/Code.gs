@@ -326,14 +326,14 @@ function btn_(url, label, primary) {
 function header_() {
   const C = CONFIG.COLOR, B = CONFIG.BRAND;
   return '<div style="text-align:center;padding:12px 8px;border-bottom:2px solid ' + C.line + '">' +
-    '<img src="' + esc_(B.LOGO) + '" alt="WePlus" style="height:70px;margin-bottom:4px"><br>' +
-    B.LINES.map((t, i) => '<div style="font-size:' + (i === 0 ? '13px;font-weight:700;color:' + C.brand : '10px;color:' + C.muted) + '">' + esc_(t) + '</div>').join('') +
+    '<img src="' + esc_(B.LOGO) + '" alt="WePlus" style="height:90px;margin-bottom:2px"><br>' +
+    B.LINES.map((t, i) => '<div style="font-size:' + (i === 0 ? '12px;font-weight:700;color:' + C.brand : '9px;color:' + C.muted) + '">' + esc_(t) + '</div>').join('') +
     '</div>';
 }
 // Footer căn giữa | Centered footer
 function footer_() {
   const C = CONFIG.COLOR;
-  return '<div style="text-align:center;padding:16px 8px;margin-top:16px;border-top:1px solid ' + C.line + ';font-size:10px;color:' + C.muted + '">' +
+  return '<div style="text-align:center;padding:16px 8px;margin-top:16px;border-top:1px solid ' + C.line + ';font-size:9px;color:' + C.muted + '">' +
     CONFIG.BRAND.FOOTER.map(esc_).join('<br>') + '</div>';
 }
 function mailShell_(title, inner) {
