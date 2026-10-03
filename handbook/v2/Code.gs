@@ -15,6 +15,7 @@ const CONFIG = {
   PREFIX: '[CỔNG NGHỈ PHÉP]',
   MAX_REASON: 1000,
   MAX_HANDOVER: 200,
+  DEBUG: true, // true = form hiện chi tiết lỗi; sửa thành false khi chạy thật | true = show error detail
   MSG: {
     NOT_REGISTERED: 'Bạn chưa đăng ký email. Vui lòng liên hệ Phòng Nhân sự để đăng ký email.',
     INACTIVE: 'Email của bạn hiện không hoạt động. Vui lòng liên hệ Phòng Nhân sự.',
@@ -49,7 +50,7 @@ function doPost(e) {
     return json_({ ok: false, message: CONFIG.MSG.BAD_INPUT });
   } catch (err) {
     console.error(err);
-    return json_({ ok: false, message: CONFIG.MSG.SYSTEM });
+    return json_({ ok: false, message: CONFIG.MSG.SYSTEM + (CONFIG.DEBUG ? ' [' + err.message + ']' : '') });
   }
 }
 
