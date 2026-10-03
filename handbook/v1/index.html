@@ -198,6 +198,29 @@ footer{margin-top:40px;padding:16px;text-align:center;color:var(--muted);font-si
 #toTop{position:fixed;right:14px;bottom:14px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border:0;border-radius:12px;width:40px;height:40px;cursor:pointer;display:none;font-size:16px;box-shadow:0 8px 24px rgba(12,46,36,.25);z-index:50;transition:.45s var(--ease-bounce)}
 #toTop:hover{transform:translateY(-4px) scale(1.08)}
 #prog{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light),#e8dcc0,var(--accent));background-size:300% 100%;transform:scaleX(0);transform-origin:left;z-index:60;box-shadow:0 0 12px rgba(184,151,90,.6);animation:goldShift 3s linear infinite}
+
+/* ===== ZONE 0 · LEAVE PORTAL THEME / GIAO DIỆN CỔNG NGHỈ PHÉP =====
+   BRIEF: Style riêng cho tab CỔNG NGHỈ PHÉP | Style for the leave tab only
+   EDITABLE: màu trạng thái, khoảng cách | status colors, spacing
+   FIX AT: search "LEAVE PORTAL THEME" */
+#leave{--lv-ok:#1f6b4a;--lv-ok-bg:#e4efe8;--lv-err:#a33a2f;--lv-err-bg:#f9e8e5}
+#leave .lv-form{padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#leave .lv-f{display:flex;flex-direction:column;min-width:0}
+#leave .lv-f.full{grid-column:1/-1}
+#leave label{font-size:10px;color:var(--muted);margin-bottom:4px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+#leave input,#leave select,#leave textarea{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:13px;background:var(--card);transition:.3s var(--ease)}
+#leave textarea{min-height:76px;resize:vertical}
+#leave input:focus,#leave select:focus,#leave textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(12,46,36,.08)}
+#leave input[readonly],#leave :disabled{background:var(--accent-soft);color:var(--muted);cursor:not-allowed}
+#leave .lv-row{display:flex;gap:8px}
+#leave .lv-btn{border:1px solid var(--brand);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:var(--on-dark);padding:10px 18px;border-radius:10px;cursor:pointer;font:inherit;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;transition:.4s var(--ease-out)}
+#leave .lv-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+#leave .lv-btn:disabled{opacity:.55;cursor:wait;transform:none}
+#leave .lv-submit{width:100%;padding:13px}
+#leave .lv-msg{display:none;margin:0;padding:10px 12px;border-radius:8px;font-size:12.5px;font-weight:600}
+#leave .lv-msg.ok{display:block;background:var(--lv-ok-bg);color:var(--lv-ok)}
+#leave .lv-msg.err{display:block;background:var(--lv-err-bg);color:var(--lv-err)}
+@media (max-width:768px){#leave .lv-form{grid-template-columns:1fr;padding:12px}#leave .lv-row{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -424,8 +447,125 @@ function applyCompany(idx){
     t.querySelectorAll("tr").forEach(tr=>[...tr.children].forEach((c,j)=>{c.style.display=!idx||j===0||j===idx?"":"none";}));
   });
 }
+/* ===== ZONE 1 · LEAVE PORTAL CONFIG / CẤU HÌNH CỔNG NGHỈ PHÉP =====
+   BRIEF: Cấu hình tab nghỉ phép | Config of the leave tab
+   EDITABLE: API_URL (dán Web App URL), TYPES (loại phép), TEXT (nhãn/thông báo)
+   FIX AT: search "LEAVE_CONFIG" */
+const LEAVE_CONFIG={
+  API_URL:"https://script.google.com/macros/s/AKfycbznmJo5-Mg7nYbuV3oqj0Krn58vAhm4N4y29agBnLjTvEFIye2kmlttMZreqqt3Hb7Elg/exec",
+  TIMEOUT_MS:30000,
+  TYPES:["Nghỉ phép","Nghỉ không lương"],
+  TEXT:{
+    nav:"CỔNG NGHỈ PHÉP",title:"CỔNG NGHỈ PHÉP",
+    noApi:"Hệ thống chưa được cấu hình. Vui lòng liên hệ Phòng Nhân sự.",
+    netErr:"Không kết nối được hệ thống. Vui lòng thử lại.",
+    badRange:"Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu.",
+    missing:"Vui lòng điền đầy đủ các trường bắt buộc.",
+    sending:"ĐANG XỬ LÝ..."
+  }
+};
+
+/* ===== ZONE 2 · LEAVE PORTAL FUNCTIONS / HÀM CỔNG NGHỈ PHÉP =====
+   BRIEF: Dựng tab + xác thực email + gửi đơn | Build tab + verify email + submit
+   EDITABLE: HTML form bên dưới | form HTML below
+   FIX AT: search "renderLeavePortal" */
+// Gọi API Apps Script (text/plain để tránh preflight CORS) | Call Apps Script API
+async function leaveApi(payload){
+  if(!/^https:\/\//.test(LEAVE_CONFIG.API_URL))throw new Error(LEAVE_CONFIG.TEXT.noApi);
+  const ctl=new AbortController();
+  const timer=setTimeout(()=>ctl.abort(),LEAVE_CONFIG.TIMEOUT_MS);
+  try{
+    const res=await fetch(LEAVE_CONFIG.API_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload),signal:ctl.signal});
+    return await res.json();
+  }catch(err){
+    if(err.message===LEAVE_CONFIG.TEXT.noApi)throw err;
+    throw new Error(LEAVE_CONFIG.TEXT.netErr);
+  }finally{clearTimeout(timer);}
+}
+// Tính số ngày = đến - từ + 1 (UTC, tránh lệch múi giờ) | Day count, UTC-safe
+function leaveDays(from,to){
+  const a=Date.parse(from+"T00:00:00Z"),b=Date.parse(to+"T00:00:00Z");
+  if(isNaN(a)||isNaN(b))return 0;
+  return Math.round((b-a)/86400000)+1;
+}
+function renderLeavePortal(){
+  const T=LEAVE_CONFIG.TEXT;
+  // 1) Thêm link vào thanh tab | Add nav link
+  const link=document.createElement("a");
+  link.dataset.id="leave";link.textContent=T.nav;
+  document.getElementById("nav").appendChild(link);
+  // 2) Thêm section chứa form (không dùng details.blk để search/lọc/mở-đóng cũ không ảnh hưởng)
+  const sec=document.createElement("section");
+  sec.className="sec on reveal";sec.id="leave";
+  sec.innerHTML=`<h2><span>${esc(T.title)}</span><span class="arrow">⌄</span></h2>
+  <div class="body"><div class="lv-form reveal">
+    <div class="lv-f full"><label for="lvEmail">Email đã đăng ký</label>
+      <div class="lv-row"><input id="lvEmail" type="email" autocomplete="email" placeholder="email@..."><button type="button" class="lv-btn" id="lvVerify">Xác thực</button></div></div>
+    <div class="lv-f"><label>Họ và tên</label><input id="lvName" readonly></div>
+    <div class="lv-f"><label>Công ty</label><input id="lvDept" readonly></div>
+    <div class="lv-f full"><label>Người duyệt</label><input id="lvApprover" readonly></div>
+    <div class="lv-f"><label for="lvFrom">Nghỉ từ ngày</label><input id="lvFrom" type="date" disabled></div>
+    <div class="lv-f"><label for="lvTo">Nghỉ đến ngày</label><input id="lvTo" type="date" disabled></div>
+    <div class="lv-f"><label>Tổng số ngày nghỉ</label><input id="lvDays" readonly></div>
+    <div class="lv-f"><label for="lvType">Loại phép</label><select id="lvType" disabled>${LEAVE_CONFIG.TYPES.map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join("")}</select></div>
+    <div class="lv-f full"><label for="lvReason">Lý do</label><textarea id="lvReason" maxlength="1000" disabled></textarea></div>
+    <div class="lv-f full"><label for="lvHandover">Người nhận bàn giao</label><input id="lvHandover" maxlength="200" disabled></div>
+    <div class="lv-f full"><p class="lv-msg" id="lvMsg"></p></div>
+    <div class="lv-f full"><button type="button" class="lv-btn lv-submit" id="lvSubmit" disabled>GỬI ĐƠN XIN NGHỈ</button></div>
+  </div></div>`;
+  document.getElementById("app").appendChild(sec);
+  bindLeavePortal();
+}
+function bindLeavePortal(){
+  const T=LEAVE_CONFIG.TEXT,$=id=>document.getElementById(id);
+  const locked=["lvFrom","lvTo","lvType","lvReason","lvHandover","lvSubmit"];
+  let verifiedEmail="",busy=false;
+  // Hiện thông báo | Show message
+  const msg=(text,kind)=>{const m=$("lvMsg");m.textContent=text||"";m.className="lv-msg"+(text?" "+kind:"");};
+  // Khóa/mở các trường sau xác thực | Lock/unlock fields
+  const setLocked=v=>locked.forEach(id=>{$(id).disabled=v;});
+  // Cập nhật số ngày | Update day count
+  const refreshDays=()=>{
+    const d=leaveDays($("lvFrom").value,$("lvTo").value);
+    $("lvDays").value=d>0?d+" ngày":"";
+    if($("lvFrom").value&&$("lvTo").value&&d<=0)msg(T.badRange,"err");else if($("lvMsg").textContent===T.badRange)msg("");
+    return d;
+  };
+  // Sửa email => phải xác thực lại | Email edited => re-verify
+  $("lvEmail").addEventListener("input",()=>{
+    verifiedEmail="";setLocked(true);$("lvName").value="";$("lvDept").value="";$("lvApprover").value="";msg("");
+  });
+  $("lvFrom").addEventListener("change",refreshDays);
+  $("lvTo").addEventListener("change",refreshDays);
+  // Xác thực email (server-side) | Verify email on server
+  $("lvVerify").addEventListener("click",async()=>{
+    const email=$("lvEmail").value.trim();
+    if(!email||busy){if(!email)msg(T.missing,"err");return;}
+    busy=true;$("lvVerify").disabled=true;msg("");
+    try{
+      const r=await leaveApi({action:"verify",email});
+      if(!r.ok){msg(r.message,"err");}
+      else{verifiedEmail=email;$("lvName").value=r.name;$("lvDept").value=r.dept;$("lvApprover").value=r.approver;setLocked(false);}
+    }catch(err){msg(err.message,"err");}
+    busy=false;$("lvVerify").disabled=false;
+  });
+  // Gửi đơn | Submit
+  $("lvSubmit").addEventListener("click",async()=>{
+    if(busy||!verifiedEmail)return;
+    const data={action:"submit",email:verifiedEmail,from:$("lvFrom").value,to:$("lvTo").value,type:$("lvType").value,reason:$("lvReason").value.trim(),handover:$("lvHandover").value.trim()};
+    if(!data.from||!data.to||!data.type||!data.reason||!data.handover){msg(T.missing,"err");return;}
+    if(refreshDays()<=0)return;
+    busy=true;$("lvSubmit").disabled=true;$("lvVerify").disabled=true;$("lvSubmit").textContent=T.sending;msg("");
+    try{
+      const r=await leaveApi(data);
+      msg(r.message,r.ok?"ok":"err");
+      if(r.ok){["lvFrom","lvTo","lvReason","lvHandover","lvDays"].forEach(id=>{$(id).value="";});}
+    }catch(err){msg(err.message,"err");}
+    busy=false;$("lvSubmit").disabled=false;$("lvVerify").disabled=false;$("lvSubmit").textContent="GỬI ĐƠN XIN NGHỈ";
+  });
+}
 function init(){
-  renderChrome();renderSections();initTabs();initSearch();initMotion();
+  renderChrome();renderSections();renderLeavePortal();initTabs();initSearch();initMotion();
   document.getElementById("btnPdf")?.addEventListener("click",()=>{document.querySelectorAll("details").forEach(d=>d.open=true);document.querySelectorAll(".sec").forEach(s=>s.classList.remove("collapsed"));setTimeout(()=>print(),250);});
   const top=document.getElementById("toTop");
   addEventListener("scroll",()=>{top.style.display=scrollY>400?"block":"none"},{passive:true});
