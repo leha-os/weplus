@@ -27,17 +27,24 @@ const CONFIG = {
     SYSTEM: 'Có lỗi hệ thống. Vui lòng thử lại sau.',
     SENT: 'Gửi đơn thành công. Đơn đang chờ người duyệt xử lý. Vui lòng theo dõi mail để nhận thông tin trong vòng 1-3 ngày làm việc.',
     DONE: 'Đã duyệt đơn nghỉ phép thành công.',
+    REJECTED: 'Đã không duyệt đơn nghỉ phép.',
     HANDLED: 'Đơn này đã được xử lý trước đó.',
     BAD_LINK: 'Liên kết không hợp lệ hoặc đã hết hiệu lực.'
   },
   // Màu dùng trong email/trang duyệt | Colors for emails / approval page
-  COLOR: { brand: '#0c2e24', accent: '#b8975a', line: '#e6e1d6', text: '#1a1f1c', white: '#ffffff', muted: '#6b726d' },
+  COLOR: { brand: '#0c2e24', accent: '#b8975a', line: '#e6e1d6', text: '#1a1f1c', white: '#ffffff', muted: '#6b726d', danger: '#a33a2f' },
   // Header/footer thương hiệu cho email + trang duyệt | Brand header/footer for mail + page
   BRAND: {
     LOGO: 'https://leha-os.github.io/assets/logoweplus_black_transparent.png',
     LINES: ['TGROUP ECOSYSTEM — WePlus⁺  Group', 'ePlus⁺ · Engage⁺ · Enabler⁺ · GolfCare⁺', 'TGROUP Building', '15 St. 14, Tan Thuan Ward, Ho Chi Minh City, Vietnam'],
     FOOTER: ['© 2026 WePlus⁺ | Cổng Nghỉ Phép', 'Hệ thống lưu hành nội bộ']
   }
+};
+
+// Hành động duyệt từ email | Actions from email link
+const ACTIONS = {
+  approve: { status: 'APPROVED', title: 'Duyệt đơn nghỉ phép', btn: 'XÁC NHẬN DUYỆT ĐƠN', done: 'DONE', askNote: false, color: 'brand' },
+  reject: { status: 'REJECTED', title: 'Không duyệt đơn nghỉ phép', btn: 'XÁC NHẬN KHÔNG DUYỆT', done: 'REJECTED', askNote: true, color: 'danger' }
 };
 
 // Vị trí cột (bắt đầu từ 0) | Column index (0-based)
@@ -63,22 +70,27 @@ function doPost(e) {
 // Link trong email chỉ mở trang xác nhận (GET không đổi dữ liệu → bot quét link không tự duyệt)
 function doGet(e) {
   const p = (e && e.parameter) || {};
-  if (p.action !== 'approve') return page_('Cổng nghỉ phép', '<p>' + esc_(CONFIG.MSG.BAD_LINK) + '</p>');
+  const act = ACTIONS[p.action];
+  const C = CONFIG.COLOR;
+  if (!act) return page_('Cổng nghỉ phép', '<p>' + esc_(CONFIG.MSG.BAD_LINK) + '</p>');
   const req = loadRequest_(p.sheet, p.stt, p.sig);
   if (req.error) return page_('Cổng nghỉ phép', '<p>' + esc_(req.error) + '</p>');
   const v = req.vals;
   if (norm_(v[UC.STATUS]) !== norm_(CONFIG.STATUS.PENDING)) {
     return page_('Cổng nghỉ phép', '<p>' + esc_(CONFIG.MSG.HANDLED) + '</p>');
   }
-  const body = '<h2>Duyệt đơn nghỉ phép</h2>' + infoTable_([
+  const noteBox = act.askNote
+    ? '<textarea id="n" maxlength="500" placeholder="Lý do không duyệt (không bắt buộc)" style="width:100%;box-sizing:border-box;margin-top:10px;padding:8px;border:1px solid ' + C.line + ';border-radius:8px;font-family:inherit"></textarea>'
+    : '';
+  const body = '<h2>' + esc_(act.title) + '</h2>' + infoTable_([
     ['Họ và tên', v[UC.NAME]], ['Công ty', req.sheetName],
     ['Nghỉ từ ngày', fmtDate_(v[UC.FROM])], ['Nghỉ đến ngày', fmtDate_(v[UC.TO])],
     ['Tổng số ngày nghỉ', v[UC.DAYS]], ['Loại phép', v[UC.TYPE]]
-  ]) + '<p id="m"></p><button id="b" onclick="go()">XÁC NHẬN DUYỆT ĐƠN</button>' +
-    '<script>function go(){var b=document.getElementById("b");b.disabled=true;b.textContent="Đang xử lý...";' +
-    'google.script.run.withSuccessHandler(function(r){document.getElementById("m").textContent=r.message;b.style.display="none";})' +
-    '.withFailureHandler(function(){document.getElementById("m").textContent="Có lỗi xảy ra. Vui lòng thử lại.";b.disabled=false;b.textContent="XÁC NHẬN DUYỆT ĐƠN";})' +
-    '.approveFromLink(' + js_(req.sheetName) + ',' + js_(String(req.stt)) + ',' + js_(p.sig) + ');}</script>';
+  ]) + noteBox + '<p id="m"></p><button id="b" style="background:' + C[act.color] + '" onclick="go()">' + esc_(act.btn) + '</button>' +
+    '<script>function go(){var b=document.getElementById("b"),n=document.getElementById("n");b.disabled=true;b.textContent="Đang xử lý...";' +
+    'google.script.run.withSuccessHandler(function(r){document.getElementById("m").textContent=r.message;b.style.display="none";if(n)n.style.display="none";})' +
+    '.withFailureHandler(function(){document.getElementById("m").textContent="Có lỗi xảy ra. Vui lòng thử lại.";b.disabled=false;b.textContent=' + js_(act.btn) + ';})' +
+    '.decideFromLink(' + js_(p.action) + ',' + js_(req.sheetName) + ',' + js_(String(req.stt)) + ',' + js_(p.sig) + ',n?n.value:"");}</script>';
   return page_('Cổng nghỉ phép', body);
 }
 
@@ -175,20 +187,31 @@ function validateLeave_(d) {
 /* ===== ZONE 2c · APPROVE / DUYỆT =====
    BRIEF: Duyệt qua link email (có chữ ký) hoặc đổi trạng thái trong Sheet
    EDITABLE: không | none
-   FIX AT: search "approveFromLink" */
-// Gọi từ trang xác nhận | Called from confirmation page
-function approveFromLink(sheetName, stt, sig) {
+   FIX AT: search "decideFromLink" */
+// Gọi từ trang xác nhận (duyệt hoặc không duyệt) | Called from confirmation page
+function decideFromLink(action, sheetName, stt, sig, note) {
+  const act = ACTIONS[action];
+  if (!act) return { ok: false, message: CONFIG.MSG.BAD_LINK };
   const lock = LockService.getScriptLock();
   lock.waitLock(30000);
   try {
     const req = loadRequest_(sheetName, stt, sig);
     if (req.error) return { ok: false, message: req.error };
     if (norm_(req.vals[UC.STATUS]) !== norm_(CONFIG.STATUS.PENDING)) return { ok: false, message: CONFIG.MSG.HANDLED };
-    req.sh.getRange(req.rowNum, UC.STATUS + 1).setValue(CONFIG.STATUS.APPROVED);
+    const status = CONFIG.STATUS[act.status];
+    req.sh.getRange(req.rowNum, UC.STATUS + 1).setValue(status);
+    req.vals[UC.STATUS] = status;
+    // Ghi chú khi không duyệt (text thuần) | Reject note as plain text
+    const text = act.askNote ? String(note || '').trim().slice(0, 500) : '';
+    if (text) {
+      const cell = req.sh.getRange(req.rowNum, UC.NOTE + 1);
+      cell.setNumberFormat('@');
+      cell.setValue(text);
+      req.vals[UC.NOTE] = text;
+    }
     SpreadsheetApp.flush();
-    req.vals[UC.STATUS] = CONFIG.STATUS.APPROVED;
     try { sendResultMail_(req.sheetName, req.vals); } catch (err) { console.error(err); }
-    return { ok: true, message: CONFIG.MSG.DONE };
+    return { ok: true, message: CONFIG.MSG[act.done] };
   } finally {
     lock.releaseLock();
   }
@@ -245,16 +268,16 @@ function setupTriggers() {
    EDITABLE: CONFIG.COLOR, CONFIG.PREFIX
    FIX AT: search "sendApproverMail_" */
 function sendApproverMail_(sheetName, stt, emp, leave) {
-  const sh = SpreadsheetApp.openById(GOOGLE_SHEET_ID).getSheetByName(sheetName);
-  const approveUrl = WEB_APP_URL + '?action=approve&sheet=' + encodeURIComponent(sheetName) +
+  const C = CONFIG.COLOR;
+  // Link duyệt / không duyệt có chữ ký | Signed approve / reject links
+  const link = a => WEB_APP_URL + '?action=' + a + '&sheet=' + encodeURIComponent(sheetName) +
     '&stt=' + stt + '&sig=' + sign_(sheetName, stt, emp.name);
-  const sheetUrl = 'https://docs.google.com/spreadsheets/d/' + GOOGLE_SHEET_ID + '/edit#gid=' + sh.getSheetId();
   const html = mailShell_('Có đơn xin nghỉ phép cần duyệt', infoTable_([
     ['Họ và tên', emp.name], ['Email', emp.email], ['Công ty', emp.dept],
     ['Nghỉ từ ngày', fmtDate_(leave.from)], ['Nghỉ đến ngày', fmtDate_(leave.to)], ['Tổng số ngày nghỉ', leave.days],
     ['Loại phép', leave.type], ['Lý do', leave.reason], ['Người nhận bàn giao', leave.handover],
     ['Người duyệt', emp.approver], ['Trạng thái', CONFIG.STATUS.PENDING]
-  ]) + '<p>' + btn_(approveUrl, 'DUYỆT ĐƠN', true) + ' ' + btn_(sheetUrl, 'MỞ GOOGLE SHEET', false) + '</p>');
+  ]) + '<p>' + btn_(link('approve'), 'DUYỆT ĐƠN', C.brand) + ' ' + btn_(link('reject'), 'KHÔNG DUYỆT', C.danger) + '</p>');
   MailApp.sendEmail({
     to: emp.approverEmail,
     subject: CONFIG.PREFIX + ' Đơn xin nghỉ phép cần duyệt - ' + emp.name,
@@ -317,10 +340,9 @@ function infoTable_(rows) {
     '</td><td style="padding:8px;border-bottom:1px solid ' + C.line + ';color:' + C.text + ';font-weight:600">' + esc_(r[1]) + '</td></tr>'
   ).join('') + '</table>';
 }
-function btn_(url, label, primary) {
+function btn_(url, label, bg) {
   const C = CONFIG.COLOR;
-  return '<a href="' + esc_(url) + '" style="display:inline-block;padding:12px 20px;margin:4px 0;border-radius:8px;text-decoration:none;font-weight:700;font-size:13px;' +
-    (primary ? 'background:' + C.brand + ';color:' + C.white : 'background:' + C.white + ';color:' + C.brand + ';border:1px solid ' + C.brand) + '">' + esc_(label) + '</a>';
+  return '<a href="' + esc_(url) + '" style="display:inline-block;padding:12px 20px;margin:4px 0;border-radius:8px;text-decoration:none;font-weight:700;font-size:13px;background:' + bg + ';color:' + C.white + '">' + esc_(label) + '</a>';
 }
 // Header thương hiệu (logo + địa chỉ), căn giữa | Brand header, centered
 function header_() {
@@ -330,25 +352,26 @@ function header_() {
     B.LINES.map((t, i) => '<div style="font-size:' + (i === 0 ? '12px;font-weight:700;color:' + C.brand : '9px;color:' + C.muted) + '">' + esc_(t) + '</div>').join('') +
     '</div>';
 }
-// Footer căn giữa | Centered footer
-function footer_() {
+// Footer căn giữa; fixed=true → ghim đáy màn hình (trang duyệt) | Centered footer; fixed = pinned to bottom
+function footer_(fixed) {
   const C = CONFIG.COLOR;
-  return '<div style="text-align:center;padding:16px 8px;margin-top:16px;border-top:1px solid ' + C.line + ';font-size:9px;color:' + C.muted + '">' +
+  const pin = fixed ? 'position:fixed;left:0;right:0;bottom:0;background:' + C.white + ';margin-top:0;' : 'margin-top:16px;';
+  return '<div style="text-align:center;padding:12px 8px;' + pin + 'border-top:1px solid ' + C.line + ';font-size:9px;color:' + C.muted + '">' +
     CONFIG.BRAND.FOOTER.map(esc_).join('<br>') + '</div>';
 }
 function mailShell_(title, inner) {
   const C = CONFIG.COLOR;
   return '<div style="font-family:Arial,sans-serif;max-width:560px;margin:auto;color:' + C.text + '">' + header_() +
     '<div style="background:' + C.brand + ';color:' + C.white + ';padding:14px 18px;margin-top:12px;border-bottom:3px solid ' + C.accent + ';font-weight:700">' + esc_(title) + '</div>' +
-    '<div style="padding:16px 4px">' + inner + '</div>' + footer_() + '</div>';
+    '<div style="padding:16px 4px">' + inner + '</div>' + footer_(false) + '</div>';
 }
 function page_(title, bodyHtml) {
   const C = CONFIG.COLOR;
-  const css = 'body{font-family:Arial,sans-serif;background:' + C.white + ';color:' + C.text + ';margin:0;padding:16px}' +
+  const css = 'body{font-family:Arial,sans-serif;background:' + C.white + ';color:' + C.text + ';margin:0;padding:16px 16px 70px}' +
     '.c{max-width:520px;margin:auto}h2{color:' + C.brand + '}' +
     'button{width:100%;padding:14px;border:0;border-radius:8px;background:' + C.brand + ';color:' + C.white + ';font-weight:700;cursor:pointer}' +
     'button:disabled{opacity:.6}#m{font-weight:700;color:' + C.brand + '}';
   return HtmlService.createHtmlOutput('<!DOCTYPE html><html><head><meta charset="utf-8"><base target="_top">' +
     '<meta name="viewport" content="width=device-width,initial-scale=1"><style>' + css + '</style></head><body><div class="c">' +
-    header_() + '<div style="padding-top:8px">' + bodyHtml + '</div>' + footer_() + '</div></body></html>').setTitle(title);
+    header_() + '<div style="padding-top:8px">' + bodyHtml + '</div></div>' + footer_(true) + '</body></html>').setTitle(title);
 }
