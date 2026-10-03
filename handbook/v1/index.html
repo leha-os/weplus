@@ -24,6 +24,8 @@
 <style>
 @font-face{font-family:"Optimistic";font-style:normal;font-weight:400 700;font-display:swap;src:local("Segoe UI"),local("Roboto"),local("Arial")}
 .n-card span.lead{display:block;font-size:11px;color:#5f6661;font-weight:400}
+.n-card.company span.sub{font-weight:500}
+.n-card.bod span.sub{font-weight:500}
 .n-card span.sub{white-space:pre-line;line-height:1.5}
 :root{
   --brand:#0c2e24;--brand-2:#14503b;--accent:#b8975a;--accent-light:#d4b678;--accent-soft:#f6f0e4;--accent-2:#e8dcc0;
@@ -271,7 +273,73 @@ const ALIGNMENT_DATA=[
 
 const ALIGNMENT_REASON=["Cần BOD thống nhất khung giờ chung hoặc giữ riêng.","Chốt mốc 10h hay 10h30.","Xác nhận ePlus⁺ áp dụng luật chuẩn 12 ngày.","Cần chốt cách tính thâm niên trên Excel.","HR đề xuất khung chuẩn.","BOD thống nhất.","Chọn cơ chế nghỉ bù sự kiện hay WFH chuẩn.","Xác nhận ngày event có áp dụng phí không.","Thống nhất policy đặt xe ra sân bay.","Thống nhất trần di chuyển tỉnh.","Duyệt ngân sách kết hôn.","Kế toán chốt hạn mức app Be/Grab.","Xác nhận quỹ bánh kem."];
 
-const ORG_DATA={top:{title:"TGROUP"},bod:{title:"HỘI ĐỒNG QUẢN TRỊ",chair:"Chủ tịch HĐQT: Ông Nguyễn Bình An Tâm",board:"Thành viên HĐQT:\nÔng Nguyễn Ngọc Hoàng Thái Bảo\nÔng Đào Thế Kiệt\nBà Nguyễn Huỳnh Ngọc Hà"},support:[{title:"Phòng Phát triển Kinh doanh",lead:"Ông Nguyễn Bình An Tâm\nÔng Nguyễn Ngọc Hoàng Thái Bảo\nÔng Đào Thế Kiệt\nBà Nguyễn Huỳnh Ngọc Hà\nBà Võ Thị Ngọc Hạnh",teams:[]},{title:"Phòng Tài chính & Kế toán",lead:"Cố vấn Tài chính: Ông Nguyễn Trần Huy Khánh",teams:[["Phòng Kế toán WePlus⁺ Group","Trưởng phòng: Ông Nguyễn Quang Minh"],["Phòng Kế toán WeWall Group","Trưởng phòng: Bà Huỳnh Thị Bạch Tuyết"]]},{title:"Phòng Nhân sự & Pháp chế",lead:"Trưởng phòng: Bà Trần Thị Nam Mỹ",teams:[["Chuyên viên C&B","Ms Xuân"],["Chuyên viên Pháp chế","Ms Hòa"]]}],clusters:[{title:"WEPLUS⁺ GROUP",companies:[{name:"ePlus⁺",lead:"Giám đốc: Bà Nguyễn Huỳnh Ngọc Hà",teams:[["Team Creative","Leader: Ms Hải Yến"],["Team Planner","Leader: Ms Mỹ Liên"],["Team Project","Leader: Ms Phương Thảo"]]},{name:"Engage⁺",lead:"Giám đốc: Ông Đào Thế Kiệt",teams:[["Team Creative"],["Team Project"]]},{name:"Enabler⁺",lead:"Giám đốc: Ông Đào Thế Kiệt",teams:[["Team Enabler","Leader: Mr Phúc"]]},{name:"GolfCare⁺",lead:"Giám đốc: Ông Nguyễn Bình An Tâm",teams:[["Team GolfCare⁺","Leader: Ms Hà"]]}]},{title:"WEWALL GROUP",companies:[{name:"The Wall Architecture",lead:"Giám đốc: Ông Nguyễn Ngọc Hoàng Thái Bảo",teams:[["Team Thiết kế"],["Team Thi công"],["Team M&E"],["Team Công nghệ"]]},{name:"Imperial",lead:"Giám đốc: Bà Lê Thị Cẩm Phượng",teams:[["Team Thiết kế"]]},{name:"Nguyễn Mộc",lead:"Giám đốc Khối Nội thất: Bà Trần Thị Nam Mỹ\nGiám đốc Khối Quảng cáo: Bà Võ Thị Ngọc Hạnh",teams:[["Team Thiết kế"],["Team Sản xuất"],["Team Kinh doanh"]]},{name:"GreenWall",teams:[]}]}]};
+const ORG_DATA = {
+  top: { title: "TGROUP" },
+  bod: {
+    title: "HỘI ĐỒNG QUẢN TRỊ",
+    chair: "Ông Nguyễn Bình An Tâm",
+    board: "• Ông Nguyễn Ngọc Hoàng Thái Bảo\n• Ông Đào Thế Kiệt\n• Bà Nguyễn Huỳnh Ngọc Hà"
+  },
+  support: [
+    {
+      title: "Phòng Phát triển Kinh doanh",
+      lead: "• Ông Nguyễn Bình An Tâm\n• Ông Nguyễn Ngọc Hoàng Thái Bảo\n• Ông Đào Thế Kiệt\n• Bà Nguyễn Huỳnh Ngọc Hà\n• Bà Võ Thị Ngọc Hạnh",
+      teams: []
+    },
+    {
+      title: "Phòng Tài chính & Kế toán",
+      lead: "Cố vấn Tài chính: Ông Nguyễn Trần Huy Khánh",
+      teams: [
+        ["Phòng Kế toán WePlus⁺ Group", "Trưởng phòng: Ông Nguyễn Quang Minh"],
+        ["Phòng Kế toán WeWall Group", "Trưởng phòng: Bà Huỳnh Thị Bạch Tuyết"]
+      ]
+    },
+    {
+      title: "Phòng Nhân sự & Pháp chế",
+      lead: "Trưởng phòng: Bà Trần Thị Nam Mỹ",
+      teams: [
+        ["Chuyên viên C&B", "Ms Xuân"],
+        ["Chuyên viên Pháp chế", "Ms Hòa"]
+      ]
+    }
+  ],
+  clusters: [
+    {
+      title: "WEPLUS⁺ GROUP",
+      companies: [
+        {
+          name: "ePlus⁺",
+          lead: "Giám đốc: Bà Nguyễn Huỳnh Ngọc Hà",
+          teams: [
+            ["Team Creative", "Leader: Ms Hải Yến"],
+            ["Team Planner", "Leader: Ms Mỹ Liên"],
+            ["Team Project", "Leader: Ms Phương Thảo"]
+          ]
+        },
+        { name: "Engage⁺", lead: "Giám đốc: Ông Đào Thế Kiệt", teams: [["Team Creative"], ["Team Project"]] },
+        { name: "Enabler⁺", lead: "Giám đốc: Ông Đào Thế Kiệt", teams: [["Team Enabler", "Leader: Mr Phúc"]] },
+        { name: "GolfCare⁺", lead: "Giám đốc: Ông Nguyễn Bình An Tâm", teams: [["Team GolfCare⁺", "Leader: Ms Hà"]] }
+      ]
+    },
+    {
+      title: "WEWALL GROUP",
+      companies: [
+        {
+          name: "The Wall Architecture",
+          lead: "Giám đốc: Ông Nguyễn Ngọc Hoàng Thái Bảo",
+          teams: [["Team Thiết kế"], ["Team Thi công"], ["Team M&E"], ["Team Công nghệ"]]
+        },
+        { name: "Imperial", lead: "Giám đốc: Bà Lê Thị Cẩm Phượng", teams: [["Team Thiết kế"]] },
+        {
+          name: "Nguyễn Mộc",
+          lead: "• Giám đốc Khối Nội thất: Bà Trần Thị Nam Mỹ\n• Giám đốc Khối Quảng cáo: Bà Võ Thị Ngọc Hạnh",
+          teams: [["Team Thiết kế"], ["Team Sản xuất"], ["Team Kinh doanh"]]
+        },
+        { name: "GreenWall", teams: [] }
+      ]
+    }
+  ]
+};
 const CALC_RATES={levels:[["Staff / Junior / Senior / Assistant",180000,350000],["Manager",250000,500000],["Director",300000,700000]],airport:100000};
 const T=(head,rows)=>({type:"table",head,rows});
 const L=items=>({type:"list",items});
