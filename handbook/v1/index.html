@@ -461,7 +461,7 @@ function renderBlock(b){
   if(b.type==="companypick")return renderCompanyPick();
   if(b.type==="calc")return renderCalc();
   if(b.type==="decisions")return renderDecisions();
-  if(b.type==="company_list")return `<div class="comp-list">`+b.companies.map((c,i)=>`<details class="comp-blk"><summary>${i+1}. ${esc(c.name)}</summary><div class="comp-body"><b>Giới thiệu:</b><p>${esc(c.intro)}</p><b>Sơ đồ:</b><p>${esc(c.org)}</p><b>Dịch vụ:</b><p>${esc(c.services)}</p></div></details>`).join("")+`</div>`;
+  if(b.type==="company_list")return `<div class="comp-list">`+b.companies.map((c,i)=>`<details class="comp-blk"><summary>${i+1}. ${esc(c.name)}</summary><div class="comp-body"><p>${esc(c.intro)}</p></div></details>`).join("")+`</div>`;
   if(b.type==="table"){const h=b.head.map(x=>`<th>${esc(x)}</th>`).join("");const r=b.rows.map(row=>`<tr>${row.map(c=>`<td>${esc(c)}</td>`).join("")}</tr>`).join("");return `<div class="tw"><table><thead><tr>${h}</tr></thead><tbody>${r}</tbody></table></div>`;}
   return "";
 }
