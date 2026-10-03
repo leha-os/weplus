@@ -325,15 +325,15 @@ function btn_(url, label, primary) {
 // Header thương hiệu (logo + địa chỉ), căn giữa | Brand header, centered
 function header_() {
   const C = CONFIG.COLOR, B = CONFIG.BRAND;
-  return '<div style="text-align:center;padding:16px 8px;border-bottom:2px solid ' + C.line + '">' +
-    '<img src="' + esc_(B.LOGO) + '" alt="WePlus" style="height:48px;margin-bottom:8px"><br>' +
-    B.LINES.map((t, i) => '<div style="font-size:' + (i === 0 ? '14px;font-weight:700;color:' + C.brand : '12px;color:' + C.muted) + '">' + esc_(t) + '</div>').join('') +
+  return '<div style="text-align:center;padding:12px 8px;border-bottom:2px solid ' + C.line + '">' +
+    '<img src="' + esc_(B.LOGO) + '" alt="WePlus" style="height:70px;margin-bottom:4px"><br>' +
+    B.LINES.map((t, i) => '<div style="font-size:' + (i === 0 ? '13px;font-weight:700;color:' + C.brand : '10px;color:' + C.muted) + '">' + esc_(t) + '</div>').join('') +
     '</div>';
 }
 // Footer căn giữa | Centered footer
 function footer_() {
   const C = CONFIG.COLOR;
-  return '<div style="text-align:center;padding:16px 8px;margin-top:16px;border-top:1px solid ' + C.line + ';font-size:12px;color:' + C.muted + '">' +
+  return '<div style="text-align:center;padding:16px 8px;margin-top:16px;border-top:1px solid ' + C.line + ';font-size:10px;color:' + C.muted + '">' +
     CONFIG.BRAND.FOOTER.map(esc_).join('<br>') + '</div>';
 }
 function mailShell_(title, inner) {
@@ -350,5 +350,5 @@ function page_(title, bodyHtml) {
     'button:disabled{opacity:.6}#m{font-weight:700;color:' + C.brand + '}';
   return HtmlService.createHtmlOutput('<!DOCTYPE html><html><head><meta charset="utf-8"><base target="_top">' +
     '<meta name="viewport" content="width=device-width,initial-scale=1"><style>' + css + '</style></head><body><div class="c">' +
-    header_() + '<div style="padding-top:12px">' + bodyHtml + '</div>' + footer_() + '</div></body></html>').setTitle(title);
+    header_() + '<div style="padding-top:8px">' + bodyHtml + '</div>' + footer_() + '</div></body></html>').setTitle(title);
 }
