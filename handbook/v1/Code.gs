@@ -370,8 +370,8 @@ function page_(title, bodyHtml) {
   const css = 'body{font-family:Arial,sans-serif;background:' + C.white + ';color:' + C.text + ';margin:0;padding:16px 16px 70px}' +
     '.c{max-width:520px;margin:auto}h2{color:' + C.brand + '}' +
     'button{width:100%;padding:14px;border:0;border-radius:8px;background:' + C.brand + ';color:' + C.white + ';font-weight:700;cursor:pointer}' +
-    'button:disabled{opacity:.6}#m{font-weight:700;color:' + C.brand + '}textarea{font-size:16px}';
+    'button:disabled{opacity:.6}#m{font-weight:700;color:' + C.brand + '}';
   return HtmlService.createHtmlOutput('<!DOCTYPE html><html><head><meta charset="utf-8"><base target="_top">' +
     '<meta name="viewport" content="width=device-width,initial-scale=1"><style>' + css + '</style></head><body><div class="c">' +
-    header_() + '<div style="padding-top:8px">' + bodyHtml + '</div></div>' + footer_(true) + '</body></html>').addMetaTag('viewport', 'width=device-width, initial-scale=1').setTitle(title);
+    header_() + '<div style="padding-top:8px">' + bodyHtml + '</div></div>' + footer_(true) + '</body></html>').setTitle(title);
 }
