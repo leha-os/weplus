@@ -43,8 +43,8 @@ const CONFIG = {
 
 // Hành động duyệt từ email | Actions from email link
 const ACTIONS = {
-  approve: { status: 'APPROVED', title: 'Duyệt đơn nghỉ phép', btn: 'XÁC NHẬN DUYỆT ĐƠN', done: 'DONE', askNote: false, color: 'brand' },
-  reject: { status: 'REJECTED', title: 'Không duyệt đơn nghỉ phép', btn: 'XÁC NHẬN KHÔNG DUYỆT', done: 'REJECTED', askNote: true, color: 'danger' }
+  approve: { status: 'APPROVED', title: 'DUYỆT ĐƠN NGHỈ PHÉP', btn: 'XÁC NHẬN DUYỆT ĐƠN', done: 'DONE', askNote: false, color: 'brand' },
+  reject: { status: 'REJECTED', title: 'KHÔNG DUYỆT ĐƠN NGHỈ PHÉP', btn: 'XÁC NHẬN KHÔNG DUYỆT', done: 'REJECTED', askNote: true, color: 'danger' }
 };
 
 // Vị trí cột (bắt đầu từ 0) | Column index (0-based)
