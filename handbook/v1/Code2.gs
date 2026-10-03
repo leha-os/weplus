@@ -348,7 +348,7 @@ function btn_(url, label, bg) {
 function header_() {
   const C = CONFIG.COLOR, B = CONFIG.BRAND;
   return '<div style="text-align:center;padding:12px 8px;border-bottom:2px solid ' + C.line + '">' +
-    '<img src="' + esc_(B.LOGO) + '" alt="WePlus" style="height:90px;margin-bottom:2px"><br>' +
+    '<img src="' + esc_(B.LOGO) + '" alt="WePlus" style="height:60px;margin-bottom:2px"><br>' +
     B.LINES.map((t, i) => '<div style="font-size:' + (i === 0 ? '12px;font-weight:700;color:' + C.brand : '9px;color:' + C.muted) + '">' + esc_(t) + '</div>').join('') +
     '</div>';
 }
