@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thư Mời – WePlus⁺ Ecosystem</title>
+  <link rel="icon" href="https://leha-os.github.io/assets/logoweplus_white_transparent.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#0c2e24',
+              2: '#14503b',
+              dark: '#051812',
+              deep: '#030c09',
+              soft: '#e4efe8'
+            },
+            gold: {
+              DEFAULT: '#b8975a',
+              light: '#f5e4bd',
+              champagne: '#d4b678',
+              bronze: '#8c6c32',
+              dark: '#5a431c'
+            },
+            ink: {
+              DEFAULT: '#f3efe6',
+              muted: '#b5baa9',
+              dark: '#1a1f1c'
+            }
+          },
+          fontFamily: {
+            sans: ['"Segoe UI"', 'Roboto', 'Arial', 'system-ui', 'sans-serif'],
+            serifLuxury: ['"Cinzel"', '"Georgia"', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&display=swap');
+
+    :root {
+      --brand: #0c2e24;
+      --gold: #b8975a;
+      --gold-light: #f5e4bd;
+    }
+
+    body {
+      background-color: #030806;
+      color: #f3efe6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Kích thước chuẩn A4 (210mm x 297mm) */
+    .a4-sheet {
+      width: 210mm;
+      height: 297mm;
+      min-height: 297mm;
+      margin: 20px auto;
+      position: relative;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      background: radial-gradient(130% 120% at 20% 15%, #0c2e24 0%, #071913 45%, #030c09 100%);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(184, 151, 90, 0.4);
+      border: 1px solid rgba(212, 182, 120, 0.55);
+    }
+
+    /* Viền chỉ vàng lấp lánh Art Deco bao quanh A4 */
+    .a4-sheet::before {
+      content: "";
+      position: absolute;
+      inset: 8mm;
+      border: 1px solid rgba(212, 182, 120, 0.45);
+      box-shadow: inset 0 0 20px rgba(184, 151, 90, 0.08);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .a4-sheet::after {
+      content: "";
+      position: absolute;
+      inset: 9.5mm;
+      border: 0.5px solid rgba(184, 151, 90, 0.25);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Quầng xoay ánh sáng huyền ảo tương tự intro */
+    .ambient-conic {
+      position: absolute;
+      width: 140vmax;
+      height: 140vmax;
+      left: 50%;
+      top: 50%;
+      margin: -70vmax 0 0 -70vmax;
+      background: conic-gradient(from 0deg, transparent 0, rgba(184, 151, 90, 0.12) 12%, transparent 26%, rgba(20, 80, 59, 0.35) 50%, rgba(184, 151, 90, 0.08) 72%, transparent 88%);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.7;
+    }
+
+    /* Chữ ánh kim vàng rực rỡ mạ kim loại */
+    .gold-shimmer-title {
+      background: linear-gradient(135deg, #ffffff 0%, #fae5ba 25%, #d4b678 50%, #b8975a 75%, #8c6c32 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 35px rgba(212, 182, 120, 0.4);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #f5e4bd 0%, #d4b678 50%, #b8975a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Khung kính mờ để gõ nội dung (Contenteditable) */
+    .luxury-editor {
+      min-height: 110mm;
+      max-height: 125mm;
+      overflow-y: auto;
+      outline: none;
+      line-height: 1.8;
+      font-size: 13.5px;
+      color: #f7f4ea;
+      background: rgba(12, 46, 36, 0.35);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 182, 120, 0.32);
+      border-radius: 14px;
+      padding: 20px 24px;
+      box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.1),
+        0 15px 35px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(184, 151, 90, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .luxury-editor:focus {
+      background: rgba(12, 46, 36, 0.5);
+      border-color: rgba(212, 182, 120, 0.65);
+      box-shadow: 
+        inset 0 1px 3px rgba(255, 255, 255, 0.15),
+        0 20px 45px rgba(0, 0, 0, 0.45),
+        0 0 25px rgba(184, 151, 90, 0.25);
+    }
+
+    .luxury-editor:empty::before {
+      content: attr(data-placeholder);
+      color: #8f9e94;
+      font-style: italic;
+      pointer-events: none;
+      display: block;
+      line-height: 1.8;
+    }
+
+    /* Tối ưu khi in ra giấy hoặc xuất PDF */
+    @media print {
+      body {
+        background: #030c09 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .a4-sheet {
+        margin: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
+        page-break-after: avoid;
+        page-break-inside: avoid;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center py-4">
+
+  <!-- Thanh công cụ nổi trên cùng (Tự ẩn khi in/xuất PDF) -->
+  <aside class="no-print sticky top-3 z-50 mb-3 flex items-center gap-3 bg-brand-dark/95 backdrop-blur-xl border border-gold/50 px-5 py-2.5 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.6)] text-xs text-white">
+    <div class="flex items-center gap-2">
+      <span class="w-2.5 h-2.5 rounded-full bg-gold animate-pulse shadow-[0_0_10px_#b8975a]"></span>
+      <span class="font-bold text-gold-light uppercase tracking-wider">Mẫu Thư Mời VIP WePlus⁺</span>
+    </div>
+    <div class="h-4 w-[1px] bg-white/20"></div>
+    <button onclick="window.print()" class="px-4 py-1.5 rounded-full bg-gradient-to-r from-gold via-gold-champagne to-gold text-brand-dark font-extrabold uppercase tracking-wider transition-all hover:scale-105 shadow-md flex items-center gap-1.5">
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+      In / Xuất PDF
+    </button>
+    <button onclick="fillSampleText()" class="px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-gray-200 font-medium transition-all">
+      Gợi ý nội dung
+    </button>
+    <button onclick="clearText()" class="px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-gray-200 font-medium transition-all">
+      Xóa trắng
+    </button>
+  </aside>
+
+  <!-- Khung Thư Mời A4 -->
+  <main class="a4-sheet p-[16mm] relative">
+    
+    <!-- Hiệu ứng quầng sáng huyền ảo nền -->
+    <div class="ambient-conic"></div>
+
+    <!-- Họa tiết mạ vàng 4 góc Art Deco sang trọng -->
+    <div class="absolute top-[8mm] left-[8mm] w-6 h-6 border-t-2 border-l-2 border-gold-champagne pointer-events-none z-10"></div>
+    <div class="absolute top-[8mm] right-[8mm] w-6 h-6 border-t-2 border-r-2 border-gold-champagne pointer-events-none z-10"></div>
+    <div class="absolute bottom-[8mm] left-[8mm] w-6 h-6 border-b-2 border-l-2 border-gold-champagne pointer-events-none z-10"></div>
+    <div class="absolute bottom-[8mm] right-[8mm] w-6 h-6 border-b-2 border-r-2 border-gold-champagne pointer-events-none z-10"></div>
+
+    <!-- HEADER: MẠ VÀNG ĐỒNG THEO CONCEPT COVER SLIDE -->
+    <header class="relative z-10 text-center pt-2 pb-4">
+      
+      <!-- Top Pill & Date Badge -->
+      <div class="flex items-center justify-between text-[11px] tracking-widest uppercase font-mono mb-4 px-2">
+        <span class="bg-brand-2/70 px-3.5 py-1 rounded-full border border-gold/40 gold-gradient-text font-bold shadow-sm backdrop-blur-sm">
+          HỌP TỔNG KẾT QUÝ 3/2026
+        </span>
+        <span class="text-gold-light font-bold tracking-wider">
+          09.10.2026
+        </span>
+      </div>
+
+      <!-- WePlus Logo -->
+      <div class="flex justify-center mb-3">
+        <img 
+          src="https://leha-os.github.io/assets/logoweplus_white_transparent.png" 
+          alt="WePlus⁺" 
+          class="h-40 object-contain drop-shadow-[0_8px_25px_rgba(184,151,90,0.5)]">
+      </div>
+
+      <!-- Main Titles in Royal Gold Gradient -->
+      <div class="space-y-1">
+        <span class="text-[11px] uppercase tracking-[0.3em] text-gold-light font-semibold block">
+          OFFICIAL INVITATION • THƯ MỜI TRÂN TRỌNG
+        </span>
+
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight uppercase gold-shimmer-title font-Be Vietnam Pro">
+          THỐNG NHẤT MÔ HÌNH
+        </h1>
+        
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight uppercase gold-shimmer-title font-Be Vietnam Pro mt-0.5">
+          HỆ SINH THÁI TGROUP
+        </h2>
+      </div>
+
+      <!-- Decorative Gold Metallic Divider -->
+      <div class="flex items-center justify-center gap-3 my-3">
+        <div class="h-[1px] w-20 bg-gradient-to-r from-transparent to-gold"></div>
+        <span class="text-gold text-xs">◆</span>
+        <div class="h-[1px] w-20 bg-gradient-to-l from-transparent to-gold"></div>
+      </div>
+
+      <p class="text-xs text-ink-muted italic font-light max-w-lg mx-auto leading-relaxed">
+        Định hướng tổ chức & vận hành giai đoạn 2027–2030.<br>
+        <span class="text-gold-light font-normal">"Kết nối năng lực, cộng hưởng nguồn lực và nhân rộng giá trị."</span>
+      </p>
+    </header>
+
+    <!-- BODY: KHU VỰC KÍNH MỜ TRỐNG ĐỂ SOẠN NỘI DUNG TÙY Ý -->
+    <section class="relative z-10 my-auto py-2">
+      <!-- 
+        Contenteditable cho phép bạn nhấp chuột trực tiếp vào khung này trên trình duyệt và gõ văn bản tùy ý.
+      -->
+      <div 
+        id="invitationBody" 
+        class="luxury-editor" 
+        contenteditable="true" 
+        spellcheck="false"
+        data-placeholder="[Nhấp chuột vào đây để soạn thảo nội dung thư mời... Kính gửi: Quý Đối tác / Quý Lãnh đạo... Ban Điều hành trân trọng kính mời Ông/Bà tham dự buổi làm việc và tiệc tối trang trọng nhằm thống nhất định hướng chiến lược...]">
+      </div>
+    </section>
+
+    <!-- FOOTER: 3 THẺ KIM LOẠI SANG TRỌNG THEO CHUẨN COVER SLIDE -->
+    <footer class="relative z-10 pt-3">
+      
+      <!-- 3 Khối Thông Tin VIP Sang Trọng -->
+      <div class="grid grid-cols-3 gap-3 text-xs mb-4">
+        
+        <!-- Khối 1: Chủ Trì -->
+        <div class="bg-brand-2/50 backdrop-blur-md p-3 rounded-xl border border-gold/30 shadow-sm flex flex-col justify-between">
+          <strong class="block gold-gradient-text uppercase tracking-wider text-[11px] font-bold mb-1">
+            Chủ Trì
+          </strong>
+          <span class="text-white font-medium text-[11.5px] leading-tight">
+            Hội đồng Quản trị
+          </span>
+          <span class="text-[9.5px] text-ink-muted mt-1 block">Tgroup Ecosystem</span>
+        </div>
+
+        <!-- Khối 2: Phạm Vi -->
+        <div class="bg-brand-2/50 backdrop-blur-md p-3 rounded-xl border border-gold/30 shadow-sm flex flex-col justify-between">
+          <strong class="block gold-gradient-text uppercase tracking-wider text-[11px] font-bold mb-1">
+            Phạm Vi
+          </strong>
+          <span class="text-white font-medium text-[11.5px] leading-tight">
+            WePlus⁺ &amp; WeWall Group
+          </span>
+          <span class="text-[9.5px] text-ink-muted mt-1 block">02 Business Clusters</span>
+        </div>
+
+        <!-- Khối 3: Mục Tiêu Trọng Tâm -->
+        <div class="bg-brand-2/50 backdrop-blur-md p-3 rounded-xl border border-gold/30 shadow-sm flex flex-col justify-between">
+          <strong class="block gold-gradient-text uppercase tracking-wider text-[11px] font-bold mb-1">
+            Mục Tiêu Trọng Tâm
+          </strong>
+          <span class="text-white font-medium text-[10px] leading-tight block">
+            • Tổng kết Quý III<br>
+            • Mô hình Quản lý &amp; Nhân sự<br>
+            • Triển khai Hệ thống Công cụ
+          </span>
+        </div>
+
+      </div>
+
+      <!-- Công Thức Footer WePlus⁺ 2 Dòng Canh Giữa Chuẩn -->
+      <div class="border-t border-gold/30 pt-3 flex items-center justify-between text-[11px] text-ink-muted">
+        <div class="hidden sm:block w-20"></div>
+        
+        <div class="text-center leading-tight mx-auto">
+          <div class="font-medium text-gold-light">
+            © 2026 WePlus⁺ | Q3 Review &amp; Strategic Direction
+          </div>
+          <div class="text-[9.5px] text-ink-muted mt-0.5">
+            Tài liệu chính thức – Lưu hành nội bộ
+          </div>
+        </div>
+
+        <div class="hidden sm:block w-20 text-right text-[9.5px] font-mono text-gold/60">
+          A4 / VIP
+        </div>
+      </div>
+
+    </footer>
+
+  </main>
+
+  <script>
+    // Hàm xóa trắng chữ
+    function clearText() {
+      const el = document.getElementById('invitationBody');
+      el.innerHTML = '';
+      el.focus();
+    }
+
+    // Hàm chèn nội dung mẫu trang trọng nếu cần
+    function fillSampleText() {
+      const el = document.getElementById('invitationBody');
+      el.innerHTML = `
+        <p class="text-center mb-3">
+          <strong class="text-gold-light text-base tracking-wide uppercase font-serifLuxury">Kính gửi: Quý Đối tác &amp; Quý Thành viên Ban Lãnh đạo</strong>
+        </p>
+        <p class="mb-2.5 leading-relaxed text-justify">
+          Ban Lãnh đạo Tập đoàn trân trọng kính mời Ông/Bà đến tham dự phiên họp chiến lược đặc biệt: <strong>"THỐNG NHẤT MÔ HÌNH HỆ SINH THÁI TGROUP GIAI ĐOẠN 2027–2030"</strong>.
+        </p>
+        <p class="mb-2.5 leading-relaxed text-justify">
+          Buổi làm việc là dấu mốc quan trọng nhằm đánh giá kết quả hoạt động Quý 3/2026, xác lập cơ chế cộng hưởng năng lực giữa 02 Business Clusters (WePlus⁺ Group &amp; WeWall Group), phân định rõ cơ cấu nhân sự và chính thức kích hoạt hệ thống vận hành số hóa.
+        </p>
+        <div class="my-3 p-3 bg-brand/40 border border-gold/30 rounded-lg text-xs space-y-1">
+          <div><strong class="text-gold">✦ Thời gian:</strong> 08:30 – 17:00 | Thứ Sáu, Ngày 09 Tháng 10 Năm 2026</div>
+          <div><strong class="text-gold">✦ Địa điểm:</strong> Phòng Hội nghị VIP – Tòa nhà Tgroup Holdings</div>
+          <div><strong class="text-gold">✦ Trang phục:</strong> Formal / Vest lịch sự (Màu sắc thương hiệu)</div>
+        </div>
+        <p class="text-right italic text-gold-light mt-4">
+          Sự hiện diện của Quý vị là niềm vinh hạnh to lớn và đóng góp then chốt vào sự phát triển chung của Tập đoàn!
+        </p>
+      `;
+    }
+  </script>
+</body>
+</html>
