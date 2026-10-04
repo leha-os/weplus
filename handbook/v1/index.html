@@ -188,7 +188,7 @@ tbody tr:last-child td{border-bottom:none}tbody tr:nth-child(even){background:#f
 .n-card:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 20px 48px rgba(12,46,36,.14)}
 .n-card.root{background:linear-gradient(135deg,#0c2e24,#14503b);color:#fff;border:none;min-width:260px}
 .n-card.root b{font-size:14px;color:#fff}
-.n-card.bod{background:#141a18;color:#fff;border-color:var(--accent)}.n-card.bod b{color:var(--accent);font-size:12.5px}
+.n-card.bod{background:#141a18;color:#fff;border-color:var(--accent)}.n-card.bod b{color:var(--accent);font-size:12.5px}.n-card.bod span.lead{color:#f1eadb}.n-card.bod span.sub{color:rgba(255,255,255,.75)}
 .n-card.cluster{background:var(--accent-soft);border-color:var(--accent-2);border-left:3px solid var(--accent)}
 .n-card.company{border-left:3px solid var(--brand);background:#fff}
 .n-card.team{border-style:dashed;background:#fdfbf6;min-width:180px;padding:6px 9px;box-shadow:none}
@@ -251,227 +251,131 @@ footer{margin-top:40px;padding:16px;text-align:center;color:var(--muted);font-si
 <footer id="foot"></footer>
 <button id="toTop" aria-label="Lên đầu trang">↑</button>
 
-<script>
-const HANDBOOK_META={title:"WePlus⁺ Handbook 2026",footer:"© 2026 Le Ha — Drafted for WePlus⁺<br>Internal Use Only | v1.3",logoWhite:"https://leha-os.github.io/assets/logoweplus_white_transparent.png"};
-const STATUS_LABEL={OFFICIAL:"CHÍNH THỨC",DRAFT:"CẦN PHÊ DUYỆT",NEEDS_ALIGNMENT:"CẦN THỐNG NHẤT",MISSING:"CHƯA CÓ THÔNG TIN",PROPOSED:"ĐỀ XUẤT",PENDING:"CHỜ XÁC NHẬN"};
+<script>/* ===== CẤU HÌNH NỘI DUNG QUA GOOGLE SHEET =====
+   Chị dán Web app URL của Apps Script NỘI DUNG vào giữa 2 dấu ngoặc kép bên dưới.
+   Để trống ("") thì web dùng nội dung nhúng sẵn trong file. */
+const HB_CONTENT_URL = "";
+const HB_CACHE_KEY = "hb_content_v1";
+let HB_DATA = null;   // {tabs:[...]} — nội dung các tab
+let HB_RATES = null;  // {levels:[...], airport:n} — bảng giá công tác phí
 
-const ALIGNMENT_DATA=[
-["Giờ làm việc","9h00–18h00, nghỉ trưa 12h–13h","9:30–10:00 sáng đến 18:30–19:00 chiều","—","Hai khung giờ khác nhau"],
-["Đi trễ / về sớm","Vào sau 10h / về trước 15h → nghỉ nửa ngày","Sau 10:30 mặc nhiên tính ½ ngày phép","—","Ngưỡng tính nửa ngày phép khác nhau"],
-["Phép năm luật","12 ngày/năm (<1 năm = 1 ngày/tháng)","Chỉ ghi NV 5 năm được +1 ngày phép","x (cho cả 7 công ty)","ePlus⁺ không nêu số ngày phép cơ bản"],
-["Phép bổ sung","Sau 5 năm +1 ngày","Làm việc 5 năm được +1 ngày","Engage⁺ & Enabler⁺: Sau 1 năm +1, từ năm 5. Các công ty khác: Sau 5 năm +1","Excel và PDF chênh lệch nhau"],
-["Thời hạn xin nghỉ",">3 ngày: báo 1 tuần; <3 ngày: báo 3 ngày","1-2 ngày: báo 3 ngày; 3-5 ngày: báo 10 ngày","—","Khung báo trước khác nhau"],
-["Giới hạn nghỉ","Hạn chế nghỉ liên tiếp >3 ngày trong 1 tuần","Không >5 ngày liên tiếp; Không >50% team cùng lúc","—","Giới hạn khác nhau"],
-["WFH / Làm bù","Sau CN chạy event → T2 đi muộn / WFH","WFH tối đa 1 ngày/tháng (báo trước 1 ngày)","—","Hai cơ chế khác bản chất"],
-["Công tác ăn uống","NV 180k; Manager 250k; Director 300k","Mức tương đương (không áp dụng ngày event)","Excel: 180k (Engage⁺, ePlus⁺); 150k (The Wall, v.v.)","Xác nhận có áp dụng ngày event hay không"],
-["Hỗ trợ ra sân bay","100k/chiều","100k/chiều (loại trừ nếu dùng app công ty)","100k/lần","Chốt điều kiện loại trừ"],
-["Di chuyển trong tỉnh","Thuê xe máy ≤150k/ngày","Thuê xe/app công nghệ tuỳ tình huống","—","Chốt trần chi phí cho ePlus⁺"],
-["Mừng Kết hôn","1.000.000đ + nghỉ 3 ngày","—","1.000.000đ (có note Đề xuất 2.000.000đ)","BOD duyệt mức đề xuất mới"],
-["Phí Grab / Be","Grab công ty","Be: Director 1.5tr; Head 1tr - 500k","Excel: ePlus⁺ 1tr, Enabler⁺ 3tr","Chốt hạn mức và hình thức chung"],
-["Sinh nhật","Quản lý 500k; Nhân viên 300k","—","QL 500k; NV 300k; Bánh 500k/tháng","Xác nhận quỹ bánh kem"]
-];
+/* ===== NỘI DUNG DỰ PHÒNG nhúng sẵn (dùng khi chưa cấu hình URL hoặc mất mạng) =====
+   Được sinh tự động từ nội dung hiện tại. Khi sheet có dữ liệu mới, web ưu tiên sheet. */
+const HB_FALLBACK_TABS = [{"id":"s01","nav":"THÔNG TIN CHUNG","title":"THÔNG TIN CHUNG","subsections":[{"title":"SƠ ĐỒ TỔ CHỨC HỆ SINH THÁI TGROUP","status":"","src":"","blocks":[{"t":"org","nodes":[{"lv":0,"title":"TGROUP","lead":"","sub":"","style":"root"},{"lv":1,"title":"HỘI ĐỒNG QUẢN TRỊ","lead":"Chủ tịch HĐQT: Ông Nguyễn Bình An Tâm","sub":"Thành viên HĐQT:\n• Ông Nguyễn Ngọc Hoàng Thái Bảo\n• Ông Đào Thế Kiệt\n• Bà Nguyễn Huỳnh Ngọc Hà","style":"bod"},{"lv":2,"title":"KHỐI HỖ TRỢ & PHÁT TRIỂN","lead":"","sub":"","style":"cluster"},{"lv":3,"title":"Ban Phát triển Kinh doanh","lead":"• Ông Nguyễn Bình An Tâm\n• Ông Nguyễn Ngọc Hoàng Thái Bảo\n• Ông Đào Thế Kiệt\n• Bà Nguyễn Huỳnh Ngọc Hà\n• Bà Võ Thị Ngọc Hạnh","sub":"","style":"company"},{"lv":3,"title":"Phòng Tài chính & Kế toán","lead":"Cố vấn Tài chính: Ông Nguyễn Trần Huy Khánh","sub":"","style":"company"},{"lv":4,"title":"Phòng Kế toán WePlus⁺ Group","lead":"Trưởng phòng: Ông Nguyễn Quang Minh","sub":"","style":"team"},{"lv":4,"title":"Phòng Kế toán WeWall Group","lead":"Trưởng phòng: Bà Huỳnh Thị Bạch Tuyết","sub":"","style":"team"},{"lv":3,"title":"Phòng Nhân sự & Pháp chế","lead":"Trưởng phòng: Bà Trần Thị Nam Mỹ","sub":"","style":"company"},{"lv":4,"title":"Chuyên viên C&B","lead":"Ms Xuân","sub":"","style":"team"},{"lv":4,"title":"Chuyên viên Pháp chế","lead":"Ms Hòa","sub":"","style":"team"},{"lv":2,"title":"KHỐI VẬN HÀNH KINH DOANH","lead":"","sub":"","style":"cluster"},{"lv":3,"title":"WEPLUS⁺ GROUP","lead":"","sub":"","style":"cluster-green"},{"lv":4,"title":"ePlus⁺","lead":"Giám đốc: Bà Nguyễn Huỳnh Ngọc Hà","sub":"","style":"company"},{"lv":5,"title":"Team Creative","lead":"Leader: Ms Hải Yến","sub":"","style":"team"},{"lv":5,"title":"Team Planner","lead":"Leader: Ms Mỹ Liên","sub":"","style":"team"},{"lv":5,"title":"Team Project","lead":"Leader: Ms Phương Thảo","sub":"","style":"team"},{"lv":4,"title":"Engage⁺","lead":"Giám đốc: Ông Đào Thế Kiệt","sub":"","style":"company"},{"lv":5,"title":"Team Creative","lead":"","sub":"","style":"team"},{"lv":5,"title":"Team Project","lead":"","sub":"","style":"team"},{"lv":4,"title":"Enabler⁺","lead":"Giám đốc: Ông Đào Thế Kiệt","sub":"","style":"company"},{"lv":5,"title":"Team Enabler","lead":"Leader: Mr Phúc","sub":"","style":"team"},{"lv":4,"title":"GolfCare⁺","lead":"Giám đốc: Ông Nguyễn Bình An Tâm","sub":"","style":"company"},{"lv":5,"title":"Team GolfCare⁺","lead":"Leader: Ms Hà","sub":"","style":"team"},{"lv":3,"title":"WEWALL GROUP","lead":"","sub":"","style":"cluster-green"},{"lv":4,"title":"The Wall Architecture","lead":"Giám đốc: Ông Nguyễn Ngọc Hoàng Thái Bảo","sub":"","style":"company"},{"lv":5,"title":"Team Thiết kế","lead":"","sub":"","style":"team"},{"lv":5,"title":"Team Thi công","lead":"","sub":"","style":"team"},{"lv":5,"title":"Team M&E","lead":"","sub":"","style":"team"},{"lv":5,"title":"Team Công nghệ","lead":"","sub":"","style":"team"},{"lv":4,"title":"Imperial","lead":"Giám đốc: Bà Lê Thị Cẩm Phượng","sub":"","style":"company"},{"lv":5,"title":"Team Thiết kế","lead":"","sub":"","style":"team"},{"lv":4,"title":"Nguyễn Mộc","lead":"• Giám đốc Khối Nội thất: Bà Trần Thị Nam Mỹ\n• Giám đốc Khối Quảng cáo: Bà Võ Thị Ngọc Hạnh","sub":"","style":"company"},{"lv":5,"title":"Team Thiết kế","lead":"","sub":"","style":"team"},{"lv":5,"title":"Team Sản xuất","lead":"","sub":"","style":"team"},{"lv":5,"title":"Team Kinh doanh","lead":"","sub":"","style":"team"},{"lv":4,"title":"GreenWall","lead":"","sub":"","style":"company"}]}]},{"title":"A. WEPLUS⁺ GROUP","status":"","src":"","blocks":[{"t":"text","x":"WePlus⁺ là nền tảng kết nối và cộng hưởng năng lực trong hệ sinh thái Tgroup, nơi các đơn vị thành viên cùng phát huy thế mạnh, nguồn lực và chuyên môn để mở rộng năng lực của toàn hệ thống, kiến tạo những giá trị lớn hơn cho khách hàng và nâng tầm vị thế Tgroup trong nước và quốc tế."},{"t":"companies","items":[{"name":"ePlus⁺","intro":"[Cập nhật profile]","org":"","services":""},{"name":"Engage⁺","intro":"Engage⁺ được thành lập từ năm 2016 và là thành viên của Tgroup, tập trung vào lĩnh vực tổ chức sự kiện, activation và trải nghiệm thương hiệu.]","org":"","services":""},{"name":"Enabler⁺","intro":"[Cập nhật profile]","org":"","services":""},{"name":"GolfCare⁺","intro":"GolfCare⁺ là đội ngũ trực thuộc ePlus⁺ — đơn vị thành viên của Tgroup, tập trung vào nhóm khách hàng cao cấp, kết nối Golf & MICE và mạng lưới khách hàng cấp cao của Ban Lãnh đạo, hướng đến trải nghiệm chuyên nghiệp và gia tăng giá trị cho khách hàng, đối tác trong hệ sinh thái Tgroup.","org":"","services":""}]}]},{"title":"B. WEWALL GROUP","status":"MISSING","src":"","blocks":[{"t":"companies","items":[{"name":"The Wall","intro":"[Cập nhật profile, định vị...]","org":"[Cập nhật Sơ đồ chức năng...]","services":"[Cập nhật dịch vụ...]"},{"name":"Imperial","intro":"[Cập nhật profile, định vị...]","org":"[Cập nhật Sơ đồ chức năng...]","services":"[Cập nhật dịch vụ...]"},{"name":"Nguyễn Mộc","intro":"[Cập nhật profile, định vị...]","org":"[Cập nhật Sơ đồ chức năng...]","services":"[Cập nhật dịch vụ...]"},{"name":"Green Wall","intro":"[Cập nhật profile, định vị...]","org":"[Cập nhật Sơ đồ chức năng...]","services":"[Cập nhật dịch vụ...]"}]}]}]},{"id":"s02","nav":"QUY ĐỊNH & VĂN HÓA","title":"QUY ĐỊNH CHUNG & VĂN HÓA","subsections":[{"title":"Văn hóa làm việc","status":"DRAFT","src":"Sổ tay Engage+","blocks":[{"t":"list","items":["Cùng làm, cùng chia sẻ. Kết quả là thành quả của teamwork.","Giao tiếp nhã nhặn, vừa phải, chuẩn mực, lịch sự, văn minh.","Hỗ trợ tương tác trên tinh thần cùng nhau xây dựng văn hóa công ty.","Tham gia đầy đủ các hoạt động chung."]}]},{"title":"Trang phục văn phòng","status":"DRAFT","src":"Sổ tay Engage+","blocks":[{"t":"table","head":["Tiêu chuẩn","Nữ","Nam"],"rows":[["Cho phép","Lịch sự – gọn gàng thanh lịch","Lịch sự – gọn gàng trang nhã"],["Không chấp nhận","Trang phục quá mỏng; váy quá ngắn; áo ba lỗ, cúp ngực","Quần short; áo ba lỗ, sát nách; dép lê"]]},{"t":"note","x":"Thứ 2 hàng tuần: toàn bộ nhân viên mặc áo đồng phục công ty."}]},{"title":"Nội quy & 5S Văn phòng","status":"DRAFT","src":"","blocks":[{"t":"text","x":"Quy tắc ứng xử:"},{"t":"list","items":["Không nói chuyện điện thoại / trao đổi lớn tiếng trong khu vực làm việc chung.","Giữ vệ sinh Pantry, WC, phòng họp sau khi dùng.","Tắt điện, điều hoà khi ra về cuối cùng.","Hạn chế mang đồ ăn nặng mùi vào văn phòng."]}]},{"title":"Lịch hoạt động nội bộ năm","status":"DRAFT","src":"","blocks":[{"t":"table","head":["Thời gian","Hoạt động"],"rows":[["Hàng tuần","Thứ 6: Happy Friday (16:00) / Thank You Wall"],["Hàng tháng","Ngày 10: Sinh nhật NV chung"],["Tháng 3","Quốc tế Phụ nữ 8/3"],["Tháng 7","Green Desk / Khởi động sự kiện Mùa hè"],["Tháng 8","Sự kiện Mùa hè rực rỡ"],["Tháng 9","Sport Day"],["Tháng 10","Phụ nữ VN 20/10"],["Tháng 11","Tháng tri ân"],["Tháng 12","Giáng sinh"],["Theo quý","Innovation Day"]]}]}]},{"id":"s03","nav":"CHÍNH SÁCH NHÂN SỰ","title":"CHÍNH SÁCH NHÂN SỰ","subsections":[{"title":"Hợp đồng & Lương","status":"DRAFT","src":"Sổ tay Engage+","blocks":[{"t":"list","items":["Ký HĐLĐ chính thức sau 2–3 tháng thử việc.","Nghỉ việc báo trước: 30 ngày (HĐ 1-3 năm), 7 ngày (HĐ dưới 1 năm).","Trả lương: chuyển khoản HDBank từ ngày 01-10 tháng kế tiếp."]}]},{"title":"Các chế độ nghỉ việc riêng có lương","status":"DRAFT","src":"Sổ tay Engage+","blocks":[{"t":"table","head":["Trường hợp","Chế độ"],"rows":[["Bản thân kết hôn","03 ngày (mừng 1.000.000đ)"],["Con, cha/mẹ, anh/chị/em kết hôn","01 ngày"],["Tang chế (Cha mẹ, Vợ chồng, Con)","03 ngày (vòng hoa chia buồn + 1.000.000đ)"],["Nữ sinh con","6 tháng theo Luật (mừng 1.000.000đ)"],["Nam vợ sinh con","05-07 ngày theo Luật (mừng 1.000.000đ)"]]}]},{"title":"Chấm công","status":"DRAFT","src":"","blocks":[{"t":"text","x":"Check-in / Check-out bằng vân tay tại cửa ra vào."},{"t":"list","items":["Nhân viên: Chấm công tự động.","Leader: Xác nhận giải trình đi trễ, OT, công tác.","HR: Tổng hợp & chốt công chuyển Payroll."]}]}]},{"id":"s04","nav":"THƯỞNG & PHÚC LỢI","title":"THƯỞNG, PHÚC LỢI & CÔNG TÁC PHÍ","subsections":[{"title":"Chính sách phúc lợi chung","status":"DRAFT","src":"","blocks":[{"t":"pick"},{"t":"table","head":["Chế độ","Engage⁺","ePlus⁺","Enabler⁺"],"rows":[["Phép năm","12 ngày","12 ngày","12 ngày"],["Khám sức khỏe","1.2tr/người","1.2tr/người","1.2tr/người"],["Quốc tế phụ nữ 8/3","500k/người","500k/người","500k/người"],["Happy Friday","50k/người/tuần","50k/người/tuần"],["Team building","3tr/người","3tr/người","3tr/người"]]}]},{"title":"Hoa hồng & Thưởng dự án (ePlus⁺)","status":"DRAFT","src":"Sổ tay ePlus","blocks":[{"t":"text","x":"Thưởng dự án MỚI (chưa VAT, tổng kết 6 tháng/lần):"},{"t":"table","head":["Doanh thu","Thưởng"],"rows":[["500tr - 1 tỷ","5 triệu"],[">1 - 2 tỷ","10 triệu"],[">2 - 3 tỷ","15 triệu"],[">3 tỷ","20 triệu"]]},{"t":"note","x":"Trích lại triển khai (GP Final 2%): Digital (Planner 50%, Creative/Project 25%); Event (Planner 35%, Project 45%, Creative 20%)."}]},{"title":"Tính toán công tác phí tối đa","status":"PENDING","src":"","blocks":[{"t":"calc"}]}]},{"id":"s05","nav":"BIỂU MẪU & LƯU TRỮ","title":"BIỂU MẪU & LƯU TRỮ","subsections":[{"title":"Ngăn lưu trữ Biểu mẫu & Văn thư chuẩn","status":"MISSING","src":"","blocks":[{"t":"text","x":"Khu vực lưu trữ tập trung các tài liệu, biểu mẫu, hợp đồng chuẩn để đảm bảo toàn bộ nhân sự sử dụng đồng nhất."},{"t":"table","head":["Loại tài liệu / Biểu mẫu","Nơi lưu trữ & Link truy cập","Ghi chú nội dung"],"rows":[["Hành chính","🔗 [Đang đợi cập nhật Link Drive]","Gồm: Đơn xin nghỉ phép, Giấy đề xuất thanh toán, Tạm ứng, Biên bản bàn giao..."],["Nhân sự","🔗 [Đang đợi cập nhật Link Drive]","Gồm: Mẫu đánh giá KPI, Mẫu Hợp đồng lao động, Bảng nội quy..."],["Dự án & Khách hàng","🔗 [Đang đợi cập nhật Link Drive]","Gồm: Template Báo giá, Template Proposal, Hợp đồng mẫu, Biên bản nghiệm thu..."],["Brand Assets (Thương hiệu)","🔗 [Đang đợi cập nhật Link Drive]","Gồm: Logo WePlus/Engage/ePlus, Template slide trình chiếu, Bộ Font chữ chuẩn..."]]},{"t":"note","x":"Admin/HR cần tạo kho thư mục trên Drive/NAS và gửi đường dẫn để gắn trực tiếp vào đây."}]},{"title":"Lưu trữ dữ liệu dự án (ePlus⁺)","status":"DRAFT","src":"Sổ tay ePlus","blocks":[{"t":"table","head":["Mục đích","Kênh lưu trữ"],"rows":[["Kênh trao đổi với KH / lưu trữ nội bộ hằng ngày","Google Drive"],["Lưu dữ liệu trên NAS","Tổng hợp các DA trong năm, 6 tháng/1 lần"]]}]}]},{"id":"s06","nav":"CẦN BOD QUYẾT ĐỊNH","title":"BẢNG ĐỐI CHIẾU & CẦN QUYẾT ĐỊNH","subsections":[{"title":"Các mục cần thống nhất giữa Engage⁺/ePlus⁺","status":"NEEDS_ALIGNMENT","src":"Tổng hợp","blocks":[{"t":"decisions","rows":[["Giờ làm việc","Hai khung giờ khác nhau","9h00–18h00, nghỉ trưa 12h–13h","9:30–10:00 sáng đến 18:30–19:00 chiều","—","Cần BOD thống nhất khung giờ chung hoặc giữ riêng."],["Đi trễ / về sớm","Ngưỡng tính nửa ngày phép khác nhau","Vào sau 10h / về trước 15h → nghỉ nửa ngày","Sau 10:30 mặc nhiên tính ½ ngày phép","—","Chốt mốc 10h hay 10h30."],["Phép năm luật","ePlus⁺ không nêu số ngày phép cơ bản","12 ngày/năm (<1 năm = 1 ngày/tháng)","Chỉ ghi NV 5 năm được +1 ngày phép","x (cho cả 7 công ty)","Xác nhận ePlus⁺ áp dụng luật chuẩn 12 ngày."],["Phép bổ sung","Excel và PDF chênh lệch nhau","Sau 5 năm +1 ngày","Làm việc 5 năm được +1 ngày","Engage⁺ & Enabler⁺: Sau 1 năm +1, từ năm 5. Các công ty khác: Sau 5 năm +1","Cần chốt cách tính thâm niên trên Excel."],["Thời hạn xin nghỉ","Khung báo trước khác nhau",">3 ngày: báo 1 tuần; <3 ngày: báo 3 ngày","1-2 ngày: báo 3 ngày; 3-5 ngày: báo 10 ngày","—","HR đề xuất khung chuẩn."],["Giới hạn nghỉ","Giới hạn khác nhau","Hạn chế nghỉ liên tiếp >3 ngày trong 1 tuần","Không >5 ngày liên tiếp; Không >50% team cùng lúc","—","BOD thống nhất."],["WFH / Làm bù","Hai cơ chế khác bản chất","Sau CN chạy event → T2 đi muộn / WFH","WFH tối đa 1 ngày/tháng (báo trước 1 ngày)","—","Chọn cơ chế nghỉ bù sự kiện hay WFH chuẩn."],["Công tác ăn uống","Xác nhận có áp dụng ngày event hay không","NV 180k; Manager 250k; Director 300k","Mức tương đương (không áp dụng ngày event)","Excel: 180k (Engage⁺, ePlus⁺); 150k (The Wall, v.v.)","Xác nhận ngày event có áp dụng phí không."],["Hỗ trợ ra sân bay","Chốt điều kiện loại trừ","100k/chiều","100k/chiều (loại trừ nếu dùng app công ty)","100k/lần","Thống nhất policy đặt xe ra sân bay."],["Di chuyển trong tỉnh","Chốt trần chi phí cho ePlus⁺","Thuê xe máy ≤150k/ngày","Thuê xe/app công nghệ tuỳ tình huống","—","Thống nhất trần di chuyển tỉnh."],["Mừng Kết hôn","BOD duyệt mức đề xuất mới","1.000.000đ + nghỉ 3 ngày","—","1.000.000đ (có note Đề xuất 2.000.000đ)","Duyệt ngân sách kết hôn."],["Phí Grab / Be","Chốt hạn mức và hình thức chung","Grab công ty","Be: Director 1.5tr; Head 1tr - 500k","Excel: ePlus⁺ 1tr, Enabler⁺ 3tr","Kế toán chốt hạn mức app Be/Grab."],["Sinh nhật","Xác nhận quỹ bánh kem","Quản lý 500k; Nhân viên 300k","—","QL 500k; NV 300k; Bánh 500k/tháng","Xác nhận quỹ bánh kem."]]}]}]}];
+const HB_FALLBACK_RATES = {"levels":[["Staff / Junior / Senior / Assistant",180000,350000],["Manager",250000,500000],["Director",300000,700000]],"airport":100000};
 
-const ALIGNMENT_REASON=["Cần BOD thống nhất khung giờ chung hoặc giữ riêng.","Chốt mốc 10h hay 10h30.","Xác nhận ePlus⁺ áp dụng luật chuẩn 12 ngày.","Cần chốt cách tính thâm niên trên Excel.","HR đề xuất khung chuẩn.","BOD thống nhất.","Chọn cơ chế nghỉ bù sự kiện hay WFH chuẩn.","Xác nhận ngày event có áp dụng phí không.","Thống nhất policy đặt xe ra sân bay.","Thống nhất trần di chuyển tỉnh.","Duyệt ngân sách kết hôn.","Kế toán chốt hạn mức app Be/Grab.","Xác nhận quỹ bánh kem."];
+/* Tải nội dung: thử Apps Script -> dùng bản đã lưu -> dùng bản nhúng sẵn */
+async function loadContent(){
+  if(/^https:\/\//.test(HB_CONTENT_URL)){
+    try{
+      const ctl = new AbortController();
+      const timer = setTimeout(()=>ctl.abort(), 8000);
+      const res = await fetch(HB_CONTENT_URL, {signal:ctl.signal, cache:"no-store"});
+      clearTimeout(timer);
+      const j = await res.json();
+      if(j && j.ok && j.tabs && j.tabs.length){
+        HB_DATA = {tabs:j.tabs};
+        HB_RATES = (j.config && j.config.calc_rates && j.config.calc_rates.levels && j.config.calc_rates.levels.length)
+          ? j.config.calc_rates : HB_FALLBACK_RATES;
+        try{ localStorage.setItem(HB_CACHE_KEY, JSON.stringify({tabs:HB_DATA.tabs, rates:HB_RATES, ts:Date.now()})); }catch(e){}
+        return;
+      }
+    }catch(e){ /* rớt xuống dùng bản lưu / nhúng sẵn */ }
+  }
+  try{
+    const c = JSON.parse(localStorage.getItem(HB_CACHE_KEY)||"null");
+    if(c && c.tabs && c.tabs.length){ HB_DATA={tabs:c.tabs}; HB_RATES=c.rates||HB_FALLBACK_RATES; return; }
+  }catch(e){}
+  HB_DATA = {tabs: HB_FALLBACK_TABS};
+  HB_RATES = HB_FALLBACK_RATES;
+}
 
-const ORG_DATA = {
-  top: { title: "TGROUP" },
-  bod: {
-    title: "HỘI ĐỒNG QUẢN TRỊ",
-    chair: "Chủ tịch HĐQT: Ông Nguyễn Bình An Tâm",
-    board: "Thành viên HĐQT:\n• Ông Nguyễn Ngọc Hoàng Thái Bảo\n• Ông Đào Thế Kiệt\n• Bà Nguyễn Huỳnh Ngọc Hà"
-  },
-  support: [
-    {
-      title: "Ban Phát triển Kinh doanh",
-      lead: "• Ông Nguyễn Bình An Tâm\n• Ông Nguyễn Ngọc Hoàng Thái Bảo\n• Ông Đào Thế Kiệt\n• Bà Nguyễn Huỳnh Ngọc Hà\n• Bà Võ Thị Ngọc Hạnh",
-      teams: []
-    },
-    {
-      title: "Phòng Tài chính & Kế toán",
-      lead: "Cố vấn Tài chính: Ông Nguyễn Trần Huy Khánh",
-      teams: [
-        ["Phòng Kế toán WePlus⁺ Group", "Trưởng phòng: Ông Nguyễn Quang Minh"],
-        ["Phòng Kế toán WeWall Group", "Trưởng phòng: Bà Huỳnh Thị Bạch Tuyết"]
-      ]
-    },
-    {
-      title: "Phòng Nhân sự & Pháp chế",
-      lead: "Trưởng phòng: Bà Trần Thị Nam Mỹ",
-      teams: [
-        ["Chuyên viên C&B", "Ms Xuân"],
-        ["Chuyên viên Pháp chế", "Ms Hòa"]
-      ]
-    }
-  ],
-  clusters: [
-    {
-      title: "WEPLUS⁺ GROUP",
-      companies: [
-        {
-          name: "ePlus⁺",
-          lead: "Giám đốc: Bà Nguyễn Huỳnh Ngọc Hà",
-          teams: [
-            ["Team Creative", "Leader: Ms Hải Yến"],
-            ["Team Planner", "Leader: Ms Mỹ Liên"],
-            ["Team Project", "Leader: Ms Phương Thảo"]
-          ]
-        },
-        { name: "Engage⁺", lead: "Giám đốc: Ông Đào Thế Kiệt", teams: [["Team Creative"], ["Team Project"]] },
-        { name: "Enabler⁺", lead: "Giám đốc: Ông Đào Thế Kiệt", teams: [["Team Enabler", "Leader: Mr Phúc"]] },
-        { name: "GolfCare⁺", lead: "Giám đốc: Ông Nguyễn Bình An Tâm", teams: [["Team GolfCare⁺", "Leader: Ms Hà"]] }
-      ]
-    },
-    {
-      title: "WEWALL GROUP",
-      companies: [
-        {
-          name: "The Wall Architecture",
-          lead: "Giám đốc: Ông Nguyễn Ngọc Hoàng Thái Bảo",
-          teams: [["Team Thiết kế"], ["Team Thi công"], ["Team M&E"], ["Team Công nghệ"]]
-        },
-        { name: "Imperial", lead: "Giám đốc: Bà Lê Thị Cẩm Phượng", teams: [["Team Thiết kế"]] },
-        {
-          name: "Nguyễn Mộc",
-          lead: "• Giám đốc Khối Nội thất: Bà Trần Thị Nam Mỹ\n• Giám đốc Khối Quảng cáo: Bà Võ Thị Ngọc Hạnh",
-          teams: [["Team Thiết kế"], ["Team Sản xuất"], ["Team Kinh doanh"]]
-        },
-        { name: "GreenWall", teams: [] }
-      ]
-    }
-  ]
-};
-const CALC_RATES={levels:[["Staff / Junior / Senior / Assistant",180000,350000],["Manager",250000,500000],["Director",300000,700000]],airport:100000};
-const T=(head,rows)=>({type:"table",head,rows});
-const L=items=>({type:"list",items});
-
-const HANDBOOK_SECTIONS=[
-  {id:"s01",nav:"THÔNG TIN CHUNG",title:"THÔNG TIN CHUNG",subsections:[
-    {title:"SƠ ĐỒ TỔ CHỨC HỆ SINH THÁI TGROUP",blocks:[{type:"orgtree"}]},
-    {title:"A. WEPLUS⁺ GROUP",blocks:[
-      {type:"text",text:"WePlus⁺ là nền tảng kết nối và cộng hưởng năng lực trong hệ sinh thái Tgroup, nơi các đơn vị thành viên cùng phát huy thế mạnh, nguồn lực và chuyên môn để mở rộng năng lực của toàn hệ thống, kiến tạo những giá trị lớn hơn cho khách hàng và nâng tầm vị thế Tgroup trong nước và quốc tế."},
-      {type:"company_list",companies:[
-        {name:"ePlus⁺",intro:"[Cập nhật profile]"},
-        {name:"Engage⁺",intro:"Engage⁺ được thành lập từ năm 2016 và là thành viên của Tgroup, tập trung vào lĩnh vực tổ chức sự kiện, activation và trải nghiệm thương hiệu.]"},
-        {name:"Enabler⁺",intro:"[Cập nhật profile]"},
-        {name:"GolfCare⁺",intro:"GolfCare⁺ là đội ngũ trực thuộc ePlus⁺ — đơn vị thành viên của Tgroup, tập trung vào nhóm khách hàng cao cấp, kết nối Golf & MICE và mạng lưới khách hàng cấp cao của Ban Lãnh đạo, hướng đến trải nghiệm chuyên nghiệp và gia tăng giá trị cho khách hàng, đối tác trong hệ sinh thái Tgroup."}
-      ]}
-    ]},
-    {title:"B. WEWALL GROUP",status:"MISSING",blocks:[
-      {type:"company_list",companies:[
-        {name:"The Wall",intro:"[Cập nhật profile, định vị...]",org:"[Cập nhật Sơ đồ chức năng...]",services:"[Cập nhật dịch vụ...]"},
-        {name:"Imperial",intro:"[Cập nhật profile, định vị...]",org:"[Cập nhật Sơ đồ chức năng...]",services:"[Cập nhật dịch vụ...]"},
-        {name:"Nguyễn Mộc",intro:"[Cập nhật profile, định vị...]",org:"[Cập nhật Sơ đồ chức năng...]",services:"[Cập nhật dịch vụ...]"},
-        {name:"Green Wall",intro:"[Cập nhật profile, định vị...]",org:"[Cập nhật Sơ đồ chức năng...]",services:"[Cập nhật dịch vụ...]"}
-      ]}
-    ]}
-  ]},
-  {id:"s02",nav:"QUY ĐỊNH & VĂN HÓA",title:"QUY ĐỊNH CHUNG & VĂN HÓA",subsections:[
-    {title:"Văn hóa làm việc",status:"DRAFT",src:"Sổ tay Engage+",blocks:[L(["Cùng làm, cùng chia sẻ. Kết quả là thành quả của teamwork.","Giao tiếp nhã nhặn, vừa phải, chuẩn mực, lịch sự, văn minh.","Hỗ trợ tương tác trên tinh thần cùng nhau xây dựng văn hóa công ty.","Tham gia đầy đủ các hoạt động chung."])]},
-    {title:"Trang phục văn phòng",status:"DRAFT",src:"Sổ tay Engage+",blocks:[
-      T(["Tiêu chuẩn","Nữ","Nam"],[["Cho phép","Lịch sự – gọn gàng thanh lịch","Lịch sự – gọn gàng trang nhã"],["Không chấp nhận","Trang phục quá mỏng; váy quá ngắn; áo ba lỗ, cúp ngực","Quần short; áo ba lỗ, sát nách; dép lê"]]),
-      {type:"note",text:"Thứ 2 hàng tuần: toàn bộ nhân viên mặc áo đồng phục công ty."}
-    ]},
-    {title:"Nội quy & 5S Văn phòng",status:"DRAFT",blocks:[
-      {type:"text",text:"Quy tắc ứng xử:"},
-      L(["Không nói chuyện điện thoại / trao đổi lớn tiếng trong khu vực làm việc chung.","Giữ vệ sinh Pantry, WC, phòng họp sau khi dùng.","Tắt điện, điều hoà khi ra về cuối cùng.","Hạn chế mang đồ ăn nặng mùi vào văn phòng."])
-    ]},
-    {title:"Lịch hoạt động nội bộ năm",status:"DRAFT",blocks:[{type:"calendar_table"}]}
-  ]},
-  {id:"s03",nav:"CHÍNH SÁCH NHÂN SỰ",title:"CHÍNH SÁCH NHÂN SỰ",subsections:[
-    {title:"Hợp đồng & Lương",status:"DRAFT",src:"Sổ tay Engage+",blocks:[L(["Ký HĐLĐ chính thức sau 2–3 tháng thử việc.","Nghỉ việc báo trước: 30 ngày (HĐ 1-3 năm), 7 ngày (HĐ dưới 1 năm).","Trả lương: chuyển khoản HDBank từ ngày 01-10 tháng kế tiếp."])]},
-    {title:"Các chế độ nghỉ việc riêng có lương",status:"DRAFT",src:"Sổ tay Engage+",blocks:[
-      T(["Trường hợp","Chế độ"],[["Bản thân kết hôn","03 ngày (mừng 1.000.000đ)"],["Con, cha/mẹ, anh/chị/em kết hôn","01 ngày"],["Tang chế (Cha mẹ, Vợ chồng, Con)","03 ngày (vòng hoa chia buồn + 1.000.000đ)"],["Nữ sinh con","6 tháng theo Luật (mừng 1.000.000đ)"],["Nam vợ sinh con","05-07 ngày theo Luật (mừng 1.000.000đ)"]])
-    ]},
-    {title:"Chấm công",status:"DRAFT",blocks:[
-      {type:"text",text:"Check-in / Check-out bằng vân tay tại cửa ra vào."},
-      L(["Nhân viên: Chấm công tự động.","Leader: Xác nhận giải trình đi trễ, OT, công tác.","HR: Tổng hợp & chốt công chuyển Payroll."])
-    ]}
-  ]},
-  {id:"s04",nav:"THƯỞNG & PHÚC LỢI",title:"THƯỞNG, PHÚC LỢI & CÔNG TÁC PHÍ",subsections:[
-    {title:"Chính sách phúc lợi chung",status:"DRAFT",blocks:[
-      {type:"companypick"},
-      T(["Chế độ","Engage⁺","ePlus⁺","Enabler⁺"],[["Phép năm","12 ngày","12 ngày","12 ngày"],["Khám sức khỏe","1.2tr/người","1.2tr/người","1.2tr/người"],["Quốc tế phụ nữ 8/3","500k/người","500k/người","500k/người"],["Happy Friday","50k/người/tuần","50k/người/tuần"],["Team building","3tr/người","3tr/người","3tr/người"]])
-    ]},
-    {title:"Hoa hồng & Thưởng dự án (ePlus⁺)",status:"DRAFT",src:"Sổ tay ePlus",blocks:[
-      {type:"text",text:"Thưởng dự án MỚI (chưa VAT, tổng kết 6 tháng/lần):"},
-      T(["Doanh thu","Thưởng"],[["500tr - 1 tỷ","5 triệu"],[">1 - 2 tỷ","10 triệu"],[">2 - 3 tỷ","15 triệu"],[">3 tỷ","20 triệu"]]),
-      {type:"note",text:"Trích lại triển khai (GP Final 2%): Digital (Planner 50%, Creative/Project 25%); Event (Planner 35%, Project 45%, Creative 20%)."}
-    ]},
-    {title:"Tính toán công tác phí tối đa",status:"PENDING",blocks:[{type:"calc"}]}
-  ]},
-  {id:"s05",nav:"BIỂU MẪU & LƯU TRỮ",title:"BIỂU MẪU & LƯU TRỮ",subsections:[
-    {title:"Ngăn lưu trữ Biểu mẫu & Văn thư chuẩn",status:"MISSING",blocks:[
-      {type:"text",text:"Khu vực lưu trữ tập trung các tài liệu, biểu mẫu, hợp đồng chuẩn để đảm bảo toàn bộ nhân sự sử dụng đồng nhất."},
-      T(["Loại tài liệu / Biểu mẫu","Nơi lưu trữ & Link truy cập","Ghi chú nội dung"],[["Hành chính","🔗 [Đang đợi cập nhật Link Drive]","Gồm: Đơn xin nghỉ phép, Giấy đề xuất thanh toán, Tạm ứng, Biên bản bàn giao..."],["Nhân sự","🔗 [Đang đợi cập nhật Link Drive]","Gồm: Mẫu đánh giá KPI, Mẫu Hợp đồng lao động, Bảng nội quy..."],["Dự án & Khách hàng","🔗 [Đang đợi cập nhật Link Drive]","Gồm: Template Báo giá, Template Proposal, Hợp đồng mẫu, Biên bản nghiệm thu..."],["Brand Assets (Thương hiệu)","🔗 [Đang đợi cập nhật Link Drive]","Gồm: Logo WePlus/Engage/ePlus, Template slide trình chiếu, Bộ Font chữ chuẩn..."]]),
-      {type:"note",text:"Admin/HR cần tạo kho thư mục trên Drive/NAS và gửi đường dẫn để gắn trực tiếp vào đây."}
-    ]},
-    {title:"Lưu trữ dữ liệu dự án (ePlus⁺)",status:"DRAFT",src:"Sổ tay ePlus",blocks:[
-      T(["Mục đích","Kênh lưu trữ"],[["Kênh trao đổi với KH / lưu trữ nội bộ hằng ngày","Google Drive"],["Lưu dữ liệu trên NAS","Tổng hợp các DA trong năm, 6 tháng/1 lần"]])
-    ]}
-  ]},
-  {id:"s06",nav:"CẦN BOD QUYẾT ĐỊNH",title:"BẢNG ĐỐI CHIẾU & CẦN QUYẾT ĐỊNH",subsections:[
-    {title:"Các mục cần thống nhất giữa Engage⁺/ePlus⁺",status:"NEEDS_ALIGNMENT",src:"Tổng hợp",blocks:[{type:"decisions"}]}
-  ]}
-];
-
+const HANDBOOK_META={title:"WePlus⁺ Handbook 2026",footer:"© 2026 Le Ha — Drafted for WePlus⁺<br>Internal Use Only | v1.3",logoWhite:"https://leha-os.github.io/assets/logoweplus_white_transparent.png"}
+const STATUS_LABEL={OFFICIAL:"CHÍNH THỨC",DRAFT:"CẦN PHÊ DUYỆT",NEEDS_ALIGNMENT:"CẦN THỐNG NHẤT",MISSING:"CHƯA CÓ THÔNG TIN",PROPOSED:"ĐỀ XUẤT",PENDING:"CHỜ XÁC NHẬN"}
 const esc=s=>s==null?"":String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const badge=st=>!st||!STATUS_LABEL[st]?"":`<span class="st ${st}">${STATUS_LABEL[st]}</span>`;
 const vnd=n=>n.toLocaleString("vi-VN")+"đ";
-
-function renderOrgTree(){
-  const d=ORG_DATA;let h=`<div class="tree"><details open><summary><div class="n-card root"><b>${esc(d.top.title)}</b></div></summary><ul>`;
-  h+=`<li><details open><summary><div class="n-card bod"><b>${esc(d.bod.title)}</b><span class="sub" style="color:#f1eadb;margin-top:3px">${esc(d.bod.chair)}</span><span class="sub" style="color:rgba(255,255,255,.7)">${esc(d.bod.board)}</span></div></summary><ul>`;
-  h+=`<li><details><summary><div class="n-card cluster"><b>KHỐI HỖ TRỢ & PHÁT TRIỂN</b></div></summary><ul>`;
-  d.support.forEach(c=>{h+=`<li><details><summary><div class="n-card company"><b>${esc(c.title)}</b>${c.lead?`<span class="sub">${esc(c.lead)}</span>`:""}</div></summary><ul>`;c.teams.forEach(t=>{let th=`<b>${esc(t[0])}</b>`;if(t[1])th+=`<span class="lead">${esc(t[1])}</span>`;if(t[2])th+=`<span class="sub">${esc(t[2])}</span>`;h+=`<li class="leaf"><summary><div class="n-card team">${th}</div></summary></li>`});h+=`</ul></details></li>`;});h+=`</ul></details></li>`;
-  h+=`<li><details open><summary><div class="n-card cluster"><b>KHỐI VẬN HÀNH KINH DOANH</b></div></summary><ul>`;
-  d.clusters.forEach(c=>{h+=`<li><details><summary><div class="n-card cluster" style="background:#e4efe8"><b>${esc(c.title)}</b></div></summary><ul>`;c.companies.forEach(cp=>{h+=`<li><details><summary><div class="n-card company"><b>${esc(cp.name)}</b>${cp.lead?`<span class="sub">${esc(cp.lead)}</span>`:""}</div></summary><ul>`;cp.teams.forEach(t=>{let th=`<b>${esc(t[0])}</b>`;if(t[1])th+=`<span class="lead">${esc(t[1])}</span>`;if(t[2])th+=`<span class="sub">${esc(t[2])}</span>`;h+=`<li class="leaf"><summary><div class="n-card team">${th}</div></summary></li>`});h+=`</ul></details></li>`;});h+=`</ul></details></li>`;});h+=`</ul></details></li></ul></details></li></ul></details></div>`;return h;
+let decState={};try{decState=JSON.parse(localStorage.getItem("hb_decisions")||"{}")}catch(e){}
+const LEAVE_CONFIG={
+  API_URL:"https://script.google.com/macros/s/AKfycbznmJo5-Mg7nYbuV3oqj0Krn58vAhm4N4y29agBnLjTvEFIye2kmlttMZreqqt3Hb7Elg/exec",
+  TIMEOUT_MS:30000,
+  TYPES:["Nghỉ phép","Nghỉ không lương","Nghỉ hưởng chế độ"],
+  TEXT:{
+    nav:"CỔNG NGHỈ PHÉP",title:"CỔNG NGHỈ PHÉP",
+    noApi:"Hệ thống chưa được cấu hình. Vui lòng liên hệ Phòng Nhân sự.",
+    netErr:"Không kết nối được hệ thống. Vui lòng thử lại.",
+    badRange:"Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu.",
+    missing:"Vui lòng điền đầy đủ các trường bắt buộc.",
+    sending:"ĐANG XỬ LÝ..."
+  }
 }
 
-function renderCalendarTable(){
-  const rows=[["Hàng tuần","Thứ 6: Happy Friday (16:00) | Thank You Wall"],["Hàng tháng","Ngày 10: Sinh nhật NV chung"],["Tháng 3","Quốc tế Phụ nữ 8/3"],["Tháng 7","Green Desk | Khởi động sự kiện Mùa hè"],["Tháng 8","Sự kiện Mùa hè rực rỡ"],["Tháng 9","Sport Day"],["Tháng 10","Phụ nữ VN 20/10"],["Tháng 11","Tháng tri ân"],["Tháng 12","Giáng sinh"],["Theo quý","Innovation Day"]];
-  return `<div class="tw"><table><thead><tr><th style="width:140px">Thời gian</th><th>Hoạt động</th></tr></thead><tbody>${rows.map(x=>`<tr><td style="font-weight:700;white-space:nowrap;color:var(--brand)">${x[0]}</td><td>${x[1]}</td></tr>`).join("")}</tbody></table></div>`;
-}
 
+/* Vẽ sơ đồ tổ chức từ dữ liệu sheet (dòng thụt cấp) */
+function renderOrgTreeNodes(nodes){
+  const clsFor = n => n.style || (n.lv===0?"root":n.lv===1?"bod":n.lv===2?"cluster":n.lv===3?"company":"team");
+  const card = s => s==="root"?"root":s==="bod"?"bod":s==="cluster"?"cluster":s==="company"?"company":"team";
+  const extra = s => s==="cluster-green" ? ' style="background:#e4efe8"' : "";
+  let h = '<div class="tree">';
+  const stack = [];
+  nodes.forEach((n,i)=>{
+    while(stack.length && stack[stack.length-1] >= n.lv){ h += "</ul></details></li>"; stack.pop(); }
+    const inner = `<b>${esc(n.title||"")}</b>`
+      + (n.lead?`<span class="lead">${esc(n.lead)}</span>`:"")
+      + (n.sub?`<span class="sub">${esc(n.sub)}</span>`:"");
+    const hasChild = i+1 < nodes.length && (nodes[i+1].lv > n.lv);
+    if(hasChild){
+      if(stack.length===0) h += `<details open><summary><div class="n-card ${card(clsFor(n))}"${extra(clsFor(n))}>${inner}</div></summary><ul>`;
+      else h += `<li><details${n.lv<=1?" open":""}><summary><div class="n-card ${card(clsFor(n))}"${extra(clsFor(n))}>${inner}</div></summary><ul>`;
+      stack.push(n.lv);
+    }else{
+      if(stack.length===0) h += `<details open><summary><div class="n-card ${card(clsFor(n))}"${extra(clsFor(n))}>${inner}</div></summary></details>`;
+      else h += `<li class="leaf"><summary><div class="n-card ${card(clsFor(n))}"${extra(clsFor(n))}>${inner}</div></summary></li>`;
+    }
+  });
+  while(stack.length){ h += "</ul></details></li>"; stack.pop(); }
+  return h + "</div>";
+}
+/* Bảng cần BOD quyết (dữ liệu từ sheet, cột Chốt tự thêm) */
+function renderDecisionsData(rows){
+  const showNote = rows.some(r=>r[4] && r[4]!=="" && r[4]!=="—");
+  return `<div class="tw dec"><table><thead><tr><th>#</th><th>Nội dung</th><th>Engage⁺</th><th>ePlus⁺</th>${showNote?"<th>Ghi chú</th>":""}<th>Cần BOD quyết</th><th>Chốt</th></tr></thead><tbody>${rows.map((r,i)=>{
+    const st=decState[i]||{};
+    return `<tr style="${st.done?"opacity:.5":""}"><td>${i+1}</td><td><b>${esc(r[0]||"")}</b>${r[1]?`<br><span style="font-size:10px;color:var(--muted)">${esc(r[1])}</span>`:""}</td><td>${esc(r[2]||"")}</td><td>${esc(r[3]||"")}</td>${showNote?`<td>${esc(r[4]||"")}</td>`:""}<td>${esc(r[5]||"")}</td><td style="text-align:center"><input type="checkbox" data-k="${i}" data-f="done"${st.done?" checked":""}></td></tr>`;
+  }).join("")}</tbody></table></div>`;
+}
+/* Thẻ công ty bấm mở rộng */
+function renderCompanies(items){
+  return `<div class="comp-list">`+items.map((c,i)=>`<details class="comp-blk"><summary>${i+1}. ${esc(c.name||"")}</summary><div class="comp-body">${c.intro?`<b>Giới thiệu:</b><p>${esc(c.intro)}</p>`:""}${c.org?`<b>Sơ đồ:</b><p>${esc(c.org)}</p>`:""}${c.services?`<b>Dịch vụ:</b><p>${esc(c.services)}</p>`:""}</div></details>`).join("")+`</div>`;
+}
+function renderBlock(b){
+  if(b.t==="list")return `<ul>${(b.items||[]).map(i=>`<li>${esc(i)}</li>`).join("")}</ul>`;
+  if(b.t==="text")return `<p>${esc(b.x||"")}</p>`;
+  if(b.t==="note")return `<div class="note">${esc(b.x||"")}</div>`;
+  if(b.t==="org")return renderOrgTreeNodes(b.nodes||[]);
+  if(b.t==="companies")return renderCompanies(b.items||[]);
+  if(b.t==="decisions")return renderDecisionsData(b.rows||[]);
+  if(b.t==="calc")return renderCalc();
+  if(b.t==="pick")return renderCompanyPick();
+  if(b.t==="table"){const h=(b.head||[]).map(x=>`<th>${esc(x)}</th>`).join("");const r=(b.rows||[]).map(row=>`<tr>${row.map(c=>`<td>${esc(c)}</td>`).join("")}</tr>`).join("");return `<div class="tw"><table><thead><tr>${h}</tr></thead><tbody>${r}</tbody></table></div>`;}
+  return "";
+}
+function renderCalc(){
+  return `<div class="calc"><div><label>Cấp bậc</label><select id="cLv">${(HB_RATES||HB_FALLBACK_RATES).levels.map((l,i)=>`<option value="${i}">${esc(l[0])}</option>`).join("")}</select></div><div><label>Số ngày công tác</label><input id="cDay" type="number" min="0" value="2"></div><div><label>Số đêm KS</label><input id="cNight" type="number" min="0" value="1"></div><div><label>Hỗ trợ ga/sân bay</label><select id="cAir"><option value="0">Không</option><option value="1">1 chiều</option><option value="2">Khứ hồi</option></select></div></div><div class="res" id="cRes"></div>`;
+}
+function calcUpdate(){
+  const lv=document.getElementById("cLv"),re=document.getElementById("cRes");if(!lv||!re)return;
+  const l=(HB_RATES||HB_FALLBACK_RATES).levels[+lv.value],d=Math.max(0,+document.getElementById("cDay").value||0),n=Math.max(0,+document.getElementById("cNight").value||0),a=+document.getElementById("cAir").value;
+  const f=l[1]*d,h=l[2]*n,ap=(HB_RATES||HB_FALLBACK_RATES).airport*a;re.innerHTML=`Ăn uống: <b>${vnd(f)}</b> · KS: <b>${vnd(h)}</b> · Sân bay: <b>${vnd(ap)}</b><br>Tổng tối đa: <span class="big">${vnd(f+h+ap)}</span>`;
+}
 function renderCompanyPick(){
   return `<div style="margin-bottom:6px;margin-left:22px">${["Tất cả","Engage⁺","ePlus⁺","Enabler⁺"].map((x,i)=>`<button class="cpick${i===0?" on":""}" data-c="${i}">${x}</button>`).join("")}</div>`;
 }
-
-function renderCalc(){
-  return `<div class="calc"><div><label>Cấp bậc</label><select id="cLv">${CALC_RATES.levels.map((l,i)=>`<option value="${i}">${esc(l[0])}</option>`).join("")}</select></div><div><label>Số ngày công tác</label><input id="cDay" type="number" min="0" value="2"></div><div><label>Số đêm KS</label><input id="cNight" type="number" min="0" value="1"></div><div><label>Hỗ trợ ga/sân bay</label><select id="cAir"><option value="0">Không</option><option value="1">1 chiều</option><option value="2">Khứ hồi</option></select></div></div><div class="res" id="cRes"></div>`;
-}
-
-function calcUpdate(){
-  const lv=document.getElementById("cLv"),re=document.getElementById("cRes");if(!lv||!re)return;
-  const l=CALC_RATES.levels[+lv.value],d=Math.max(0,+document.getElementById("cDay").value||0),n=Math.max(0,+document.getElementById("cNight").value||0),a=+document.getElementById("cAir").value;
-  const f=l[1]*d,h=l[2]*n,ap=CALC_RATES.airport*a;re.innerHTML=`Ăn uống: <b>${vnd(f)}</b> · KS: <b>${vnd(h)}</b> · Sân bay: <b>${vnd(ap)}</b><br>Tổng tối đa: <span class="big">${vnd(f+h+ap)}</span>`;
-}
-
-let decState={};try{decState=JSON.parse(localStorage.getItem("hb_decisions")||"{}")}catch(e){}
-
-function renderDecisions(){
-  return `<div class="tw dec"><table><thead><tr><th>#</th><th>Nội dung</th><th>Engage⁺</th><th>ePlus⁺</th><th>Cần BOD Quyết</th><th>Chốt</th></tr></thead><tbody>${ALIGNMENT_DATA.map((a,i)=>{const st=decState[i]||{};return `<tr style="${st.done?'opacity:.5':''}"><td>${i+1}</td><td><b>${esc(a[0])}</b><br><span style="font-size:10px;color:var(--muted)">${esc(a[4])}</span></td><td>${esc(a[1])}</td><td>${esc(a[2])}</td><td>${esc(ALIGNMENT_REASON[i])}</td><td style="text-align:center"><input type="checkbox" data-k="${i}" data-f="done"${st.done?" checked":""}></td></tr>`}).join("")}</tbody></table></div>`;
-}
-
-function renderBlock(b){
-  if(b.type==="list")return `<ul>${b.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul>`;
-  if(b.type==="text")return `<p>${esc(b.text)}</p>`;
-  if(b.type==="note")return `<div class="note">${esc(b.text)}</div>`;
-  if(b.type==="orgtree")return renderOrgTree();
-  if(b.type==="calendar_table")return renderCalendarTable();
-  if(b.type==="companypick")return renderCompanyPick();
-  if(b.type==="calc")return renderCalc();
-  if(b.type==="decisions")return renderDecisions();
-  if(b.type==="company_list")return `<div class="comp-list">`+b.companies.map((c,i)=>`<details class="comp-blk"><summary>${i+1}. ${esc(c.name)}</summary><div class="comp-body"><p>${esc(c.intro)}</p></div></details>`).join("")+`</div>`;
-  if(b.type==="table"){const h=b.head.map(x=>`<th>${esc(x)}</th>`).join("");const r=b.rows.map(row=>`<tr>${row.map(c=>`<td>${esc(c)}</td>`).join("")}</tr>`).join("");return `<div class="tw"><table><thead><tr>${h}</tr></thead><tbody>${r}</tbody></table></div>`;}
-  return "";
-}
-
 function renderChrome(){
   const M=HANDBOOK_META;
   document.getElementById("logo").innerHTML=`<img class="lw" src="${M.logoWhite}" alt="WePlus⁺" loading="lazy">`;
   document.getElementById("foot").innerHTML=M.footer;
 }
-
 function initHero(){
   const h=document.getElementById("hero"),M=HANDBOOK_META;
   h.innerHTML=`<div class="hero-in"><img class="hero-w" src="${M.logoWhite}" alt="WePlus⁺" loading="lazy"><div class="hero-line"></div><div class="hero-sub">Employee Handbook · WePlus⁺ 2026</div><button class="hero-btn" id="enter">Vào Handbook</button></div>`;
@@ -479,27 +383,6 @@ function initHero(){
   const close=()=>{h.classList.add("out");document.body.classList.remove("lock");try{sessionStorage.setItem("hb_seen","1")}catch(e){}setTimeout(()=>h.remove(),900);};
   if(seen){h.remove();return;}document.body.classList.add("lock");document.getElementById("enter").addEventListener("click",close);
 }
-
-function renderSections(){
-  document.getElementById("nav").innerHTML=HANDBOOK_SECTIONS.map(s=>`<a data-id="${s.id}">${esc(s.nav)}</a>`).join("");
-
-  const cnt={};
-  HANDBOOK_SECTIONS.forEach(x=>x.subsections.forEach(y=>{if(y.status)cnt[y.status]=(cnt[y.status]||0)+1;}));
-  const keys=Object.keys(STATUS_LABEL).filter(k=>cnt[k]);
-
-  const filterHtml=`<div class="filter-wrapper" title="Lọc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg><select id="statusFilter" class="filter-select"><option value="">Tất cả trạng thái</option>${keys.map(k=>`<option value="${k}">${STATUS_LABEL[k]} (${cnt[k]})</option>`).join("")}</select></div>`;
-
-  const secs=HANDBOOK_SECTIONS.map(s=>`<section class="sec on reveal" id="${s.id}"><h2><span>${esc(s.title)}</span><span class="arrow">⌄</span></h2>${s.subsections.map(sub=>`<details class="blk reveal" data-st="${sub.status||''}"><summary><span>${esc(sub.title)}</span>${badge(sub.status)}</summary><div class="body">${sub.src?`<p class="src">Nguồn: ${esc(sub.src)}</p>`:""}${sub.blocks.map(renderBlock).join("")}</div></details>`).join("")}</section>`).join("");
-
-  document.getElementById("app").innerHTML=`
-    <div class="tools">
-      <input class="search" id="q" placeholder="Tìm kiếm...">
-      ${filterHtml}
-      <button id="toggleAll" class="btn-toggle-all">Mở/Đóng</button>
-    </div>
-    ${secs}`;
-}
-
 function initTabs(){
   const links=[...document.querySelectorAll("#nav a")];
   const secs=[...document.querySelectorAll("section.sec")];
@@ -523,7 +406,7 @@ function initTabs(){
     show(a.dataset.id);
   }));
 
-  show(HANDBOOK_SECTIONS[0].id);
+  show(HB_DATA.tabs[0].id);
 
   document.querySelectorAll("section.sec>h2").forEach(h=>{
     h.addEventListener("click",()=>{
@@ -531,7 +414,6 @@ function initTabs(){
     });
   });
 }
-
 function initSearch(){
   let q="",st="";
 
@@ -575,7 +457,6 @@ function initSearch(){
     all.forEach(d=>d.open=anyClosed);
   });
 }
-
 function initMotion(){
   const bar=document.getElementById("prog"),topbar=document.getElementById("topbar"),glow=document.getElementById("cursor-glow");
   let tick=false,glowX=0,glowY=0,mx=0,my=0;
@@ -624,7 +505,6 @@ function initMotion(){
     }
   },true);
 }
-
 function applyCompany(idx){
   document.querySelectorAll("#s04 table").forEach(t=>{
     if(t.querySelectorAll("thead th").length!==4||t.querySelectorAll("thead th")[1].textContent!=="Engage⁺")return;
@@ -633,23 +513,6 @@ function applyCompany(idx){
     }));
   });
 }
-
-/* ===== ZONE 1 · LEAVE PORTAL CONFIG / CẤU HÌNH CỔNG NGHỈ PHÉP ===== */
-const LEAVE_CONFIG={
-  API_URL:"https://script.google.com/macros/s/AKfycbznmJo5-Mg7nYbuV3oqj0Krn58vAhm4N4y29agBnLjTvEFIye2kmlttMZreqqt3Hb7Elg/exec",
-  TIMEOUT_MS:30000,
-  TYPES:["Nghỉ phép","Nghỉ không lương","Nghỉ hưởng chế độ"],
-  TEXT:{
-    nav:"CỔNG NGHỈ PHÉP",title:"CỔNG NGHỈ PHÉP",
-    noApi:"Hệ thống chưa được cấu hình. Vui lòng liên hệ Phòng Nhân sự.",
-    netErr:"Không kết nối được hệ thống. Vui lòng thử lại.",
-    badRange:"Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu.",
-    missing:"Vui lòng điền đầy đủ các trường bắt buộc.",
-    sending:"ĐANG XỬ LÝ..."
-  }
-};
-
-/* ===== ZONE 2 · LEAVE PORTAL FUNCTIONS / HÀM CỔNG NGHỈ PHÉP ===== */
 async function leaveApi(payload){
   if(!/^https:\/\//.test(LEAVE_CONFIG.API_URL))throw new Error(LEAVE_CONFIG.TEXT.noApi);
   const ctl=new AbortController();
@@ -670,13 +533,11 @@ async function leaveApi(payload){
     clearTimeout(timer);
   }
 }
-
 function leaveDays(from,to){
   const a=Date.parse(from+"T00:00:00Z"),b=Date.parse(to+"T00:00:00Z");
   if(isNaN(a)||isNaN(b))return 0;
   return Math.round((b-a)/86400000)+1;
 }
-
 function renderLeavePortal(){
   const T=LEAVE_CONFIG.TEXT;
 
@@ -709,7 +570,6 @@ function renderLeavePortal(){
   document.getElementById("app").appendChild(sec);
   bindLeavePortal();
 }
-
 function bindLeavePortal(){
   const T=LEAVE_CONFIG.TEXT,$=id=>document.getElementById(id);
   const locked=["lvFrom","lvTo","lvType","lvReason","lvHandover","lvSubmit"];
@@ -827,9 +687,28 @@ function bindLeavePortal(){
     $("lvSubmit").textContent="GỬI ĐƠN XIN NGHỈ";
   });
 }
+function renderSections(){
+  document.getElementById("nav").innerHTML=HB_DATA.tabs.map(s=>`<a data-id="${s.id}">${esc(s.nav)}</a>`).join("");
 
-function init(){
+  const cnt={};
+  HB_DATA.tabs.forEach(x=>x.subsections.forEach(y=>{if(y.status)cnt[y.status]=(cnt[y.status]||0)+1;}));
+  const keys=Object.keys(STATUS_LABEL).filter(k=>cnt[k]);
+
+  const filterHtml=`<div class="filter-wrapper" title="Lọc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg><select id="statusFilter" class="filter-select"><option value="">Tất cả trạng thái</option>${keys.map(k=>`<option value="${k}">${STATUS_LABEL[k]} (${cnt[k]})</option>`).join("")}</select></div>`;
+
+  const secs=HB_DATA.tabs.map(s=>`<section class="sec on reveal" id="${s.id}"><h2><span>${esc(s.title)}</span><span class="arrow">⌄</span></h2>${s.subsections.map(sub=>`<details class="blk reveal" data-st="${sub.status||''}"><summary><span>${esc(sub.title)}</span>${badge(sub.status)}</summary><div class="body">${sub.src?`<p class="src">Nguồn: ${esc(sub.src)}</p>`:""}${sub.blocks.map(renderBlock).join("")}</div></details>`).join("")}</section>`).join("");
+
+  document.getElementById("app").innerHTML=`
+    <div class="tools">
+      <input class="search" id="q" placeholder="Tìm kiếm...">
+      ${filterHtml}
+      <button id="toggleAll" class="btn-toggle-all">Mở/Đóng</button>
+    </div>
+    ${secs}`;
+}
+async function init(){
   renderChrome();
+  await loadContent();
   renderSections();
   renderLeavePortal();
   initTabs();
@@ -877,7 +756,6 @@ function init(){
 
   initHero();
 }
-
 document.addEventListener("DOMContentLoaded",init);
 </script>
 </body>
