@@ -404,7 +404,7 @@
     }
   </style>
 </head>
-<body class="selection:bg-gold selection:text-white antialiased min-h-screen flex flex-col justify-between">
+<body class="selection:bg-gold selection:text-white antialiased min-h-screen flex flex-col justify-between pb-20">
 
   <!-- Art Pattern Overlay -->
   <div class="bg-art-pattern"></div>
@@ -448,17 +448,17 @@
   </main>
 
   <!-- Backdrop Overlay khi mở Mục lục -->
-  <div id="drawerOverlay" onclick="toggleDrawer()" class="no-print fixed inset-0 bg-brand-dark/50 backdrop-blur-xs z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="drawerOverlay" onclick="toggleDrawer()" class="no-print fixed inset-0 bg-brand-dark/50 z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
 
   <!-- Drawer Agenda / Mục lục (Giảm độ trong suốt cho chữ nét, viền cong, bỏ chữ Báo cáo và ghi chú bàn phím) -->
-  <aside id="slideDrawer" class="no-print fixed top-3 right-3 bottom-3 w-80 sm:w-88 bg-white/95 backdrop-blur-2xl border border-white/80 shadow-[0_20px_50px_rgba(8,35,28,0.28)] rounded-3xl p-5 sm:p-6 transform translate-x-[115%] z-50 flex flex-col justify-between overflow-hidden">
+  <aside id="slideDrawer" class="no-print fixed top-3 right-3 bottom-3 w-80 bg-white/95 backdrop-blur-2xl border border-white/80 shadow-[0_20px_50px_rgba(8,35,28,0.28)] rounded-3xl p-5 sm:p-6 transform translate-x-[115%] z-50 flex flex-col justify-between overflow-hidden">
     <div>
       <div class="flex items-center justify-between pb-3.5 border-b border-borderLine/70">
         <div class="flex items-center gap-2.5">
           <span class="w-2.5 h-2.5 rounded-full bg-gold shadow-[0_0_10px_rgba(184,151,90,0.8)] animate-pulse"></span>
           <h3 class="font-bold text-xs sm:text-sm text-brand uppercase tracking-wider">MỤC LỤC</h3>
         </div>
-        <button onclick="toggleDrawer()" class="text-ink-muted hover:text-brand p-1.5 rounded-full bg-gold-soft/60 hover:bg-gold hover:text-brand hover:rotate-90 transition-all duration-300">
+        <button onclick="toggleDrawer()" class="text-ink-muted hover:text-brand p-1.5 rounded-full bg-gold-soft/60 hover:bg-gold hover:rotate-90 transition-all duration-300">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
       </div>
@@ -468,26 +468,11 @@
     </div>
   </aside>
 
-  <!-- Footer Navigation Controls - Canh giữa hoàn hảo & 2 dòng viết thường chuẩn -->
-  <footer class="no-print bg-white/85 backdrop-blur-xl border-t border-borderLine/80 px-4 py-2.5 flex items-center justify-between relative z-10 shadow-[0_-4px_20px_rgba(12,46,36,0.03)]">
-    <!-- Cột cân bằng bên trái (đối trọng với cụm nút điều hướng bên phải để dồn tâm) -->
-    <div class="hidden sm:block w-28"></div>
-
-    <!-- Nội dung trung tâm: Canh giữa tuyệt đối, 2 dòng viết thường chuẩn -->
+  <!-- Footer cố định đáy màn hình - chỉ dòng bản quyền canh giữa (chuyển slide bằng vuốt tay) -->
+  <footer class="no-print fixed bottom-0 left-0 right-0 bg-white/85 backdrop-blur-xl border-t border-borderLine/80 px-4 py-2.5 flex items-center justify-center z-30 shadow-[0_-4px_20px_rgba(12,46,36,0.03)]">
     <div class="text-center text-[11.5px] text-ink-muted leading-tight select-none">
-      <div class="font-semibold text-brand tracking-wide">© 2026 WePlus⁺ | Q3 Review &amp; Strategic Direction</div>
+      <div class="font-semibold text-brand tracking-wide">© 2026 Tgroup Ecosystem · WePlus⁺ Group | Q3 Review &amp; Strategic Direction</div>
       <div class="text-[10px] text-ink-light mt-0.5 font-normal">Tài liệu chính thức – Lưu hành nội bộ</div>
-    </div>
-
-    <!-- Cụm điều hướng chuyển slide bên phải -->
-    <div class="flex items-center gap-3">
-      <button onclick="prevSlide()" class="p-1.5 rounded-lg border border-borderLine text-brand hover:border-gold hover:bg-gold-soft transition-colors" title="Slide trước">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-      </button>
-      <span id="slideIndicator" class="text-xs font-bold text-brand tracking-widest min-w-[50px] text-center font-mono">01 / 13</span>
-      <button onclick="nextSlide()" class="p-1.5 rounded-lg border border-borderLine text-brand hover:border-gold hover:bg-gold-soft transition-colors" title="Slide sau">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-      </button>
     </div>
   </footer>
 
@@ -498,7 +483,7 @@
         type: 'cover',
         content: `
           <div class="flex flex-col justify-between h-full p-8 sm:p-14 relative z-10">
-            <div class="flex justify-between items-start text-xs tracking-widest font-BE VIETNAM PRO uppercase">
+            <div class="flex justify-between items-start text-xs tracking-widest uppercase">
               <span class="bg-brand-2/70 px-3 py-1 rounded-full border border-gold/30 gold-gradient-text font-bold">HỌP TỔNG KẾT QUÝ 3/2026</span>
               <span class="text-gold-light font-bold">09.10.2026</span>
             </div>
@@ -507,7 +492,7 @@
               <div class="mb-5 flex justify-center sm:justify-start">
                 <img src="https://leha-os.github.io/assets/logoweplus_white_transparent.png" alt="WePlus⁺" class="h-20 sm:h-24 object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.4)]">
               </div>
-              <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-gray-240 tracking-tight leading-tight mb-4">
+              <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4">
                 THỐNG NHẤT MÔ HÌNH <br>
                 <span class="gold-gradient-text">HỆ SINH THÁI TGROUP</span>
               </h1>
@@ -543,27 +528,27 @@
           <div class="grid grid-cols-1 md:grid-cols-5 gap-3.5 mt-2">
             <div class="p-4 bg-white/75 backdrop-blur-md border border-gold/30 rounded-xl hover:border-gold hover:shadow-[0_8px_20px_rgba(184,151,90,0.15)] transition">
               <span class="text-xs font-bold text-brand block mb-1 uppercase tracking-wider"></span>
-              <div class="text-15 font-bold text-green-900 mb-1">1. NHÌN LẠI QUÝ III NĂM 2026</div>
+              <div class="font-bold text-green-900 mb-1">1. NHÌN LẠI QUÝ III NĂM 2026</div>
               <p class="text-[13.5px] text-ink-muted leading-relaxed">Đánh giá kết quả kinh doanh và các điểm nghẽn trong phối hợp giữa các BU.</p>
             </div>
             <div class="p-4 bg-white/75 backdrop-blur-md border border-gold/30 rounded-xl hover:border-gold hover:shadow-[0_8px_20px_rgba(184,151,90,0.15)] transition">
               <span class="text-xs font-bold text-brand block mb-1 uppercase tracking-wider"></span>
-              <div class="text-15 font-bold text-green-900 mb-1">2. THỐNG NHẤT MÔ HÌNH</div>
+              <div class="font-bold text-green-900 mb-1">2. THỐNG NHẤT MÔ HÌNH</div>
               <p class="text-[13.5px] text-ink-muted leading-relaxed">Xác lập rõ 02 Group Kinh doanh trong hệ sinh thái Tgroup.</p>
             </div>
             <div class="p-4 bg-white/75 backdrop-blur-md border border-gold/30 rounded-xl hover:border-gold hover:shadow-[0_8px_20px_rgba(184,151,90,0.15)] transition">
               <span class="text-xs font-bold text-brand block mb-1 uppercase tracking-wider"></span>
-              <div class="text-15 font-bold text-green-900 mb-1">3. PHÂN ĐỊNH TRÁCH NHIỆM</div>
+              <div class="font-bold text-green-900 mb-1">3. PHÂN ĐỊNH TRÁCH NHIỆM</div>
               <p class="text-[13.5px] text-ink-muted leading-relaxed">Rõ người, rõ việc: HĐQT, Ban PTKD, Khối Hỗ trợ và Giám đốc điều hành các BU.</p>
             </div>
             <div class="p-4 bg-white/75 backdrop-blur-md border border-gold/30 rounded-xl hover:border-gold hover:shadow-[0_8px_20px_rgba(184,151,90,0.15)] transition">
               <span class="text-xs font-bold text-brand block mb-1 uppercase tracking-wider"></span>
-              <div class="text-15 font-bold text-green-900 mb-1">4. CHUẨN HÓA CHÍNH SÁCH VẬN HÀNH</div>
+              <div class="font-bold text-green-900 mb-1">4. CHUẨN HÓA CHÍNH SÁCH VẬN HÀNH</div>
               <p class="text-[13.5px] text-ink-muted leading-relaxed">Hợp nhất chính sách nhân sự, giờ giấc, phúc lợi, công tác phí và lưu trữ dữ liệu.</p>
             </div>
             <div class="p-4 bg-white/75 backdrop-blur-md border border-gold/30 rounded-xl hover:border-gold hover:shadow-[0_8px_20px_rgba(184,151,90,0.15)] transition">
               <span class="text-xs font-bold text-brand block mb-1 uppercase tracking-wider"></span>
-              <div class="text-15 font-bold text-green-900 mb-1">5. KẾ HOẠCH HÀNH ĐỘNG TỪ QUÝ IV NĂM 2026</div>
+              <div class="font-bold text-green-900 mb-1">5. KẾ HOẠCH HÀNH ĐỘNG TỪ QUÝ IV NĂM 2026</div>
               <p class="text-[13.5px] text-ink-muted leading-relaxed">Kế hoạch hành động Q4/2026 để chính thức vận hành mượt mà từ 01/01/2027.</p>
             </div>
           </div>
@@ -659,7 +644,7 @@
               <!-- Cột 3: Khối Hỗ trợ & Khối Vận hành Kinh doanh -->
               <div class="h-col min-w-[280px] flex flex-col gap-3 justify-between">
                 <!-- Khối Hỗ Trợ -->
-                <div class="p-3 bg-gold-soft/50 border-l-4 border-gold rounded-lg shadow-xs space-y-2">
+                <div class="p-3 bg-gold-soft/50 border-l-4 border-gold rounded-lg space-y-2">
                   <b class="text-[11px] text-brand uppercase block border-b border-gold/30 pb-1">Khối Hỗ Trợ & Phát Triển Doanh Nghiệp</b>
                   <div class="text-[10.5px] space-y-1.5 text-ink">
                     <div class="bg-white p-1.5 rounded border border-borderLine">
@@ -678,7 +663,7 @@
                 </div>
 
                 <!-- Khối Vận Hành -->
-                <div class="p-3 bg-[#e4efe8] border-l-4 border-brand-2 rounded-lg shadow-xs">
+                <div class="p-3 bg-[#e4efe8] border-l-4 border-brand-2 rounded-lg">
                   <b class="text-[11px] text-brand-2 uppercase block">Khối Vận Hành Kinh Doanh</b>
                 </div>
               </div>
@@ -691,7 +676,7 @@
               <!-- Cột 5: Hai Cụm Doanh Nghiệp Thành Viên -->
               <div class="h-col min-w-[340px] flex flex-col gap-3 justify-center">
                 <!-- WePlus Group -->
-                <div class="p-3 bg-white border border-gold/50 rounded-lg shadow-xs">
+                <div class="p-3 bg-white border border-gold/50 rounded-lg">
                   <div class="flex items-center justify-between mb-1">
                     <b class="text-xs text-brand">WEPLUS⁺ GROUP</b>
                     <span class="text-[9px] bg-[#111e19] text-gold font-bold px-2 py-0.5 rounded border border-gold/30">Dịch vụ</span>
@@ -715,7 +700,7 @@
                 </div>
 
                 <!-- WeWall Group -->
-                <div class="p-3 bg-white border border-borderLine rounded-lg shadow-xs">
+                <div class="p-3 bg-white border border-borderLine rounded-lg">
                   <div class="flex items-center justify-between mb-1">
                     <b class="text-xs text-ink">WEWALL GROUP</b>
                     <span class="text-[9px] bg-[#111e19] text-gold font-bold px-2 py-0.5 rounded border border-gold/30">Sản xuất</span>
@@ -870,50 +855,50 @@
         title: "WEPLUS⁺ HANDBOOK 2026<BR>",
         subtitle: "<BR>Phần 1: Kiến Trúc 6 Module",
         content: `
-          <p class="text-s text-ink-muted mb-3.5 text-center max-w-2xl mx-auto">
+          <p class="text-ink-muted mb-3.5 text-center max-w-2xl mx-auto">
             Xây dựng <strong>"Sổ Tay Nhân Viên Trực Tuyến - Cổng Tra Cứu Toàn Tập Đoàn"</strong> số hóa phiên bản 2026 đồng bộ toàn bộ thông tin của hệ sinh thái, xóa bỏ tình trạng "mỗi công ty một kiểu" và lưu trữ phân tán.
           </p>
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-3.5">
-            <div class="p-3.5 bg-white/90 border border-borderLine rounded-xl text-center hover:border-gold transition shadow-xs flex flex-col items-center">
+            <div class="p-3.5 bg-white/90 border border-borderLine rounded-xl text-center hover:border-gold transition flex flex-col items-center">
               <div class="w-8 h-8 rounded-lg bg-gold-soft/80 flex items-center justify-center text-brand mb-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
               </div>
               <strong class="text-xs text-brand block mb-1">01. Sơ Đồ Tổ Chức</strong>
               <p class="text-[10px] text-ink-muted">Cấu trúc toàn diện: BOD, các Ban chức năng và 02 Business Clusters.</p>
             </div>
-            <div class="p-3.5 bg-white/90 border border-borderLine rounded-xl text-center hover:border-gold transition shadow-xs flex flex-col items-center">
+            <div class="p-3.5 bg-white/90 border border-borderLine rounded-xl text-center hover:border-gold transition flex flex-col items-center">
               <div class="w-8 h-8 rounded-lg bg-gold-soft/80 flex items-center justify-center text-brand mb-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
               </div>
               <strong class="text-xs text-brand block mb-1">02. Văn Hóa & Nội Quy</strong>
               <p class="text-[10px] text-ink-muted">Khung giờ làm việc, trang phục chuẩn, chuẩn mực 5S và lịch hoạt động năm.</p>
             </div>
-            <div class="p-3.5 bg-white/90 border border-borderLine rounded-xl text-center hover:border-gold transition shadow-xs flex flex-col items-center">
+            <div class="p-3.5 bg-white/90 border border-borderLine rounded-xl text-center hover:border-gold transition flex flex-col items-center">
               <div class="w-8 h-8 rounded-lg bg-gold-soft/80 flex items-center justify-center text-brand mb-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
               </div>
               <strong class="text-xs text-brand block mb-1">03. Chính Sách Nhân Sự</strong>
               <p class="text-[10px] text-ink-muted">Chế độ hợp đồng, nghỉ việc riêng có lương, chấm công vân tay và đánh giá KPI.</p>
             </div>
-            <div class="p-3.5 bg-white/90 border border-borderLine rounded-xl text-center hover:border-gold transition shadow-xs flex flex-col items-center">
+            <div class="p-3.5 bg-white/90 border border-borderLine rounded-xl text-center hover:border-gold transition flex flex-col items-center">
               <div class="w-8 h-8 rounded-lg bg-gold-soft/80 flex items-center justify-center text-brand mb-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
               </div>
               <strong class="text-xs text-brand block mb-1">04. Phúc Lợi & Công Tác Phí</strong>
               <p class="text-[10px] text-ink-muted">Khám sức khỏe, quỹ sinh nhật, team building và máy tính công tác phí tự động.</p>
             </div>
-            <div class="p-3.5 bg-white/90 border border-borderLine rounded-xl text-center hover:border-gold transition shadow-xs flex flex-col items-center">
+            <div class="p-3.5 bg-white/90 border border-borderLine rounded-xl text-center hover:border-gold transition flex flex-col items-center">
               <div class="w-8 h-8 rounded-lg bg-gold-soft/80 flex items-center justify-center text-brand mb-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg>
               </div>
               <strong class="text-xs text-brand block mb-1">05. Ngăn Lưu Trữ Văn Thư</strong>
               <p class="text-[10px] text-ink-muted">Kho mẫu tài liệu chuẩn Google Drive/NAS: đề xuất, tạm ứng, HĐLĐ, Brand Assets.</p>
             </div>
-            <div class="p-3.5 bg-gold-soft/90 border border-gold/50 rounded-xl text-center shadow-xs flex flex-col items-center">
+            <div class="p-3.5 bg-gold-soft/90 border border-gold/50 rounded-xl text-center flex flex-col items-center">
               <div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-gold mb-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
               </div>
-              <strong class="text-s text-brand block mb-1">06. Cổng Nghỉ Phép Số</strong>
+              <strong class="text-brand block mb-1">06. Cổng Nghỉ Phép Số</strong>
               <p class="text-[11px] text-brand-2 font-medium">Tự động xác thực email, tính ngày phép và gửi duyệt trực tiếp qua hệ thống.</p>
             </div>
           </div>
@@ -929,7 +914,7 @@
         content: `
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-1 text-xs">
             <!-- Công cụ 1: Máy tính công tác phí -->
-            <div class="p-4 bg-white/90 border border-borderLine rounded-xl shadow-xs flex flex-col justify-between">
+            <div class="p-4 bg-white/90 border border-borderLine rounded-xl flex flex-col justify-between">
               <div>
                 <div class="flex items-center gap-2.5 mb-2 pb-2 border-b border-borderLine">
                   <div class="w-6 h-6 rounded bg-gold-soft flex items-center justify-center text-brand">
@@ -952,7 +937,7 @@
             </div>
 
             <!-- Công cụ 2: Ngăn lưu trữ Văn thư -->
-            <div class="p-4 bg-white/90 border border-borderLine rounded-xl shadow-xs flex flex-col justify-between">
+            <div class="p-4 bg-white/90 border border-borderLine rounded-xl flex flex-col justify-between">
               <div>
                 <div class="flex items-center gap-2.5 mb-2 pb-2 border-b border-borderLine">
                   <div class="w-6 h-6 rounded bg-gold-soft flex items-center justify-center text-brand">
@@ -1122,32 +1107,32 @@
         subtitle: "Hoàn Thiện Nền Tảng Để Sẵn Sàng Vận Hành 2027",
         content: `
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-3.5 mt-2">
-            <div class="p-4 bg-white border border-borderLine rounded-xl shadow-xs hover:border-gold transition">
+            <div class="p-4 bg-white border border-borderLine rounded-xl hover:border-gold transition">
               <span class="text-xs font-bold text-gold uppercase tracking-wider block mb-1">Giai đoạn 01</span>
               <h4 class="font-bold text-xs text-brand mb-2">Chốt Cơ Cấu Tổ Chức</h4>
               <p class="text-[11px] text-ink-muted leading-relaxed">Ban hành sơ đồ tổ chức chính thức gồm HĐQT, Ban PTKD, Khối Hỗ trợ và 2 Cụm.</p>
             </div>
-            <div class="p-4 bg-white border border-borderLine rounded-xl shadow-xs hover:border-gold transition">
+            <div class="p-4 bg-white border border-borderLine rounded-xl hover:border-gold transition">
               <span class="text-xs font-bold text-gold uppercase tracking-wider block mb-1">Giai đoạn 02</span>
               <h4 class="font-bold text-xs text-brand mb-2">Đồng Bộ Nhận Diện WePlus⁺</h4>
               <p class="text-[11px] text-ink-muted leading-relaxed">Chuẩn hóa Logo, Brand Guidelines, Template slide báo cáo và danh thiếp dùng chung.</p>
             </div>
-            <div class="p-4 bg-white border border-borderLine rounded-xl shadow-xs hover:border-gold transition">
+            <div class="p-4 bg-white border border-borderLine rounded-xl hover:border-gold transition">
               <span class="text-xs font-bold text-gold uppercase tracking-wider block mb-1">Giai đoạn 03</span>
               <h4 class="font-bold text-xs text-brand mb-2">Phê Duyệt Handbook 2026</h4>
               <p class="text-[11px] text-ink-muted leading-relaxed">HĐQT ký duyệt văn bản Handbook chính thức để áp dụng từ 01/11/2026.</p>
             </div>
-            <div class="p-4 bg-white border border-borderLine rounded-xl shadow-xs hover:border-gold transition">
+            <div class="p-4 bg-white border border-borderLine rounded-xl hover:border-gold transition">
               <span class="text-xs font-bold text-gold uppercase tracking-wider block mb-1">Giai đoạn 04</span>
               <h4 class="font-bold text-xs text-brand mb-2">Đồng Bộ Biểu Mẫu Chuẩn</h4>
               <p class="text-[11px] text-ink-muted leading-relaxed">Đưa toàn bộ mẫu HĐLĐ, Proposal, Báo giá, Tạm ứng lên ngăn lưu trữ trực tuyến.</p>
             </div>
-            <div class="p-4 bg-white border border-borderLine rounded-xl shadow-xs hover:border-gold transition">
+            <div class="p-4 bg-white border border-borderLine rounded-xl hover:border-gold transition">
               <span class="text-xs font-bold text-gold uppercase tracking-wider block mb-1">Giai đoạn 05</span>
               <h4 class="font-bold text-xs text-brand mb-2">Kiểm Thử Cổng Nghỉ Phép</h4>
               <p class="text-[11px] text-ink-muted leading-relaxed">Triển khai thử nghiệm quy trình gửi đơn phép số hóa tại ePlus⁺ và Engage⁺.</p>
             </div>
-            <div class="p-4 bg-brand text-white rounded-xl shadow-xs p-4 flex flex-col justify-between">
+            <div class="p-4 bg-brand text-white rounded-xl flex flex-col justify-between">
               <div>
                 <span class="text-xs font-bold text-gold uppercase tracking-wider block mb-1">Giai đoạn 06</span>
                 <h4 class="font-bold text-xs text-gold-light mb-2">Kích Hoạt Vận Hành 2027</h4>
@@ -1209,7 +1194,6 @@
       const formattedTotal = String(totalSlides).padStart(2, '0');
 
       document.getElementById('slideCounterLabel').innerText = `${formattedCur}/${formattedTotal}`;
-      document.getElementById('slideIndicator').innerText = `${formattedCur} / ${formattedTotal}`;
 
       if (slide.type === 'cover' || slide.type === 'closing') {
         container.className = 'slide-page slide-dark-metal rounded-2xl relative min-h-[640px] flex flex-col justify-between overflow-hidden text-white';
@@ -1247,11 +1231,7 @@
       list.innerHTML = SLIDES.map((s, i) => {
         const titleText = (s.title || (s.type === 'cover' ? 'Trang Bìa' : 'Lời Kết')).toUpperCase();
         return `
-          <button onclick="goToSlide(${i})" style="transition-delay: ${i * 30}ms" class="drawer-item w-full text-left px-3.5 py-2.5 text-xs rounded-xl transition-all duration-300 flex items-center justify-between group border ${
-            currentSlide === i 
-              ? 'bg-gradient-to-r from-gold-soft/90 to-white/95 font-bold text-brand border-gold/50 shadow-xs' 
-              : 'border-transparent text-ink-muted hover:bg-white/70 hover:border-gold/20 hover:text-brand'
-          }">
+          <button onclick="goToSlide(${i})" style="transition-delay: ${i * 30}ms" class="drawer-item w-full text-left px-3.5 py-2.5 text-xs rounded-xl transition-all duration-300 flex items-center justify-between group border ${ currentSlide === i ? 'bg-gradient-to-r from-gold-soft/90 to-white/95 font-bold text-brand border-gold/50' : 'border-transparent text-ink-muted hover:bg-white/70 hover:border-gold/20 hover:text-brand' }">
             <span class="truncate pr-2 group-hover:translate-x-1 transition-transform">
               ${String(i + 1).padStart(2, '0')}. ${titleText}
             </span>
@@ -1318,6 +1298,25 @@
         overlay.classList.remove('open');
       }
     });
+
+    // Vuốt tay chuyển slide (mobile): vuốt trái = slide sau, vuốt phải = slide trước
+    let touchStartX = 0, touchStartY = 0;
+    document.addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    document.addEventListener('touchend', function(e) {
+      const heroEl = document.getElementById('hero');
+      if (heroEl && !heroEl.classList.contains('out')) return; // đang ở màn intro thì không vuốt
+      const drawer = document.getElementById('slideDrawer');
+      if (drawer && drawer.classList.contains('open')) return; // đang mở mục lục thì không vuốt
+      if (e.target.closest('.overflow-x-auto')) return; // đang cuộn bảng ngang thì không chuyển slide
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) nextSlide(); else prevSlide();
+      }
+    }, { passive: true });
 
     window.onload = function() {
       initDeck();
