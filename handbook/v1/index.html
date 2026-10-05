@@ -36,7 +36,7 @@
 }
 *{box-sizing:border-box;overflow-wrap:break-word;word-break:break-word}
 html{scroll-behavior:smooth;height:100%}
-body{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.6;font-size:13.5px;min-height:100vh;display:flex;flex-direction:column;position:relative;overflow-x:hidden}
+body{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.6;font-size:13.5px;min-height:100vh;display:flex;flex-direction:column;position:relative;overflow-x:hidden;padding-bottom:72px}
 body.lock{overflow:hidden}
 body::before,body::after{content:"";position:fixed;width:900px;height:900px;border-radius:50%;pointer-events:none;z-index:0;opacity:.35;filter:blur(100px);will-change:transform}
 body::before{background:radial-gradient(circle at 30% 30%,rgba(184,151,90,.28),rgba(184,151,90,.08) 40%,transparent 70%);top:-200px;left:-200px;animation:floatA 34s var(--ease) infinite alternate}
@@ -203,8 +203,8 @@ tbody tr:last-child td{border-bottom:none}tbody tr:nth-child(even){background:#f
 .calc input:focus,.calc select:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(12,46,36,.08)}
 .res{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;padding:12px 14px;border-radius:10px;margin-top:10px;font-size:12.5px;margin-left:22px;margin-right:12px;box-shadow:0 8px 24px rgba(12,46,36,.18)}
 .res b{color:var(--accent-light)}.res.big{font-size:18px;font-weight:800}
-footer{margin-top:40px;padding:16px;text-align:center;color:var(--muted);font-size:10px;border-top:1px solid var(--line)}
-#toTop{position:fixed;right:14px;bottom:14px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border:0;border-radius:12px;width:40px;height:40px;cursor:pointer;display:none;font-size:16px;box-shadow:0 8px 24px rgba(12,46,36,.25);z-index:50;transition:.45s var(--ease-bounce)}
+footer{position:fixed;bottom:0;left:0;right:0;z-index:40;background:var(--bg);padding:12px 16px;text-align:center;color:var(--muted);font-size:10px;border-top:1px solid var(--line)}
+#toTop{position:fixed;right:14px;bottom:84px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border:0;border-radius:12px;width:40px;height:40px;cursor:pointer;display:none;font-size:16px;box-shadow:0 8px 24px rgba(12,46,36,.25);z-index:50;transition:.45s var(--ease-bounce)}
 #toTop:hover{transform:translateY(-4px) scale(1.08)}
 #prog{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light),#e8dcc0,var(--accent));background-size:300% 100%;transform:scaleX(0);transform-origin:left;z-index:60;box-shadow:0 0 12px rgba(184,151,90,.6);animation:goldShift 3s linear infinite}
 
@@ -258,6 +258,7 @@ const HB_CONTENT_URL = "";
 const HB_CACHE_KEY = "hb_content_v1";
 let HB_DATA = null;   // {tabs:[...]} — nội dung các tab
 let HB_RATES = null;  // {levels:[...], airport:n} — bảng giá công tác phí
+let HB_FOOTER = null; // [dòng 1, dòng 2] — chữ footer lấy từ Sheet (0_CAU_HINH)
 
 /* ===== NỘI DUNG DỰ PHÒNG nhúng sẵn (dùng khi chưa cấu hình URL hoặc mất mạng) =====
    Được sinh tự động từ nội dung hiện tại. Khi sheet có dữ liệu mới, web ưu tiên sheet. */
@@ -277,20 +278,22 @@ async function loadContent(){
         HB_DATA = {tabs:j.tabs};
         HB_RATES = (j.config && j.config.calc_rates && j.config.calc_rates.levels && j.config.calc_rates.levels.length)
           ? j.config.calc_rates : HB_FALLBACK_RATES;
-        try{ localStorage.setItem(HB_CACHE_KEY, JSON.stringify({tabs:HB_DATA.tabs, rates:HB_RATES, ts:Date.now()})); }catch(e){}
+        HB_FOOTER = (j.config && j.config.footer_lines && j.config.footer_lines.length) ? j.config.footer_lines : null;
+        try{ localStorage.setItem(HB_CACHE_KEY, JSON.stringify({tabs:HB_DATA.tabs, rates:HB_RATES, footer:HB_FOOTER, ts:Date.now()})); }catch(e){}
         return;
       }
     }catch(e){ /* rớt xuống dùng bản lưu / nhúng sẵn */ }
   }
   try{
     const c = JSON.parse(localStorage.getItem(HB_CACHE_KEY)||"null");
-    if(c && c.tabs && c.tabs.length){ HB_DATA={tabs:c.tabs}; HB_RATES=c.rates||HB_FALLBACK_RATES; return; }
+    if(c && c.tabs && c.tabs.length){ HB_DATA={tabs:c.tabs}; HB_RATES=c.rates||HB_FALLBACK_RATES; HB_FOOTER=c.footer||null; return; }
   }catch(e){}
   HB_DATA = {tabs: HB_FALLBACK_TABS};
   HB_RATES = HB_FALLBACK_RATES;
+  HB_FOOTER = null;
 }
 
-const HANDBOOK_META={title:"WePlus⁺ Handbook 2026",footer:"© 2026 Le Ha — Drafted for WePlus⁺<br>Internal Use Only | v1.3",logoWhite:"https://leha-os.github.io/assets/logoweplus_white_transparent.png"}
+const HANDBOOK_META={title:"WePlus⁺ Handbook 2026",footer:"© 2026 Tgroup Ecosystem · WePlus⁺ Group | Handbook v1.3<br>Tài liệu chính thức – Lưu hành nội bộ",logoWhite:"https://leha-os.github.io/assets/logoweplus_white_transparent.png"}
 const STATUS_LABEL={OFFICIAL:"CHÍNH THỨC",DRAFT:"CẦN PHÊ DUYỆT",NEEDS_ALIGNMENT:"CẦN THỐNG NHẤT",MISSING:"CHƯA CÓ THÔNG TIN",PROPOSED:"ĐỀ XUẤT",PENDING:"CHỜ XÁC NHẬN"}
 const esc=s=>s==null?"":String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const badge=st=>!st||!STATUS_LABEL[st]?"":`<span class="st ${st}">${STATUS_LABEL[st]}</span>`;
@@ -371,10 +374,17 @@ function calcUpdate(){
 function renderCompanyPick(){
   return `<div style="margin-bottom:6px;margin-left:22px">${["Tất cả","Engage⁺","ePlus⁺","Enabler⁺"].map((x,i)=>`<button class="cpick${i===0?" on":""}" data-c="${i}">${x}</button>`).join("")}</div>`;
 }
+function footerHtml(){
+  // Dòng 1 in đậm, dòng 2 xám nhạt. Ưu tiên chữ từ Sheet, rớt xuống dùng chữ nhúng sẵn.
+  let l1="",l2="";
+  if(HB_FOOTER && HB_FOOTER.length){ l1=HB_FOOTER[0]||""; l2=HB_FOOTER[1]||""; }
+  else{ const p=String(HANDBOOK_META.footer).split(/<br\s*\/?>/i); l1=p[0]||""; l2=p.slice(1).join(" ")||""; }
+  return `<div style="font-weight:700">${esc(l1)}</div>`+(l2?`<div style="color:#a09a8e">${esc(l2)}</div>`:"");
+}
 function renderChrome(){
   const M=HANDBOOK_META;
   document.getElementById("logo").innerHTML=`<img class="lw" src="${M.logoWhite}" alt="WePlus⁺" loading="lazy">`;
-  document.getElementById("foot").innerHTML=M.footer;
+  document.getElementById("foot").innerHTML=footerHtml();
 }
 function initHero(){
   const h=document.getElementById("hero"),M=HANDBOOK_META;
@@ -709,6 +719,7 @@ function renderSections(){
 async function init(){
   renderChrome();
   await loadContent();
+  document.getElementById("foot").innerHTML=footerHtml(); // vẽ lại footer bằng chữ từ Sheet
   renderSections();
   renderLeavePortal();
   initTabs();
