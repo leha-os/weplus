@@ -1,0 +1,1103 @@
+<!--
+================================================================
+WEPLUS — BRAND GUIDELINES 2026
+BRIEF HƯỚNG DẪN CHỈNH SỬA (đọc trước khi sửa)
+================================================================
+1. MỞ FILE: mở file này bằng Chrome là xem được. Giữ nguyên thư
+   mục assets/ nằm cạnh file — ảnh load từ đó.
+
+2. ĐỔI ẢNH: thay file trong thư mục assets/ (giữ nguyên tên file)
+   là ảnh mới hiện ngay, không cần đụng code:
+   - logo-green.png             : logo xanh trên nền sáng
+   - logo-white.png             : logo trắng trên nền tối
+   - cover.jpg                  : ảnh nền trang bìa
+   - mockup-business-card.webp  : mockup danh thiếp (Phần 7)
+   - mockup-reception-wall.webp : mockup tường lễ tân (Phần 7)
+   - mockup-stationery.webp     : mockup văn phòng phẩm (Phần 7)
+
+3. CẤU TRÚC TRANG (tìm đúng tên KHỐI trong code để sửa):
+   - THANH ĐIỀU HƯỚNG (NAV) — menu trên cùng
+   - TRANG BÌA (HERO)        — màn hình đầu tiên
+   - LỜI MỞ ĐẦU (STATEMENT)  — tuyên ngôn thương hiệu
+   - PHẦN 01 — CONCEPT       — ý tưởng thương hiệu
+   - PHẦN 02 — LOGO          — 2 biến thể logo
+   - PHẦN 03 — MÀU SẮC       — bảng màu (sửa mã HEX ở đây)
+   - PHẦN 04 — CHỮ           — typography
+   - PHẦN 05 — VÙNG AN TOÀN  — clear space
+   - PHẦN 06 — LỖI           — 6 ô demo cách dùng sai
+   - PHẦN 07 — ỨNG DỤNG      — 3 ảnh mockup
+   - CHÂN TRANG (FOOTER)     — cuối trang + nút tải
+
+4. ĐỔI CỠ LOGO: tìm khối "CỠ LOGO" trong thẻ style ở đầu file,
+   sửa con số px là đổi cỡ ngay.
+
+5. XÓA 1 PHẦN: xóa nguyên cụm từ dòng banner
+   (dòng toàn dấu bằng) đến trước banner của khối kế tiếp.
+
+6. KHÔNG SỬA: khối "THƯ VIỆN GIAO DIỆN" (Tailwind) và
+   khối JAVASCRIPT cuối file nếu không rành.
+================================================================
+-->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WePlus — Brand Guidelines 2026</title>
+
+  <!-- Chữ từ Google Fonts (cần mạng lần đầu, sau đó trình duyệt tự nhớ) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Montserrat:ital,wght@1,800&display=swap" rel="stylesheet">
+
+  <!-- ============================================================
+       THƯ VIỆN GIAO DIỆN (Tailwind CSS biên dịch sẵn)
+       KHÔNG SỬA khối này.
+       ============================================================ -->
+  <style>*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.18 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.-inset-20{inset:-5rem}.-inset-4{inset:-1rem}.-inset-\[28px\]{inset:-28px}.inset-0{inset:0}.inset-x-0{left:0;right:0}.-left-6{left:-1.5rem}.-right-2{right:-.5rem}.-top-\[30\%\]{top:-30%}.bottom-0{bottom:0}.left-1\/2{left:50%}.left-4{left:1rem}.right-0{right:0}.right-6{right:1.5rem}.top-0{top:0}.top-4{top:1rem}.top-6{top:1.5rem}.top-\[38\%\]{top:38%}.z-50{z-index:50}.order-1{order:1}.order-2{order:2}.mx-auto{margin-left:auto;margin-right:auto}.-mt-\[1px\]{margin-top:-1px}.mb-1{margin-bottom:.25rem}.mb-10{margin-bottom:2.5rem}.mb-12{margin-bottom:3rem}.mb-14{margin-bottom:3.5rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-2{margin-left:.5rem}.ml-\[0\.62em\]{margin-left:.62em}.ml-\[2px\]{margin-left:2px}.mt-1{margin-top:.25rem}.mt-10{margin-top:2.5rem}.mt-12{margin-top:3rem}.mt-14{margin-top:3.5rem}.mt-2{margin-top:.5rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.mt-auto{margin-top:auto}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.aspect-\[4\/3\]{aspect-ratio:4/3}.h-2{height:.5rem}.h-6{height:1.5rem}.h-\[1px\]{height:1px}.h-\[200px\]{height:200px}.h-\[64px\]{height:64px}.h-\[70px\]{height:70px}.h-\[900px\]{height:900px}.h-\[96px\]{height:96px}.h-auto{height:auto}.h-full{height:100%}.min-h-\[460px\]{min-height:460px}.min-h-\[92vh\]{min-height:92vh}.min-h-screen{min-height:100vh}.w-16{width:4rem}.w-2{width:.5rem}.w-4{width:1rem}.w-6{width:1.5rem}.w-8{width:2rem}.w-\[120px\]{width:120px}.w-\[1px\]{width:1px}.w-\[260px\]{width:260px}.w-\[280px\]{width:280px}.w-\[50\%\]{width:50%}.w-\[900px\]{width:900px}.w-full{width:100%}.max-w-\[1280px\]{max-width:1280px}.max-w-\[280px\]{max-width:280px}.max-w-\[320px\]{max-width:320px}.max-w-\[400px\]{max-width:400px}.max-w-\[420px\]{max-width:420px}.max-w-\[460px\]{max-width:460px}.max-w-\[520px\]{max-width:520px}.flex-1{flex:1 1 0%}.origin-left{transform-origin:left}.-translate-x-1\/2{--tw-translate-x:-50%}.-translate-x-1\/2,.rotate-12{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rotate-12{--tw-rotate:12deg}.scale-x-\[1\.4\]{--tw-scale-x:1.4}.scale-x-\[1\.4\],.scale-x-\[1\.6\]{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.scale-x-\[1\.6\]{--tw-scale-x:1.6}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.items-baseline{align-items:baseline}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-10{gap:2.5rem}.gap-12{gap:3rem}.gap-16{gap:4rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.gap-\[1px\]{gap:1px}.space-y-10>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2.5rem*var(--tw-space-y-reverse))}.space-y-3>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.75rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.75rem*var(--tw-space-y-reverse))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.space-y-6>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem*var(--tw-space-y-reverse))}.space-y-8>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem*var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.whitespace-nowrap{white-space:nowrap}.rounded-full{border-radius:9999px}.border{border-width:1px}.border-y{border-top-width:1px}.border-b,.border-y{border-bottom-width:1px}.border-l{border-left-width:1px}.border-r{border-right-width:1px}.border-t{border-top-width:1px}.border-dashed{border-style:dashed}.border-\[\#0A2E1F\]\/10{border-color:rgba(10,46,31,.1)}.border-\[\#0A2E1F\]\/15{border-color:rgba(10,46,31,.15)}.border-\[\#0A2E1F\]\/20{border-color:rgba(10,46,31,.2)}.border-\[\#0A2E1F\]\/5{border-color:rgba(10,46,31,.05)}.border-\[\#C88A6A\]\/30{border-color:hsla(20,46%,60%,.3)}.border-\[\#C88A6A\]\/40{border-color:hsla(20,46%,60%,.4)}.border-white\/10{border-color:hsla(0,0%,100%,.1)}.border-white\/15{border-color:hsla(0,0%,100%,.15)}.border-white\/20{border-color:hsla(0,0%,100%,.2)}.border-white\/5{border-color:hsla(0,0%,100%,.05)}.bg-\[\#071A12\]{--tw-bg-opacity:1;background-color:rgb(7 26 18/var(--tw-bg-opacity,1))}.bg-\[\#0A2E1F\]{--tw-bg-opacity:1;background-color:rgb(10 46 31/var(--tw-bg-opacity,1))}.bg-\[\#0A2E1F\]\/10{background-color:rgba(10,46,31,.1)}.bg-\[\#0A2E1F\]\/15{background-color:rgba(10,46,31,.15)}.bg-\[\#0A2E1F\]\/85{background-color:rgba(10,46,31,.85)}.bg-\[\#113A29\]{--tw-bg-opacity:1;background-color:rgb(17 58 41/var(--tw-bg-opacity,1))}.bg-\[\#B87D62\]{--tw-bg-opacity:1;background-color:rgb(184 125 98/var(--tw-bg-opacity,1))}.bg-\[\#C88A6A\]{--tw-bg-opacity:1;background-color:rgb(200 138 106/var(--tw-bg-opacity,1))}.bg-\[\#C88A6A\]\/40{background-color:hsla(20,46%,60%,.4)}.bg-\[\#C88A6A\]\/5{background-color:hsla(20,46%,60%,.05)}.bg-\[\#C88A6A\]\/\[0\.08\]{background-color:hsla(20,46%,60%,.08)}.bg-\[\#C8C8C8\]{--tw-bg-opacity:1;background-color:rgb(200 200 200/var(--tw-bg-opacity,1))}.bg-\[\#EDE9E3\]{--tw-bg-opacity:1;background-color:rgb(237 233 227/var(--tw-bg-opacity,1))}.bg-\[\#F5F5F0\]{--tw-bg-opacity:1;background-color:rgb(245 245 240/var(--tw-bg-opacity,1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0/var(--tw-bg-opacity,1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-white\/10{background-color:hsla(0,0%,100%,.1)}.bg-white\/15{background-color:hsla(0,0%,100%,.15)}.bg-white\/20{background-color:hsla(0,0%,100%,.2)}.bg-white\/5{background-color:hsla(0,0%,100%,.05)}.bg-gradient-to-b{background-image:linear-gradient(to bottom,var(--tw-gradient-stops))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right,var(--tw-gradient-stops))}.from-\[\#113A29\]{--tw-gradient-from:#113a29 var(--tw-gradient-from-position);--tw-gradient-to:rgba(17,58,41,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-\[\#C88A6A\]\/10{--tw-gradient-from:hsla(20,46%,60%,.1) var(--tw-gradient-from-position);--tw-gradient-to:hsla(20,46%,60%,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-transparent{--tw-gradient-from:transparent var(--tw-gradient-from-position);--tw-gradient-to:transparent var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-white\/30{--tw-gradient-from:hsla(0,0%,100%,.3) var(--tw-gradient-from-position);--tw-gradient-to:hsla(0,0%,100%,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.via-\[\#0A2E1F\]{--tw-gradient-to:rgba(10,46,31,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),#0a2e1f var(--tw-gradient-via-position),var(--tw-gradient-to)}.via-\[\#C88A6A\]\/40{--tw-gradient-to:hsla(20,46%,60%,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),hsla(20,46%,60%,.4) var(--tw-gradient-via-position),var(--tw-gradient-to)}.via-\[\#C88A6A\]\/60{--tw-gradient-to:hsla(20,46%,60%,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),hsla(20,46%,60%,.6) var(--tw-gradient-via-position),var(--tw-gradient-to)}.to-\[\#071A12\]{--tw-gradient-to:#071a12 var(--tw-gradient-to-position)}.to-\[\#0A2E1F\]{--tw-gradient-to:#0a2e1f var(--tw-gradient-to-position)}.to-transparent{--tw-gradient-to:transparent var(--tw-gradient-to-position)}.object-contain{-o-object-fit:contain;object-fit:contain}.object-cover{-o-object-fit:cover;object-fit:cover}.p-10{padding:2.5rem}.p-3{padding:.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-1{padding-left:.25rem;padding-right:.25rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pl-6{padding-left:1.5rem}.pr-6{padding-right:1.5rem}.pt-6{padding-top:1.5rem}.pt-\[64px\]{padding-top:64px}.text-center{text-align:center}.text-right{text-align:right}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[12px\]{font-size:12px}.text-\[13px\]{font-size:13px}.text-\[14px\]{font-size:14px}.text-\[16px\]{font-size:16px}.text-\[18px\]{font-size:18px}.text-\[20px\]{font-size:20px}.text-\[24px\]{font-size:24px}.text-\[28px\]{font-size:28px}.text-\[32px\]{font-size:32px}.text-\[36px\]{font-size:36px}.text-\[40px\]{font-size:40px}.text-\[420px\]{font-size:420px}.text-\[42px\]{font-size:42px}.text-\[48px\]{font-size:48px}.text-\[52px\]{font-size:52px}.text-\[6\.5px\]{font-size:6.5px}.text-\[64px\]{font-size:64px}.text-\[6px\]{font-size:6px}.text-\[72px\]{font-size:72px}.text-\[88px\]{font-size:88px}.text-\[8px\]{font-size:8px}.text-\[9px\]{font-size:9px}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-\[400\]{font-weight:400}.font-light{font-weight:300}.font-medium{font-weight:500}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-\[0\.85\]{line-height:.85}.leading-\[0\.95\]{line-height:.95}.leading-\[1\.05\]{line-height:1.05}.leading-\[1\.15\]{line-height:1.15}.leading-\[1\.6\]{line-height:1.6}.leading-\[1\.7\]{line-height:1.7}.leading-\[1\.8\]{line-height:1.8}.leading-\[1\.9\]{line-height:1.9}.leading-\[2\]{line-height:2}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.tracking-\[-0\.04em\]{letter-spacing:-.04em}.tracking-\[0\.15em\]{letter-spacing:.15em}.tracking-\[0\.25em\]{letter-spacing:.25em}.tracking-\[0\.28em\]{letter-spacing:.28em}.tracking-\[0\.2em\]{letter-spacing:.2em}.tracking-\[0\.32em\]{letter-spacing:.32em}.tracking-\[0\.35em\]{letter-spacing:.35em}.tracking-\[0\.3em\]{letter-spacing:.3em}.tracking-\[0\.4em\]{letter-spacing:.4em}.tracking-\[0\.55em\]{letter-spacing:.55em}.tracking-\[0\.5em\]{letter-spacing:.5em}.tracking-\[0\.62em\]{letter-spacing:.62em}.tracking-\[0\.6em\]{letter-spacing:.6em}.tracking-tight{letter-spacing:-.025em}.tracking-wide{letter-spacing:.025em}.tracking-widest{letter-spacing:.1em}.text-\[\#0A2E1F\]{--tw-text-opacity:1;color:rgb(10 46 31/var(--tw-text-opacity,1))}.text-\[\#0A2E1F\]\/30{color:rgba(10,46,31,.3)}.text-\[\#0A2E1F\]\/40{color:rgba(10,46,31,.4)}.text-\[\#0A2E1F\]\/50{color:rgba(10,46,31,.5)}.text-\[\#0A2E1F\]\/60{color:rgba(10,46,31,.6)}.text-\[\#0A2E1F\]\/70{color:rgba(10,46,31,.7)}.text-\[\#113A29\]\/70{color:rgba(17,58,41,.7)}.text-\[\#C88A6A\]{--tw-text-opacity:1;color:rgb(200 138 106/var(--tw-text-opacity,1))}.text-\[\#C88A6A\]\/60{color:hsla(20,46%,60%,.6)}.text-\[\#C8C8C8\]{--tw-text-opacity:1;color:rgb(200 200 200/var(--tw-text-opacity,1))}.text-\[\#F5F5F0\]{--tw-text-opacity:1;color:rgb(245 245 240/var(--tw-text-opacity,1))}.text-blue-400{--tw-text-opacity:1;color:rgb(96 165 250/var(--tw-text-opacity,1))}.text-blue-500{--tw-text-opacity:1;color:rgb(59 130 246/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.text-white\/20{color:hsla(0,0%,100%,.2)}.text-white\/25{color:hsla(0,0%,100%,.25)}.text-white\/30{color:hsla(0,0%,100%,.3)}.text-white\/40{color:hsla(0,0%,100%,.4)}.text-white\/50{color:hsla(0,0%,100%,.5)}.text-white\/60{color:hsla(0,0%,100%,.6)}.text-white\/70{color:hsla(0,0%,100%,.7)}.text-white\/80{color:hsla(0,0%,100%,.8)}.text-white\/90{color:hsla(0,0%,100%,.9)}.opacity-50{opacity:.5}.opacity-60{opacity:.6}.opacity-95{opacity:.95}.opacity-\[0\.03\]{opacity:.03}.opacity-\[0\.06\]{opacity:.06}.mix-blend-screen{mix-blend-mode:screen}.mix-blend-lighten{mix-blend-mode:lighten}.shadow{--tw-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color),0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-\[0_20px_80px_rgba\(10\2c 46\2c 31\2c 0\.08\)\]{--tw-shadow:0 20px 80px rgba(10,46,31,.08);--tw-shadow-colored:0 20px 80px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-\[0_20px_80px_rgba\(10\2c 46\2c 31\2c 0\.12\)\]{--tw-shadow:0 20px 80px rgba(10,46,31,.12);--tw-shadow-colored:0 20px 80px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.outline{outline-style:solid}.blur-\[50px\]{--tw-blur:blur(50px)}.blur-\[50px\],.blur-\[80px\]{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.blur-\[80px\]{--tw-blur:blur(80px)}.blur-xl{--tw-blur:blur(24px)}.blur-xl,.brightness-110{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.brightness-110{--tw-brightness:brightness(1.1)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-xl{--tw-backdrop-blur:blur(24px);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}#root,body,html{min-height:100%}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}[role=button]:not([aria-disabled=true]),button:not(:disabled),label[for],select:not(:disabled),summary{cursor:pointer}.selection\:bg-\[\#C88A6A\]\/30 ::-moz-selection{background-color:hsla(20,46%,60%,.3)}.selection\:bg-\[\#C88A6A\]\/30 ::selection{background-color:hsla(20,46%,60%,.3)}.selection\:bg-\[\#C88A6A\]\/30::-moz-selection{background-color:hsla(20,46%,60%,.3)}.selection\:bg-\[\#C88A6A\]\/30::selection{background-color:hsla(20,46%,60%,.3)}.hover\:bg-\[\#B87D62\]:hover{--tw-bg-opacity:1;background-color:rgb(184 125 98/var(--tw-bg-opacity,1))}.hover\:bg-white:hover{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.hover\:text-\[\#0A2E1F\]:hover{--tw-text-opacity:1;color:rgb(10 46 31/var(--tw-text-opacity,1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}@media (min-width:640px){.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:768px){.md\:mt-0{margin-top:0}.md\:mt-12{margin-top:3rem}.md\:mt-14{margin-top:3.5rem}.md\:block{display:block}.md\:flex{display:flex}.md\:w-\[420px\]{width:420px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.md\:grid-cols-\[0\.8fr_1\.2fr\]{grid-template-columns:.8fr 1.2fr}.md\:grid-cols-\[0\.9fr_1\.1fr\]{grid-template-columns:.9fr 1.1fr}.md\:grid-cols-\[1\.1fr_0\.9fr\]{grid-template-columns:1.1fr .9fr}.md\:flex-row{flex-direction:row}.md\:gap-24{gap:6rem}.md\:p-10{padding:2.5rem}.md\:p-12{padding:3rem}.md\:p-14{padding:3.5rem}.md\:p-8{padding:2rem}.md\:px-10{padding-left:2.5rem;padding-right:2.5rem}.md\:py-20{padding-top:5rem;padding-bottom:5rem}.md\:py-24{padding-top:6rem;padding-bottom:6rem}.md\:py-28{padding-top:7rem;padding-bottom:7rem}.md\:py-32{padding-top:8rem;padding-bottom:8rem}.md\:text-\[112px\]{font-size:112px}.md\:text-\[11px\]{font-size:11px}.md\:text-\[12px\]{font-size:12px}.md\:text-\[18px\]{font-size:18px}.md\:text-\[40px\]{font-size:40px}.md\:text-\[44px\]{font-size:44px}.md\:text-\[48px\]{font-size:48px}.md\:text-\[56px\]{font-size:56px}}@media (min-width:1024px){.lg\:order-1{order:1}.lg\:order-2{order:2}.lg\:flex{display:flex}.lg\:hidden{display:none}.lg\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.lg\:grid-cols-\[0\.8fr_1\.2fr\]{grid-template-columns:.8fr 1.2fr}.lg\:grid-cols-\[0\.9fr_1\.1fr\]{grid-template-columns:.9fr 1.1fr}.lg\:grid-cols-\[1\.2fr_0\.8fr\]{grid-template-columns:1.2fr .8fr}}</style>
+
+  <!-- ============================================================
+       MÀU SẮC, CHỮ VÀ CỠ LOGO DÙNG CHUNG — SỬA Ở ĐÂY
+       ============================================================ -->
+  <style>
+/* Chữ tiêu đề (Playfair Display) */
+.serif { font-family: 'Playfair Display', serif; }
+/* Chữ nội dung (Inter) */
+.sans { font-family: 'Inter', sans-serif; }
+/* Chữ logo We nghiêng đậm (Montserrat) */
+.we-italic { font-family: 'Montserrat', sans-serif; font-style: italic; font-weight: 800; }
+
+/* Cuộn mượt khi bấm menu; chừa chỗ cho thanh nav */
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+/* ------------------------------------------------------------
+   CỠ LOGO — muốn logo to/nhỏ hơn thì sửa con số px ở đây
+   (width: auto giữ đúng tỷ lệ, không méo hình)
+   ------------------------------------------------------------ */
+.lg-nav   { height: 30px; width: auto; }  /* logo trên thanh menu */
+.lg-wm    { width: 620px; max-width: none; height: auto; mix-blend-mode: screen; }  /* logo mờ làm nền */
+.lg-anat  { width: 240px; height: auto; }  /* logo phần giải phẫu */
+.lg-spec  { height: 72px; width: auto; }  /* logo phần 2 biến thể */
+.lg-clear { height: 60px; width: auto; }  /* logo phần vùng an toàn */
+.lg-demo  { width: 104px; height: auto; }  /* logo trong 6 ô demo lỗi */
+.lg-sig   { height: 38px; width: auto; }  /* logo chữ ký email */
+.lg-slide { height: 64px; width: auto; }  /* logo mẫu slide */
+.lg-foot  { height: 46px; width: auto; }  /* logo chân trang */
+
+/* ------------------------------------------------------------
+   HIỆU ỨNG DEMO LỖI (PHẦN 06) — mỗi class tạo 1 kiểu lỗi,
+   dùng để minh họa "không được làm". Xóa class là hết lỗi.
+   ------------------------------------------------------------ */
+.demo-recolor { filter: hue-rotate(150deg) saturate(1.6); }  /* lỗi: đổi màu logo */
+.demo-shadow  { filter: drop-shadow(0 10px 14px rgba(0,0,0,.55)); }  /* lỗi: đổ bóng nặng */
+.demo-outline {  /* lỗi: viền ngoài */
+  filter: drop-shadow(1px 0 0 #C88A6A) drop-shadow(-1px 0 0 #C88A6A)
+          drop-shadow(0 1px 0 #C88A6A) drop-shadow(0 -1px 0 #C88A6A);
+}
+  </style>
+</head>
+<body>
+<!-- ========================================================
+     THANH ĐIỀU HƯỚNG (NAV)
+     Menu trên cùng. Bấm các mục để nhảy tới từng phần.
+     ======================================================== -->
+<nav class="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-[#0A2E1F]/85 border-b border-white/10">
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10 h-[64px] flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <img src="assets/logo-white.png" alt="WePlus" class="lg-nav">
+      <div class="h-6 w-[1px] bg-white/15 hidden md:block ml-2">
+      </div>
+      <span class="hidden md:block sans text-[10px] tracking-[0.2em] text-white/50 uppercase">Brand Guidelines — 2026</span>
+    </div>
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="#concept" class="sans text-[10px] tracking-[0.2em] uppercase transition text-[#C88A6A]">01 — Concept</a><a href="#variations" class="sans text-[10px] tracking-[0.2em] uppercase transition text-white/50 hover:text-white">02 — Logo</a><a href="#color" class="sans text-[10px] tracking-[0.2em] uppercase transition text-white/50 hover:text-white">03 — Màu sắc</a><a href="#typography" class="sans text-[10px] tracking-[0.2em] uppercase transition text-white/50 hover:text-white">04 — Typography</a><a href="#clearspace" class="sans text-[10px] tracking-[0.2em] uppercase transition text-white/50 hover:text-white">05 — Clear Space</a><a href="#incorrect" class="sans text-[10px] tracking-[0.2em] uppercase transition text-white/50 hover:text-white">06 — Incorrect</a><a href="#applications" class="sans text-[10px] tracking-[0.2em] uppercase transition text-white/50 hover:text-white">07 — Ứng dụng</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <button class="hidden md:flex sans text-[10px] tracking-[0.2em] uppercase border border-white/20 text-white px-5 py-2.5 hover:bg-white hover:text-[#0A2E1F] transition">REQUEST ASSETS</button><button class="lg:hidden text-white/80"><span class="sans text-[11px] tracking-widest">MENU</span></button>
+    </div>
+  </div>
+</nav>
+<!-- MENU MOBILE (chỉ hiện trên điện thoại khi bấm nút MENU) -->
+<div id="mobile-menu" class="hidden lg:hidden bg-[#0A2E1F] border-t border-white/10 px-6 py-8 flex-col gap-5 fixed top-[64px] inset-x-0 z-40">
+  <a href="#concept" class="serif text-xl text-white/70">01 — Concept</a>
+  <a href="#variations" class="serif text-xl text-white/70">02 — Logo</a>
+  <a href="#color" class="serif text-xl text-white/70">03 — Màu sắc</a>
+  <a href="#typography" class="serif text-xl text-white/70">04 — Typography</a>
+  <a href="#clearspace" class="serif text-xl text-white/70">05 — Clear Space</a>
+  <a href="#incorrect" class="serif text-xl text-white/70">06 — Incorrect</a>
+  <a href="#applications" class="serif text-xl text-white/70">07 — Ứng dụng</a>
+</div>
+
+
+<!-- ========================================================
+     TRANG BÌA (HERO)
+     Màn hình đầu tiên: logo lớn, tên 4 đơn vị, tiêu đề.
+     ======================================================== -->
+<header class="relative min-h-[92vh] bg-[#0A2E1F] flex flex-col overflow-hidden pt-[64px]">
+  <div class="absolute inset-0">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#113A29] via-[#0A2E1F] to-[#071A12]">
+    </div>
+    <div class="absolute inset-0 opacity-[0.06]" style="background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");">
+    </div>
+    <div class="absolute -top-[30%] left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-[#C88A6A]/[0.08] rounded-full blur-[80px]">
+    </div>
+    <div class="absolute bottom-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#C88A6A]/40 to-transparent">
+    </div>
+  </div>
+  <div class="relative flex-1 max-w-[1280px] mx-auto w-full px-6 md:px-10 py-12 md:py-20 flex flex-col">
+    <div class="flex justify-between items-start sans text-[10px] tracking-[0.2em] uppercase text-white/40">
+      <span>WePlus — Brand Book</span><span class="hidden md:block">Quarter III / 2026</span>
+    </div>
+    <div class="flex-1 flex flex-col items-center justify-center text-center mt-10 md:mt-0">
+      <div class="relative">
+        <div class="absolute -inset-20 bg-[#C88A6A]/5 blur-[50px] rounded-full">
+        </div>
+        <img src="assets/logo-white.png" alt="WePlus Cover Logo" class="relative w-[280px] md:w-[420px] object-contain mix-blend-lighten opacity-95">
+      </div>
+      <div class="mt-8 md:mt-12">
+        <div class="mt-10 md:mt-14 sans text-[10px] md:text-[11px] tracking-[0.35em] text-white/60 uppercase leading-relaxed">
+          <div>
+            ePlus &nbsp;·&nbsp; Engage &nbsp;·&nbsp; Enabler &nbsp;·&nbsp; GolfCare
+          </div>
+        </div>
+        <div class="mt-6 h-[1px] w-[120px] mx-auto bg-gradient-to-r from-transparent via-[#C88A6A]/60 to-transparent">
+        </div>
+        <div class="mt-6 sans text-[11px] md:text-[12px] tracking-[0.28em] text-[#C88A6A] uppercase">
+          Review &amp; Strategic Direction
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-between items-end mt-auto">
+      <div class="sans text-[9px] tracking-[0.2em] text-white/30 uppercase leading-relaxed">
+        Strictly Confidential<br>Internal Use Only
+      </div>
+      <div class="hidden md:flex items-center gap-6 sans text-[9px] tracking-[0.2em] text-white/30 uppercase">
+        <span>QUARTER III — 2026</span><span class="w-8 h-[1px] bg-white/20"></span><span>Ho Chi Minh City — Vietnam</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ========================================================
+     LỜI MỞ ĐẦU (STATEMENT)
+     Đoạn tuyên ngôn thương hiệu ngay sau trang bìa.
+     ======================================================== -->
+<section class="bg-[#F5F5F0] border-y border-[#0A2E1F]/10">
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-16 md:py-24 grid md:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+    <h2 class="serif text-[32px] md:text-[44px] leading-[1.15] font-[400] text-[#0A2E1F]">
+      WePlus không chỉ là một logo.<br><span class="italic text-[#113A29]/70">Đó là một lời hứa về sự<br>đồng hành và giá trị cộng thêm.</span>
+    </h2>
+    <p class="sans text-[13px] leading-[1.9] text-[#0A2E1F]/60 tracking-wide">
+      Bộ nhận diện được xây dựng trên tinh thần luxury quiet — không phô trương, nhưng mọi chi tiết đều được chế tác. Deep Forest Green thể hiện sự bền vững và tin cậy. Rose Gold là điểm chạm của sự cao cấp. Sự kết hợp này định vị WePlus ở phân khúc premium, tách biệt khỏi các thương hiệu công nghệ đại trà.
+    </p>
+  </div>
+</section>
+
+<!-- ========================================================
+     PHẦN 01 — CONCEPT
+     Ý tưởng thương hiệu: xanh lá + rose gold.
+     ======================================================== -->
+<section id="concept" class="bg-[#0A2E1F] text-[#F5F5F0] relative overflow-hidden">
+  <div class="absolute top-0 right-0 w-[50%] h-full opacity-[0.05] pointer-events-none overflow-hidden flex items-start justify-end">
+    <img src="assets/logo-white.png" alt="" class="lg-wm" aria-hidden="true">
+  </div>
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-20 md:py-32 relative">
+    <div class="flex items-center gap-4 mb-16">
+      <span class="sans text-[10px] tracking-[0.3em] text-[#C88A6A] uppercase">01 — Concept</span>
+      <div class="h-[1px] w-16 bg-[#C88A6A]/40">
+      </div>
+    </div>
+    <div class="grid md:grid-cols-[0.9fr_1.1fr] gap-16 md:gap-24">
+      <div>
+        <h2 class="serif text-[42px] md:text-[56px] leading-[0.95]">
+          Triết lý<br><span class="italic font-light text-[#C8C8C8]">đằng sau dấu cộng.</span>
+        </h2>
+        <div class="mt-10 space-y-6">
+          <div class="border-l border-[#C88A6A]/30 pl-6 py-1">
+            <div class="sans text-[11px] tracking-[0.2em] uppercase text-[#C88A6A] mb-2">
+              We
+            </div>
+            <p class="sans text-[13px] leading-[1.7] text-white/60">
+              Sự đồng hành — Togetherness. Chúng ta cùng nhau kiến tạo giá trị, không phải một cá nhân đơn lẻ.
+            </p>
+          </div>
+          <div class="border-l border-[#C88A6A]/30 pl-6 py-1">
+            <div class="sans text-[11px] tracking-[0.2em] uppercase text-[#C88A6A] mb-2">
+              +
+            </div>
+            <p class="sans text-[13px] leading-[1.7] text-white/60">
+              Giá trị cộng thêm — Value Added. Mỗi tương tác với WePlus phải mang lại nhiều hơn mong đợi. Dấu + màu Rose Gold là cam kết premium.
+            </p>
+          </div>
+          <div class="border-l border-[#C88A6A]/30 pl-6 py-1">
+            <div class="sans text-[11px] tracking-[0.2em] uppercase text-[#C88A6A] mb-2">
+              Italic 12°
+            </div>
+            <p class="sans text-[13px] leading-[1.7] text-white/60">
+              Chuyển động tiến về phía trước — Forward Motion. Nghiêng 12 độ tạo cảm giác năng động, cấp tiến, không đứng yên.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="bg-[#113A29] border border-white/10 p-10 md:p-14">
+          <div class="sans text-[10px] tracking-[0.3em] text-white/30 uppercase mb-12">
+            Anatomy
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="relative w-[260px] h-[200px] flex flex-col items-center justify-center">
+              <img src="assets/logo-white.png" alt="WePlus logo" class="lg-anat">
+              <div class="absolute -left-6 top-6 text-[9px] sans tracking-widest text-[#C88A6A]/60">
+                BOLD ITALIC<br>12° FORWARD
+              </div>
+              <div class="absolute -right-2 top-[38%] text-[9px] sans tracking-widest text-[#C88A6A]/60 text-right">
+                ROSE GOLD<br>FOIL #C88A6A
+              </div>
+              <div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-[9px] sans tracking-widest text-white/30 whitespace-nowrap">
+                LETTER-SPACING 0.4EM — LIGHT 300
+              </div>
+            </div>
+          </div>
+          <div class="mt-14 grid grid-cols-2 gap-6 text-[11px] sans leading-relaxed">
+            <div>
+              <div class="text-white/90 mb-1">
+                We — Custom Sans
+              </div>
+              <div class="text-white/40">
+                Montserrat ExtraBold Italic<br>hoặc tương đương, optical kerning -2%
+              </div>
+            </div>
+            <div>
+              <div class="text-white/90 mb-1">
+                WEPLUS — Tracking Wide
+              </div>
+              <div class="text-white/40">
+                Inter Light / Helvetica Neue Light<br>Tracking 0.4em, Uppercase
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 sans text-[10px] tracking-[0.15em] text-white/25 uppercase">
+          Fig.01 — Logo Construction &amp; Proportion
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     PHẦN 02 — LOGO
+     2 biến thể logo: xanh trên nền sáng, trắng trên nền tối.
+     ======================================================== -->
+<section id="variations" class="bg-[#F5F5F0] py-20 md:py-32">
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+    <div class="flex items-center gap-4 mb-12">
+      <span class="sans text-[10px] tracking-[0.3em] text-[#0A2E1F]/40 uppercase">02 — Logo Variations</span>
+      <div class="h-[1px] w-16 bg-[#0A2E1F]/15">
+      </div>
+    </div>
+    <div class="grid md:grid-cols-[0.8fr_1.2fr] gap-10 mb-16">
+      <h2 class="serif text-[36px] md:text-[48px] leading-[0.95] text-[#0A2E1F]">
+        Hai phiên bản<br><span class="italic font-light">chính thống.</span>
+      </h2>
+      <p class="sans text-[13px] leading-[1.9] text-[#0A2E1F]/60 max-w-[520px]">
+        Logo WePlus chỉ được sử dụng trong hai bối cảnh màu sắc đã được phê duyệt. Không tự ý tạo ra phiên bản màu mới nếu chưa có sự chấp thuận của Brand Team.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-[1px] bg-[#0A2E1F]/10 border border-[#0A2E1F]/10">
+      <div class="bg-white p-8 md:p-10 flex flex-col min-h-[460px]">
+        <div class="flex-1 flex items-center justify-center py-10">
+          <img src="assets/logo-green.png" alt="Light — Primary" class="w-full max-w-[280px] object-contain ">
+        </div>
+        <div class="text-[#0A2E1F]">
+          <div class="sans text-[11px] tracking-[0.2em] uppercase mb-2 opacity-60">
+            Light — Primary
+          </div>
+          <div class="serif text-[18px] mb-3 ">
+            Nền trắng / Logo xanh rừng
+          </div>
+          <div class="sans text-[11px] leading-[1.6] opacity-50">
+            Website, văn phòng phẩm sáng, slide thuyết trình
+          </div>
+        </div>
+      </div>
+      <div class="bg-[#0A2E1F] p-8 md:p-10 flex flex-col min-h-[460px]">
+        <div class="flex-1 flex items-center justify-center py-10">
+          <img src="assets/logo-white.png" alt="Dark — Executive" class="w-full max-w-[280px] object-contain mix-blend-screen brightness-110">
+        </div>
+        <div class="text-white">
+          <div class="sans text-[11px] tracking-[0.2em] uppercase mb-2 opacity-60">
+            Dark — Executive
+          </div>
+          <div class="serif text-[18px] mb-3 text-white">
+            Nền xanh rừng / Logo trắng + rose gold
+          </div>
+          <div class="sans text-[11px] leading-[1.6] opacity-50">
+            Cover, backdrop sự kiện, business card premium
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-6 sans text-[10px] tracking-widest text-[#0A2E1F]/30 uppercase">
+      Fig.02 — Approved logo lockups. Luôn giữ tỷ lệ gốc, không kéo giãn.
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     PHẦN 03 — MÀU SẮC
+     Bảng màu thương hiệu. Sửa mã màu HEX ở đây.
+     ======================================================== -->
+<section id="color" class="bg-white border-y border-[#0A2E1F]/10 py-20 md:py-28">
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+    <div class="flex items-center gap-4 mb-14">
+      <span class="sans text-[10px] tracking-[0.3em] text-[#0A2E1F]/40 uppercase">03 — Color System</span>
+      <div class="h-[1px] w-16 bg-[#0A2E1F]/15">
+      </div>
+    </div>
+    <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-16">
+      <div>
+        <h2 class="serif text-[36px] md:text-[44px] leading-[1.05]">
+          Bảng màu<br><span class="italic font-light">quiet luxury.</span>
+        </h2>
+        <p class="sans text-[13px] leading-[1.8] text-[#0A2E1F]/60 mt-6 max-w-[400px]">
+          Deep Forest Green là màu của sự tin cậy và tăng trưởng bền vững. Rose Gold là điểm nhấn thủ công, chỉ chiếm 8-12% diện tích thiết kế.
+        </p>
+        <div class="mt-10 inline-flex items-center gap-3 border border-[#0A2E1F]/15 px-5 py-3">
+          <div class="w-2 h-2 rounded-full bg-[#C88A6A]">
+          </div>
+          <span class="sans text-[10px] tracking-[0.2em] uppercase text-[#0A2E1F]/60">Rose gold chỉ dùng cho dấu + và foil</span>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-[1px] bg-[#0A2E1F]/10 border border-[#0A2E1F]/10">
+        <div class="bg-white p-6 flex flex-col">
+          <div class="h-[96px] w-full bg-[#0A2E1F] mb-6 relative overflow-hidden">
+          </div>
+          <div class="sans text-[11px] tracking-[0.2em] uppercase text-[#0A2E1F]/40 mb-1">
+            Primary — nền, text, chủ đạo
+          </div>
+          <div class="serif text-[18px] text-[#0A2E1F] mb-4">
+            Deep Forest
+          </div>
+          <div class="grid grid-cols-2 gap-2 sans text-[10px] leading-[1.6] text-[#0A2E1F]/60">
+            <div>
+              <span class="text-[#0A2E1F]/30">HEX</span>#0A2E1F
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">RGB</span>10, 46, 31
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">CMYK</span>85, 30, 75, 60
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">PMS</span>PMS 3435 C
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-6 flex flex-col">
+          <div class="h-[96px] w-full bg-[#113A29] mb-6 relative overflow-hidden">
+          </div>
+          <div class="sans text-[11px] tracking-[0.2em] uppercase text-[#0A2E1F]/40 mb-1">
+            Secondary — gradient, hover
+          </div>
+          <div class="serif text-[18px] text-[#0A2E1F] mb-4">
+            Forest Light
+          </div>
+          <div class="grid grid-cols-2 gap-2 sans text-[10px] leading-[1.6] text-[#0A2E1F]/60">
+            <div>
+              <span class="text-[#0A2E1F]/30">HEX</span>#113A29
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">RGB</span>17, 58, 41
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">CMYK</span>80, 25, 70, 50
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">PMS</span>PMS 343 C
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-6 flex flex-col">
+          <div class="h-[96px] w-full bg-[#F5F5F0] border mb-6 relative overflow-hidden">
+          </div>
+          <div class="sans text-[11px] tracking-[0.2em] uppercase text-[#0A2E1F]/40 mb-1">
+            Background — giấy, nền sáng
+          </div>
+          <div class="serif text-[18px] text-[#0A2E1F] mb-4">
+            Off-White
+          </div>
+          <div class="grid grid-cols-2 gap-2 sans text-[10px] leading-[1.6] text-[#0A2E1F]/60">
+            <div>
+              <span class="text-[#0A2E1F]/30">HEX</span>#F5F5F0
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">RGB</span>245, 245, 240
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">CMYK</span>3, 2, 4, 0
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">PMS</span>Warm Gray 1 C
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-6 flex flex-col">
+          <div class="h-[96px] w-full bg-[#C8C8C8] mb-6 relative overflow-hidden">
+          </div>
+          <div class="sans text-[11px] tracking-[0.2em] uppercase text-[#0A2E1F]/40 mb-1">
+            WEPLUS text — tracking wide
+          </div>
+          <div class="serif text-[18px] text-[#0A2E1F] mb-4">
+            Silver Grey
+          </div>
+          <div class="grid grid-cols-2 gap-2 sans text-[10px] leading-[1.6] text-[#0A2E1F]/60">
+            <div>
+              <span class="text-[#0A2E1F]/30">HEX</span>#C8C8C8
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">RGB</span>200, 200, 200
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">CMYK</span>0,0,0,30
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">PMS</span>Cool Gray 4 C
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-6 flex flex-col">
+          <div class="h-[96px] w-full bg-[#C88A6A] mb-6 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent">
+            </div>
+          </div>
+          <div class="sans text-[11px] tracking-[0.2em] uppercase text-[#0A2E1F]/40 mb-1">
+            Accent — chỉ dấu + / foil ép kim
+          </div>
+          <div class="serif text-[18px] text-[#0A2E1F] mb-4">
+            Rose Gold
+          </div>
+          <div class="grid grid-cols-2 gap-2 sans text-[10px] leading-[1.6] text-[#0A2E1F]/60">
+            <div>
+              <span class="text-[#0A2E1F]/30">HEX</span>#C88A6A
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">RGB</span>200, 138, 106
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">CMYK</span>0, 35, 40, 10
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">PMS</span>PMS 7604 C
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-6 flex flex-col">
+          <div class="h-[96px] w-full bg-[#B87D62] mb-6 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent">
+            </div>
+          </div>
+          <div class="sans text-[11px] tracking-[0.2em] uppercase text-[#0A2E1F]/40 mb-1">
+            Foil shadow — dùng khi in nổi
+          </div>
+          <div class="serif text-[18px] text-[#0A2E1F] mb-4">
+            Rose Deep
+          </div>
+          <div class="grid grid-cols-2 gap-2 sans text-[10px] leading-[1.6] text-[#0A2E1F]/60">
+            <div>
+              <span class="text-[#0A2E1F]/30">HEX</span>#B87D62
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">RGB</span>184,125,98
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">CMYK</span>0,38,42,18
+            </div>
+            <div>
+              <span class="text-[#0A2E1F]/30">PMS</span>PMS 7605 C
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     PHẦN 04 — CHỮ (TYPOGRAPHY)
+     Các kiểu chữ dùng trong thương hiệu.
+     ======================================================== -->
+<section id="typography" class="bg-[#F5F5F0] py-20 md:py-28">
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+    <div class="flex items-center gap-4 mb-14">
+      <span class="sans text-[10px] tracking-[0.3em] text-[#0A2E1F]/40 uppercase">04 — Typography</span>
+      <div class="h-[1px] w-16 bg-[#0A2E1F]/15">
+      </div>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-16">
+      <div>
+        <h2 class="serif text-[36px] md:text-[44px] leading-[1.05]">
+          Chữ là<br><span class="italic">khí chất.</span>
+        </h2>
+        <div class="mt-12 space-y-10">
+          <div class="border border-[#0A2E1F]/10 bg-white p-8">
+            <div class="sans text-[10px] tracking-[0.2em] uppercase text-[#0A2E1F]/40 mb-6">
+              Primary Logo Type — We+
+            </div>
+            <img src="assets/logo-green.png" alt="WePlus logo" class="lg-spec">
+            <div class="mt-6 grid grid-cols-2 gap-4 sans text-[11px] leading-[1.6] text-[#0A2E1F]/60">
+              <div>
+                Family: Montserrat ExtraBold Italic<br>Weight: 800 • Italic 12°<br>Kerning: -2% optical
+              </div>
+              <div>
+                Usage: Logo only<br>Không dùng cho body text<br>Luôn giữ rose gold cho +
+              </div>
+            </div>
+          </div>
+          <div class="border border-[#0A2E1F]/10 bg-white p-8">
+            <div class="sans text-[10px] tracking-[0.2em] uppercase text-[#0A2E1F]/40 mb-6">
+              Secondary — WEPLUS
+            </div>
+            <div class="sans text-[20px] tracking-[0.55em] font-light text-[#0A2E1F]">
+              WEPLUS
+            </div>
+            <div class="mt-6 grid grid-cols-2 gap-4 sans text-[11px] leading-[1.6] text-[#0A2E1F]/60">
+              <div>
+                Family: Inter Light / Helvetica Neue Light<br>Weight: 300 • Tracking 0.4em<br>Uppercase only
+              </div>
+              <div>
+                Color: Silver Grey #C8C8C8<br>Trên nền tối dùng White<br>Không bao giờ bold
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="bg-[#0A2E1F] text-white p-10 md:p-12">
+          <div class="sans text-[10px] tracking-[0.3em] text-white/30 uppercase mb-10">
+            Editorial System
+          </div>
+          <div class="space-y-10">
+            <div>
+              <div class="sans text-[10px] tracking-[0.2em] uppercase text-[#C88A6A] mb-3">
+                Headline — Playfair Display
+              </div>
+              <div class="serif text-[40px] leading-[1.05]">
+                Quiet Luxury,<br><span class="italic text-white/60">Loud Value.</span>
+              </div>
+            </div>
+            <div class="h-[1px] bg-white/10">
+            </div>
+            <div class="grid grid-cols-2 gap-8">
+              <div>
+                <div class="sans text-[10px] tracking-[0.2em] uppercase text-white/30 mb-3">
+                  Body — Inter Regular
+                </div>
+                <p class="sans text-[13px] leading-[1.7] text-white/60">
+                  WePlus mang đến hệ sinh thái ePlus, Engage, Enabler và GolfCare. Mọi điểm chạm đều phải phản chiếu sự tinh tế, đáng tin cậy và có chiều sâu.
+                </p>
+              </div>
+              <div>
+                <div class="sans text-[10px] tracking-[0.2em] uppercase text-white/30 mb-3">
+                  Hierarchy
+                </div>
+                <div class="sans text-[11px] leading-[2] text-white/50">
+                  H1: Playfair 56px / 0.95<br>H2: Playfair 36px / 1.1<br>Body: Inter 13px / 1.9<br>Caption: Inter 10px / 0.2em
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 border border-[#0A2E1F]/10 bg-white p-6 flex items-center justify-between">
+          <div class="sans text-[10px] tracking-[0.2em] uppercase text-[#0A2E1F]/40">
+            Google Fonts Pairing
+          </div>
+          <div class="sans text-[11px] text-[#0A2E1F]/70">
+            Playfair Display + Inter + Montserrat
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     PHẦN 05 — VÙNG AN TOÀN (CLEAR SPACE)
+     Khoảng cách tối thiểu phải chừa quanh logo.
+     ======================================================== -->
+<section id="clearspace" class="bg-white py-20 md:py-28 border-y border-[#0A2E1F]/10">
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10 grid lg:grid-cols-2 gap-16">
+    <div>
+      <div class="flex items-center gap-4 mb-10">
+        <span class="sans text-[10px] tracking-[0.3em] text-[#0A2E1F]/40 uppercase">05 — Clear Space &amp; Scale</span>
+        <div class="h-[1px] w-16 bg-[#0A2E1F]/15">
+        </div>
+      </div>
+      <h2 class="serif text-[32px] md:text-[40px] leading-[1.05]">
+        Khoảng thở<br><span class="italic">của logo.</span>
+      </h2>
+      <div class="mt-10 space-y-8 sans text-[13px] leading-[1.8] text-[#0A2E1F]/60 max-w-[460px]">
+        <p>
+          <span class="text-[#0A2E1F] font-medium">Clear Space = chiều cao của dấu +.</span>Không một yếu tố đồ họa, text hay hình ảnh nào được xâm phạm vào vùng an toàn này. Điều này đảm bảo logo luôn có sự hiện diện sang trọng, không bị chật chội.
+        </p>
+        <div class="grid grid-cols-2 gap-6 pt-6 border-t border-[#0A2E1F]/10">
+          <div>
+            <div class="sans text-[10px] tracking-[0.2em] uppercase text-[#0A2E1F]/40 mb-2">
+              Print Minimum
+            </div>
+            <div class="serif text-[20px] text-[#0A2E1F]">
+              20mm
+            </div>
+            <div class="sans text-[11px] text-[#0A2E1F]/50">
+              chiều rộng
+            </div>
+          </div>
+          <div>
+            <div class="sans text-[10px] tracking-[0.2em] uppercase text-[#0A2E1F]/40 mb-2">
+              Digital Minimum
+            </div>
+            <div class="serif text-[20px] text-[#0A2E1F]">
+              80px
+            </div>
+            <div class="sans text-[11px] text-[#0A2E1F]/50">
+              chiều rộng
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-[#F5F5F0] border border-[#0A2E1F]/10 p-8 md:p-12">
+      <div class="aspect-[4/3] bg-white border border-dashed border-[#0A2E1F]/20 flex items-center justify-center relative">
+        <div class="relative">
+          <div class="absolute -inset-[28px] border border-[#C88A6A]/40 border-dashed">
+          </div>
+          <div class="absolute -inset-[28px] flex items-center justify-center pointer-events-none">
+            <span class="sans text-[8px] tracking-widest text-[#C88A6A]/60 bg-[#F5F5F0] px-1">x = height of +</span>
+          </div>
+          <img src="assets/logo-green.png" alt="WePlus logo" class="lg-clear">
+        </div>
+        <div class="absolute top-4 left-4 sans text-[9px] tracking-[0.2em] uppercase text-[#0A2E1F]/30">
+          Safe Area Diagram
+        </div>
+      </div>
+      <div class="mt-6 flex items-center gap-3">
+        <div class="w-4 h-[1px] bg-[#C88A6A]">
+        </div>
+        <span class="sans text-[10px] tracking-[0.2em] uppercase text-[#0A2E1F]/50">Không đặt yếu tố khác trong vùng x</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     PHẦN 06 — LỖI KHÔNG ĐƯỢC LÀM
+     6 ô demo minh họa các cách dùng sai logo.
+     ======================================================== -->
+<section id="incorrect" class="bg-[#0A2E1F] text-white py-20 md:py-28">
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+    <div class="flex items-center gap-4 mb-14">
+      <span class="sans text-[10px] tracking-[0.3em] text-[#C88A6A] uppercase">06 — Incorrect Usage</span>
+      <div class="h-[1px] w-16 bg-white/15">
+      </div>
+    </div>
+    <h2 class="serif text-[32px] md:text-[44px] leading-[1.05] mb-14">
+      Những điều<br><span class="italic text-white/50">tuyệt đối không làm.</span>
+    </h2>
+    <div class="grid md:grid-cols-3 gap-[1px] bg-white/10 border border-white/10">
+      <div class="bg-[#113A29] p-8 relative group">
+        <div class="absolute top-6 right-6 w-6 h-6 rounded-full border border-[#C88A6A]/40 flex items-center justify-center">
+          <span class="sans text-[10px] text-[#C88A6A]">✕</span>
+        </div>
+        <div class="w-[120px] h-[70px] bg-[#0A2E1F] border border-white/5 flex items-center justify-center mb-6">
+          <img src="assets/logo-white.png" alt="WePlus" class="lg-demo scale-x-[1.6] origin-left    ">
+        </div>
+        <div class="sans text-[11px] tracking-[0.2em] uppercase text-[#C88A6A] mb-2">
+          Đừng kéo giãn
+        </div>
+        <p class="sans text-[12px] leading-[1.6] text-white/50">
+          Không bóp méo, kéo dài, làm mập logo. Luôn giữ tỷ lệ gốc.
+        </p>
+      </div>
+      <div class="bg-[#113A29] p-8 relative group">
+        <div class="absolute top-6 right-6 w-6 h-6 rounded-full border border-[#C88A6A]/40 flex items-center justify-center">
+          <span class="sans text-[10px] text-[#C88A6A]">✕</span>
+        </div>
+        <div class="w-[120px] h-[70px] bg-[#0A2E1F] border border-white/5 flex items-center justify-center mb-6">
+          <img src="assets/logo-white.png" alt="WePlus" class="lg-demo  demo-recolor   ">
+        </div>
+        <div class="sans text-[11px] tracking-[0.2em] uppercase text-[#C88A6A] mb-2">
+          Đừng đổi màu dấu +
+        </div>
+        <p class="sans text-[12px] leading-[1.6] text-white/50">
+          Dấu + luôn là Rose Gold #C88A6A hoặc White trên nền tối. Không dùng màu khác.
+        </p>
+      </div>
+      <div class="bg-[#113A29] p-8 relative group">
+        <div class="absolute top-6 right-6 w-6 h-6 rounded-full border border-[#C88A6A]/40 flex items-center justify-center">
+          <span class="sans text-[10px] text-[#C88A6A]">✕</span>
+        </div>
+        <div class="w-[120px] h-[70px] bg-[#0A2E1F] border border-white/5 flex items-center justify-center mb-6">
+          <img src="assets/logo-white.png" alt="WePlus" class="lg-demo   rotate-12  ">
+        </div>
+        <div class="sans text-[11px] tracking-[0.2em] uppercase text-[#C88A6A] mb-2">
+          Đừng xoay nghiêng
+        </div>
+        <p class="sans text-[12px] leading-[1.6] text-white/50">
+          Logo chỉ ở phương ngang. Không xoay, không đặt dọc.
+        </p>
+      </div>
+      <div class="bg-[#113A29] p-8 relative group">
+        <div class="absolute top-6 right-6 w-6 h-6 rounded-full border border-[#C88A6A]/40 flex items-center justify-center">
+          <span class="sans text-[10px] text-[#C88A6A]">✕</span>
+        </div>
+        <div class="w-[120px] h-[70px] bg-[#0A2E1F] border border-white/5 flex items-center justify-center mb-6">
+          <img src="assets/logo-white.png" alt="WePlus" class="lg-demo    demo-shadow ">
+        </div>
+        <div class="sans text-[11px] tracking-[0.2em] uppercase text-[#C88A6A] mb-2">
+          Đừng thêm đổ bóng
+        </div>
+        <p class="sans text-[12px] leading-[1.6] text-white/50">
+          Không drop shadow, glow, stroke ngoài. Luxury là phẳng và tinh tế.
+        </p>
+      </div>
+      <div class="bg-[#113A29] p-8 relative group">
+        <div class="absolute top-6 right-6 w-6 h-6 rounded-full border border-[#C88A6A]/40 flex items-center justify-center">
+          <span class="sans text-[10px] text-[#C88A6A]">✕</span>
+        </div>
+        <div class="w-[120px] h-[70px] bg-[#E5E0D5] border border-white/5 flex items-center justify-center mb-6">
+          <img src="assets/logo-white.png" alt="WePlus" class="lg-demo     ">
+        </div>
+        <div class="sans text-[11px] tracking-[0.2em] uppercase text-[#C88A6A] mb-2">
+          Đừng dùng nền thiếu tương phản
+        </div>
+        <p class="sans text-[12px] leading-[1.6] text-white/50">
+          Không đặt logo trắng trên nền sáng yếu. Đảm bảo contrast 4.5:1.
+        </p>
+      </div>
+      <div class="bg-[#113A29] p-8 relative group">
+        <div class="absolute top-6 right-6 w-6 h-6 rounded-full border border-[#C88A6A]/40 flex items-center justify-center">
+          <span class="sans text-[10px] text-[#C88A6A]">✕</span>
+        </div>
+        <div class="w-[120px] h-[70px] bg-[#0A2E1F] border border-white/5 flex items-center justify-center mb-6">
+          <img src="assets/logo-white.png" alt="WePlus" class="lg-demo     demo-outline">
+        </div>
+        <div class="sans text-[11px] tracking-[0.2em] uppercase text-[#C88A6A] mb-2">
+          Đừng viền / outline
+        </div>
+        <p class="sans text-[12px] leading-[1.6] text-white/50">
+          Không tạo phiên bản outline, không thêm viền quanh logo.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     PHẦN 07 — ỨNG DỤNG
+     3 ảnh mockup: danh thiếp, tường lễ tân, văn phòng phẩm.
+     ======================================================== -->
+<section id="applications" class="bg-[#F5F5F0]">
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-20 md:py-28">
+    <div class="flex items-center gap-4 mb-12">
+      <span class="sans text-[10px] tracking-[0.3em] text-[#0A2E1F]/40 uppercase">07 — Luxury Applications</span>
+      <div class="h-[1px] w-16 bg-[#0A2E1F]/15">
+      </div>
+    </div>
+    <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-start">
+      <div class="relative group">
+        <div class="absolute -inset-4 bg-gradient-to-br from-[#C88A6A]/10 to-transparent blur-xl">
+        </div>
+        <div class="relative bg-[#EDE9E3] p-4 md:p-8 border border-[#0A2E1F]/10 shadow-[0_20px_80px_rgba(10,46,31,0.12)]">
+          <img src="assets/mockup-business-card.webp" alt="Luxury Business Card WePlus" class="w-full h-auto object-cover">
+        </div>
+        <div class="mt-4 sans text-[10px] tracking-[0.2em] uppercase text-[#0A2E1F]/30">
+          Fig.07 — Business Card on Calacatta Marble — Actual size 90×50mm
+        </div>
+      </div>
+      <div>
+        <h2 class="serif text-[32px] md:text-[40px] leading-[1.05]">
+          Business Card<br><span class="italic font-light">— danh thiếp tĩnh lặng.</span>
+        </h2>
+        <div class="mt-8 border border-[#0A2E1F]/10 bg-white p-8">
+          <div class="sans text-[10px] tracking-[0.3em] uppercase text-[#0A2E1F]/40 mb-6">
+            Specifications
+          </div>
+          <div class="space-y-4 sans text-[12px] leading-[1.7] text-[#0A2E1F]/70">
+            <div class="flex justify-between border-b border-[#0A2E1F]/5 py-2">
+              <span class="text-[#0A2E1F]/40">Giấy</span><span class="text-[#0A2E1F] font-medium">350gsm Colorplan Natural White</span>
+            </div>
+            <div class="flex justify-between border-b border-[#0A2E1F]/5 py-2">
+              <span class="text-[#0A2E1F]/40">Hoàn thiện</span><span class="text-[#0A2E1F] font-medium">Soft-touch lamination 2 mặt</span>
+            </div>
+            <div class="flex justify-between border-b border-[#0A2E1F]/5 py-2">
+              <span class="text-[#0A2E1F]/40">Ép kim</span><span class="text-[#0A2E1F] font-medium">Rose Gold Foil #C88A6A — dấu +</span>
+            </div>
+            <div class="flex justify-between border-b border-[#0A2E1F]/5 py-2">
+              <span class="text-[#0A2E1F]/40">Dập nổi</span><span class="text-[#0A2E1F] font-medium">Emboss logo We+ 0.6mm</span>
+            </div>
+            <div class="flex justify-between py-2">
+              <span class="text-[#0A2E1F]/40">Cạnh</span><span class="text-[#0A2E1F] font-medium">Edge painting Forest Green</span>
+            </div>
+          </div>
+          <div class="mt-8 p-4 bg-[#0A2E1F] text-white">
+            <div class="sans text-[10px] tracking-[0.2em] uppercase text-white/40 mb-2">
+              Typography on card
+            </div>
+            <div class="sans text-[12px] leading-[1.6] text-white/70">
+              Tên: Inter Medium 9pt — #0A2E1F<br>Chức danh: Inter Light 7.5pt — #0A2E1F/60<br>Liên hệ: Inter Light 7pt — Tracking 0.05em
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-[#0A2E1F] text-white">
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-20 md:py-28 grid lg:grid-cols-[0.8fr_1.2fr] gap-12 items-start">
+      <div>
+        <h2 class="serif text-[32px] md:text-[40px] leading-[1.05]">
+          Office<br><span class="italic text-white/50">Reception — điểm chạm đầu tiên.</span>
+        </h2>
+        <div class="mt-8 sans text-[13px] leading-[1.8] text-white/60">
+          <p>
+            Khu vực lễ tân là nơi định vị thương hiệu mạnh nhất. Logo 3D phải được chế tác với độ hoàn thiện tuyệt đối.
+          </p>
+          <div class="mt-8 border border-white/10 p-6">
+            <div class="sans text-[10px] tracking-[0.3em] uppercase text-white/30 mb-4">
+              Signage Spec
+            </div>
+            <div class="space-y-3 sans text-[11px] leading-[1.7] text-white/60">
+              <div>
+                — Chất liệu: Stainless steel hairline + sơn tĩnh điện xanh rừng
+              </div>
+              <div>
+                — Dấu + : Đồng mạ rose gold, đánh bóng gương
+              </div>
+              <div>
+                — WEPLUS: Mica trắng 15mm, đèn LED 4000K hắt sau
+              </div>
+              <div>
+                — Kích thước đề xuất: We+ 450mm cao, cách tường 20mm
+              </div>
+              <div>
+                — Nền: Microcement xám nhạt hoặc đá marble vân nhẹ
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="border border-white/10 p-3 bg-white/5">
+          <img src="assets/mockup-reception-wall.webp" alt="WePlus Office Reception 3D Signage" class="w-full h-auto object-cover">
+        </div>
+        <div class="mt-4 sans text-[10px] tracking-[0.2em] uppercase text-white/25">
+          Fig.08 — Reception Wall — Stainless + Rose Gold — 1:20 Scale Mockup
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-20 md:py-28">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <div class="bg-white border border-[#0A2E1F]/10 p-3 shadow-[0_20px_80px_rgba(10,46,31,0.08)]">
+          <img src="assets/mockup-stationery.webp" alt="WePlus Stationery System" class="w-full h-auto object-cover">
+        </div>
+        <div class="mt-4 sans text-[10px] tracking-[0.2em] uppercase text-[#0A2E1F]/30">
+          Fig.09 — Stationery Set — Letterhead, Envelope, Folder, Notebook
+        </div>
+      </div>
+      <div class="order-1 lg:order-2">
+        <h2 class="serif text-[32px] md:text-[40px] leading-[1.05]">
+          Stationery<br><span class="italic font-light">System.</span>
+        </h2>
+        <p class="sans text-[13px] leading-[1.8] text-[#0A2E1F]/60 mt-6 max-w-[420px]">
+          Toàn bộ hệ thống văn phòng phẩm tuân thủ lưới 12 cột, lề 20mm, logo đặt góc trên trái, footer xanh rừng với website bằng silver grey tracking rộng.
+        </p>
+        <div class="mt-10 grid grid-cols-2 gap-[1px] bg-[#0A2E1F]/10 border border-[#0A2E1F]/10">
+          <div class="bg-white p-5">
+            <div class="sans text-[10px] uppercase tracking-widest text-[#0A2E1F]/40 mb-1">
+              Letterhead
+            </div>
+            <div class="sans text-[12px] text-[#0A2E1F]">
+              100gsm Conqueror CX22
+            </div>
+          </div>
+          <div class="bg-white p-5">
+            <div class="sans text-[10px] uppercase tracking-widest text-[#0A2E1F]/40 mb-1">
+              Envelope
+            </div>
+            <div class="sans text-[12px] text-[#0A2E1F]">
+              120gsm Keaykolour Off-White
+            </div>
+          </div>
+          <div class="bg-white p-5">
+            <div class="sans text-[10px] uppercase tracking-widest text-[#0A2E1F]/40 mb-1">
+              Folder
+            </div>
+            <div class="sans text-[12px] text-[#0A2E1F]">
+              350gsm + soft touch
+            </div>
+          </div>
+          <div class="bg-white p-5">
+            <div class="sans text-[10px] uppercase tracking-widest text-[#0A2E1F]/40 mb-1">
+              Notebook
+            </div>
+            <div class="sans text-[12px] text-[#0A2E1F]">
+              Deboss + edge green
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-white border-t border-[#0A2E1F]/10">
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-20 md:py-28">
+      <h2 class="serif text-[32px] md:text-[40px] leading-[1.05]">
+        Digital &amp;<br><span class="italic">Presentation.</span>
+      </h2>
+      <div class="mt-12 grid md:grid-cols-2 gap-12">
+        <div class="border border-[#0A2E1F]/10 bg-[#F5F5F0] p-8">
+          <div class="sans text-[10px] tracking-[0.3em] uppercase text-[#0A2E1F]/40 mb-8">
+            Email Signature
+          </div>
+          <div class="bg-white border border-[#0A2E1F]/10 p-6 flex gap-6">
+            <div class="border-r border-[#0A2E1F]/10 pr-6 flex items-center">
+              <img src="assets/logo-green.png" alt="WePlus" class="lg-sig">
+            </div>
+            <div class="sans text-[11px] leading-[1.8] text-[#0A2E1F]/70">
+              <div class="font-medium text-[#0A2E1F]">
+                Nguyen Van A
+              </div>
+              <div class="text-[10px] uppercase tracking-widest text-[#0A2E1F]/40">
+                Enabler — Business Development
+              </div>
+              <div class="mt-2 text-[10px]">
+                a.nguyen@weplus.vn | +84 90 123 4567<br>weplus.vn
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 sans text-[10px] text-[#0A2E1F]/40">
+            Font: Inter 11px, màu #0A2E1F, line height 1.6
+          </div>
+        </div>
+        <div class="border border-[#0A2E1F]/10 bg-[#0A2E1F] p-8 relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-[#113A29] to-[#0A2E1F]">
+          </div>
+          <div class="relative">
+            <div class="sans text-[10px] tracking-[0.3em] uppercase text-white/30 mb-12">
+              Slide Template — Quarter III
+            </div>
+            <div class="flex flex-col items-center justify-center py-8">
+              <img src="assets/logo-white.png" alt="WePlus" class="lg-slide">
+              <div class="mt-8 sans text-[9px] tracking-[0.35em] text-white/40 uppercase">
+                ePlus · Engage · Enabler · GolfCare
+              </div>
+              <div class="mt-6 w-16 h-[1px] bg-[#C88A6A]/40">
+              </div>
+              <div class="mt-4 sans text-[9px] tracking-[0.25em] text-[#C88A6A] uppercase">
+                Review &amp; Strategic Direction
+              </div>
+            </div>
+            <div class="flex justify-between sans text-[8px] tracking-widest text-white/20 uppercase mt-8">
+              <span>Quarter III — 2026</span><span>Confidential</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     CHÂN TRANG (FOOTER)
+     Cuối trang: nút tải tài liệu + thông tin bản quyền.
+     ======================================================== -->
+<footer class="bg-[#071A12] text-white border-t border-white/5">
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-16 md:py-24 flex flex-col md:flex-row justify-between gap-12">
+    <div>
+      <img src="assets/logo-white.png" alt="WePlus" class="lg-foot">
+      <p class="sans text-[12px] leading-[1.8] text-white/40 mt-8 max-w-[320px]">
+        Bộ nhận diện thương hiệu WePlus — Phiên bản 1.0 — Quarter III 2026. Tài liệu mật, chỉ lưu hành nội bộ. Mọi việc sử dụng sai lệch cần được Brand Team phê duyệt.
+      </p>
+    </div>
+    <div class="flex flex-col gap-6">
+      <div class="sans text-[10px] tracking-[0.3em] uppercase text-white/30">
+        Brand Assets
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <button class="sans text-[11px] tracking-[0.15em] uppercase border border-white/15 px-6 py-3 hover:bg-white hover:text-[#0A2E1F] transition">Download Logo Pack — AI / SVG / PNG</button><button class="sans text-[11px] tracking-[0.15em] uppercase bg-[#C88A6A] text-[#0A2E1F] px-6 py-3 hover:bg-[#B87D62] transition">Download Full Brand Book PDF</button>
+      </div>
+      <div class="sans text-[10px] leading-[1.6] text-white/25 mt-2">
+        Bao gồm: logo master, color swatch .ase, font license guide, mockup templates, email signature html.
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-white/5">
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-6 flex flex-col md:flex-row justify-between gap-3 sans text-[10px] tracking-[0.15em] uppercase text-white/20">
+      <span>© 2026 WePlus — ePlus · Engage · Enabler · GolfCare</span><span>Designed for Quiet Luxury — Ho Chi Minh City</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT — menu điện thoại + tô sáng mục đang xem.
+     Không rành thì không cần đụng.
+     ============================================================ -->
+<script>
+(function () {
+  // 1. Nút MENU trên điện thoại: bấm để mở/đóng menu
+  var menuBtn = document.querySelector('nav button.lg\\:hidden');
+  var mobileMenu = document.getElementById('mobile-menu');
+  var menuLabel = menuBtn ? menuBtn.querySelector('span') : null;
+  function toggleMenu(force) {
+    var open = typeof force === 'boolean' ? force : mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden', !open);
+    mobileMenu.classList.toggle('flex', open);
+    if (menuLabel) menuLabel.textContent = open ? 'CLOSE' : 'MENU';
+  }
+  if (menuBtn) menuBtn.addEventListener('click', function () { toggleMenu(); });
+  mobileMenu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { toggleMenu(false); });
+  });
+
+  // 2. Nút REQUEST ASSETS: cuộn xuống Phần 7
+  document.querySelectorAll('nav button').forEach(function (el) {
+    if (el.textContent.trim() === 'REQUEST ASSETS') {
+      var link = document.createElement('a');
+      link.href = '#applications';
+      link.className = el.className;
+      link.textContent = 'REQUEST ASSETS';
+      el.replaceWith(link);
+    }
+  });
+
+  // 3. Tô sáng mục menu đang xem (màu đồng)
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav div.hidden.lg\\:flex a'));
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          links.forEach(function (a) {
+            var on = a === map[en.target.id];
+            a.classList.toggle('text-[#C88A6A]', on);
+            a.classList.toggle('text-white/50', !on);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    Object.keys(map).forEach(function (id) {
+      var s = document.getElementById(id);
+      if (s) obs.observe(s);
+    });
+  }
+
+  // 4. Link ra website khác: tự mở tab mới
+  document.querySelectorAll('a[href]').forEach(function (a) {
+    var h = a.getAttribute('href');
+    if (/^https?:\/\//.test(h)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+  });
+})();
+</script>
+</body>
+</html>
