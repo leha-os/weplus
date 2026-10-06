@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>WePlus⁺ Handbook 2026 - Dự thảo Bộ Quy chế</title>
+<link rel="icon" href="https://leha-os.github.io/assets/logoweplus_black_transparent.png">
+<meta name="description" content="Bộ quy chế tổ chức, quy tắc làm việc chung, chế độ nghỉ phép và chính sách đãi ngộ WePlus+ Group. Tài liệu trình HĐQT phê duyệt.">
+<meta name="author" content="WePlus⁺ HR">
+<link rel="canonical" href="https://leha-os.github.io/weplus/handbook/v1">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://leha-os.github.io/weplus/handbook/v1">
+<meta property="og:title" content="WePlus⁺ Handbook 2026 - Dự thảo Bộ Quy chế">
+<meta property="og:description" content="Bộ quy chế tổ chức, quy tắc làm việc chung, chế độ nghỉ phép và chính sách đãi ngộ WePlus+ Group. Tài liệu trình HĐQT phê duyệt.">
+<meta property="og:site_name" content="WePlus⁺">
+<meta property="og:locale" content="vi_VN">
+
+<style>
+@font-face{font-family:"Optimistic";font-style:normal;font-weight:400 700;font-display:swap;src:local("Segoe UI"),local("Roboto"),local("Arial")}
+.n-card span.lead{display:block;font-size:11px;color:#5f6661;font-weight:400;white-space:pre-line;line-height:1.5}
+.n-card.company span.sub{font-weight:500}
+.n-card.bod span.sub{font-weight:500}
+.n-card span.sub{white-space:pre-line;line-height:1.5}
+:root{
+  --brand:#0c2e24;--brand-2:#14503b;--accent:#b8975a;--accent-light:#d4b678;--accent-soft:#f6f0e4;--accent-2:#e8dcc0;
+  --ink:#1a1f1c;--muted:#6b726d;--line:#e6e1d6;--bg:#f7f5f0;--card:#fff;--hero:#071a14;--on-dark:#fff;
+  --font:"Optimistic",system-ui,sans-serif;--maxw:860px;
+  --ease:cubic-bezier(.16,1,.3,1);--ease-out:cubic-bezier(.22,1,.36,1);--ease-bounce:cubic-bezier(.34,1.56,.64,1);
+  --shadow:0 1px 4px rgba(12,46,36,.06);--shadow-lg:0 16px 40px rgba(12,46,36,.14);
+}
+*{box-sizing:border-box;overflow-wrap:break-word;word-break:break-word}
+html{scroll-behavior:smooth;height:100%}
+body{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.6;font-size:13.5px;min-height:100vh;display:flex;flex-direction:column;position:relative;overflow-x:hidden;padding-bottom:72px}
+body.lock{overflow:hidden}
+body::before,body::after{content:"";position:fixed;width:900px;height:900px;border-radius:50%;pointer-events:none;z-index:0;opacity:.35;filter:blur(100px);will-change:transform}
+body::before{background:radial-gradient(circle at 30% 30%,rgba(184,151,90,.28),rgba(184,151,90,.08) 40%,transparent 70%);top:-200px;left:-200px;animation:floatA 34s var(--ease) infinite alternate}
+body::after{background:radial-gradient(circle at 70% 70%,rgba(12,46,36,.16),rgba(20,80,59,.08) 40%,transparent 70%);bottom:-200px;right:-200px;animation:floatB 42s var(--ease) infinite alternate-reverse}
+@keyframes floatA{0%{transform:translate(0,0) scale(1) rotate(0deg)}50%{transform:translate(40px,30px) scale(1.08) rotate(5deg)}100%{transform:translate(-10px,20px) scale(1.02) rotate(-3deg)}}
+@keyframes floatB{0%{transform:translate(0,0) scale(1) rotate(0deg)}50%{transform:translate(-30px,-20px) scale(1.1) rotate(-5deg)}100%{transform:translate(15px,-10px) scale(1.03) rotate(3deg)}}
+#cursor-glow{position:fixed;width:400px;height:400px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(184,151,90,.12) 0%,transparent 70%);transform:translate(-50%,-50%);opacity:0;transition:opacity .6s var(--ease);will-change:transform}
+#hero{position:fixed;inset:0;z-index:100;background:radial-gradient(120% 120% at 20% 20%,#0c2e24 0%,#071a14 55%,#040f0c 100%);color:var(--on-dark);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;transition:opacity 1s var(--ease),visibility 1s,transform 1s var(--ease)}
+#hero.out{opacity:0;visibility:hidden;transform:scale(1.05)}
+#hero::before{content:"";pointer-events:none;position:absolute;width:180vmax;height:180vmax;left:50%;top:50%;margin:-90vmax 0 0 -90vmax;background:conic-gradient(from 0deg,transparent 0,rgba(184,151,90,.14) 8%,transparent 22%,rgba(20,80,59,.5) 45%,rgba(184,151,90,.08) 68%,transparent 85%);animation:spin 80s linear infinite;filter:blur(1px)}
+.hero-in{position:relative;z-index:2;padding:20px;display:flex;flex-direction:column;align-items:center}
+.hero-line{height:1px;width:0;margin:28px auto;background:linear-gradient(90deg,transparent,var(--accent) 20%,var(--accent-light) 50%,var(--accent) 80%,transparent);animation:line 1.4s 1.2s var(--ease-out) forwards;box-shadow:0 0 20px rgba(184,151,90,.5)}
+.hero-sub{opacity:0;margin:12px 0 36px;font-size:14px;letter-spacing:.1em;transform:translateY(14px);animation:fadeUp .9s 1.6s var(--ease-out) forwards}
+.hero-btn{opacity:0;border:1px solid var(--accent);background:linear-gradient(135deg,transparent,rgba(184,151,90,.08));color:var(--on-dark);padding:15px 36px;font:inherit;letter-spacing:.16em;cursor:pointer;text-transform:uppercase;font-size:12px;border-radius:99px;transform:translateY(14px);animation:fadeUp .9s 1.9s var(--ease-out) forwards,pulse 4s 3s infinite;transition:.5s var(--ease-out);position:relative;overflow:hidden;backdrop-filter:blur(8px)}
+.hero-btn:hover{background:var(--accent);color:var(--hero);box-shadow:0 0 36px rgba(184,151,90,.45),0 8px 24px rgba(0,0,0,.2);transform:translateY(-2px) scale(1.02)}
+.hero-w{height:0;display:block;margin:0 auto;filter:drop-shadow(0 8px 32px rgba(0,0,0,.5));opacity:0;animation:logoGrow 1.6s var(--ease-bounce) .15s forwards}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes line{to{width:180px}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes fadeUpSoft{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes logoGrow{0%{height:0;opacity:0;transform:scale(.2) translateY(60px)}100%{height:168px;opacity:1;transform:scale(1) translateY(0)}}
+@keyframes blurIn{from{filter:blur(20px);opacity:0;transform:scale(.98)}to{filter:blur(0);opacity:1;transform:scale(1)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(184,151,90,.35)}50%{box-shadow:0 0 0 16px rgba(184,151,90,0)}}
+@keyframes shimmerMove{0%{transform:translateX(-100%)}100%{transform:translateX(300%)}}
+@keyframes goldShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+header.top{background:rgba(12,46,36,.88);backdrop-filter:blur(20px) saturate(1.3);-webkit-backdrop-filter:blur(20px) saturate(1.3);color:var(--on-dark);padding:2px 2px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:30;border-bottom:1px solid rgba(255,255,255,.08)}
+.logo img.lw{height:50px;vertical-align:middle}
+.top-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.top-title{color:rgba(255,255,255,.82);font-size:11.5px;font-weight:600;white-space:nowrap;letter-spacing:.02em}
+
+nav.nav{position:sticky;top:58px;z-index:20;background:rgba(20,80,59,.94);backdrop-filter:blur(16px);display:flex;overflow-x:auto;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.16)}
+nav.nav::-webkit-scrollbar{display:none}
+nav.nav a{padding:13px 18px;color:rgba(255,255,255,.56);text-decoration:none;font-size:12px;font-weight:600;border-bottom:2px solid transparent;cursor:pointer;transition:.45s var(--ease-out);text-transform:uppercase;letter-spacing:.02em;position:relative}
+nav.nav a::after{content:"";position:absolute;bottom:0;left:50%;width:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:.6s var(--ease-out);transform:translateX(-50%)}
+nav.nav a:hover{color:var(--on-dark);background:rgba(255,255,255,.06)}nav.nav a:hover::after{width:70%}
+nav.nav a.on{color:var(--on-dark);background:rgba(255,255,255,.08)}nav.nav a.on::after{width:100%}
+
+main.wrap{max-width:var(--maxw);margin:0 auto;padding:16px 12px 80px;width:100%;flex:1;position:relative;z-index:1;animation:blurIn .9s var(--ease-out)}
+.tools{display:flex;gap:10px;margin-bottom:14px;align-items:center;flex-wrap:nowrap}
+.search{flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(230,225,214,.8);border-radius:10px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);font:inherit;font-size:12.5px;transition:.45s var(--ease-out);box-shadow:0 2px 8px rgba(12,46,36,.04)}
+.search:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px rgba(12,46,36,.08),0 12px 32px rgba(12,46,36,.08);transform:translateY(-2px) scale(1.01);background:#fff}
+.filter-wrapper{position:relative;display:flex;align-items:center;justify-content:center;width:38px;height:38px;flex:0 0 38px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);transition:.4s var(--ease-out)}
+.filter-wrapper svg{width:16px;height:16px;color:var(--brand);pointer-events:none}
+.filter-select{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;appearance:none}
+.btn-toggle-all{border:1px solid var(--brand);background:rgba(255,255,255,.92);backdrop-filter:blur(12px);color:var(--brand);padding:8px 14px;border-radius:10px;cursor:pointer;font:inherit;font-size:11.5px;font-weight:700;transition:.45s var(--ease-out);white-space:nowrap;flex:0 0 auto}
+.btn-toggle-all:hover{background:var(--brand);color:#fff;transform:translateY(-2px) scale(1.02)}
+
+/* ===== FIX QUAN TRỌNG CHO MOBILE TABLE ===== */
+.body{padding:4px 0 10px 0;animation:fadeUp .6s var(--ease-out) both;overflow:visible}
+.body p,.body ul,.body .note,.body .comp-list{margin-left:22px;margin-right:12px}
+.tw{
+  display:block;
+  width:100%;
+  max-width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain;
+  touch-action:pan-x;
+  scrollbar-width:thin;
+  scrollbar-color:var(--accent) transparent;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.98);
+  margin:12px 0;
+  position:relative;
+}
+.tw::-webkit-scrollbar{height:6px}
+.tw::-webkit-scrollbar-thumb{background:linear-gradient(90deg,var(--accent),var(--accent-light));border-radius:99px}
+.tw::-webkit-scrollbar-track{background:transparent}
+.tw table{min-width:620px;width:100%;border-collapse:collapse;font-size:12.5px}
+.tw table th{position:sticky;top:0;z-index:2;background:#fdfbf6}
+.tw::after{
+  content:"← kéo ngang →";
+  position:sticky;
+  left:0;
+  bottom:0;
+  display:block;
+  font-size:10px;
+  color:var(--muted);
+  background:linear-gradient(90deg,rgba(255,255,255,.95),transparent);
+  padding:4px 8px;
+  pointer-events:none;
+  opacity:0;
+  transition:.3s var(--ease);
+}
+@media (max-width:768px){
+  .tw::after{opacity:1}
+  .tw.scrolled::after{opacity:0}
+  .body p,.body ul,.body .note,.body .comp-list{margin-left:14px;margin-right:10px}
+  main.wrap{padding:12px 8px 80px}
+  .tw table{min-width:580px}
+  .tools{gap:6px}
+  .search{padding-left:11px;padding-right:11px}
+  .filter-wrapper{width:36px;height:36px;flex-basis:36px}
+  .btn-toggle-all{padding:8px 10px;font-size:11px}
+  .top-title{font-size:10.5px}
+}
+
+section.sec{margin-top:10px;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border:1px solid rgba(230,225,214,.9);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(12,46,36,.05),0 4px 12px rgba(12,46,36,.03);display:none;animation:fadeUp .8s var(--ease-out) both;transition:.5s var(--ease-out)}
+section.sec.on,body.searching section.sec{display:block}
+section.sec:hover{box-shadow:0 8px 24px rgba(12,46,36,.08),0 16px 48px rgba(12,46,36,.06);transform:translateY(-3px) scale(1.005)}
+section.sec>h2{font-size:12.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#fff;margin:0;padding:12px 16px;background:linear-gradient(100deg,var(--brand) 0%,#123d30 25%,var(--brand-2) 50%,#0e3528 100%);background-size:200% 100%;display:flex;gap:10px;align-items:center;flex-wrap:wrap;cursor:pointer;user-select:none;transition:.5s var(--ease-out);position:relative;overflow:hidden;animation:goldShift 12s ease infinite}
+section.sec>h2::before{content:"";position:absolute;left:0;top:0;width:100%;height:100%;background:linear-gradient(100deg,transparent 0%,transparent 40%,rgba(212,182,120,.18) 50%,transparent 60%,transparent 100%);transform:translateX(-100%);animation:shimmerMove 4.5s var(--ease) infinite}
+section.sec>h2:hover{padding-left:20px;filter:brightness(1.1)}
+section.sec>h2::after{content:"";position:absolute;left:0;top:0;width:5px;height:100%;background:linear-gradient(180deg,var(--accent-light) 0%,var(--accent) 50%,#c9a86a 100%);box-shadow:0 0 16px rgba(184,151,90,.7)}
+section.sec>h2 .arrow{margin-left:auto;font-size:13px;color:var(--accent-light);transition:transform .45s var(--ease-bounce);position:relative;z-index:1}
+section.sec.collapsed>h2 .arrow{transform:rotate(-90deg)}
+details.blk{background:rgba(255,255,255,.92);border-top:1px solid rgba(241,236,224,.8);margin:0 0 0 14px;border-left:2px solid rgba(246,240,228,.9);padding-left:2px;transition:.5s var(--ease-out);position:relative;overflow:visible}
+details.blk:hover{background:linear-gradient(90deg,rgba(246,240,228,.85),rgba(255,255,255,.95));border-left-color:var(--accent)}
+details.blk>summary{cursor:pointer;padding:8px 14px 8px 22px;font-weight:800;font-size:14px;color:var(--brand);list-style:none;display:flex;gap:10px;align-items:center;flex-wrap:wrap;position:relative;transition:.4s var(--ease-out)}
+details.blk>summary::before{content:"";position:absolute;left:-8px;top:50%;width:7px;height:7px;background:radial-gradient(circle at 30% 30%,var(--accent-light),var(--accent));border-radius:50%;transform:translateY(-50%);opacity:.75;box-shadow:0 0 10px rgba(184,151,90,.5),0 0 0 3px rgba(184,151,90,.15);transition:.5s var(--ease-bounce)}
+details.blk[open]>summary::before{background:var(--brand);opacity:1;transform:translateY(-50%) scale(1.35)}
+details.blk[open]>summary{background:linear-gradient(90deg,var(--accent-soft),rgba(255,255,255,.35));border-radius:0 8px 8px 0}
+details.blk>summary::-webkit-details-marker{display:none}
+details.blk>summary::after{content:"›";margin-left:auto;font-size:15px;color:var(--accent);transition:transform .45s var(--ease-bounce);font-weight:700}
+details[open].blk>summary::after{transform:rotate(90deg)}
+details.blk>summary:hover{transform:translateX(4px);color:var(--brand)}
+.reveal{opacity:0;transform:translateY(16px) scale(.98);filter:blur(8px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out),filter .8s var(--ease-out)}
+.reveal.in{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+.src{font-size:10.5px;color:var(--muted);margin:0 0 8px 22px;padding:6px 10px;background:var(--accent-soft);border-radius:6px;border:1px dashed var(--accent-2)}
+.body ul{margin:6px 0 10px 16px;padding:0;font-size:12.5px}.body li{margin:5px 0}
+.comp-list{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.comp-blk{border:1px solid var(--line);border-radius:10px;background:#fff;transition:.45s var(--ease-out);overflow:hidden}
+.comp-blk>summary{padding:10px 12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-size:12.5px;color:var(--brand);list-style:none;background:var(--accent-soft)}
+.comp-blk>summary::-webkit-details-marker{display:none}
+.comp-blk>summary::after{content:"⌄";font-size:12px;color:var(--accent);transition:transform .3s var(--ease)}
+.comp-blk[open]>summary::after{transform:rotate(180deg)}
+.comp-body{padding:10px;font-size:12.5px}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;white-space:normal}
+th{background:#fdfbf6;color:var(--brand);font-weight:800;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}tbody tr:nth-child(even){background:#fcfaf5}tbody tr{transition:.35s var(--ease-out)}tbody tr:hover{background:#f7f1e6!important}
+.note{border-left:3px solid transparent;border-image:linear-gradient(180deg,var(--accent),var(--accent-light)) 1;background:linear-gradient(90deg,var(--accent-soft),#fff);padding:10px 12px;margin:10px 0;font-size:12px;border-radius:0 8px 8px 0;color:var(--brand)}
+.st{font-size:9px;font-weight:800;padding:3px 7px;border-radius:4px;white-space:nowrap;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--line)}
+.st.OFFICIAL{background:#e4efe8;color:#1f6b4a;border-color:#cfe3d6}
+.st.DRAFT,.st.NEEDS_ALIGNMENT,.st.MISSING,.st.PROPOSED,.st.PENDING{background:#ecebe6;color:#5f6661}
+.tree{margin:10px 0 10px 22px;font-size:12.5px;line-height:1.35;user-select:none;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tree ul{list-style:none;margin:0 0 0 14px;padding:0 0 0 14px;border-left:1.5px dashed #e8dcc0}
+.tree>ul{margin:0;padding:0;border:none}
+.tree li{margin:8px 0;position:relative;list-style:none}
+.tree li::before{content:"";position:absolute;top:16px;left:-14px;width:10px;border-bottom:1.5px dashed #e8dcc0}
+.tree>ul>li::before{display:none}
+.tree summary{cursor:pointer;display:inline-flex;align-items:flex-start;gap:6px;list-style:none}
+.tree summary::-webkit-details-marker{display:none}
+.tree summary::before{content:"▶";font-size:8px;color:var(--accent);display:inline-block;transform:translateY(11px);transition:.3s var(--ease)}
+.tree details[open]>summary::before{transform:translateY(11px) rotate(90deg)}
+.n-card{display:inline-block;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);min-width:200px;box-shadow:0 1px 3px rgba(0,0,0,.04);transition:.5s var(--ease-out)}
+.n-card:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 20px 48px rgba(12,46,36,.14)}
+.n-card.root{background:linear-gradient(135deg,#0c2e24,#14503b);color:#fff;border:none;min-width:260px}
+.n-card.root b{font-size:14px;color:#fff}
+.n-card.bod{background:#141a18;color:#fff;border-color:var(--accent)}.n-card.bod b{color:var(--accent);font-size:12.5px}.n-card.bod span.lead{color:#f1eadb}.n-card.bod span.sub{color:rgba(255,255,255,.75)}
+.n-card.cluster{background:var(--accent-soft);border-color:var(--accent-2);border-left:3px solid var(--accent)}
+.n-card.company{border-left:3px solid var(--brand);background:#fff}
+.n-card.team{border-style:dashed;background:#fdfbf6;min-width:180px;padding:6px 9px;box-shadow:none}
+.n-card b{display:block;font-size:12.5px;color:var(--brand);margin-bottom:1px}
+.n-card span.lead{display:block;font-size:11px;color:#5f6661;font-weight:600}
+.n-card span.sub{display:block;font-size:10px;color:var(--muted)}
+.cpick{margin:2px 4px 6px 0;border:1px solid var(--brand);background:var(--card);color:var(--brand);padding:5px 10px;border-radius:6px;cursor:pointer;font:inherit;font-size:11px;font-weight:700;transition:.4s var(--ease)}
+.cpick.on,.cpick:hover{background:var(--brand);color:#fff;transform:translateY(-2px)}
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:10px 22px}
+.calc label{font-size:10px;color:var(--muted);display:block;margin-bottom:4px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.calc input,.calc select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:12.5px;background:var(--card);transition:.3s var(--ease)}
+.calc input:focus,.calc select:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(12,46,36,.08)}
+.res{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;padding:12px 14px;border-radius:10px;margin-top:10px;font-size:12.5px;margin-left:22px;margin-right:12px;box-shadow:0 8px 24px rgba(12,46,36,.18)}
+.res b{color:var(--accent-light)}.res.big{font-size:18px;font-weight:800}
+footer{position:fixed;bottom:0;left:0;right:0;z-index:40;background:var(--bg);padding:12px 16px;text-align:center;color:var(--muted);font-size:10px;border-top:1px solid var(--line)}
+#toTop{position:fixed;right:14px;bottom:84px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border:0;border-radius:12px;width:40px;height:40px;cursor:pointer;display:none;font-size:16px;box-shadow:0 8px 24px rgba(12,46,36,.25);z-index:50;transition:.45s var(--ease-bounce)}
+#toTop:hover{transform:translateY(-4px) scale(1.08)}
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light),#e8dcc0,var(--accent));background-size:300% 100%;transform:scaleX(0);transform-origin:left;z-index:60;box-shadow:0 0 12px rgba(184,151,90,.6);animation:goldShift 3s linear infinite}
+
+/* ===== ZONE 0 · LEAVE PORTAL THEME / GIAO DIỆN CỔNG NGHỈ PHÉP ===== */
+#leave{--lv-ok:#1f6b4a;--lv-ok-bg:#e4efe8;--lv-err:#a33a2f;--lv-err-bg:#f9e8e5}
+#leave .lv-form{padding:14px;display:grid;grid-template-columns:1fr;gap:8px}
+#leave .lv-f{display:flex;flex-direction:row;align-items:center;gap:10px;min-width:0}
+#leave .lv-f.top{align-items:flex-start}
+#leave .lv-f.top label{padding-top:9px}
+#leave .lv-f.full{grid-column:1/-1}
+#leave label{font-size:10px;color:var(--muted);margin:0;flex:0 0 130px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+#leave input,#leave select,#leave textarea{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:13px;background:var(--card);transition:.3s var(--ease)}
+#leave textarea{min-height:60px;resize:vertical}
+#leave .lv-f>input,#leave .lv-f>select,#leave .lv-f>textarea,#leave .lv-f>.lv-msg{flex:1;width:auto;min-width:0}
+#leave .lv-row input{flex:1;width:auto;min-width:0}
+#leave input:focus,#leave select:focus,#leave textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(12,46,36,.08)}
+#leave input[readonly],#leave :disabled{background:var(--accent-soft);color:var(--muted);cursor:not-allowed}
+#leave .lv-row{display:flex;gap:8px;flex:1;min-width:0}
+#leave .lv-btn{border:1px solid var(--brand);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:var(--on-dark);padding:10px 18px;border-radius:10px;cursor:pointer;font:inherit;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;transition:.4s var(--ease-out)}
+#leave .lv-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+#leave .lv-btn:disabled{opacity:.55;cursor:wait;transform:none}
+#leave .lv-submit{width:100%;padding:13px}
+#leave .lv-msg{display:none;margin:0;padding:10px 12px;border-radius:8px;font-size:12.5px;font-weight:600}
+#leave .lv-msg.ok{display:block;background:var(--lv-ok-bg);color:var(--lv-ok)}
+#leave .lv-msg.err{display:block;background:var(--lv-err-bg);color:var(--lv-err)}
+.profilebar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:13.5px}
+.profilebar[hidden]{display:none}
+.profilebar .pf-name{font-weight:700;color:var(--brand)}
+.profilebar .pf-sub{color:var(--muted)}
+.profilebar .pf-leave{margin-left:auto;font-weight:600;color:var(--brand)}
+.profilebar .pf-link{cursor:pointer;color:var(--brand);font-weight:700;text-decoration:underline;white-space:nowrap}
+.draft-banner{background:#fdf3e0;border:1px solid #e3b95c;color:#8a5a00;padding:8px 12px;border-radius:8px;font-size:13px;font-weight:600;margin:2px 0 8px}
+ol.khoan{list-style:none;margin:6px 0 8px;padding:0;counter-reset:k}
+ol.khoan>li{counter-increment:k;position:relative;padding:3px 0 3px 34px;line-height:1.6}
+ol.khoan>li::before{content:counter(k) ".";position:absolute;left:2px;font-weight:700;color:var(--brand)}
+.sec .body>p{line-height:1.75;margin:8px 0}
+.blk>summary span{line-height:1.5}
+@media (max-width:768px){#leave .lv-form{padding:12px}#leave label{flex-basis:96px}}
+</style>
+</head>
+
+<body>
+<div id="prog"></div>
+<div id="cursor-glow"></div>
+<div id="hero"></div>
+
+<header class="top" id="topbar">
+  <span class="logo" id="logo"></span>
+  <div class="top-right">
+    <span class="top-title">WePlus⁺ Handbook · 2026</span>
+  </div>
+</header>
+
+<nav class="nav" id="nav"></nav>
+<main class="wrap" id="app"></main>
+<footer id="foot"></footer>
+<button id="toTop" aria-label="Lên đầu trang">↑</button>
+
+<script>/* ===== CẤU HÌNH NỘI DUNG QUA GOOGLE SHEET =====
+   Chị dán Web app URL của Apps Script NỘI DUNG vào giữa 2 dấu ngoặc kép bên dưới.
+   Để trống ("") thì web dùng nội dung nhúng sẵn trong file. */
+const HB_CONTENT_URL = "";
+const HB_CACHE_KEY = "hb_content_v2";
+let HB_DATA = null;   // {tabs:[...]} — nội dung các tab
+let HB_RATES = null;  // {levels:[...], airport:n} — bảng giá công tác phí
+let HB_FOOTER = null; // [dòng 1, dòng 2] — chữ footer lấy từ Sheet (0_CAU_HINH)
+
+/* ===== NỘI DUNG DỰ PHÒNG nhúng sẵn (dùng khi chưa cấu hình URL hoặc mất mạng) =====
+   Được sinh tự động từ nội dung hiện tại. Khi sheet có dữ liệu mới, web ưu tiên sheet. */
+const HB_FALLBACK_TABS = [{"id":"t0","nav":"THÔNG TIN CHUNG","title":"THÔNG TIN CHUNG","subsections":[{"title":"SƠ ĐỒ TỔ CHỨC HỆ SINH THÁI TGROUP","status":"","src":"","blocks":[{"t":"org","nodes":[{"lv":0,"title":"TGROUP","lead":"","sub":"","style":"root"},{"lv":1,"title":"HỘI ĐỒNG QUẢN TRỊ","lead":"Chủ tịch HĐQT: Ông Nguyễn Bình An Tâm","sub":"Thành viên HĐQT:\n• Ông Nguyễn Ngọc Hoàng Thái Bảo\n• Ông Đào Thế Kiệt\n• Bà Nguyễn Huỳnh Ngọc Hà","style":"bod"},{"lv":2,"title":"KHỐI HỖ TRỢ & PHÁT TRIỂN","lead":"","sub":"","style":"cluster"},{"lv":3,"title":"Ban Phát triển Kinh doanh","lead":"• Ông Nguyễn Bình An Tâm\n• Ông Nguyễn Ngọc Hoàng Thái Bảo\n• Ông Đào Thế Kiệt\n• Bà Nguyễn Huỳnh Ngọc Hà\n• Bà Võ Thị Ngọc Hạnh","sub":"","style":"company"},{"lv":3,"title":"Phòng Tài chính & Kế toán","lead":"• Giám đốc Tài chính WePlus⁺ Group: Ông Nguyễn Quang Minh\n• Giám đốc Tài chính WeWall Group: Ông Nguyễn Trần Huy Khánh","sub":"","style":"company"},{"lv":4,"title":"Phòng Kế toán WePlus⁺ Group","lead":"Trưởng phòng: Ông Nguyễn Quang Minh","sub":"","style":"team"},{"lv":4,"title":"Phòng Kế toán WeWall Group","lead":"Trưởng phòng: Bà Huỳnh Thị Bạch Tuyết","sub":"","style":"team"},{"lv":3,"title":"Phòng Nhân sự & Pháp chế","lead":"Trưởng phòng: Bà Trần Thị Nam Mỹ","sub":"","style":"company"},{"lv":4,"title":"Chuyên viên C&B","lead":"Bà Bùi Thị Bích Hảo","sub":"","style":"team"},{"lv":4,"title":"Chuyên viên Pháp chế","lead":"Bà Võ Thị Hòa","sub":"","style":"team"},{"lv":2,"title":"KHỐI VẬN HÀNH KINH DOANH","lead":"","sub":"","style":"cluster"},{"lv":3,"title":"WEPLUS⁺ GROUP","lead":"","sub":"","style":"cluster-green"},{"lv":4,"title":"ePlus⁺","lead":"Giám đốc: Bà Nguyễn Huỳnh Ngọc Hà","sub":"","style":"company"},{"lv":5,"title":"Team Creative","lead":"Leader: Ms Hải Yến","sub":"","style":"team"},{"lv":5,"title":"Team Planner","lead":"Leader: Ms Mỹ Liên","sub":"","style":"team"},{"lv":5,"title":"Team Project","lead":"Leader: Ms Phương Thảo","sub":"","style":"team"},{"lv":4,"title":"Engage⁺","lead":"Giám đốc: Ông Đào Thế Kiệt","sub":"","style":"company"},{"lv":5,"title":"Team Creative","lead":"","sub":"","style":"team"},{"lv":5,"title":"Team Project","lead":"","sub":"","style":"team"},{"lv":4,"title":"Enabler⁺","lead":"Giám đốc: Ông Đào Thế Kiệt","sub":"","style":"company"},{"lv":5,"title":"Team Enabler","lead":"Leader: Mr Phúc","sub":"","style":"team"},{"lv":4,"title":"GolfCare⁺","lead":"Giám đốc: Bà Lê Thị Phương Hà","sub":"","style":"company"},{"lv":5,"title":"Team GolfCare⁺","lead":"Leader: Ms Hà","sub":"","style":"team"},{"lv":4,"title":"Nguyễn Mộc (khối Quảng Cáo)","lead":"Giám đốc: Bà Võ Thị Ngọc Hạnh","sub":"","style":"company"},{"lv":3,"title":"WEWALL GROUP","lead":"","sub":"","style":"cluster-green"},{"lv":4,"title":"The Wall","lead":"Giám đốc: Ông Nguyễn Ngọc Hoàng Thái Bảo","sub":"","style":"company"},{"lv":5,"title":"Team Thiết kế","lead":"","sub":"","style":"team"},{"lv":5,"title":"Team Thi công","lead":"","sub":"","style":"team"},{"lv":5,"title":"Team M&E","lead":"","sub":"","style":"team"},{"lv":5,"title":"Team Công nghệ","lead":"","sub":"","style":"team"},{"lv":4,"title":"Bức Tường","lead":"Giám đốc: Bà Lê Thị Cẩm Phượng","sub":"","style":"company"},{"lv":5,"title":"Team Thiết kế","lead":"","sub":"","style":"team"},{"lv":4,"title":"Nguyễn Mộc (khối Nội thất)","lead":"Giám đốc: Bà Trần Thị Nam Mỹ","sub":"","style":"company"},{"lv":5,"title":"Team Thiết kế","lead":"","sub":"","style":"team"},{"lv":5,"title":"Team Sản xuất","lead":"","sub":"","style":"team"},{"lv":5,"title":"Team Kinh doanh","lead":"","sub":"","style":"team"},{"lv":4,"title":"Green Wall","lead":"Giám đốc: Bà Trần Thị Nam Mỹ","sub":"","style":"company"}]}]},{"title":"A. WEPLUS⁺ GROUP","status":"","src":"","blocks":[{"t":"text","x":"WePlus⁺ là nền tảng kết nối và cộng hưởng năng lực trong hệ sinh thái Tgroup, nơi các đơn vị thành viên cùng phát huy thế mạnh, nguồn lực và chuyên môn để mở rộng năng lực của toàn hệ thống, kiến tạo những giá trị lớn hơn cho khách hàng và nâng tầm vị thế Tgroup trong nước và quốc tế."},{"t":"companies","items":[{"name":"ePlus⁺","intro":"ePlus⁺ được thành lập từ năm 2009, là công ty sự kiện và marketing với triết lý \"Value-Driven\" — kiến tạo giá trị cho ngành, cho khách hàng và cho con người. ePlus⁺ cung cấp dịch vụ sản xuất sự kiện, quản lý dự án và hoạch định chiến lược truyền thông, đo lường thành công bằng sự hài lòng của khách hàng và sự trưởng thành của đội ngũ.","org":"","services":""},{"name":"Engage⁺","intro":"Được thành lập từ năm 2016, Engage⁺ chuyên về tổ chức sự kiện, activation và trải nghiệm thương hiệu. Với tư duy sáng tạo và năng lực triển khai vững vàng, Engage⁺ biến mỗi ý tưởng thành những khoảnh khắc đáng nhớ, kết nối thương hiệu với công chúng bằng cảm xúc chân thật.","org":"","services":""},{"name":"Enabler⁺","intro":"Enabler⁺ đồng hành cùng doanh nghiệp trên hành trình phát triển bền vững — từ nghiên cứu và phát triển sản phẩm, sản xuất linh hoạt đến chiến lược đưa thương hiệu Việt vươn ra thị trường quốc tế. Với tinh thần vượt lên tư duy thông thường, Enabler⁺ kiến tạo chuỗi giá trị bền vững qua các lĩnh vực sức khỏe & làm đẹp, chăm sóc thú cưng, sản phẩm di sản và vật liệu thân thiện môi trường.","org":"","services":""},{"name":"GolfCare⁺","intro":"GolfCare⁺ là đội ngũ trực thuộc ePlus⁺ — đơn vị thành viên của Tgroup, tập trung vào nhóm khách hàng cao cấp, kết nối Golf & MICE và mạng lưới khách hàng cấp cao của Ban Lãnh đạo, hướng đến trải nghiệm chuyên nghiệp và gia tăng giá trị cho khách hàng, đối tác trong hệ sinh thái Tgroup.","org":"","services":""},{"name":"Nguyễn Mộc (khối Quảng Cáo)","intro":"Được thành lập từ năm 2012, Nguyễn Mộc là đơn vị sản xuất và thi công với bề dày kinh nghiệm — từ các sản phẩm event, hệ thống trưng bày tại showroom và cửa hàng đến sản phẩm nội thất cho những dự án biệt thự, nhà ở — luôn đáp ứng những tiêu chuẩn khắt khe về chất lượng và tiến độ.","org":"","services":""}]}]},{"title":"B. WEWALL GROUP","src":"","blocks":[{"t":"companies","items":[{"name":"The Wall","intro":"Được thành lập từ năm 2009, The Wall là đơn vị thiết kế và thi công kiến trúc — nội thất cao cấp, nơi mỗi không gian được kể như một câu chuyện riêng của chủ nhân. Với hơn 15 năm kinh nghiệm và hàng trăm dự án trên cả nước, The Wall theo đuổi sự hoàn hảo từ bản vẽ đến thực tế.","org":"","services":""},{"name":"Bức Tường","intro":"Bức Tường chuyên sâu trong lĩnh vực thiết kế kiến trúc và nội thất, mang đến những không gian sống và làm việc vừa thẩm mỹ vừa đậm dấu ấn cá nhân.","org":"","services":""},{"name":"Nguyễn Mộc (khối Nội thất)","intro":"Được thành lập từ năm 2012, Nguyễn Mộc là đơn vị sản xuất và thi công với bề dày kinh nghiệm — từ các sản phẩm event, hệ thống trưng bày tại showroom và cửa hàng đến sản phẩm nội thất cho những dự án biệt thự, nhà ở — luôn đáp ứng những tiêu chuẩn khắt khe về chất lượng và tiến độ.","org":"","services":""},{"name":"Green Wall","intro":"Green Wall kiến tạo những mảng xanh cho đô thị — từ cảnh quan dự án đến cây xanh công trình, mang thiên nhiên đến gần hơn với không gian sống hiện đại.","org":"","services":""}]}]}]},{"id":"t1","nav":"QUY ĐỊNH CHUNG","title":"QUY ĐỊNH CHUNG","subsections":[{"title":"Lời nói đầu","status":"","src":"","blocks":[{"t":"text","x":"WePlus⁺ là nền tảng kết nối và cộng hưởng năng lực trong hệ sinh thái Tgroup. Toàn thể thành viên WePlus⁺ cùng thống nhất những giá trị cốt lõi sau đây:"},{"t":"list","items":["Cùng làm, cùng chia sẻ — mọi kết quả đều là thành quả của tập thể.","Giao tiếp chuẩn mực, lịch sự, văn minh trong mọi tình huống.","Tương trợ, phối hợp chặt chẽ vì mục tiêu chung của tổ chức.","Tích cực tham gia các hoạt động chung của công ty."]}]},{"title":"Điều 1. Phạm vi điều chỉnh và đối tượng áp dụng","status":"","src":"","blocks":[{"t":"khoan","items":["Quy chế này quy định thống nhất về tổ chức quản lý và chính sách đãi ngộ áp dụng trong toàn WePlus⁺ Group.","Quy chế này áp dụng đối với toàn thể nhân viên làm việc tại các đơn vị thành viên: Engage⁺, ePlus⁺, Enabler⁺, GolfCare⁺, Nguyễn Mộc (khối Quảng Cáo).","Mọi quy định nội bộ của đơn vị thành viên không được trái với các nội dung thuộc Mức A của Quy chế này."]}]},{"title":"Điều 2. Nguyên tắc thống nhất","status":"","src":"","blocks":[{"t":"text","x":"Các nội dung của Quy chế được phân thành ba mức thống nhất:"},{"t":"table","head":["Mức","Nội dung","Ví dụ"],"rows":[["Mức A — Chuẩn chung bắt buộc","Toàn WePlus⁺ áp dụng thống nhất; đơn vị thành viên không được sửa đổi.","Thời giờ làm việc, chấm công, phép năm 12 ngày."],["Mức B — Khung chung","WePlus⁺ quy định khung và biên độ; đơn vị thành viên được linh hoạt trong phạm vi cho phép và báo cáo Phòng Nhân sự & Pháp chế.","Làm việc từ xa (tối đa 02 ngày/tháng), ngân sách sinh nhật (mức trần), định mức công tác phí."],["Mức C — Đặc thù đơn vị","Đơn vị thành viên tự quy định phù hợp đặc thù kinh doanh; nộp Phòng Nhân sự & Pháp chế lưu hồ sơ.","Hoa hồng và thưởng dự án theo từng đơn vị."]]}]},{"title":"Điều 3. Thẩm quyền ban hành, sửa đổi, bổ sung","status":"","src":"","blocks":[{"t":"khoan","items":["Hội đồng quản trị là cấp có thẩm quyền duy nhất ban hành, sửa đổi, bổ sung Quy chế này.","Phòng Nhân sự & Pháp chế chủ trì rà soát định kỳ, tổng hợp các đề xuất sửa đổi để trình Hội đồng quản trị xem xét, quyết định.","Giám đốc đơn vị thành viên được ban hành quy định nội bộ đối với các nội dung thuộc Mức B, Mức C; không được ban hành nội dung trái với Mức A."]}]},{"title":"Điều 4. Hiệu lực thi hành và rà soát định kỳ","status":"","src":"","blocks":[{"t":"khoan","items":["Quy chế này có hiệu lực kể từ ngày ký ban hành (số hiệu dự kiến: QC-WP-2026-01; ngày hiệu lực do Hội đồng quản trị điền khi phê duyệt).","Định kỳ 12 tháng một lần, Phòng Nhân sự & Pháp chế chủ trì rà soát, đề xuất sửa đổi cho phù hợp với tình hình thực tế.","Kể từ ngày Quy chế có hiệu lực, các quy định riêng của từng đơn vị hết hiệu lực đối với những nội dung đã được Quy chế điều chỉnh; các nội dung đặc thù của đơn vị (Mức C) tiếp tục thực hiện và gửi Phòng Nhân sự & Pháp chế để lưu hồ sơ."]}]}]},{"id":"t2","nav":"QUY TẮC LÀM VIỆC CHUNG","title":"QUY TẮC LÀM VIỆC CHUNG","subsections":[{"title":"Điều 5. Thời giờ làm việc","status":"","src":"","blocks":[{"t":"khoan","items":["Thời giờ làm việc chuẩn: từ 09 giờ 00 đến 18 giờ 00 các ngày làm việc trong tuần; thời gian nghỉ trưa từ 12 giờ 00 đến 13 giờ 00 (không tính vào thời giờ làm việc).","Nhân viên được đến muộn tối đa 30 phút so với giờ chuẩn nếu đã đăng ký trước với quản lý trực tiếp, với điều kiện vẫn bảo đảm đủ 08 giờ làm việc trong ngày.","Ngày tham gia tổ chức sự kiện: thực hiện theo lịch điều phối của dự án; áp dụng chế độ nghỉ bù quy định tại Điều 14."]}]},{"title":"Điều 6. Chấp hành thời giờ làm việc","status":"","src":"","blocks":[{"t":"khoan","items":["Vào làm sau 10 giờ 00 hoặc ra về trước 15 giờ 00 mà không được quản lý trực tiếp chấp thuận: tính ½ ngày phép năm.","Đi muộn dưới 60 phút quá 03 lần trong một tháng: trừ ½ ngày phép năm.","Các trường hợp vi phạm khác được xử lý theo quy trình tại Điều 11."]}]},{"title":"Điều 7. Chấm công","status":"","src":"","blocks":[{"t":"khoan","items":["Nhân viên thực hiện chấm công vào và ra bằng vân tay tại cửa ra vào trụ sở làm việc.","Việc chấm công được phân công như sau: nhân viên — hệ thống ghi nhận tự động; quản lý trực tiếp — xác nhận các trường hợp giải trình (đi muộn, làm thêm giờ, công tác); Phòng Nhân sự — tổng hợp, chốt bảng công và chuyển tính lương."]}]},{"title":"Điều 8. Trang phục","status":"","src":"","blocks":[{"t":"khoan","items":["Nhân viên mặc trang phục lịch sự, gọn gàng, phù hợp môi trường làm việc chuyên nghiệp.","Không mặc: trang phục quá mỏng, váy quá ngắn, áo ba lỗ, áo cúp ngực (nữ); quần ngắn, áo ba lỗ, áo sát nách, dép lê (nam)."]}]},{"title":"Điều 9. Nội quy văn phòng","status":"","src":"","blocks":[{"t":"khoan","items":["Khi ra ngoài trong giờ làm việc phải thông báo cho quản lý trực tiếp.","Giữ gìn vệ sinh và trả lại nguyên trạng phòng họp, pantry, khu vực dùng chung sau khi sử dụng; tài liệu, thiết bị dùng chung để đúng nơi quy định.","Sử dụng và bảo quản đúng cách thiết bị, tài sản công ty được giao; người ra về cuối cùng kiểm tra tắt điện, điều hòa, khóa cửa.","Giữ trật tự tại khu vực làm việc chung, tôn trọng không gian tập trung của đồng nghiệp; chuẩn mực trong trang phục và giao tiếp khi tiếp khách, đối tác tại văn phòng."]}]},{"title":"Điều 10. Bảo mật thông tin và dữ liệu","status":"","src":"","blocks":[{"t":"khoan","items":["Không tiết lộ thông tin khách hàng, tài chính, nhân sự, chiến lược kinh doanh ra bên ngoài khi chưa được ủy quyền bằng văn bản của người có thẩm quyền.","Không sử dụng tài sản trí tuệ, dữ liệu, mối quan hệ khách hàng của công ty cho mục đích cá nhân hoặc cho đơn vị khác.","Bảo vệ dữ liệu cá nhân, dữ liệu khách hàng và dữ liệu nội bộ theo quy định pháp luật; không sao chép, phát tán hoặc đưa dữ liệu nội bộ ra khỏi hệ thống của công ty khi chưa được phê duyệt.","Có trách nhiệm bảo mật tài khoản, mật khẩu các thiết bị công ty được giao; không cài đặt phần mềm không rõ nguồn gốc.","Khi phát hiện dấu hiệu rò rỉ thông tin hoặc sự cố dữ liệu, báo ngay cho quản lý trực tiếp và Phòng Nhân sự & Pháp chế.","Khi chấm dứt hợp đồng lao động: bàn giao đầy đủ dữ liệu, thiết bị; nghĩa vụ bảo mật chi tiết được quy định trong hợp đồng lao động hoặc thỏa thuận bảo mật riêng.","Vi phạm Điều này được xử lý theo quy định tại Điều 11; trường hợp gây thiệt hại phải bồi thường theo quy định pháp luật."]}]},{"title":"Điều 11. Xử lý vi phạm","status":"","src":"","blocks":[{"t":"khoan","items":["Tùy tính chất, mức độ vi phạm, đơn vị áp dụng biện pháp xử lý phù hợp theo quy định pháp luật và Quy chế này, bao gồm nhắc nhở, yêu cầu khắc phục hoặc xử lý kỷ luật lao động.","Các hình thức kỷ luật lao động gồm: khiển trách; kéo dài thời hạn nâng lương không quá 06 tháng; cách chức; sa thải.","Việc xử lý kỷ luật lao động phải đúng căn cứ, trình tự, thủ tục và bảo đảm quyền giải trình của người lao động theo quy định pháp luật."]}]},{"title":"Điều 12. An toàn lao động và xử lý sự cố","status":"draft","src":"","blocks":[{"t":"khoan","items":["Nhân viên tuân thủ các quy định về phòng cháy, chữa cháy, an toàn điện và thoát hiểm tại nơi làm việc; tham gia đầy đủ các buổi tập huấn, diễn tập khi được yêu cầu.","Giữ gìn vệ sinh, an toàn khu vực làm việc; không tự ý di chuyển, tháo gỡ thiết bị an toàn, phòng cháy, chữa cháy.","Khi xảy ra sự cố (tai nạn lao động, cháy nổ, mất điện, sự cố an ninh, an toàn thông tin): ưu tiên bảo đảm an toàn con người, báo ngay cho quản lý trực tiếp và bộ phận liên quan, bảo vệ hiện trường, tài sản của công ty.","Không tự ý xử lý sự cố vượt quá thẩm quyền, chức năng của mình; phối hợp đầy đủ khi đơn vị điều tra, khắc phục sự cố."]}]}]},{"id":"t3","nav":"NGHỈ PHÉP & CHẾ ĐỘ NGHỈ","title":"NGHỈ PHÉP & CHẾ ĐỘ NGHỈ","subsections":[{"title":"Điều 13. Thủ tục nghỉ phép","status":"","src":"","blocks":[{"t":"khoan","items":["Thời hạn báo trước: nghỉ từ 01 đến 02 ngày, báo trước ít nhất 03 ngày làm việc; nghỉ từ 03 đến 05 ngày, báo trước ít nhất 07 ngày; nghỉ trên 05 ngày, báo trước ít nhất 14 ngày.","Hình thức đăng ký: biểu mẫu tại tab Cổng nghỉ phép của Sổ tay.","Giới hạn: không nghỉ quá 05 ngày làm việc liên tiếp; không quá 50% nhân sự của một nhóm cùng nghỉ trong một thời điểm, trừ trường hợp đặc biệt được Giám đốc chấp thuận."]}]},{"title":"Điều 14. Làm việc từ xa và nghỉ bù sự kiện","status":"","src":"","blocks":[{"t":"khoan","items":["Nghỉ bù sự kiện [Mức B]: nhân viên tham gia tổ chức sự kiện vào ngày cuối tuần được nghỉ bù từ 0,5 đến 01 ngày trong tuần kế tiếp, do quản lý trực tiếp xác nhận theo lịch sự kiện.","Làm việc từ xa [Mức B]: tối đa 02 ngày/tháng, báo trước ít nhất 01 ngày cho quản lý trực tiếp; đơn vị phân bổ phù hợp đặc thù công việc."]}]},{"title":"Điều 15. Nghỉ việc riêng hưởng nguyên lương","status":"","src":"","blocks":[{"t":"table","head":["Trường hợp","Chế độ"],"rows":[["Bản thân kết hôn","03 ngày; mừng 1.000.000 đồng"],["Con, cha, mẹ, anh, chị, em ruột kết hôn","01 ngày"],["Tang chế (cha, mẹ, vợ, chồng, con)","03 ngày; vòng hoa chia buồn và 1.000.000 đồng"],["Nhân viên nữ sinh con","06 tháng theo quy định pháp luật; mừng 1.000.000 đồng"],["Nhân viên nam có vợ sinh con","05–07 ngày theo quy định pháp luật; mừng 1.000.000 đồng"]]}]},{"title":"Điều 16. Nghỉ phép năm","status":"","src":"","blocks":[{"t":"khoan","items":["Nhân viên làm đủ 12 tháng được hưởng 12 ngày phép năm. Nhân viên chưa làm đủ 12 tháng: mỗi tháng làm việc được hưởng 01 ngày phép.","Cứ mỗi 05 năm làm việc liên tục, nhân viên được cộng thêm 01 ngày phép (cộng dồn). Thời gian làm việc tính từ ngày ký hợp đồng lao động chính thức, tính tròn năm.","Mức phép năm quy định tại khoản 1 là mức tối thiểu theo pháp luật lao động; không đơn vị nào được quy định thấp hơn."]}]}]},{"id":"t4","nav":"ĐÃI NGỘ & PHÚC LỢI","title":"LƯƠNG, THƯỞNG & PHÚC LỢI","subsections":[{"title":"Điều 17. Hợp đồng lao động","status":"","src":"","blocks":[{"t":"khoan","items":["Thời gian thử việc, tiền lương thử việc và việc ký hợp đồng lao động chính thức thực hiện theo Điều 24, 25, 26 Bộ luật Lao động 2019.","Khi chấm dứt hợp đồng lao động, nhân viên có trách nhiệm bàn giao đầy đủ công việc, tài sản, dữ liệu cho người tiếp nhận theo hướng dẫn của quản lý trực tiếp, hoàn tất trước ngày nghỉ việc."]}]},{"title":"Điều 18. Tiền lương","status":"","src":"","blocks":[{"t":"khoan","items":["Tiền lương được chi trả bằng hình thức chuyển khoản qua ngân hàng HDBank, trong khoảng thời gian từ ngày 01 đến ngày 10 của tháng kế tiếp.","Tiền lương, phụ cấp và các khoản thu nhập khác của nhân viên là thông tin bảo mật; nhân viên không tiết lộ cho người khác khi chưa được sự đồng ý của đơn vị."]}]},{"title":"Điều 19. Phát triển nhân sự","status":"draft","src":"","blocks":[{"t":"khoan","items":["Công ty xây dựng lộ trình phát triển nghề nghiệp cho từng nhóm vị trí, làm cơ sở cho việc đánh giá, bổ nhiệm và quy hoạch nhân sự.","Nhân viên được đánh giá hiệu quả công việc định kỳ, làm căn cứ xem xét tăng lương, thưởng, bổ nhiệm và đào tạo.","Công ty tổ chức hoặc cử nhân viên tham gia các chương trình đào tạo, bồi dưỡng nâng cao chuyên môn, kỹ năng phù hợp với yêu cầu công việc.","Nhân viên chủ động đề xuất nhu cầu đào tạo, phát triển bản thân với quản lý trực tiếp và Phòng Nhân sự."]}]},{"title":"Điều 20. Phúc lợi","status":"","src":"","blocks":[{"t":"table","head":["Chế độ","Mức chung"],"rows":[["Khám sức khỏe định kỳ","1.200.000 đồng/người/năm"],["Gắn kết đội ngũ","3.000.000 đồng/người/năm"],["Sinh nhật (đề xuất mới)","Nhân viên 300.000 đồng · Quản lý 500.000 đồng; tổ chức chung ngày 10 hằng tháng"]]}]},{"title":"Điều 21. Thưởng dự án [Mức C]","status":"","src":"","blocks":[{"t":"khoan","items":["Chế độ thưởng dự án thực hiện theo quy định nội bộ của từng đơn vị thành viên, phù hợp với đặc thù kinh doanh của đơn vị.","Đơn vị thành viên xây dựng quy chế thưởng dự án của đơn vị mình, trình Hội đồng quản trị phê duyệt trước khi ban hành và áp dụng.","Không áp dụng một thang thưởng chung cho toàn Group."]}]},{"title":"Điều 22. Công tác phí [Mức B]","status":"","src":"","blocks":[{"t":"khoan","items":["Ăn uống (ngày công tác tỉnh): nhân viên 180.000 đồng; quản lý 250.000 đồng; giám đốc 300.000 đồng (ngày/người). Ngày tham gia tổ chức sự kiện: công ty bố trí ăn uống theo thực tế, không áp dụng định mức.","Khách sạn: nhân viên 350.000 đồng; quản lý 500.000 đồng; giám đốc 700.000 đồng (đêm).","Đón tiễn sân bay: thanh toán theo chi phí thực tế, tối đa 100.000 đồng/chiều; không thanh toán thêm trong trường hợp đã sử dụng xe hoặc ứng dụng của công ty.","Đi lại trong tỉnh: trần 150.000 đồng/ngày; ưu tiên sử dụng ứng dụng công nghệ có hóa đơn; chỉ thuê xe máy khi ứng dụng không khả dụng và được quản lý trực tiếp chấp thuận.","Grab/Be phục vụ công việc: thống nhất 01 ứng dụng theo hợp đồng của công ty; hạn mức hằng tháng: giám đốc 1.500.000 đồng; quản lý/trưởng nhóm 1.000.000 đồng; nhân viên theo từng chuyến được phê duyệt.","Định mức tại Điều này là khung chuẩn của Group; đơn vị thành viên được điều chỉnh linh hoạt theo đặc thù từng dự án trong phạm vi khung cho phép và báo cáo Phòng Nhân sự & Pháp chế."]}]},{"title":"Điều 23. Trách nhiệm thi hành","status":"","src":"","blocks":[{"t":"khoan","items":["Phòng Nhân sự & Pháp chế chịu trách nhiệm hướng dẫn, đôn đốc thực hiện Quy chế này; tổng hợp các vướng mắc phát sinh để báo cáo Hội đồng quản trị xem xét, quyết định."]}]}]},{"id":"t5","nav":"TIỆN ÍCH","title":"TIỆN ÍCH","subsections":[{"title":"Tính công tác phí","status":"","src":"","blocks":[{"t":"text","x":"Công cụ ước tính công tác phí theo định mức quy định tại Điều 22."},{"t":"calc"}]}]}];
+const HB_FALLBACK_RATES = {"levels":[["Staff / Junior / Senior / Assistant",180000,350000],["Manager",250000,500000],["Director",300000,700000]],"airport":100000};
+
+/* Tải nội dung: thử Apps Script -> dùng bản đã lưu -> dùng bản nhúng sẵn */
+async function loadContent(){
+  if(/^https:\/\//.test(HB_CONTENT_URL)){
+    try{
+      const ctl = new AbortController();
+      const timer = setTimeout(()=>ctl.abort(), 8000);
+      const res = await fetch(HB_CONTENT_URL, {signal:ctl.signal, cache:"no-store"});
+      clearTimeout(timer);
+      const j = await res.json();
+      if(j && j.ok && j.tabs && j.tabs.length){
+        HB_DATA = {tabs:j.tabs};
+        HB_RATES = (j.config && j.config.calc_rates && j.config.calc_rates.levels && j.config.calc_rates.levels.length)
+          ? j.config.calc_rates : HB_FALLBACK_RATES;
+        HB_FOOTER = (j.config && j.config.footer_lines && j.config.footer_lines.length) ? j.config.footer_lines : null;
+        try{ localStorage.setItem(HB_CACHE_KEY, JSON.stringify({tabs:HB_DATA.tabs, rates:HB_RATES, footer:HB_FOOTER, ts:Date.now()})); }catch(e){}
+        return;
+      }
+    }catch(e){ /* rớt xuống dùng bản lưu / nhúng sẵn */ }
+  }
+  try{
+    const c = JSON.parse(localStorage.getItem(HB_CACHE_KEY)||"null");
+    if(c && c.tabs && c.tabs.length){ HB_DATA={tabs:c.tabs}; HB_RATES=c.rates||HB_FALLBACK_RATES; HB_FOOTER=c.footer||null; return; }
+  }catch(e){}
+  HB_DATA = {tabs: HB_FALLBACK_TABS};
+  HB_RATES = HB_FALLBACK_RATES;
+  HB_FOOTER = null;
+}
+
+const HANDBOOK_META={title:"WePlus⁺ Handbook 2026",footer:"© 2026 Tgroup Ecosystem · WePlus⁺ Group | Handbook v1.3<br>Tài liệu chính thức – Lưu hành nội bộ",logoWhite:"https://leha-os.github.io/assets/logoweplus_white_transparent.png"}
+const STATUS_LABEL={OFFICIAL:"CHÍNH THỨC",DRAFT:"CẦN PHÊ DUYỆT",NEEDS_ALIGNMENT:"CẦN THỐNG NHẤT",MISSING:"CHƯA CÓ THÔNG TIN",PROPOSED:"ĐỀ XUẤT",PENDING:"CHỜ XÁC NHẬN"}
+const esc=s=>s==null?"":String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const badge=st=>!st||!STATUS_LABEL[st]?"":`<span class="st ${st}">${STATUS_LABEL[st]}</span>`;
+const vnd=n=>n.toLocaleString("vi-VN")+"đ";
+const LEAVE_CONFIG={
+  API_URL:"https://script.google.com/macros/s/AKfycbznmJo5-Mg7nYbuV3oqj0Krn58vAhm4N4y29agBnLjTvEFIye2kmlttMZreqqt3Hb7Elg/exec",
+  TIMEOUT_MS:30000,
+  TYPES:["Nghỉ phép","Nghỉ không lương","Nghỉ hưởng chế độ"],
+  TEXT:{
+    nav:"CỔNG NGHỈ PHÉP",title:"CỔNG NGHỈ PHÉP",
+    noApi:"Hệ thống chưa được cấu hình. Vui lòng liên hệ Phòng Nhân sự.",
+    netErr:"Không kết nối được hệ thống. Vui lòng thử lại.",
+    badRange:"Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu.",
+    missing:"Vui lòng điền đầy đủ các trường bắt buộc.",
+    sending:"ĐANG XỬ LÝ..."
+  }
+}
+
+
+/* Vẽ sơ đồ tổ chức từ dữ liệu sheet (dòng thụt cấp) */
+function renderOrgTreeNodes(nodes){
+  const clsFor = n => n.style || (n.lv===0?"root":n.lv===1?"bod":n.lv===2?"cluster":n.lv===3?"company":"team");
+  const card = s => s==="root"?"root":s==="bod"?"bod":s==="cluster"?"cluster":s==="company"?"company":"team";
+  const extra = s => s==="cluster-green" ? ' style="background:#e4efe8"' : "";
+  let h = '<div class="tree">';
+  const stack = [];
+  nodes.forEach((n,i)=>{
+    while(stack.length && stack[stack.length-1] >= n.lv){ h += "</ul></details></li>"; stack.pop(); }
+    const inner = `<b>${esc(n.title||"")}</b>`
+      + (n.lead?`<span class="lead">${esc(n.lead)}</span>`:"")
+      + (n.sub?`<span class="sub">${esc(n.sub)}</span>`:"");
+    const hasChild = i+1 < nodes.length && (nodes[i+1].lv > n.lv);
+    if(hasChild){
+      if(stack.length===0) h += `<details open><summary><div class="n-card ${card(clsFor(n))}"${extra(clsFor(n))}>${inner}</div></summary><ul>`;
+      else h += `<li><details${n.lv<=1?" open":""}><summary><div class="n-card ${card(clsFor(n))}"${extra(clsFor(n))}>${inner}</div></summary><ul>`;
+      stack.push(n.lv);
+    }else{
+      if(stack.length===0) h += `<details open><summary><div class="n-card ${card(clsFor(n))}"${extra(clsFor(n))}>${inner}</div></summary></details>`;
+      else h += `<li class="leaf"><summary><div class="n-card ${card(clsFor(n))}"${extra(clsFor(n))}>${inner}</div></summary></li>`;
+    }
+  });
+  while(stack.length){ h += "</ul></details></li>"; stack.pop(); }
+  return h + "</div>";
+}
+/* Thẻ công ty bấm mở rộng */
+function renderCompanies(items){
+  return `<div class="comp-list">`+items.map((c,i)=>`<details class="comp-blk"><summary>${i+1}. ${esc(c.name||"")}</summary><div class="comp-body">${c.intro?`<b>Giới thiệu:</b><p>${esc(c.intro)}</p>`:""}${c.org?`<b>Sơ đồ:</b><p>${esc(c.org)}</p>`:""}${c.services?`<b>Dịch vụ:</b><p>${esc(c.services)}</p>`:""}</div></details>`).join("")+`</div>`;
+}
+function renderBlock(b){
+  if(b.t==="list")return `<ul>${(b.items||[]).map(i=>`<li>${esc(i)}</li>`).join("")}</ul>`;
+  if(b.t==="text")return `<p>${esc(b.x||"")}</p>`;
+  if(b.t==="note")return `<div class="note">${esc(b.x||"")}</div>`;
+  if(b.t==="khoan")return `<ol class="khoan">${(b.items||[]).map(i=>`<li>${esc(i)}</li>`).join("")}</ol>`;
+  if(b.t==="org")return renderOrgTreeNodes(b.nodes||[]);
+  if(b.t==="companies")return renderCompanies(b.items||[]);
+  if(b.t==="calc")return renderCalc();
+  if(b.t==="pick")return renderCompanyPick();
+  if(b.t==="table"){const h=(b.head||[]).map(x=>`<th>${esc(x)}</th>`).join("");const r=(b.rows||[]).map(row=>`<tr>${row.map(c=>`<td>${esc(c)}</td>`).join("")}</tr>`).join("");return `<div class="tw"><table><thead><tr>${h}</tr></thead><tbody>${r}</tbody></table></div>`;}
+  return "";
+}
+function renderCalc(){
+  return `<div class="calc"><div><label>Cấp bậc</label><select id="cLv">${(HB_RATES||HB_FALLBACK_RATES).levels.map((l,i)=>`<option value="${i}">${esc(l[0])}</option>`).join("")}</select></div><div><label>Số ngày công tác</label><input id="cDay" type="number" min="0" value="2"></div><div><label>Số đêm KS</label><input id="cNight" type="number" min="0" value="1"></div><div><label>Hỗ trợ ga/sân bay</label><select id="cAir"><option value="0">Không</option><option value="1">1 chiều</option><option value="2">Khứ hồi</option></select></div></div><div class="res" id="cRes"></div>`;
+}
+function calcUpdate(){
+  const lv=document.getElementById("cLv"),re=document.getElementById("cRes");if(!lv||!re)return;
+  const l=(HB_RATES||HB_FALLBACK_RATES).levels[+lv.value],d=Math.max(0,+document.getElementById("cDay").value||0),n=Math.max(0,+document.getElementById("cNight").value||0),a=+document.getElementById("cAir").value;
+  const f=l[1]*d,h=l[2]*n,ap=(HB_RATES||HB_FALLBACK_RATES).airport*a;re.innerHTML=`Ăn uống: <b>${vnd(f)}</b> · KS: <b>${vnd(h)}</b> · Sân bay: <b>${vnd(ap)}</b><br>Tổng tối đa: <span class="big">${vnd(f+h+ap)}</span>`;
+}
+function renderCompanyPick(){
+  return `<div style="margin-bottom:6px;margin-left:22px">${["Tất cả","Engage⁺","ePlus⁺","Enabler⁺"].map((x,i)=>`<button class="cpick${i===0?" on":""}" data-c="${i}">${x}</button>`).join("")}</div>`;
+}
+function footerHtml(){
+  // Dòng 1 in đậm, dòng 2 xám nhạt. Ưu tiên chữ từ Sheet, rớt xuống dùng chữ nhúng sẵn.
+  let l1="",l2="";
+  if(HB_FOOTER && HB_FOOTER.length){ l1=HB_FOOTER[0]||""; l2=HB_FOOTER[1]||""; }
+  else{ const p=String(HANDBOOK_META.footer).split(/<br\s*\/?>/i); l1=p[0]||""; l2=p.slice(1).join(" ")||""; }
+  return `<div style="font-weight:700">${esc(l1)}</div>`+(l2?`<div style="color:#a09a8e">${esc(l2)}</div>`:"");
+}
+function renderChrome(){
+  const M=HANDBOOK_META;
+  document.getElementById("logo").innerHTML=`<img class="lw" src="${M.logoWhite}" alt="WePlus⁺" loading="lazy">`;
+  document.getElementById("foot").innerHTML=footerHtml();
+}
+function initHero(){
+  const h=document.getElementById("hero"),M=HANDBOOK_META;
+  h.innerHTML=`<div class="hero-in"><img class="hero-w" src="${M.logoWhite}" alt="WePlus⁺" loading="lazy"><div class="hero-line"></div><div class="hero-sub">Employee Handbook · WePlus⁺ 2026</div><button class="hero-btn" id="enter">Vào Handbook</button></div>`;
+  let seen=false;try{seen=sessionStorage.getItem("hb_seen")==="1"}catch(e){}
+  const close=()=>{h.classList.add("out");document.body.classList.remove("lock");try{sessionStorage.setItem("hb_seen","1")}catch(e){}setTimeout(()=>h.remove(),900);};
+  if(seen){h.remove();return;}document.body.classList.add("lock");document.getElementById("enter").addEventListener("click",close);
+}
+function initTabs(){
+  const links=[...document.querySelectorAll("#nav a")];
+  const secs=[...document.querySelectorAll("section.sec")];
+
+  const show=id=>{
+    links.forEach(a=>a.classList.toggle("on",a.dataset.id===id));
+
+    secs.forEach(x=>{
+      x.style.display=x.id===id?"block":"none";
+
+      if(x.id===id){
+        x.querySelectorAll('.reveal').forEach((el,i)=>{
+          el.style.transitionDelay=`${i*40}ms`;
+          setTimeout(()=>el.classList.add('in'),60);
+        });
+      }
+    });
+  };
+
+  links.forEach(a=>a.addEventListener("click",()=>{
+    show(a.dataset.id);
+  }));
+
+  show(HB_DATA.tabs[0].id);
+
+  document.querySelectorAll("section.sec>h2").forEach(h=>{
+    h.addEventListener("click",()=>{
+      h.parentElement.classList.toggle("collapsed");
+    });
+  });
+}
+function initSearch(){
+  let q="",st="";
+
+  const apply=()=>{
+    const active=!!(q||st);
+    document.body.classList.toggle("searching",active);
+
+    document.querySelectorAll("details.blk").forEach(d=>{
+      const hit=(!q||d.textContent.toLowerCase().includes(q))&&(!st||d.dataset.st===st);
+      d.style.display=hit?"":"none";
+
+      if(active&&hit){
+        d.open=true;
+        d.closest('section.sec').classList.remove('collapsed');
+      }
+    });
+  };
+
+  document.getElementById("q")?.addEventListener("input",e=>{
+    q=e.target.value.trim().toLowerCase();
+    apply();
+  });
+
+  document.getElementById("statusFilter")?.addEventListener("change",e=>{
+    st=e.target.value;
+    apply();
+  });
+
+  document.getElementById("toggleAll")?.addEventListener("click",()=>{
+    const activeSec=document.querySelector("section.sec[style*='block']");
+    if(!activeSec)return;
+
+    const all=[...activeSec.querySelectorAll("details.blk")];
+
+    if(activeSec.id==="leave"){
+      activeSec.classList.toggle("collapsed");
+      return;
+    }
+
+    const anyClosed=all.some(d=>!d.open);
+    all.forEach(d=>d.open=anyClosed);
+  });
+}
+function initMotion(){
+  const bar=document.getElementById("prog"),topbar=document.getElementById("topbar"),glow=document.getElementById("cursor-glow");
+  let tick=false,glowX=0,glowY=0,mx=0,my=0;
+
+  addEventListener("scroll",()=>{
+    if(tick)return;
+    tick=true;
+
+    requestAnimationFrame(()=>{
+      const h=document.documentElement.scrollHeight-innerHeight;
+      bar.style.transform=`scaleX(${h>0?scrollY/h:0})`;
+      topbar.classList.toggle('scrolled',scrollY>20);
+      tick=false;
+    });
+  },{passive:true});
+
+  addEventListener("mousemove",e=>{
+    mx=e.clientX;
+    my=e.clientY;
+    glow.style.opacity='1';
+  },{passive:true});
+
+  (function raf(){
+    glowX += (mx - glowX) * 0.08;
+    glowY += (my - glowY) * 0.08;
+    glow.style.transform=`translate(${glowX}px,${glowY}px) translate(-50%,-50%)`;
+    requestAnimationFrame(raf);
+  })();
+
+  const io=new IntersectionObserver(es=>{
+    es.forEach(en=>{
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+
+  setTimeout(()=>{
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  },300);
+
+  document.addEventListener('scroll',e=>{
+    if(e.target.classList && e.target.classList.contains('tw')){
+      if(e.target.scrollLeft>10)e.target.classList.add('scrolled');
+    }
+  },true);
+}
+function applyCompany(idx){
+  document.querySelectorAll("#t4 table").forEach(t=>{
+    if(t.querySelectorAll("thead th").length!==4||t.querySelectorAll("thead th")[1].textContent!=="Engage⁺")return;
+    t.querySelectorAll("tr").forEach(tr=>[...tr.children].forEach((c,j)=>{
+      c.style.display=!idx||j===0||j===idx?"":"none";
+    }));
+  });
+}
+async function leaveApi(payload){
+  if(!/^https:\/\//.test(LEAVE_CONFIG.API_URL))throw new Error(LEAVE_CONFIG.TEXT.noApi);
+  const ctl=new AbortController();
+  const timer=setTimeout(()=>ctl.abort(),LEAVE_CONFIG.TIMEOUT_MS);
+
+  try{
+    const res=await fetch(LEAVE_CONFIG.API_URL,{
+      method:"POST",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify(payload),
+      signal:ctl.signal
+    });
+    return await res.json();
+  }catch(err){
+    if(err.message===LEAVE_CONFIG.TEXT.noApi)throw err;
+    throw new Error(LEAVE_CONFIG.TEXT.netErr);
+  }finally{
+    clearTimeout(timer);
+  }
+}
+function leaveDays(from,to){
+  const a=Date.parse(from+"T00:00:00Z"),b=Date.parse(to+"T00:00:00Z");
+  if(isNaN(a)||isNaN(b))return 0;
+  return Math.round((b-a)/86400000)+1;
+}
+function renderLeavePortal(){
+  const T=LEAVE_CONFIG.TEXT;
+
+  const link=document.createElement("a");
+  link.dataset.id="leave";
+  link.textContent=T.nav;
+  const t5link=document.querySelector('#nav a[data-id="t5"]');
+  if(t5link)t5link.before(link);else document.getElementById("nav").appendChild(link);
+
+  const sec=document.createElement("section");
+  sec.className="sec on reveal";
+  sec.id="leave";
+
+  sec.innerHTML=`<h2><span>${esc(T.title)}</span><span class="arrow">⌄</span></h2>
+  <div class="body"><div class="lv-form reveal">
+    <div class="lv-f full"><label for="lvEmail">Email</label>
+      <div class="lv-row"><input id="lvEmail" type="email" autocomplete="email" placeholder="Nhập email đã đăng ký"><button type="button" class="lv-btn" id="lvVerify">Xác thực</button></div></div>
+    <div class="lv-f"><label>Họ và tên</label><input id="lvName" readonly></div>
+    <div class="lv-f"><label>Công ty</label><input id="lvDept" readonly></div>
+    <div class="lv-f full"><label>Người duyệt</label><input id="lvApprover" readonly></div>
+    <div class="lv-f"><label>Số ngày phép năm đã sử dụng</label><input id="lvUsed" readonly placeholder="—"></div>
+    <div class="lv-f"><label for="lvFrom">Nghỉ từ ngày</label><input id="lvFrom" type="date" disabled></div>
+    <div class="lv-f"><label for="lvTo">Nghỉ đến ngày</label><input id="lvTo" type="date" disabled></div>
+    <div class="lv-f"><label>Tổng số ngày nghỉ</label><input id="lvDays" readonly></div>
+    <div class="lv-f"><label for="lvType">Loại phép</label><select id="lvType" disabled>${LEAVE_CONFIG.TYPES.map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join("")}</select></div>
+    <div class="lv-f full top"><label for="lvReason">Lý do</label><textarea id="lvReason" maxlength="1000" disabled></textarea></div>
+    <div class="lv-f full"><label for="lvHandover">Người nhận bàn giao</label><input id="lvHandover" maxlength="200" disabled></div>
+    <div class="lv-f full"><p class="lv-msg" id="lvMsg"></p></div>
+    <div class="lv-f full"><button type="button" class="lv-btn lv-submit" id="lvSubmit" disabled>GỬI ĐƠN XIN NGHỈ</button></div>
+  </div></div>`;
+
+  const t5sec=document.getElementById("t5");
+  if(t5sec)t5sec.before(sec);else document.getElementById("app").appendChild(sec);
+  bindLeavePortal();
+}
+function bindLeavePortal(){
+  const T=LEAVE_CONFIG.TEXT,$=id=>document.getElementById(id);
+  const locked=["lvFrom","lvTo","lvType","lvReason","lvHandover","lvSubmit"];
+  let verifiedEmail="",verifiedUser=null,busy=false;
+
+  const updateProfile=()=>{
+    const bar=$("profilebar");
+    if(!bar||!verifiedUser)return;
+    const u=verifiedUser;
+    bar.innerHTML=`<span class="pf-name">${esc(u.name)}</span><span class="pf-sub">${esc([u.company,u.team].filter(Boolean).join(" · "))}</span><span class="pf-leave" id="barUsed"></span><a class="pf-link" id="barBenefits">Phúc lợi của tôi</a>`;
+    bar.hidden=false;
+    $("barBenefits").addEventListener("click",()=>{
+      const a=document.querySelector('#nav a[data-id="t4"]');
+      if(a)a.click();
+    });
+    refreshUsed();
+  };
+
+  const msg=(text,kind)=>{
+    const m=$("lvMsg");
+    m.textContent=text||"";
+    m.className="lv-msg"+(text?" "+kind:"");
+  };
+
+  const setLocked=v=>locked.forEach(id=>{$(id).disabled=v;});
+
+  const refreshUsed=async()=>{
+    try{
+      const u=await leaveApi({action:"usedDays",email:verifiedEmail||$("lvEmail").value.trim()});
+      if(u&&u.ok){
+        const txt=u.used+" / "+u.quota+" ngày"+(u.pending?" ("+u.pending+" ngày chờ duyệt)":"");
+        $("lvUsed").value=txt;
+        const bu=$("barUsed");
+        if(bu)bu.textContent="Phép năm đã dùng: "+txt;
+      }
+    }catch(e){/* tính năng phụ — lỗi thì bỏ qua, không chặn form */}
+  };
+
+  const refreshDays=()=>{
+    const d=leaveDays($("lvFrom").value,$("lvTo").value);
+    $("lvDays").value=d>0?d+" ngày":"";
+    if($("lvFrom").value&&$("lvTo").value&&d<=0)msg(T.badRange,"err");
+    else if($("lvMsg").textContent===T.badRange)msg("");
+    return d;
+  };
+
+  $("lvEmail").addEventListener("input",()=>{
+    verifiedEmail="";
+    setLocked(true);
+    $("lvName").value="";
+    $("lvDept").value="";
+    $("lvApprover").value="";
+    $("lvUsed").value="";
+    msg("");
+  });
+
+  $("lvFrom").addEventListener("change",()=>{
+    refreshDays();
+    if($("lvFrom").value)$("lvFrom").blur();
+  });
+
+  $("lvTo").addEventListener("change",()=>{
+    refreshDays();
+    if($("lvTo").value)$("lvTo").blur();
+  });
+
+  $("lvVerify").addEventListener("click",async()=>{
+    const email=$("lvEmail").value.trim();
+
+    if(!email||busy){
+      if(!email)msg(T.missing,"err");
+      return;
+    }
+
+    busy=true;
+    $("lvVerify").disabled=true;
+    msg("");
+
+    try{
+      const r=await leaveApi({action:"verify",email});
+
+      if(!r.ok){
+        msg(r.message,"err");
+      }else{
+        verifiedEmail=email;
+        verifiedUser={name:r.name,company:r.dept,team:r.team||""};
+        $("lvName").value=r.name;
+        $("lvDept").value=r.dept;
+        $("lvApprover").value=r.approver;
+        setLocked(false);
+        updateProfile();
+      }
+    }catch(err){
+      msg(err.message,"err");
+    }
+
+    busy=false;
+    $("lvVerify").disabled=false;
+  });
+
+  $("lvSubmit").addEventListener("click",async()=>{
+    if(busy||!verifiedEmail)return;
+
+    const data={
+      action:"submit",
+      email:verifiedEmail,
+      from:$("lvFrom").value,
+      to:$("lvTo").value,
+      type:$("lvType").value,
+      reason:$("lvReason").value.trim(),
+      handover:$("lvHandover").value.trim()
+    };
+
+    if(!data.from||!data.to||!data.type||!data.reason||!data.handover){
+      msg(T.missing,"err");
+      return;
+    }
+
+    if(refreshDays()<=0)return;
+
+    busy=true;
+    $("lvSubmit").disabled=true;
+    $("lvVerify").disabled=true;
+    $("lvSubmit").textContent=T.sending;
+    msg("");
+
+    try{
+      const r=await leaveApi(data);
+      msg(r.message,r.ok?"ok":"err");
+
+      if(r.ok){
+        ["lvFrom","lvTo","lvReason","lvHandover","lvDays"].forEach(id=>{
+          $(id).value="";
+        });
+        refreshUsed();
+      }
+    }catch(err){
+      msg(err.message,"err");
+    }
+
+    busy=false;
+    $("lvSubmit").disabled=false;
+    $("lvVerify").disabled=false;
+    $("lvSubmit").textContent="GỬI ĐƠN XIN NGHỈ";
+  });
+}
+function renderSections(){
+  document.getElementById("nav").innerHTML=HB_DATA.tabs.map(s=>`<a data-id="${s.id}">${esc(s.nav)}</a>`).join("");
+
+  const cnt={};
+  HB_DATA.tabs.forEach(x=>x.subsections.forEach(y=>{if(y.status)cnt[y.status]=(cnt[y.status]||0)+1;}));
+  const keys=Object.keys(STATUS_LABEL).filter(k=>cnt[k]);
+
+  const filterHtml=`<div class="filter-wrapper" title="Lọc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg><select id="statusFilter" class="filter-select"><option value="">Tất cả trạng thái</option>${keys.map(k=>`<option value="${k}">${STATUS_LABEL[k]} (${cnt[k]})</option>`).join("")}</select></div>`;
+
+  const secs=HB_DATA.tabs.map(s=>`<section class="sec on reveal" id="${s.id}"><h2><span>${esc(s.title)}</span><span class="arrow">⌄</span></h2>${s.subsections.map(sub=>`<details class="blk reveal"${(s.id!=="t0")?" open":""} data-st="${sub.status||''}"><summary><span>${esc(sub.title)}</span>${badge(sub.status)}</summary><div class="body">${sub.src?`<p class="src">Nguồn: ${esc(sub.src)}</p>`:""}${sub.blocks.map(renderBlock).join("")}</div></details>`).join("")}</section>`).join("");
+
+  document.getElementById("app").innerHTML=`
+    <div class="profilebar" id="profilebar" hidden></div>
+    <div class="tools">
+      <input class="search" id="q" placeholder="Tìm kiếm...">
+      ${filterHtml}
+      <button id="toggleAll" class="btn-toggle-all">Mở/Đóng</button>
+    </div>
+    ${secs}`;
+}
+async function init(){
+  renderChrome();
+  await loadContent();
+  document.getElementById("foot").innerHTML=footerHtml(); // vẽ lại footer bằng chữ từ Sheet
+  renderSections();
+  renderLeavePortal();
+  initTabs();
+  initSearch();
+  initMotion();
+
+  const top=document.getElementById("toTop");
+
+  addEventListener("scroll",()=>{
+    top.style.display=scrollY>400?"block":"none";
+  },{passive:true});
+
+  top.addEventListener("click",()=>{
+    scrollTo({top:0,behavior:'smooth'});
+  });
+
+  addEventListener("click",e=>{
+    const c=e.target.closest(".cpick");
+
+    if(c){
+      document.querySelectorAll(".cpick").forEach(x=>x.classList.toggle("on",x===c));
+      applyCompany(+c.dataset.c);
+    }
+  });
+
+  addEventListener("input",e=>{
+    if(e.target.closest(".calc"))calcUpdate();
+  });
+
+  if(document.getElementById("cLv"))calcUpdate();
+
+  initHero();
+}
+document.addEventListener("DOMContentLoaded",init);
+</script>
+</body>
+</html>
