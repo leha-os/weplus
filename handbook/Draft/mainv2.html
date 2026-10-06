@@ -564,13 +564,15 @@ function renderLeavePortal(){
       <div class="lv-row"><input id="lvEmail" type="email" autocomplete="email" placeholder="Nhập email đã đăng ký"><button type="button" class="lv-btn" id="lvVerify">Xác thực</button></div></div>
     <div class="lv-f"><label>Họ và tên</label><input id="lvName" readonly></div>
     <div class="lv-f"><label>Công ty</label><input id="lvDept" readonly></div>
+    <div class="lv-f"><label>Chức vụ</label><input id="lvPosition" readonly></div>
+    <div class="lv-f"><label>Ngày vào làm</label><input id="lvStartDate" readonly></div>
     <div class="lv-f full"><label>Người duyệt</label><input id="lvApprover" readonly></div>
-    <div class="lv-f"><label>Số ngày phép năm đã sử dụng</label><input id="lvUsed" readonly placeholder="—"></div>
     <div class="lv-f"><label for="lvFrom">Nghỉ từ ngày</label><input id="lvFrom" type="date" disabled></div>
     <div class="lv-f"><label for="lvTo">Nghỉ đến ngày</label><input id="lvTo" type="date" disabled></div>
     <div class="lv-f"><label>Tổng số ngày nghỉ</label><input id="lvDays" readonly></div>
     <div class="lv-f"><label for="lvType">Loại phép</label><select id="lvType" disabled>${LEAVE_CONFIG.TYPES.map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join("")}</select></div>
     <div class="lv-f full top"><label for="lvReason">Lý do</label><textarea id="lvReason" maxlength="1000" disabled></textarea></div>
+    <div class="lv-f"><label>Phép năm (đã dùng/còn lại)</label><input id="lvUsed" readonly placeholder="—"></div>
     <div class="lv-f full"><label for="lvHandover">Người nhận bàn giao</label><input id="lvHandover" maxlength="200" disabled></div>
     <div class="lv-f full"><p class="lv-msg" id="lvMsg"></p></div>
     <div class="lv-f full"><button type="button" class="lv-btn lv-submit" id="lvSubmit" disabled>GỬI ĐƠN XIN NGHỈ</button></div>
@@ -589,7 +591,7 @@ function bindLeavePortal(){
     const bar=$("profilebar");
     if(!bar||!verifiedUser)return;
     const u=verifiedUser;
-    bar.innerHTML=`<span class="pf-name">${esc(u.name)}</span><span class="pf-sub">${esc([u.company,u.team].filter(Boolean).join(" · "))}</span><span class="pf-leave" id="barUsed"></span><a class="pf-link" id="barBenefits">Phúc lợi của tôi</a>`;
+    bar.innerHTML=`<span class="pf-name">${esc(u.name)}</span><span class="pf-sub">${esc([u.position,u.company,u.startDate].filter(Boolean).join(" · "))}</span><span class="pf-leave" id="barUsed"></span><a class="pf-link" id="barBenefits">Phúc lợi của tôi</a>`;
     bar.hidden=false;
     $("barBenefits").addEventListener("click",()=>{
       const a=document.querySelector('#nav a[data-id="t4"]');
@@ -610,10 +612,10 @@ function bindLeavePortal(){
     try{
       const u=await leaveApi({action:"usedDays",email:verifiedEmail||$("lvEmail").value.trim()});
       if(u&&u.ok){
-        const txt=u.used+" / "+u.quota+" ngày"+(u.pending?" ("+u.pending+" ngày chờ duyệt)":"");
+        const txt="Đã dùng "+u.used+" / "+u.quota+" ngày · Còn lại "+u.remaining+" ngày"+(u.pending?" ("+u.pending+" ngày chờ duyệt)":"");
         $("lvUsed").value=txt;
         const bu=$("barUsed");
-        if(bu)bu.textContent="Phép năm đã dùng: "+txt;
+        if(bu)bu.textContent="Phép năm: "+txt;
       }
     }catch(e){/* tính năng phụ — lỗi thì bỏ qua, không chặn form */}
   };
@@ -631,6 +633,8 @@ function bindLeavePortal(){
     setLocked(true);
     $("lvName").value="";
     $("lvDept").value="";
+    $("lvPosition").value="";
+    $("lvStartDate").value="";
     $("lvApprover").value="";
     $("lvUsed").value="";
     msg("");
@@ -665,9 +669,11 @@ function bindLeavePortal(){
         msg(r.message,"err");
       }else{
         verifiedEmail=email;
-        verifiedUser={name:r.name,company:r.dept,team:r.team||""};
+        verifiedUser={name:r.name,company:r.dept,position:r.position||"",startDate:r.startDate||""};
         $("lvName").value=r.name;
         $("lvDept").value=r.dept;
+        $("lvPosition").value=r.position||"";
+        $("lvStartDate").value=r.startDate||"";
         $("lvApprover").value=r.approver;
         setLocked(false);
         updateProfile();
