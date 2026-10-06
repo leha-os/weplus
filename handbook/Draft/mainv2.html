@@ -3,28 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>Employee Handbook 2026 · WePlus+</title>
+<title>WePlus⁺ Handbook 2026 - Dự thảo Bộ Quy chế</title>
 <link rel="icon" href="https://leha-os.github.io/assets/logoweplus_black_transparent.png">
-<meta name="description" content="Sổ tay nhân viên WePlus+ 2026 — Chỉ lưu hành nội bộ. Quy định chung, văn hóa, nhân sự, phúc lợi, quy trình vận hành hệ sinh thái TGROUP 2027-2030.">
+<meta name="description" content="Bộ quy chế tổ chức, quy tắc làm việc chung, chế độ nghỉ phép và chính sách đãi ngộ WePlus+ Group. Tài liệu trình HĐQT phê duyệt.">
 <meta name="author" content="WePlus⁺ HR">
-<link rel="canonical" href="CHỊ ĐIỀN TẠI ĐÂY">
+<link rel="canonical" href="https://leha-os.github.io/weplus/handbook/v1">
 <meta name="robots" content="noindex,nofollow">
-
-<!-- Facebook + Zalo dùng chung bộ Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="CHỊ ĐIỀN TẠI ĐÂY">
-<meta property="og:title" content="Employee Handbook 2026 WePlus+">
-<meta property="og:description" content="Sổ tay nhân viên WePlus+ 2026 - Chỉ lưu hành nội bộ. Quy định chung, văn hóa, nhân sự, phúc lợi, quy trình vận hành hệ sinh thái TGROUP 2027-2030.">
-<meta property="og:image" content="CHỊ ĐIỀN TẠI ĐÂY">
-<meta property="og:image:alt" content="Employee Handbook 2026 WePlus+">
+<meta property="og:url" content="https://leha-os.github.io/weplus/handbook/v1">
+<meta property="og:title" content="WePlus⁺ Handbook 2026 - Dự thảo Bộ Quy chế">
+<meta property="og:description" content="Bộ quy chế tổ chức, quy tắc làm việc chung, chế độ nghỉ phép và chính sách đãi ngộ WePlus+ Group. Tài liệu trình HĐQT phê duyệt.">
 <meta property="og:site_name" content="WePlus⁺">
 <meta property="og:locale" content="vi_VN">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Employee Handbook 2026 WePlus+">
-<meta name="twitter:description" content="Sổ tay nhân viên WePlus+ 2026 - Chỉ lưu hành nội bộ. Quy định chung, văn hóa, nhân sự, phúc lợi, quy trình vận hành hệ sinh thái TGROUP 2027-2030.">
-<meta name="twitter:image" content="CHỊ ĐIỀN TẠI ĐÂY">
 
 <style>
 @font-face{font-family:"Optimistic";font-style:normal;font-weight:400 700;font-display:swap;src:local("Segoe UI"),local("Roboto"),local("Arial")}
@@ -315,7 +305,7 @@ const esc=s=>s==null?"":String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;","
 const badge=st=>!st||!STATUS_LABEL[st]?"":`<span class="st ${st}">${STATUS_LABEL[st]}</span>`;
 const vnd=n=>n.toLocaleString("vi-VN")+"đ";
 const LEAVE_CONFIG={
-  API_URL:"https://script.google.com/macros/s/AKfycbyJ8BqZBY_xliGrwxG03duBu0Q4jJGPKKUuqZ6eknOiBf2qgwWCi65QfX45vvQg0sFnTQ/exec",
+  API_URL:"https://script.google.com/macros/s/AKfycbznmJo5-Mg7nYbuV3oqj0Krn58vAhm4N4y29agBnLjTvEFIye2kmlttMZreqqt3Hb7Elg/exec",
   TIMEOUT_MS:30000,
   TYPES:["Nghỉ phép","Nghỉ không lương","Nghỉ hưởng chế độ"],
   TEXT:{
@@ -598,15 +588,6 @@ function bindLeavePortal(){
   let verifiedEmail="",verifiedUser=null,busy=false;
 
   const updateProfile=()=>{
-    const bar=$("profilebar");
-    if(!bar||!verifiedUser)return;
-    const u=verifiedUser;
-    bar.innerHTML=`<span class="pf-name">${esc(u.name)}</span><span class="pf-sub">${esc([u.position,u.company,u.startDate].filter(Boolean).join(" · "))}</span><span class="pf-leave" id="barUsed"></span><a class="pf-link" id="barBenefits">Phúc lợi của tôi</a>`;
-    bar.hidden=false;
-    $("barBenefits").addEventListener("click",()=>{
-      const a=document.querySelector('#nav a[data-id="t4"]');
-      if(a)a.click();
-    });
     refreshUsed();
   };
 
@@ -622,10 +603,7 @@ function bindLeavePortal(){
     try{
       const u=await leaveApi({action:"usedDays",email:verifiedEmail||$("lvEmail").value.trim()});
       if(u&&u.ok){
-        const txt="Đã dùng "+u.used+" / "+u.quota+" ngày · Còn lại "+u.remaining+" ngày"+(u.pending?" ("+u.pending+" ngày chờ duyệt)":"");
-        $("lvUsed").value=txt;
-        const bu=$("barUsed");
-        if(bu)bu.textContent="Phép năm: "+txt;
+        $("lvUsed").value="Đã dùng "+u.used+" / "+u.quota+" ngày · Còn lại "+u.remaining+" ngày"+(u.pending?" ("+u.pending+" ngày chờ duyệt)":"");
       }
     }catch(e){/* tính năng phụ — lỗi thì bỏ qua, không chặn form */}
   };
