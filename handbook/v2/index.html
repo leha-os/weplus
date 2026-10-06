@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>WePlus⁺ Handbook 2026</title>
+<link rel="icon" href="https://leha-os.github.io/assets/logoweplus_black_transparent.png">
+<meta name="description" content="WePlus⁺ Handbook 2026 - Hệ thống đang được cập nhật.">
+<meta name="robots" content="noindex,nofollow">
+
+<style>
+@font-face{font-family:"Optimistic";font-style:normal;font-weight:400 700;font-display:swap;src:local("Segoe UI"),local("Roboto"),local("Arial")}
+:root{
+  --brand:#0c2e24;--accent:#b8975a;--accent-light:#d4b678;
+  --on-dark:#fff;--hero:#071a14;
+  --font:"Optimistic",system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);--ease-out:cubic-bezier(.22,1,.36,1);--ease-bounce:cubic-bezier(.34,1.56,.64,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:var(--font);background:var(--hero);color:var(--on-dark);
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;padding:32px 24px;
+  background:radial-gradient(120% 120% at 30% 30%,#0c2e24 0%,#071a14 60%,#040f0c 100%);
+  position:relative;
+}
+body::before{
+  content:"";pointer-events:none;position:fixed;
+  width:140vmax;height:140vmax;left:50%;top:50%;margin:-70vmax 0 0 -70vmax;
+  background:
+    conic-gradient(from 0deg,transparent 0,rgba(184,151,90,.10) 8%,transparent 22%,rgba(20,80,59,.35) 45%,rgba(184,151,90,.06) 68%,transparent 85%);
+  animation:spin 120s linear infinite;
+  filter:blur(1px);
+  z-index:0;
+}
+body::after{
+  content:"";pointer-events:none;position:fixed;
+  width:900px;height:900px;border-radius:50%;
+  background:radial-gradient(circle,rgba(184,151,90,.16),transparent 65%);
+  top:-300px;left:-300px;filter:blur(90px);
+  animation:float 34s var(--ease) infinite alternate;
+  z-index:0;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float{
+  0%{transform:translate(0,0) scale(1)}
+  100%{transform:translate(80px,60px) scale(1.1)}
+}
+
+.card{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  max-width:720px;width:100%;
+}
+.logo{
+  height:200px;
+  filter:drop-shadow(0 12px 44px rgba(0,0,0,.6));
+  animation:logoIn 1.4s var(--ease-bounce) both;
+}
+@keyframes logoIn{
+  0%{opacity:0;transform:scale(.6) translateY(40px)}
+  100%{opacity:1;transform:scale(1) translateY(0)}
+}
+.line{
+  height:1px;width:220px;margin:36px auto 44px;
+  background:linear-gradient(90deg,transparent,var(--accent) 20%,var(--accent-light) 50%,var(--accent) 80%,transparent);
+  box-shadow:0 0 20px rgba(184,151,90,.5);
+  animation:fadeUp .9s .3s var(--ease-out) both;
+}
+.icon{
+  width:76px;height:76px;margin-bottom:32px;
+  border:1.5px solid var(--accent);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--accent-light);font-size:34px;font-weight:300;line-height:1;
+  box-shadow:0 0 40px rgba(184,151,90,.28),inset 0 0 20px rgba(184,151,90,.08);
+  animation:fadeUp .9s .5s var(--ease-out) both,pulse 4s 2s infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 40px rgba(184,151,90,.28),inset 0 0 20px rgba(184,151,90,.08),0 0 0 0 rgba(184,151,90,.35)}
+  50%{box-shadow:0 0 40px rgba(184,151,90,.28),inset 0 0 20px rgba(184,151,90,.08),0 0 0 18px rgba(184,151,90,0)}
+}
+.title{
+  font-size:22px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:#fff;line-height:1.8;margin-bottom:52px;
+  animation:fadeUp .9s .7s var(--ease-out) both;
+}
+.title span{display:block}
+.title span:first-child{margin-bottom:8px}
+.foot{
+  font-size:11.5px;letter-spacing:.12em;color:rgba(255,255,255,.4);
+  text-transform:uppercase;
+  animation:fadeUp .9s 1.1s var(--ease-out) both;
+  padding-top:26px;border-top:1px solid rgba(255,255,255,.08);
+  width:100%;max-width:420px;
+}
+.foot b{color:var(--accent-light);font-weight:600;letter-spacing:.12em}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(16px) scale(.98)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+@media (max-width:600px){
+  body{padding:24px 20px}
+  .logo{height:140px}
+  .title{font-size:15px;letter-spacing:.10em;line-height:1.9;margin-bottom:36px}
+  .icon{width:60px;height:60px;font-size:26px;margin-bottom:24px}
+  .line{margin:26px auto 30px;width:170px}
+  .foot{font-size:10px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <img class="logo" src="https://leha-os.github.io/assets/logoweplus_white_transparent.png" alt="WePlus⁺" loading="lazy">
+
+  <div class="line"></div>
+
+  <div class="icon">!</div>
+
+  <div class="title">
+    <span>HỆ THỐNG ĐANG ĐƯỢC CẬP NHẬT.</span>
+    <span>VUI LÒNG QUAY LẠI SAU.</span>
+  </div>
+
+  <div class="foot">
+    © 2026 <b>Tgroup Ecosystem</b> · WePlus⁺ Group
+  </div>
+
+</div>
+
+</body>
+</html>
