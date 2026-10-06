@@ -385,7 +385,7 @@ function renderChrome(){
 }
 function initHero(){
   const h=document.getElementById("hero"),M=HANDBOOK_META;
-  h.innerHTML=`<div class="hero-in"><img class="hero-w" src="${M.logoWhite}" alt="WePlus⁺" loading="lazy"><div class="hero-line"></div><div class="hero-sub">Sổ tay nhân viên · WePlus⁺ 2026</div><button class="hero-btn" id="enter">Mở sổ tay</button></div>`;
+  h.innerHTML=`<div class="hero-in"><img class="hero-w" src="${M.logoWhite}" alt="WePlus⁺" loading="lazy"><div class="hero-line"></div><div class="hero-sub">Employee Handbook · WePlus⁺ 2026</div><button class="hero-btn" id="enter">Vào Handbook</button></div>`;
   let seen=false;try{seen=sessionStorage.getItem("hb_seen")==="1"}catch(e){}
   const close=()=>{h.classList.add("out");document.body.classList.remove("lock");try{sessionStorage.setItem("hb_seen","1")}catch(e){}setTimeout(()=>h.remove(),900);};
   if(seen){h.remove();return;}document.body.classList.add("lock");document.getElementById("enter").addEventListener("click",close);
